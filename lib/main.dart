@@ -20,7 +20,7 @@ class MainApp extends StatelessWidget {
     return Sizer(builder: (_, __, ___) {
       return GlobalLoaderOverlay(
         useDefaultLoading: false,
-        closeOnBackButton: true,
+        closeOnBackButton: false,
         overlayWidgetBuilder: (_) {
           return const Center(
             child: SpinKitChasingDots(

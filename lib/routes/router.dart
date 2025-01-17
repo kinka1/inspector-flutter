@@ -18,7 +18,6 @@ class AppRouter extends _$AppRouter {
           page: ScanRoute.page,
           path: '/scan',
           transitionsBuilder: TransitionsBuilders.fadeIn,
-          initial: true,
         ),
       ];
 }

@@ -1,4 +1,5 @@
 import 'package:application/core/color_values.dart';
+import 'package:application/routes/router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class HomePage extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  context.router.pushNamed('/scan');
+                  AutoRouter.of(context).push(const ScanRoute());
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -40,24 +41,29 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: ColorValues.info400,
-                ),
-                padding: const EdgeInsets.all(15.0),
-                width: 400,
-                child: const Column(
-                  children: [
-                    Icon(Icons.qr_code_scanner, size: 200),
-                    Text(
-                      "Scaner",
-                      style: TextStyle(
-                          fontSize: 40,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                    )
-                  ],
+              GestureDetector(
+                onTap: () {
+                  print("gak tau");
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: ColorValues.info400,
+                  ),
+                  padding: const EdgeInsets.all(15.0),
+                  width: 400,
+                  child: const Column(
+                    children: [
+                      Icon(Icons.qr_code_scanner, size: 200),
+                      Text(
+                        "Scaner",
+                        style: TextStyle(
+                            fontSize: 40,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],
