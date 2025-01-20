@@ -45,8 +45,8 @@ class _Sheet2PageState extends State<Sheet2Page> {
             ),
             const SizedBox(height: 20),
             Wrap(
-              spacing: 40, // Jarak horizontal antar elemen
-              runSpacing: 40, // Jarak vertikal antar elemen
+              spacing: 20, // Jarak horizontal antar elemen
+              runSpacing: 20, // Jarak vertikal antar elemen
               children: [
                 for (var i = 1; i <= 31; i++) kartu(i,context),
               ],
@@ -60,7 +60,7 @@ class _Sheet2PageState extends State<Sheet2Page> {
   late String selectedstatus;
 
   Color selectedColor() {
-    if (selectedstatus == "Normal") {
+    if (selectedstatus == "OK") {
       warna = Colors.green;
     } else if (selectedstatus == "Abnormal") {
       warna = Colors.red;
@@ -75,8 +75,8 @@ class _Sheet2PageState extends State<Sheet2Page> {
         AutoRouter.of(contex).push(Sheet3Route());
       },
       child: Container(
-        width: 40, // Lebar setiap kartu
-        height: 40, // Tinggi setiap kartu
+        width: 60,
+        height: 60,
         decoration: BoxDecoration(
           color: ColorValues.grayscale400,
           borderRadius: BorderRadius.circular(8),
@@ -84,7 +84,7 @@ class _Sheet2PageState extends State<Sheet2Page> {
         child: Center(
           child: Text(
             angka.toString(),
-            style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+            style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20),
           ),
         ),
       ),
