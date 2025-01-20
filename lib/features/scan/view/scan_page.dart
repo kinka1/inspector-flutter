@@ -56,7 +56,7 @@ class _ScanPageState extends State<ScanPage> {
         backgroundColor: ColorValues.info400,
         title: const Text(
           'Daily Maintenance',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25,color: Colors.white),
         ),
       ),
       body: SingleChildScrollView(

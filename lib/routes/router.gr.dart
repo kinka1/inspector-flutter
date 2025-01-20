@@ -27,6 +27,24 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ScanPage(),
       );
     },
+    Sheet2Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const Sheet2Page(),
+      );
+    },
+    Sheet3Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const Sheet3Page(),
+      );
+    },
+    SheetRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SheetPage(),
+      );
+    },
   };
 }
 
@@ -54,6 +72,48 @@ class ScanRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ScanRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [Sheet2Page]
+class Sheet2Route extends PageRouteInfo<void> {
+  const Sheet2Route({List<PageRouteInfo>? children})
+      : super(
+          Sheet2Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Sheet2Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [Sheet3Page]
+class Sheet3Route extends PageRouteInfo<void> {
+  const Sheet3Route({List<PageRouteInfo>? children})
+      : super(
+          Sheet3Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Sheet3Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SheetPage]
+class SheetRoute extends PageRouteInfo<void> {
+  const SheetRoute({List<PageRouteInfo>? children})
+      : super(
+          SheetRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SheetRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

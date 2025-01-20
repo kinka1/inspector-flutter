@@ -29,12 +29,12 @@ class HomePage extends StatelessWidget {
                   width: 400,
                   child:  const Column(
                     children: [
-                      Icon(Icons.qr_code_scanner, size: 200),
+                      Icon(Icons.qr_code_scanner, size: 200,color: Colors.white),
                       Text(
                         "Scaner",
                         style: TextStyle(
                             fontSize: 40,
-                            color: Colors.black,
+                            color: Colors.white,
                             fontWeight: FontWeight.bold),
                       )
                     ],
@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  print("gak tau");
+                  AutoRouter.of(context).push(const SheetRoute());
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -54,12 +54,12 @@ class HomePage extends StatelessWidget {
                   width: 400,
                   child: const Column(
                     children: [
-                      Icon(Icons.qr_code_scanner, size: 200),
+                      Icon(Icons.task, size: 200,color: Colors.white,),
                       Text(
-                        "Scaner",
+                        "Checksheet",
                         style: TextStyle(
                             fontSize: 40,
-                            color: Colors.black,
+                            color: Colors.white,
                             fontWeight: FontWeight.bold),
                       )
                     ],
