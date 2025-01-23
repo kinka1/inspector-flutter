@@ -27,6 +27,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ScanPage(),
       );
     },
+    ScannerRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ScannerPage(),
+      );
+    },
     Sheet2Route.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -72,6 +78,20 @@ class ScanRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ScanRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ScannerPage]
+class ScannerRoute extends PageRouteInfo<void> {
+  const ScannerRoute({List<PageRouteInfo>? children})
+      : super(
+          ScannerRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ScannerRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

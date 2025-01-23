@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  AutoRouter.of(context).push(const ScanRoute());
+                  AutoRouter.of(context).push(const ScannerRoute());
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -27,9 +27,10 @@ class HomePage extends StatelessWidget {
                   ),
                   padding: const EdgeInsets.all(15.0),
                   width: 400,
-                  child:  const Column(
+                  child: const Column(
                     children: [
-                      Icon(Icons.qr_code_scanner, size: 200,color: Colors.white),
+                      Icon(Icons.qr_code_scanner,
+                          size: 200, color: Colors.white),
                       Text(
                         "Scaner",
                         style: TextStyle(
@@ -54,7 +55,11 @@ class HomePage extends StatelessWidget {
                   width: 400,
                   child: const Column(
                     children: [
-                      Icon(Icons.task, size: 200,color: Colors.white,),
+                      Icon(
+                        Icons.task,
+                        size: 200,
+                        color: Colors.white,
+                      ),
                       Text(
                         "Checksheet",
                         style: TextStyle(

@@ -1,10 +1,7 @@
-import 'package:application/features/scan/view/scan_page.dart';
-import 'package:application/features/sheet/view/sheet_page.dart';
+
+import 'package:application/features/scanner/view/scanner_page.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:application/features/pages.dart';
-
-import '../features/sheet/view/sheet_page_2.dart';
-import '../features/sheet/view/sheet_page_3.dart';
 
 part 'router.gr.dart';
 
@@ -41,5 +38,12 @@ class AppRouter extends _$AppRouter {
           transitionsBuilder: TransitionsBuilders.fadeIn,
           // initial: true
         ),
+        CustomRoute(
+          page: ScannerRoute.page,
+          path: '/scanner',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+          // initial: true
+        ),
+        
       ];
 }
