@@ -1,9 +1,14 @@
 import 'package:application/core/color_values.dart';
+import 'package:application/data/models/InspectionItem/InspectionItem_model.dart';
+import 'package:application/features/InspectionItem/bloc/inspection_item_bloc.dart';
+import 'package:application/features/widget/buildform.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:group_button/group_button.dart';
 import 'package:simple_grid/simple_grid.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
 class ScanPage extends StatefulWidget {
@@ -56,7 +61,49 @@ class _ScanPageState extends State<ScanPage> {
         backgroundColor: ColorValues.info400,
         title: const Text(
           'Daily Maintenance',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25,color: Colors.white),
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 25, color: Colors.white),
+        ),
+      ),
+      body: BlocBuilder<InspectionItemBloc, InspectionItemState>(
+          builder: (context, state) {
+        return Skeletonizer(
+            enabled: state.maybeWhen(loading: () => true, orElse: () => false),
+            child: state.maybeWhen(
+              loaded: (inspectionItem) => _buildForm(inspectionItem),
+              orElse: () => _buildSkeleton(),
+            ));
+      }),
+    );
+  }
+
+  Widget _buildSkeleton() {
+    return ListView.separated(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+      itemCount: 5,
+      separatorBuilder: (context, index) => const SizedBox(height: 12),
+      itemBuilder: (context, index) {
+        return Buildform(
+            item: InspectionitemModel(
+                id: 'dummy-id-$index',
+                inspectionItem: 'dummy',
+                specification: 'dummy',
+                status: 'oke',
+                period: 'daily',
+                method: 'visual'));
+      },
+    );
+  }
+
+  Widget build2(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: ColorValues.info400,
+        title: const Text(
+          'Daily Maintenance',
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 25, color: Colors.white),
         ),
       ),
       body: SingleChildScrollView(
@@ -94,14 +141,13 @@ class _ScanPageState extends State<ScanPage> {
             const SizedBox(height: 10),
             Image.asset('assets/images/mesin.jpg'),
             const SizedBox(height: 10),
-            buildForm(15),
           ],
         ),
       ),
     );
   }
 
-  Widget buildForm(double size) {
+  Widget _buildForm(List<InspectionitemModel> item) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -109,100 +155,107 @@ class _ScanPageState extends State<ScanPage> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            for (var i = 0; i < Caption.length; i++) ...[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    Caption[i]['title']!,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: size,
-                      color: Colors.blueAccent,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    Caption[i]['deskripsi']!,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: size,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 13,
-              ),
-            ],
             Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SpGrid(
-                    width: MediaQuery.of(context).size.width * 3 / 4,
-                    height: 40,
-                    children: [
-                      SpGridItem(
-                        sm: 2,
-                        child: Container(
-                          padding: EdgeInsets.only(top: 13),
-                          child: Text("Method : ",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: size,
-                                color: Colors.blueAccent,
-                              )),
-                        ),
-                      ),
-                      SpGridItem(
-                        sm: 4,
-                        child: Container(
-                          child: buildDropdown(
-                            hint: 'Pilih Method',
-                            selectedValue: _selectedOption,
-                            onChanged: (value) {
-                              setState(() {
-                                _selectedOption = value;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
-                      SpGridItem(
-                        sm: 2,
-                        child: Container(
-                          padding: EdgeInsets.only(top: 13),
-                          child: Text("Period : ",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: size,
-                                color: Colors.blueAccent,
-                              )),
-                        ),
-                      ),
-                      SpGridItem(
-                        sm: 4,
-                        child: Container(
-                          child: buildDropdown(
-                            hint: 'Pilih Method',
-                            selectedValue: _selectedPeriod,
-                            onChanged: (value) {
-                              setState(() {
-                                _selectedPeriod = value;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
-                    ]),
+                ListView.separated(
+                  shrinkWrap: true,
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(height: 12),
+                  itemCount: item.length,
+                  itemBuilder: (context, index) {
+                    return Buildform(item: item[index]);
+                  },
+                ),
+                // Text(
+                //   item[index].inspectionItem,
+                //   style: const TextStyle(
+                //     fontWeight: FontWeight.bold,
+                //     fontSize: 15,
+                //     color: Colors.blueAccent,
+                //   ),
+                // ),
+                // SizedBox(
+                // width: 10,
+                // ),
+                // Text(
+                //   "soducb",
+                //   style: TextStyle(
+                //     fontWeight: FontWeight.bold,
+                //     fontSize: 15,
+                //     color: Colors.black,
+                //   ),
+                // ),
               ],
             ),
-            SizedBox(
-              height: 10,
-            ),
-            status(20)
+            //   SizedBox(
+            //     height: 13,
+            //   ),
+            // Row(
+            //   children: [
+            //     SpGrid(
+            //         width: MediaQuery.of(context).size.width * 3 / 4,
+            //         height: 40,
+            //         children: [
+            //           SpGridItem(
+            //             sm: 2,
+            //             child: Container(
+            //               padding: EdgeInsets.only(top: 13),
+            //               child: Text("Method : ",
+            //                   style: TextStyle(
+            //                     fontWeight: FontWeight.bold,
+            //                     fontSize: 15,
+            //                     color: Colors.blueAccent,
+            //                   )),
+            //             ),
+            //           ),
+            //           SpGridItem(
+            //             sm: 4,
+            //             child: Container(
+            //               child: buildDropdown(
+            //                 hint: 'Pilih Method',
+            //                 selectedValue: _selectedOption,
+            //                 onChanged: (value) {
+            //                   setState(() {
+            //                     _selectedOption = value;
+            //                   });
+            //                 },
+            //               ),
+            //             ),
+            //           ),
+            //           SpGridItem(
+            //             sm: 2,
+            //             child: Container(
+            //               padding: EdgeInsets.only(top: 13),
+            //               child: Text("Period : ",
+            //                   style: TextStyle(
+            //                     fontWeight: FontWeight.bold,
+            //                     fontSize: 15,
+            //                     color: Colors.blueAccent,
+            //                   )),
+            //             ),
+            //           ),
+            //           SpGridItem(
+            //             sm: 4,
+            //             child: Container(
+            //               child: buildDropdown(
+            //                 hint: 'Pilih Method',
+            //                 selectedValue: _selectedPeriod,
+            //                 onChanged: (value) {
+            //                   setState(() {
+            //                     _selectedPeriod = value;
+            //                   });
+            //                 },
+            //               ),
+            //             ),
+            //           ),
+            //         ]),
+            //   ],
+            // ),
+            // SizedBox(
+            //   height: 10,
+            // ),
+            // status(20)
           ],
         ),
         const SizedBox(height: 10),
@@ -268,15 +321,10 @@ class _ScanPageState extends State<ScanPage> {
           sm: 4,
           child: TextField(
             decoration: InputDecoration(
-              labelStyle: TextStyle(
-                color: Colors.black
-              ),
+                labelStyle: TextStyle(color: Colors.black),
                 border: OutlineInputBorder(),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.black
-                  )
-                ),
+                    borderSide: BorderSide(color: Colors.black)),
                 focusColor: ColorValues.grayscale50,
                 hoverColor: Colors.red,
                 fillColor: Colors.blue,

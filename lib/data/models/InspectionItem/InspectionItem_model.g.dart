@@ -9,16 +9,29 @@ part of 'InspectionItem_model.dart';
 _$InspectionitemResponseImpl _$$InspectionitemResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$InspectionitemResponseImpl(
-      success: json['success'] as bool,
-      data:
-          InspectionitemResponse.fromJson(json['data'] as Map<String, dynamic>),
+      status: json['status'] as bool,
+      data: InspectionItemData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$InspectionitemResponseImplToJson(
         _$InspectionitemResponseImpl instance) =>
     <String, dynamic>{
-      'success': instance.success,
+      'status': instance.status,
       'data': instance.data,
+    };
+
+_$InspectionItemDataImpl _$$InspectionItemDataImplFromJson(
+        Map<String, dynamic> json) =>
+    _$InspectionItemDataImpl(
+      item: (json['item'] as List<dynamic>)
+          .map((e) => InspectionitemModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$InspectionItemDataImplToJson(
+        _$InspectionItemDataImpl instance) =>
+    <String, dynamic>{
+      'item': instance.item,
     };
 
 _$InspectionitemModelImpl _$$InspectionitemModelImplFromJson(
@@ -29,6 +42,7 @@ _$InspectionitemModelImpl _$$InspectionitemModelImplFromJson(
       specification: json['specification'] as String,
       status: json['status'] as String,
       period: json['period'] as String,
+      method: json['method'] as String,
     );
 
 Map<String, dynamic> _$$InspectionitemModelImplToJson(
@@ -39,4 +53,5 @@ Map<String, dynamic> _$$InspectionitemModelImplToJson(
       'specification': instance.specification,
       'status': instance.status,
       'period': instance.period,
+      'method': instance.method,
     };

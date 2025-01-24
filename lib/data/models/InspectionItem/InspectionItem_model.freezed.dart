@@ -21,8 +21,8 @@ InspectionitemResponse _$InspectionitemResponseFromJson(
 
 /// @nodoc
 mixin _$InspectionitemResponse {
-  bool get success => throw _privateConstructorUsedError;
-  InspectionitemResponse get data => throw _privateConstructorUsedError;
+  bool get status => throw _privateConstructorUsedError;
+  InspectionItemData get data => throw _privateConstructorUsedError;
 
   /// Serializes this InspectionitemResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,9 +40,9 @@ abstract class $InspectionitemResponseCopyWith<$Res> {
           $Res Function(InspectionitemResponse) then) =
       _$InspectionitemResponseCopyWithImpl<$Res, InspectionitemResponse>;
   @useResult
-  $Res call({bool success, InspectionitemResponse data});
+  $Res call({bool status, InspectionItemData data});
 
-  $InspectionitemResponseCopyWith<$Res> get data;
+  $InspectionItemDataCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -61,18 +61,18 @@ class _$InspectionitemResponseCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? success = null,
+    Object? status = null,
     Object? data = null,
   }) {
     return _then(_value.copyWith(
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
               as bool,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as InspectionitemResponse,
+              as InspectionItemData,
     ) as $Val);
   }
 
@@ -80,8 +80,8 @@ class _$InspectionitemResponseCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $InspectionitemResponseCopyWith<$Res> get data {
-    return $InspectionitemResponseCopyWith<$Res>(_value.data, (value) {
+  $InspectionItemDataCopyWith<$Res> get data {
+    return $InspectionItemDataCopyWith<$Res>(_value.data, (value) {
       return _then(_value.copyWith(data: value) as $Val);
     });
   }
@@ -96,10 +96,10 @@ abstract class _$$InspectionitemResponseImplCopyWith<$Res>
       __$$InspectionitemResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool success, InspectionitemResponse data});
+  $Res call({bool status, InspectionItemData data});
 
   @override
-  $InspectionitemResponseCopyWith<$Res> get data;
+  $InspectionItemDataCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -117,18 +117,18 @@ class __$$InspectionitemResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? success = null,
+    Object? status = null,
     Object? data = null,
   }) {
     return _then(_$InspectionitemResponseImpl(
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
               as bool,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as InspectionitemResponse,
+              as InspectionItemData,
     ));
   }
 }
@@ -139,19 +139,19 @@ class _$InspectionitemResponseImpl
     with DiagnosticableTreeMixin
     implements _InspectionitemResponse {
   const _$InspectionitemResponseImpl(
-      {required this.success, required this.data});
+      {required this.status, required this.data});
 
   factory _$InspectionitemResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$InspectionitemResponseImplFromJson(json);
 
   @override
-  final bool success;
+  final bool status;
   @override
-  final InspectionitemResponse data;
+  final InspectionItemData data;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InspectionitemResponse(success: $success, data: $data)';
+    return 'InspectionitemResponse(status: $status, data: $data)';
   }
 
   @override
@@ -159,7 +159,7 @@ class _$InspectionitemResponseImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'InspectionitemResponse'))
-      ..add(DiagnosticsProperty('success', success))
+      ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('data', data));
   }
 
@@ -168,13 +168,13 @@ class _$InspectionitemResponseImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InspectionitemResponseImpl &&
-            (identical(other.success, success) || other.success == success) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, success, data);
+  int get hashCode => Object.hash(runtimeType, status, data);
 
   /// Create a copy of InspectionitemResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -195,17 +195,16 @@ class _$InspectionitemResponseImpl
 
 abstract class _InspectionitemResponse implements InspectionitemResponse {
   const factory _InspectionitemResponse(
-          {required final bool success,
-          required final InspectionitemResponse data}) =
-      _$InspectionitemResponseImpl;
+      {required final bool status,
+      required final InspectionItemData data}) = _$InspectionitemResponseImpl;
 
   factory _InspectionitemResponse.fromJson(Map<String, dynamic> json) =
       _$InspectionitemResponseImpl.fromJson;
 
   @override
-  bool get success;
+  bool get status;
   @override
-  InspectionitemResponse get data;
+  InspectionItemData get data;
 
   /// Create a copy of InspectionitemResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -213,6 +212,176 @@ abstract class _InspectionitemResponse implements InspectionitemResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InspectionitemResponseImplCopyWith<_$InspectionitemResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+InspectionItemData _$InspectionItemDataFromJson(Map<String, dynamic> json) {
+  return _InspectionItemData.fromJson(json);
+}
+
+/// @nodoc
+mixin _$InspectionItemData {
+  List<InspectionitemModel> get item => throw _privateConstructorUsedError;
+
+  /// Serializes this InspectionItemData to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of InspectionItemData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $InspectionItemDataCopyWith<InspectionItemData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InspectionItemDataCopyWith<$Res> {
+  factory $InspectionItemDataCopyWith(
+          InspectionItemData value, $Res Function(InspectionItemData) then) =
+      _$InspectionItemDataCopyWithImpl<$Res, InspectionItemData>;
+  @useResult
+  $Res call({List<InspectionitemModel> item});
+}
+
+/// @nodoc
+class _$InspectionItemDataCopyWithImpl<$Res, $Val extends InspectionItemData>
+    implements $InspectionItemDataCopyWith<$Res> {
+  _$InspectionItemDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of InspectionItemData
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? item = null,
+  }) {
+    return _then(_value.copyWith(
+      item: null == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as List<InspectionitemModel>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$InspectionItemDataImplCopyWith<$Res>
+    implements $InspectionItemDataCopyWith<$Res> {
+  factory _$$InspectionItemDataImplCopyWith(_$InspectionItemDataImpl value,
+          $Res Function(_$InspectionItemDataImpl) then) =
+      __$$InspectionItemDataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<InspectionitemModel> item});
+}
+
+/// @nodoc
+class __$$InspectionItemDataImplCopyWithImpl<$Res>
+    extends _$InspectionItemDataCopyWithImpl<$Res, _$InspectionItemDataImpl>
+    implements _$$InspectionItemDataImplCopyWith<$Res> {
+  __$$InspectionItemDataImplCopyWithImpl(_$InspectionItemDataImpl _value,
+      $Res Function(_$InspectionItemDataImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of InspectionItemData
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? item = null,
+  }) {
+    return _then(_$InspectionItemDataImpl(
+      item: null == item
+          ? _value._item
+          : item // ignore: cast_nullable_to_non_nullable
+              as List<InspectionitemModel>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$InspectionItemDataImpl
+    with DiagnosticableTreeMixin
+    implements _InspectionItemData {
+  const _$InspectionItemDataImpl(
+      {required final List<InspectionitemModel> item})
+      : _item = item;
+
+  factory _$InspectionItemDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$InspectionItemDataImplFromJson(json);
+
+  final List<InspectionitemModel> _item;
+  @override
+  List<InspectionitemModel> get item {
+    if (_item is EqualUnmodifiableListView) return _item;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_item);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'InspectionItemData(item: $item)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'InspectionItemData'))
+      ..add(DiagnosticsProperty('item', item));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InspectionItemDataImpl &&
+            const DeepCollectionEquality().equals(other._item, _item));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_item));
+
+  /// Create a copy of InspectionItemData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InspectionItemDataImplCopyWith<_$InspectionItemDataImpl> get copyWith =>
+      __$$InspectionItemDataImplCopyWithImpl<_$InspectionItemDataImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$InspectionItemDataImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _InspectionItemData implements InspectionItemData {
+  const factory _InspectionItemData(
+          {required final List<InspectionitemModel> item}) =
+      _$InspectionItemDataImpl;
+
+  factory _InspectionItemData.fromJson(Map<String, dynamic> json) =
+      _$InspectionItemDataImpl.fromJson;
+
+  @override
+  List<InspectionitemModel> get item;
+
+  /// Create a copy of InspectionItemData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$InspectionItemDataImplCopyWith<_$InspectionItemDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 InspectionitemModel _$InspectionitemModelFromJson(Map<String, dynamic> json) {
@@ -226,6 +395,7 @@ mixin _$InspectionitemModel {
   String get specification => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   String get period => throw _privateConstructorUsedError;
+  String get method => throw _privateConstructorUsedError;
 
   /// Serializes this InspectionitemModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -248,7 +418,8 @@ abstract class $InspectionitemModelCopyWith<$Res> {
       String inspectionItem,
       String specification,
       String status,
-      String period});
+      String period,
+      String method});
 }
 
 /// @nodoc
@@ -271,6 +442,7 @@ class _$InspectionitemModelCopyWithImpl<$Res, $Val extends InspectionitemModel>
     Object? specification = null,
     Object? status = null,
     Object? period = null,
+    Object? method = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -293,6 +465,10 @@ class _$InspectionitemModelCopyWithImpl<$Res, $Val extends InspectionitemModel>
           ? _value.period
           : period // ignore: cast_nullable_to_non_nullable
               as String,
+      method: null == method
+          ? _value.method
+          : method // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -310,7 +486,8 @@ abstract class _$$InspectionitemModelImplCopyWith<$Res>
       String inspectionItem,
       String specification,
       String status,
-      String period});
+      String period,
+      String method});
 }
 
 /// @nodoc
@@ -331,6 +508,7 @@ class __$$InspectionitemModelImplCopyWithImpl<$Res>
     Object? specification = null,
     Object? status = null,
     Object? period = null,
+    Object? method = null,
   }) {
     return _then(_$InspectionitemModelImpl(
       id: null == id
@@ -353,6 +531,10 @@ class __$$InspectionitemModelImplCopyWithImpl<$Res>
           ? _value.period
           : period // ignore: cast_nullable_to_non_nullable
               as String,
+      method: null == method
+          ? _value.method
+          : method // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -367,7 +549,8 @@ class _$InspectionitemModelImpl
       required this.inspectionItem,
       required this.specification,
       required this.status,
-      required this.period});
+      required this.period,
+      required this.method});
 
   factory _$InspectionitemModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$InspectionitemModelImplFromJson(json);
@@ -382,10 +565,12 @@ class _$InspectionitemModelImpl
   final String status;
   @override
   final String period;
+  @override
+  final String method;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InspectionitemModel(id: $id, inspectionItem: $inspectionItem, specification: $specification, status: $status, period: $period)';
+    return 'InspectionitemModel(id: $id, inspectionItem: $inspectionItem, specification: $specification, status: $status, period: $period, method: $method)';
   }
 
   @override
@@ -397,7 +582,8 @@ class _$InspectionitemModelImpl
       ..add(DiagnosticsProperty('inspectionItem', inspectionItem))
       ..add(DiagnosticsProperty('specification', specification))
       ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('period', period));
+      ..add(DiagnosticsProperty('period', period))
+      ..add(DiagnosticsProperty('method', method));
   }
 
   @override
@@ -411,13 +597,14 @@ class _$InspectionitemModelImpl
             (identical(other.specification, specification) ||
                 other.specification == specification) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.period, period) || other.period == period));
+            (identical(other.period, period) || other.period == period) &&
+            (identical(other.method, method) || other.method == method));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, inspectionItem, specification, status, period);
+      runtimeType, id, inspectionItem, specification, status, period, method);
 
   /// Create a copy of InspectionitemModel
   /// with the given fields replaced by the non-null parameter values.
@@ -442,7 +629,8 @@ abstract class _InspectionitemModel implements InspectionitemModel {
       required final String inspectionItem,
       required final String specification,
       required final String status,
-      required final String period}) = _$InspectionitemModelImpl;
+      required final String period,
+      required final String method}) = _$InspectionitemModelImpl;
 
   factory _InspectionitemModel.fromJson(Map<String, dynamic> json) =
       _$InspectionitemModelImpl.fromJson;
@@ -457,6 +645,8 @@ abstract class _InspectionitemModel implements InspectionitemModel {
   String get status;
   @override
   String get period;
+  @override
+  String get method;
 
   /// Create a copy of InspectionitemModel
   /// with the given fields replaced by the non-null parameter values.

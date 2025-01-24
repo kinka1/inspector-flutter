@@ -18,7 +18,8 @@ class HomePage extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  AutoRouter.of(context).push(const ScannerRoute());
+                  AutoRouter.of(context).push(const ScanRoute());
+                  // AutoRouter.of(context).push(const ScannerRoute());
                 },
                 child: Container(
                   decoration: BoxDecoration(

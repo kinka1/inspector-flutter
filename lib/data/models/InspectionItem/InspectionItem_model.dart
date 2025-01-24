@@ -7,13 +7,23 @@ part 'InspectionItem_model.g.dart';
 @freezed
 class InspectionitemResponse with _$InspectionitemResponse {
     const factory InspectionitemResponse({
-      required bool success,
-      required InspectionitemResponse data,
+      required bool status,
+      required InspectionItemData data,
     }) = _InspectionitemResponse;
   
     factory InspectionitemResponse.fromJson(Map<String, dynamic> json) =>
         _$InspectionitemResponseFromJson(json);
   }
+
+  @freezed
+class InspectionItemData with _$InspectionItemData {
+  const factory InspectionItemData({
+    required List<InspectionitemModel> item,
+  }) = _InspectionItemData;
+
+  factory InspectionItemData.fromJson(Map<String, Object?> json) =>
+      _$InspectionItemDataFromJson(json);
+}
 
 @freezed
 class InspectionitemModel with _$InspectionitemModel{
@@ -23,6 +33,7 @@ class InspectionitemModel with _$InspectionitemModel{
     required String specification,
     required String status,
     required String period,
+    required String method,
   }) = _InspectionitemModel;
 
   factory InspectionitemModel.fromJson(Map<String, dynamic> json) =>

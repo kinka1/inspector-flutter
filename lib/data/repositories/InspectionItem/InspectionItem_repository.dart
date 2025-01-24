@@ -1,5 +1,6 @@
 import 'package:application/data/models/InspectionItem/InspectionItem_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 abstract class InspectionitemRepository {
-  Future<InspectionitemResponse> getInspectionitem(int machineId);
+  Future<List<InspectionitemModel>> getInspectionItem();
 }

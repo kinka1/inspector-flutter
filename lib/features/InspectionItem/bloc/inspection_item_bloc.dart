@@ -20,8 +20,9 @@ class InspectionItemBloc extends Bloc<InspectionItemEvent, InspectionItemState> 
       _GetInspectionItem event, Emitter<InspectionItemState> emit) async {
     emit(const InspectionItemState.loading());
     try {
-      final response = await _repository.getInspectionitem(event.machineId);
-      emit(InspectionItemState.loaded(response.data as InspectionitemModel));
+      final List<InspectionitemModel> list = (await _repository.getInspectionItem());
+      print(list[1]);
+      emit(InspectionItemState.loaded(list));
     } catch (e) {
       emit(InspectionItemState.error(e.toString()));
     }
