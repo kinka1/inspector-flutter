@@ -28,12 +28,13 @@ class InspectionItemData with _$InspectionItemData {
 @freezed
 class InspectionitemModel with _$InspectionitemModel{
   const factory InspectionitemModel({
-    required String id,
-    required String inspectionItem,
+    required int itemId,
+    required String itemName,
     required String specification,
-    required String status,
-    required String period,
     required String method,
+    required String frequency,
+    required int number,
+    required int machineId,
   }) = _InspectionitemModel;
 
   factory InspectionitemModel.fromJson(Map<String, dynamic> json) =>

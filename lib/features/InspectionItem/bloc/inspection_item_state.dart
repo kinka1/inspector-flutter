@@ -6,6 +6,6 @@ class InspectionItemState with _$InspectionItemState {
   const factory InspectionItemState.error(String error) = _Error;
   const factory InspectionItemState.loading() = _Loading;
   const factory InspectionItemState.loaded(
-      List<InspectionitemModel> inspectionItems) = _Loaded;
+      List<InspectionitemModel> itemsdata) = _Loaded;
   const factory InspectionItemState.success() = _Success;
 }

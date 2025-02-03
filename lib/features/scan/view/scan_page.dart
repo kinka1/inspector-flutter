@@ -1,57 +1,36 @@
-import 'package:application/core/color_values.dart';
 import 'package:application/data/models/InspectionItem/InspectionItem_model.dart';
+import 'package:application/data/models/machine/machine_model.dart';
 import 'package:application/features/InspectionItem/bloc/inspection_item_bloc.dart';
-import 'package:application/features/widget/buildform.dart';
+import 'package:application/features/machine/bloc/machine_bloc.dart';
+import 'package:application/features/widget/buildForm.dart';
+import 'package:application/features/widget/col.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:group_button/group_button.dart';
-import 'package:simple_grid/simple_grid.dart';
+import 'package:application/core/color_values.dart';
+import 'package:application/features/widget/buildTitle.dart';
+import 'package:logger/logger.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
 class ScanPage extends StatefulWidget {
-  const ScanPage({super.key});
+  const ScanPage({Key? key}) : super(key: key);
 
   @override
   State<ScanPage> createState() => _ScanPageState();
 }
 
 class _ScanPageState extends State<ScanPage> {
-  List<Map<String, String>> datas = [
-    {
-      'keterangan': 'Selection Name : ',
-      'isi': 'Manufacturing b adcvadfada[ophjcad',
-    },
-    {
-      'keterangan': 'Machine Name :',
-      'isi': 'HEADsafdghjklkhgfd',
-    },
-    {
-      'keterangan': 'Line : ',
-      'isi': 'DO',
-    },
-    {
-      'keterangan': 'Machine Number : ',
-      'isi': '30',
-    },
-  ];
+  var logger = Logger();
 
-  List<Map<String, String>> Caption = [
-    //pilihan =
-    // A -> YES / NO
-    // B -> INPUT INTEGER
-    {'title': 'Inspection Item : ', 'deskripsi': 'Pipa Material'},
-    {'title': 'Specification : ', 'deskripsi': 'Material Tidak Bocor'},
-  ];
-
-  final List<String> _options = ['Daily', 'Weekly', 'Monthly'];
-
-  // Nilai yang dipilih
-  String? _selectedOption;
-  String? _selectedPeriod;
-  String selectedstatus = "normal";
+  @override
+  void initState() {
+    super.initState();
+    context.read<MachineBloc>().add(const MachineEvent.getMachines());
+    context
+        .read<InspectionItemBloc>()
+        .add(const InspectionItemEvent.GetInspectionItem());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,303 +41,110 @@ class _ScanPageState extends State<ScanPage> {
         title: const Text(
           'Daily Maintenance',
           style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 25, color: Colors.white),
+            fontWeight: FontWeight.bold,
+            fontSize: 25,
+            color: Colors.white,
+          ),
         ),
       ),
-      body: BlocBuilder<InspectionItemBloc, InspectionItemState>(
-          builder: (context, state) {
-        return Skeletonizer(
-            enabled: state.maybeWhen(loading: () => true, orElse: () => false),
-            child: state.maybeWhen(
-              loaded: (inspectionItem) => _buildForm(inspectionItem),
-              orElse: () => _buildSkeleton(),
-            ));
-      }),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            BlocBuilder<MachineBloc, MachineState>(
+              builder: (context, state) {
+                return Skeletonizer(
+                  enabled:
+                      state.maybeWhen(loading: () => true, orElse: () => false),
+                  child: state.maybeWhen(
+                    loaded: (response) => BuildHeader(machine: response),
+                    orElse: () => _buildSkeleton(),
+                    error: (message) => Center(
+                      child: Text(
+                        'Error: $message',
+                        style: TextStyle(fontSize: 25),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+            BlocBuilder<InspectionItemBloc, InspectionItemState>(
+              builder: (context, state) {
+                return Skeletonizer(
+                  enabled:
+                      state.maybeWhen(loading: () => true, orElse: () => false),
+                  child: state.maybeWhen(
+                    loaded: (response) => _buildform(response),
+                    orElse: () => _buildSkeletonForm1(),
+                    error: (message) => Center(
+                      child: Text(
+                        'Error: $message',
+                        style: TextStyle(fontSize: 25),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 
-  Widget _buildSkeleton() {
+  Widget _buildform(List<InspectionitemModel> items) {
     return ListView.separated(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-      itemCount: 5,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: items.length,
       separatorBuilder: (context, index) => const SizedBox(height: 12),
       itemBuilder: (context, index) {
+        final item = items[index];
         return Buildform(
-            item: InspectionitemModel(
-                id: 'dummy-id-$index',
-                inspectionItem: 'dummy',
-                specification: 'dummy',
-                status: 'oke',
-                period: 'daily',
-                method: 'visual'));
+          item: item,
+        );
       },
     );
   }
 
-  Widget build2(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: ColorValues.info400,
-        title: const Text(
-          'Daily Maintenance',
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 25, color: Colors.white),
+  Widget _buildSkeleton() {
+    return Padding(
+      // ✅ Gunakan Padding daripada ListView
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+      child: BuildHeader(
+        machine: const MachineModel(
+          machineId: 0,
+          sectionName: 'loading...',
+          line: 'Loading...',
+          machineName: 'Loading...',
+          machineNumber: 0,
+          dockumentNo: 'Loading...',
         ),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-        child: Column(
-          children: [
-            for (var i = 0; i < 4; i++) ...[
-              Row(
-                children: [
-                  Text(
-                    datas[i]['keterangan']!,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                      color: Colors.blueAccent,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    datas[i]['isi']!,
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
+    );
+  }
+
+  Widget _buildSkeletonForm1() {
+    return SizedBox(
+      height: 400,
+      child: ListView.separated(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+          itemCount: 5,
+          separatorBuilder: (context, index) => const SizedBox(height: 12),
+          itemBuilder: (context, index) {
+            return const Buildform(
+              item: InspectionitemModel(
+                itemName: 'loading...',
+                specification: 'loading...',
+                method: 'loading...',
+                frequency: 'loading...',
+                itemId: 0,
+                number: 0,
+                machineId: 0,
               ),
-              SizedBox(
-                height: 10,
-              )
-            ],
-            const SizedBox(height: 10),
-            Image.asset('assets/images/mesin.jpg'),
-            const SizedBox(height: 10),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildForm(List<InspectionitemModel> item) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 10),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                ListView.separated(
-                  shrinkWrap: true,
-                  separatorBuilder: (context, index) =>
-                      const SizedBox(height: 12),
-                  itemCount: item.length,
-                  itemBuilder: (context, index) {
-                    return Buildform(item: item[index]);
-                  },
-                ),
-                // Text(
-                //   item[index].inspectionItem,
-                //   style: const TextStyle(
-                //     fontWeight: FontWeight.bold,
-                //     fontSize: 15,
-                //     color: Colors.blueAccent,
-                //   ),
-                // ),
-                // SizedBox(
-                // width: 10,
-                // ),
-                // Text(
-                //   "soducb",
-                //   style: TextStyle(
-                //     fontWeight: FontWeight.bold,
-                //     fontSize: 15,
-                //     color: Colors.black,
-                //   ),
-                // ),
-              ],
-            ),
-            //   SizedBox(
-            //     height: 13,
-            //   ),
-            // Row(
-            //   children: [
-            //     SpGrid(
-            //         width: MediaQuery.of(context).size.width * 3 / 4,
-            //         height: 40,
-            //         children: [
-            //           SpGridItem(
-            //             sm: 2,
-            //             child: Container(
-            //               padding: EdgeInsets.only(top: 13),
-            //               child: Text("Method : ",
-            //                   style: TextStyle(
-            //                     fontWeight: FontWeight.bold,
-            //                     fontSize: 15,
-            //                     color: Colors.blueAccent,
-            //                   )),
-            //             ),
-            //           ),
-            //           SpGridItem(
-            //             sm: 4,
-            //             child: Container(
-            //               child: buildDropdown(
-            //                 hint: 'Pilih Method',
-            //                 selectedValue: _selectedOption,
-            //                 onChanged: (value) {
-            //                   setState(() {
-            //                     _selectedOption = value;
-            //                   });
-            //                 },
-            //               ),
-            //             ),
-            //           ),
-            //           SpGridItem(
-            //             sm: 2,
-            //             child: Container(
-            //               padding: EdgeInsets.only(top: 13),
-            //               child: Text("Period : ",
-            //                   style: TextStyle(
-            //                     fontWeight: FontWeight.bold,
-            //                     fontSize: 15,
-            //                     color: Colors.blueAccent,
-            //                   )),
-            //             ),
-            //           ),
-            //           SpGridItem(
-            //             sm: 4,
-            //             child: Container(
-            //               child: buildDropdown(
-            //                 hint: 'Pilih Method',
-            //                 selectedValue: _selectedPeriod,
-            //                 onChanged: (value) {
-            //                   setState(() {
-            //                     _selectedPeriod = value;
-            //                   });
-            //                 },
-            //               ),
-            //             ),
-            //           ),
-            //         ]),
-            //   ],
-            // ),
-            // SizedBox(
-            //   height: 10,
-            // ),
-            // status(20)
-          ],
-        ),
-        const SizedBox(height: 10),
-        Center(
-          child: ElevatedButton(
-            onPressed: () {
-              print('ElevatedButton ditekan!');
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue, // Warna background
-              foregroundColor: Colors.white, // Warna teks
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-            ),
-            child: Text('Simpan'),
-          ),
-        ),
-      ],
-    );
-  }
-
-  late Color warna = Colors.white;
-  Color selectedColor() {
-    if (selectedstatus == "Normal") {
-      warna = Colors.green;
-    } else if (selectedstatus == "Abnormal") {
-      warna = Colors.red;
-    }
-    return warna;
-  }
-
-  Widget status(double size) {
-    return SpGrid(children: [
-      SpGridItem(
-        sm: 2,
-        child: Container(
-          padding: EdgeInsets.only(top: 12),
-          child: Text(
-            "Status",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: size,
-              color: Colors.blueAccent,
-            ),
-          ),
-        ),
-      ),
-      SpGridItem(
-          sm: 4,
-          child: GroupButton(
-            options: GroupButtonOptions(
-              selectedColor: selectedColor(),
-            ),
-            isRadio: true,
-            buttons: ["Normal", "Abnormal"],
-            onSelected: (String value, int index, bool isSelected) {
-              setState(() {
-                selectedstatus = value;
-              });
-            },
-          )),
-      SpGridItem(sm: 1, child: Text("")),
-      SpGridItem(
-          sm: 4,
-          child: TextField(
-            decoration: InputDecoration(
-                labelStyle: TextStyle(color: Colors.black),
-                border: OutlineInputBorder(),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black)),
-                focusColor: ColorValues.grayscale50,
-                hoverColor: Colors.red,
-                fillColor: Colors.blue,
-                labelText: 'status',
-                hintText: 'input'),
-          ))
-    ]);
-  }
-
-  Widget buildDropdown({
-    required String hint,
-    required String? selectedValue,
-    required ValueChanged<String?> onChanged,
-  }) {
-    return DropdownButton<String>(
-      value: selectedValue,
-      hint: Text(
-        hint,
-        style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-      ),
-      icon: const Icon(Icons.arrow_drop_down_outlined),
-      iconSize: 24,
-      elevation: 16,
-      style: const TextStyle(color: Colors.black, fontSize: 16),
-      underline: Container(
-        height: 2,
-      ),
-      onChanged: onChanged,
-      items: _options.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
+            );
+          }),
     );
   }
 }

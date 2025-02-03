@@ -19,7 +19,6 @@ class HomePage extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   AutoRouter.of(context).push(const ScanRoute());
-                  // AutoRouter.of(context).push(const ScannerRoute());
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -27,18 +26,21 @@ class HomePage extends StatelessWidget {
                     color: ColorValues.info400,
                   ),
                   padding: const EdgeInsets.all(15.0),
-                  width: 400,
+                  width: MediaQuery.of(context).size.width * 0.7, // Responsif
                   child: const Column(
+                    mainAxisAlignment:
+                        MainAxisAlignment.center, // Pusatkan konten
                     children: [
                       Icon(Icons.qr_code_scanner,
                           size: 200, color: Colors.white),
+                      SizedBox(height: 10), // Jarak antara ikon dan teks
                       Text(
-                        "Scaner",
+                        "Scanner",
                         style: TextStyle(
                             fontSize: 40,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -53,21 +55,21 @@ class HomePage extends StatelessWidget {
                     color: ColorValues.info400,
                   ),
                   padding: const EdgeInsets.all(15.0),
-                  width: 400,
+                  width: MediaQuery.of(context).size.width * 0.7,
                   child: const Column(
+                    mainAxisAlignment:
+                        MainAxisAlignment.center, // Pusatkan konten
                     children: [
-                      Icon(
-                        Icons.task,
-                        size: 200,
-                        color: Colors.white,
-                      ),
+                      Icon(Icons.task,
+                          size: 200, color: Colors.white),
+                      SizedBox(height: 10), // Jarak antara ikon dan teks
                       Text(
-                        "Checksheet",
+                        "Check Sheet",
                         style: TextStyle(
                             fontSize: 40,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
-                      )
+                      ),
                     ],
                   ),
                 ),

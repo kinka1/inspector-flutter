@@ -37,21 +37,23 @@ Map<String, dynamic> _$$InspectionItemDataImplToJson(
 _$InspectionitemModelImpl _$$InspectionitemModelImplFromJson(
         Map<String, dynamic> json) =>
     _$InspectionitemModelImpl(
-      id: json['id'] as String,
-      inspectionItem: json['inspectionItem'] as String,
+      itemId: (json['itemId'] as num).toInt(),
+      itemName: json['itemName'] as String,
       specification: json['specification'] as String,
-      status: json['status'] as String,
-      period: json['period'] as String,
       method: json['method'] as String,
+      frequency: json['frequency'] as String,
+      number: (json['number'] as num).toInt(),
+      machineId: (json['machineId'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$InspectionitemModelImplToJson(
         _$InspectionitemModelImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'inspectionItem': instance.inspectionItem,
+      'itemId': instance.itemId,
+      'itemName': instance.itemName,
       'specification': instance.specification,
-      'status': instance.status,
-      'period': instance.period,
       'method': instance.method,
+      'frequency': instance.frequency,
+      'number': instance.number,
+      'machineId': instance.machineId,
     };
