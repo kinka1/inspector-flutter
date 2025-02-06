@@ -5,7 +5,7 @@ import 'package:sizer/sizer.dart';
 
 class AppThemeData {
   static ThemeData getTheme(BuildContext context) {
-    const Color primaryColor = ColorValues.primary500;
+    const Color primaryColor = ColorValues.info400;
     final Map<int, Color> primaryColorMap = {
       50: primaryColor,
       100: primaryColor,
@@ -33,10 +33,10 @@ class AppThemeData {
           showSelectedLabels: true,
           showUnselectedLabels: true,
           type: BottomNavigationBarType.fixed,
-          selectedItemColor: ColorValues.primary500,
+          selectedItemColor: ColorValues.info400,
           unselectedItemColor: ColorValues.grayscale300,
           selectedLabelStyle: GoogleFonts.plusJakartaSans(
-              color: ColorValues.primary500,
+              color: ColorValues.info400,
               fontSize: 12,
               fontWeight: FontWeight.w600),
           unselectedLabelStyle: GoogleFonts.plusJakartaSans(
@@ -46,7 +46,7 @@ class AppThemeData {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
-                backgroundColor: ColorValues.primary500,
+                backgroundColor: ColorValues.info500,
                 elevation: 0,
                 padding: const EdgeInsets.all(12),
                 shape: RoundedRectangleBorder(
@@ -60,12 +60,11 @@ class AppThemeData {
           // titleLarge: Body
           // labelLarge: Button
           bodyLarge: GoogleFonts.plusJakartaSans(
-              fontSize: 16,
-              color: ColorValues.grayscale900,
-              letterSpacing: -0.32),
+              fontSize: 20,
+              color: Colors.black,),
           bodyMedium: GoogleFonts.plusJakartaSans(
-            fontSize: 12,
-            color: ColorValues.grayscale600,
+            fontSize: 15,
+            color: Colors.black,
             fontWeight: FontWeight.normal,
           ),
           bodySmall: GoogleFonts.plusJakartaSans(

@@ -21,6 +21,30 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomePage(),
       );
     },
+    LoginRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const LoginPage(),
+      );
+    },
+    Scan1Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const Scan1Page(),
+      );
+    },
+    Scan2Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const Scan2Page(),
+      );
+    },
+    Scan3Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const Scan3Page(),
+      );
+    },
     ScanRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -64,6 +88,62 @@ class HomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [LoginPage]
+class LoginRoute extends PageRouteInfo<void> {
+  const LoginRoute({List<PageRouteInfo>? children})
+      : super(
+          LoginRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'LoginRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [Scan1Page]
+class Scan1Route extends PageRouteInfo<void> {
+  const Scan1Route({List<PageRouteInfo>? children})
+      : super(
+          Scan1Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Scan1Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [Scan2Page]
+class Scan2Route extends PageRouteInfo<void> {
+  const Scan2Route({List<PageRouteInfo>? children})
+      : super(
+          Scan2Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Scan2Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [Scan3Page]
+class Scan3Route extends PageRouteInfo<void> {
+  const Scan3Route({List<PageRouteInfo>? children})
+      : super(
+          Scan3Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Scan3Route';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

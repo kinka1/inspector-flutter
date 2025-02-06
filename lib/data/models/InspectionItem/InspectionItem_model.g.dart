@@ -44,6 +44,8 @@ _$InspectionitemModelImpl _$$InspectionitemModelImplFromJson(
       frequency: json['frequency'] as String,
       number: (json['number'] as num).toInt(),
       machineId: (json['machineId'] as num).toInt(),
+      imageUrl: json['imageUrl'] as String,
+      imageName: json['imageName'] as String,
     );
 
 Map<String, dynamic> _$$InspectionitemModelImplToJson(
@@ -56,4 +58,6 @@ Map<String, dynamic> _$$InspectionitemModelImplToJson(
       'frequency': instance.frequency,
       'number': instance.number,
       'machineId': instance.machineId,
+      'imageUrl': instance.imageUrl,
+      'imageName': instance.imageName,
     };

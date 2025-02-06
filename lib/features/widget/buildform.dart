@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:application/data/models/InspectionItem/InspectionItem_model.dart';
 import 'package:application/features/widget/col.dart';
+import 'package:application/features/widget/field.dart';
+import 'package:application/features/widget/textCaption.dart';
 import 'package:application/features/widget/textTitle.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -18,13 +22,19 @@ class _BuildformState extends State<Buildform> {
   String? selectedStatus;
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(widget.item.number.toString()),
+          // const SizedBox(height: 10),
+          textCaption(widget.item.number.toString()),
           col("Inspection Item : ", widget.item.itemName),
           col("Specification : ", widget.item.specification),
           Row(
@@ -48,6 +58,7 @@ class _BuildformState extends State<Buildform> {
               ),
             ],
           ),
+          Field("Keterangan"),
         ],
       ),
     );
@@ -56,19 +67,15 @@ class _BuildformState extends State<Buildform> {
   Widget _buildRadioButton(String value) {
     return Row(
       children: [
-        IconButton(
-          onPressed: () {
+        Radio<String>(
+          value: value,
+          groupValue: selectedStatus,
+          onChanged: (newValue) {
             setState(() {
-              selectedStatus = value;
+              selectedStatus = newValue;
             });
-            logger.i("Status selected: $value");
+            logger.i("Status selected: $newValue");
           },
-          icon: Icon(
-            selectedStatus == value
-                ? Icons.radio_button_on
-                : Icons.radio_button_off,
-            color: selectedStatus == value ? Colors.black : null,
-          ),
         ),
         Text(value),
       ],

@@ -3,6 +3,7 @@ import 'package:application/data/models/machine/machine_model.dart';
 import 'package:application/features/InspectionItem/bloc/inspection_item_bloc.dart';
 import 'package:application/features/widget/buildForm.dart';
 import 'package:application/features/widget/col.dart';
+import 'package:application/features/widget/textTitle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +13,7 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 class BuildHeader extends StatelessWidget {
   BuildHeader({super.key, required this.machine});
+  final date = DateTime.now();
 
   final MachineModel machine;
   final logger = Logger();
@@ -29,6 +31,7 @@ class BuildHeader extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
+              textTitle(date.toString()),
               col("Section Name : ", machine.sectionName),
               col("Line : ", machine.line),
               col("Machine Name : ", machine.machineName),

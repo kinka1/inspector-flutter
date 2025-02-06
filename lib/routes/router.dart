@@ -1,4 +1,7 @@
-
+import 'package:application/features/auth/views/login_page.dart';
+import 'package:application/features/scan/view/scan_1_page.dart';
+import 'package:application/features/scan/view/scan_2_page.dart';
+import 'package:application/features/scan/view/scan_3_page.dart';
 import 'package:application/features/scanner/view/scanner_page.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:application/features/pages.dart';
@@ -13,7 +16,28 @@ class AppRouter extends _$AppRouter {
           page: HomeRoute.page,
           path: '/home',
           transitionsBuilder: TransitionsBuilders.fadeIn,
+        ),
+        CustomRoute(
+          page: LoginRoute.page,
+          path: '/login',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
           initial: true,
+        ),
+        CustomRoute(
+          page: Scan1Route.page,
+          path: '/scanPage1',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+          // initial: true,
+        ),
+        CustomRoute(
+          page: Scan2Route.page,
+          path: '/scanPage2',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+        ),
+        CustomRoute(
+          page: Scan3Route.page,
+          path: '/scanPage3',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
         CustomRoute(
           page: ScanRoute.page,
@@ -44,6 +68,5 @@ class AppRouter extends _$AppRouter {
           transitionsBuilder: TransitionsBuilders.fadeIn,
           // initial: true
         ),
-        
       ];
 }

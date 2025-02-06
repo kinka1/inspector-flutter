@@ -1,8 +1,10 @@
 import 'package:application/core/app_theme_data.dart';
 import 'package:application/core/color_values.dart';
 import 'package:application/data/repositories/InspectionItem/inspectionItem.dart';
+import 'package:application/data/repositories/auth/auth.dart';
 import 'package:application/data/repositories/machine/machine_repository_impl.dart';
 import 'package:application/features/InspectionItem/bloc/inspection_item_bloc.dart';
+import 'package:application/features/auth/bloc/auth_bloc.dart';
 import 'package:application/features/machine/bloc/machine_bloc.dart';
 import 'package:application/routes/router.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +54,7 @@ class MainApp extends StatelessWidget {
         },
         child: MultiBlocProvider(
           providers: [
+            BlocProvider(create: (__) => AuthBloc(repository: AuthRepositoryImpl())),
             BlocProvider(
                 create: (_) =>
                     InspectionItemBloc(InspectionitemRepositoryImpl())),

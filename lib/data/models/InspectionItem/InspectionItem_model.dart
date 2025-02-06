@@ -35,6 +35,8 @@ class InspectionitemModel with _$InspectionitemModel{
     required String frequency,
     required int number,
     required int machineId,
+    required String imageUrl,
+    required String imageName,
   }) = _InspectionitemModel;
 
   factory InspectionitemModel.fromJson(Map<String, dynamic> json) =>

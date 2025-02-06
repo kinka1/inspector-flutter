@@ -8,7 +8,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:application/core/color_values.dart';
-import 'package:application/features/widget/buildTitle.dart';
+import 'package:application/features/widget/buildHeader.dart';
 import 'package:logger/logger.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -142,6 +142,8 @@ class _ScanPageState extends State<ScanPage> {
                 itemId: 0,
                 number: 0,
                 machineId: 0,
+                imageUrl: '',
+                imageName: '',
               ),
             );
           }),

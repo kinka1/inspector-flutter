@@ -1,52 +1,55 @@
-import 'dart:ffi';
-
+import 'package:application/core/color_values.dart';
 import 'package:application/features/widget/kartu.dart';
 import 'package:application/routes/router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-
-import '../../../core/color_values.dart';
+import 'package:intl/intl.dart';
 
 @RoutePage()
-class Sheet2Page extends StatefulWidget {
-  const Sheet2Page({super.key});
+class Scan2Page extends StatefulWidget {
+  const Scan2Page({super.key});
 
   @override
-  State<Sheet2Page> createState() => _Sheet2PageState();
+  State<Scan2Page> createState() => _Scan2PageState();
 }
 
-class _Sheet2PageState extends State<Sheet2Page> {
-  late Color warna = ColorValues.grayscale400;
+class _Scan2PageState extends State<Scan2Page> {
+  final String formattedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar:  AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: ColorValues.info400,
         title: const Text(
-          'Checksheet',
+          'Daily Maintenance',
           style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 25, color: Colors.white),
+            fontWeight: FontWeight.bold,
+            fontSize: 25,
+            color: Colors.white,
+          ),
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.all(20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children: [
                 Text(
                   '4RF-PE-MDS-014 NOTCHING',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  'Bulan ke-1',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  formattedDate,
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
+            // ListView.builder()
             Wrap(
               spacing: 20, // Jarak horizontal antar elemen
               runSpacing: 20, // Jarak vertikal antar elemen
@@ -55,23 +58,11 @@ class _Sheet2PageState extends State<Sheet2Page> {
               ],
             ),
           ],
-        ),
+        )
       ),
     );
   }
-
   void onPressed() {
-    AutoRouter.of(context).push(const Sheet3Route());
-  }
-
-  late String selectedstatus;
-
-  Color selectedColor() {
-    if (selectedstatus == "OK") {
-      warna = Colors.green;
-    } else if (selectedstatus == "Abnormal") {
-      warna = Colors.red;
-    }
-    return warna;
+    AutoRouter.of(context).push(const Scan3Route());
   }
 }
