@@ -10,9 +10,10 @@ class MachineRepositoryImpl extends MachineRepository {
   final _dio = Dio();
   final logger = Logger();
   @override
-  Future<MachineModel> getMachines() async {
+  Future<MachineModel> getMachines(int id) async {
+    logger.i("id : $id");
     try {
-      final response = await _dio.get('http://10.0.2.2:5226/api/machine/1');
+      final response = await _dio.get('${dotenv.env['API_BASE_URL']}/machine/$id');
       await Future.delayed(Duration(seconds: 2));
       if (response.statusCode == 200) {
         final Map<dynamic, dynamic> responseData = response.data;

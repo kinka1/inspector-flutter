@@ -7,44 +7,73 @@ import 'package:logger/logger.dart';
 class InspectionitemRepositoryImpl extends InspectionitemRepository {
   final _dio = Dio();
   final logger = Logger();
-  final String _url = 'http://10.0.2.2:5226/api/InspectionItems/1';
   @override
-Future<List<InspectionitemModel>> getInspectionItem() async {
-  try {
-    logger.i("url : $_url");
-    final response = await _dio.get(_url);
-    logger.i("response : ${response.data}");
+  Future<List<InspectionitemModel>> getInspectionItem(int id) async {
+    // final String _url = 'http://10.0.2.2:5226/api/InspectionItems/1';
+    try {
+      final response =
+          await _dio.get('${dotenv.env['API_BASE_URL']}/InspectionItems/$id');
 
-    await Future.delayed(Duration(seconds: 2));
 
-    if (response.statusCode == 200) {
-      final responseData = response.data;
-      logger.d("Response Data: $responseData");
+      await Future.delayed(Duration(seconds: 2));
 
-      // ✅ Periksa apakah responseData adalah Map
-      if (responseData is Map<String, dynamic> && responseData['status'] == true) {
-        final List<dynamic> machineData = responseData['data'];
-        logger.d("Machine Data: $machineData");
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+        logger.d("Response Data: $responseData");
 
-        if (machineData is List) {
-          List<InspectionitemModel> items = machineData
-              .map((item) => InspectionitemModel.fromJson(item))
-              .toList();
+        // ✅ Periksa apakah responseData adalah Map
+        if (responseData is Map<String, dynamic> &&
+            responseData['status'] == true) {
+          final List<dynamic> machineData = responseData['data'];
+          logger.d("Machine Data: $machineData");
 
-          logger.i("Parsed Items: $items");
-          return items;
+          if (machineData is List) {
+            List<InspectionitemModel> items = machineData
+                .map((item) => InspectionitemModel.fromJson(item))
+                .toList();
+
+            logger.i("Parsed Items: $items");
+            return items;
+          } else {
+            throw Exception('Invalid data format: Expected a List');
+          }
         } else {
-          throw Exception('Invalid data format: Expected a List');
+          throw Exception('Invalid response structure');
         }
       } else {
-        throw Exception('Invalid response structure');
+        throw Exception('Failed to get Inspection Items');
       }
-    } else {
-      throw Exception('Failed to get Inspection Items');
+    } on DioException catch (error) {
+      throw Exception(error.message);
     }
-  } on DioException catch (error) {
-    throw Exception(error.message);
   }
-}
 
+  @override
+  Future<InspectionitemModel> getInspectionItembyNumber(int id,int number) async {
+    // final String _url = 'http://10.0.2.2:5226/api/InspectionItems/1';
+    try {
+      final response =
+          await _dio.get('${dotenv.env['API_BASE_URL']}/InspectionItems/$id/$number');
+
+
+      await Future.delayed(Duration(seconds: 2));
+
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+
+        if (responseData is Map<String, dynamic> &&
+            responseData['status'] == true) {
+          final machineData = responseData['data'];
+
+          return InspectionitemModel.fromJson(machineData);
+        } else {
+          throw Exception('Invalid response structure');
+        }
+      } else {
+        throw Exception('Failed to get Inspection Items');
+      }
+    } on DioException catch (error) {
+      throw Exception(error.message);
+    }
+  }
 }

@@ -23,7 +23,7 @@ class MachineBloc extends Bloc<MachineEvent, MachineState> {
     emit(const MachineState.loading());
 
     try {
-      final MachineModel machine = await _repository.getMachines();
+      final MachineModel machine = await _repository.getMachines(event.id);
 
       emit(MachineState.loaded(machine));
     } catch (e) {

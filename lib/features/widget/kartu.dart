@@ -4,22 +4,33 @@ import 'package:application/routes/router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-Widget kartu(int angka,VoidCallback onPressed) {
+class Kartu extends StatelessWidget {
+  const Kartu({super.key, required this.caption, required this.onPressed, this.width, this.height, this.textStyle});
+  final String caption;
+  final VoidCallback onPressed;
+  final double? width;
+  final double? height;
+  final TextStyle? textStyle;
+
+
+  @override
+  Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        width: 60,
-        height: 60,
+        width: width ?? 60,
+        height: height ?? 60,
         decoration: BoxDecoration(
           color: ColorValues.grayscale400,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
           child: Text(
-            angka.toString(),
-            style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20),
+            caption,
+            style: textStyle ?? const TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20),
           ),
         ),
       ),
-    );
+    );;
   }
+}

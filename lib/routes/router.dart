@@ -5,6 +5,7 @@ import 'package:application/features/scan/view/scan_3_page.dart';
 import 'package:application/features/scanner/view/scanner_page.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:application/features/pages.dart';
+import 'package:flutter/material.dart';
 
 part 'router.gr.dart';
 

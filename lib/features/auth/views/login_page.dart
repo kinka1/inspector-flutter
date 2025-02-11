@@ -126,22 +126,6 @@ class LoginPage extends StatelessWidget {
                           ]),
                     );
                   }),
-                  // ElevatedButton(
-              
-                  //   style: ElevatedButton.styleFrom(
-              
-                  //     backgroundColor: ColorValues.info400,
-                  //     padding: const EdgeInsets.all(15),
-                  //     shape: RoundedRectangleBorder(
-                  //       borderRadius: BorderRadius.circular(5),
-                  //     ),
-                  //   ),
-                  //   onPressed: () {
-                  //     context.router.push(const ScanRoute());
-                  //   },
-                  //   child: const Text('Login',
-                  //       style: TextStyle(fontSize: 20, color: Colors.white)),
-                  // ),
                 ],
               ),
             )));

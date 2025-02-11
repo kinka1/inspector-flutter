@@ -1,61 +1,62 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'InspectionItem_model.dart';
+part of 'DetailInspection_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$InspectionitemResponseImpl _$$InspectionitemResponseImplFromJson(
+_$DetailInspectionResponseImpl _$$DetailInspectionResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$InspectionitemResponseImpl(
+    _$DetailInspectionResponseImpl(
       status: json['status'] as bool,
-      data: InspectionItemData.fromJson(json['data'] as Map<String, dynamic>),
+      data: DetailInspectionData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$InspectionitemResponseImplToJson(
-        _$InspectionitemResponseImpl instance) =>
+Map<String, dynamic> _$$DetailInspectionResponseImplToJson(
+        _$DetailInspectionResponseImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'data': instance.data,
     };
 
-_$InspectionItemDataImpl _$$InspectionItemDataImplFromJson(
+_$DetailInspectionDataImpl _$$DetailInspectionDataImplFromJson(
         Map<String, dynamic> json) =>
-    _$InspectionItemDataImpl(
-      item: (json['item'] as List<dynamic>)
-          .map((e) => InspectionitemModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
+    _$DetailInspectionDataImpl(
+      item:
+          DetailInspectionModel.fromJson(json['item'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$InspectionItemDataImplToJson(
-        _$InspectionItemDataImpl instance) =>
+Map<String, dynamic> _$$DetailInspectionDataImplToJson(
+        _$DetailInspectionDataImpl instance) =>
     <String, dynamic>{
       'item': instance.item,
     };
 
-_$InspectionitemModelImpl _$$InspectionitemModelImplFromJson(
+_$DetailInspectionModelImpl _$$DetailInspectionModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$InspectionitemModelImpl(
-      itemId: (json['itemId'] as num).toInt(),
+    _$DetailInspectionModelImpl(
       itemName: json['itemName'] as String,
       specification: json['specification'] as String,
       method: json['method'] as String,
       frequency: json['frequency'] as String,
       number: (json['number'] as num).toInt(),
+      status: json['status'] as String,
+      description: json['description'] as String,
       machineId: (json['machineId'] as num).toInt(),
-      imagePath: json['imagePath'] as String,
+      imageName: json['imageName'] as String,
     );
 
-Map<String, dynamic> _$$InspectionitemModelImplToJson(
-        _$InspectionitemModelImpl instance) =>
+Map<String, dynamic> _$$DetailInspectionModelImplToJson(
+        _$DetailInspectionModelImpl instance) =>
     <String, dynamic>{
-      'itemId': instance.itemId,
       'itemName': instance.itemName,
       'specification': instance.specification,
       'method': instance.method,
       'frequency': instance.frequency,
       'number': instance.number,
+      'status': instance.status,
+      'description': instance.description,
       'machineId': instance.machineId,
-      'imagePath': instance.imagePath,
+      'imageName': instance.imageName,
     };

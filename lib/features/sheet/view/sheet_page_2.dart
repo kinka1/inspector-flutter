@@ -51,7 +51,7 @@ class _Sheet2PageState extends State<Sheet2Page> {
               spacing: 20, // Jarak horizontal antar elemen
               runSpacing: 20, // Jarak vertikal antar elemen
               children: [
-                for (var i = 1; i <= 31; i++) kartu(i,onPressed),
+                // for (var i = 1; i <= 31; i++) kartu(i,onPressed),
               ],
             ),
           ],

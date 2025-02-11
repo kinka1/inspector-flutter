@@ -8,12 +8,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart';
+import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class BuildHeader extends StatelessWidget {
   BuildHeader({super.key, required this.machine});
-  final date = DateTime.now();
+  final String formattedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
   final MachineModel machine;
   final logger = Logger();
@@ -31,18 +32,21 @@ class BuildHeader extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              textTitle(date.toString()),
-              col("Section Name : ", machine.sectionName),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  col("Section Name : ", machine.sectionName),
+              textTitle(formattedDate),
+                ],
+              ),
               col("Line : ", machine.line),
               col("Machine Name : ", machine.machineName),
               col("Machine Number : ", machine.machineNumber.toString()),
               col("Dockument Number : ", machine.dockumentNo),
-              const SizedBox(
-                height: 10,
-              ),
+
             ],
           ),
-          const SizedBox(height: 10),
+
         ],
       ),
     );

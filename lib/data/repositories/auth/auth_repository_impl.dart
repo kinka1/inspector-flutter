@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:application/data/repositories/auth/auth_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -10,8 +12,6 @@ class AuthRepositoryImpl extends AuthRepository{
   @override
   Future<void> login(String username, String password) async {
     final prefs = await SharedPreferences.getInstance();
-    logger.i('Username: $username');
-    logger.i('Password: $password');
     logger.i('API_BASE_URL: ${dotenv.env['API_BASE_URL']}/auth/login');
     try {
       final response = await _dio.post(
@@ -40,7 +40,7 @@ class AuthRepositoryImpl extends AuthRepository{
     } on DioException catch (error) {
       if (error.response!.statusCode == 401 ||
           error.response!.statusCode == 404) {
-        throw Exception('Email atau password salah');
+        throw Exception('Username atau Password salah');
       } else {
         throw Exception(error.message);
       }

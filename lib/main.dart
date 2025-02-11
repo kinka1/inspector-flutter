@@ -1,5 +1,7 @@
 import 'package:application/core/app_theme_data.dart';
 import 'package:application/core/color_values.dart';
+import 'package:application/data/bloc/DetailInspection/detail_inspection_bloc.dart';
+import 'package:application/data/repositories/DetailInspection/detailInspection.dart';
 import 'package:application/data/repositories/InspectionItem/inspectionItem.dart';
 import 'package:application/data/repositories/auth/auth.dart';
 import 'package:application/data/repositories/machine/machine_repository_impl.dart';
@@ -21,10 +23,6 @@ Future main() async {
 
   runApp(const MainApp());
 }
-
-// void main() {
-//   runApp(const MainApp());
-// }
 
 final appRouter = AppRouter();
 const breakfast = "breakfast";
@@ -59,6 +57,7 @@ class MainApp extends StatelessWidget {
                 create: (_) =>
                     InspectionItemBloc(InspectionitemRepositoryImpl())),
             BlocProvider(create: (_) => MachineBloc(MachineRepositoryImpl())),
+            BlocProvider(create: (_) => DetailInspectionBloc(repository: DetailinspectionRepositoryImpl())),
           ],
           child: NotificationListener<OverscrollIndicatorNotification>(
             onNotification: (OverscrollIndicatorNotification overscroll) {

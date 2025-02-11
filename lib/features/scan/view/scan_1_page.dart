@@ -1,10 +1,15 @@
 import 'package:application/core/color_values.dart';
+import 'package:application/data/models/machine/machine_model.dart';
 import 'package:application/features/home/view/home_page.dart';
+import 'package:application/features/widget/appbarCus.dart';
+import 'package:application/features/widget/buildHeader.dart';
+import 'package:application/features/widget/custom_text_field.dart';
 import 'package:application/features/widget/field.dart';
 import 'package:application/features/widget/tombol.dart';
 import 'package:application/routes/router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 @RoutePage()
 class Scan1Page extends StatefulWidget {
@@ -15,27 +20,29 @@ class Scan1Page extends StatefulWidget {
 }
 
 class _Scan1PageState extends State<Scan1Page> {
+  final TextEditingController _idController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: ColorValues.info400,
-        title: const Text(
-          'Daily Maintenance',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 25,
-            color: Colors.white,
-          ),
-        ),
-      ),
+      appBar: appbarCus(context, "Daily Maintenance"),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Field("Masukan ID : "),
+            CustomTextField(
+              controller: _idController,
+              hintText: "Masukan ID",
+              labelText: "Scan Barcode",
+              textInputType: TextInputType.text,
+              validator: (value) =>
+                  value!.isEmpty ? "username tidak boleh kosong" : null,
+              LabelTextStyle: Theme.of(context)
+                  .textTheme
+                  .bodyLarge
+                  ?.copyWith(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 20),
             tombol("Submit", onPressed), // ✅ Benar
           ],
@@ -45,6 +52,17 @@ class _Scan1PageState extends State<Scan1Page> {
   }
 
   void onPressed() {
-    AutoRouter.of(context).push(const Scan2Route());
+    String id = _idController.text;
+    if (id.isNotEmpty) {
+      context.router.push(Scan2Route(id: int.parse(id)));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("ID tidak boleh kosong"),
+          backgroundColor: ColorValues.danger500,
+        ),
+      );
+    }
   }
+
 }

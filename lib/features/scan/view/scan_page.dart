@@ -26,10 +26,10 @@ class _ScanPageState extends State<ScanPage> {
   @override
   void initState() {
     super.initState();
-    context.read<MachineBloc>().add(const MachineEvent.getMachines());
+    context.read<MachineBloc>().add(MachineEvent.getMachines(1));
     context
         .read<InspectionItemBloc>()
-        .add(const InspectionItemEvent.GetInspectionItem());
+        .add(const InspectionItemEvent.GetInspectionItem(1));
   }
 
   @override
@@ -102,6 +102,7 @@ class _ScanPageState extends State<ScanPage> {
       itemBuilder: (context, index) {
         final item = items[index];
         return Buildform(
+          id: index,
           item: item,
         );
       },
@@ -134,6 +135,7 @@ class _ScanPageState extends State<ScanPage> {
           separatorBuilder: (context, index) => const SizedBox(height: 12),
           itemBuilder: (context, index) {
             return const Buildform(
+              id: 1,
               item: InspectionitemModel(
                 itemName: 'loading...',
                 specification: 'loading...',
@@ -142,8 +144,7 @@ class _ScanPageState extends State<ScanPage> {
                 itemId: 0,
                 number: 0,
                 machineId: 0,
-                imageUrl: '',
-                imageName: '',
+                imagePath: 'loading...',
               ),
             );
           }),

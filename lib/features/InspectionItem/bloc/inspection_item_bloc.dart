@@ -14,6 +14,7 @@ class InspectionItemBloc
       : super(const InspectionItemState.initial()) {
     _repository = repository;
     on<_GetInspectionItem>(_onGetInspectionItems);
+    on<_GetInspectionItembyNuber>(_onGetInspectionItemsbyNumber);
   }
 
   late final InspectionitemRepository _repository;
@@ -26,9 +27,26 @@ class InspectionItemBloc
     try {
       logger.i("masuk try");
       final response =
-          await _repository.getInspectionItem();
+          await _repository.getInspectionItem(event.id);
       logger.i("Data item fetched: $response");
       emit(InspectionItemState.loaded(response));
+      logger.i("State item changed to: loaded");
+    } catch (e) {
+      logger.e("Error fetching machines: $e");
+      emit(InspectionItemState.error(e.toString()));
+    }
+  }
+
+  Future<void> _onGetInspectionItemsbyNumber(
+      _GetInspectionItembyNuber event, Emitter<InspectionItemState> emit) async {
+    emit(const InspectionItemState.loading());
+    logger.i("State item changed to: loading");
+    try {
+      logger.i("masuk try");
+      final response =
+          await _repository.getInspectionItembyNumber(event.id,event.number);
+      // logger.i("Data item fetched: $response");
+      emit(InspectionItemState.loadedbyNumber(response));
       logger.i("State item changed to: loaded");
     } catch (e) {
       logger.e("Error fetching machines: $e");

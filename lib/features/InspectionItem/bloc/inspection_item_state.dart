@@ -8,4 +8,7 @@ class InspectionItemState with _$InspectionItemState {
   const factory InspectionItemState.loaded(
       List<InspectionitemModel> itemsdata) = _Loaded;
   const factory InspectionItemState.success() = _Success;
+  const factory InspectionItemState.loadedbyNumber(
+    InspectionitemModel itemsdata
+  ) = _LoadedbyNumber;
 }

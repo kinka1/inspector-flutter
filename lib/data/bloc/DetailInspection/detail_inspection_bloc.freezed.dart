@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'machine_bloc.dart';
+part of 'detail_inspection_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,65 +15,66 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$MachineEvent {
+mixin _$DetailInspectionEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int id) getMachines,
+    required TResult Function(DetailInspectionModel model) postDetailInspection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int id)? getMachines,
+    TResult? Function(DetailInspectionModel model)? postDetailInspection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int id)? getMachines,
+    TResult Function(DetailInspectionModel model)? postDetailInspection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetMachine value) getMachines,
+    required TResult Function(_PostDetailInspection value) postDetailInspection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetMachine value)? getMachines,
+    TResult? Function(_PostDetailInspection value)? postDetailInspection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetMachine value)? getMachines,
+    TResult Function(_PostDetailInspection value)? postDetailInspection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MachineEventCopyWith<$Res> {
-  factory $MachineEventCopyWith(
-          MachineEvent value, $Res Function(MachineEvent) then) =
-      _$MachineEventCopyWithImpl<$Res, MachineEvent>;
+abstract class $DetailInspectionEventCopyWith<$Res> {
+  factory $DetailInspectionEventCopyWith(DetailInspectionEvent value,
+          $Res Function(DetailInspectionEvent) then) =
+      _$DetailInspectionEventCopyWithImpl<$Res, DetailInspectionEvent>;
 }
 
 /// @nodoc
-class _$MachineEventCopyWithImpl<$Res, $Val extends MachineEvent>
-    implements $MachineEventCopyWith<$Res> {
-  _$MachineEventCopyWithImpl(this._value, this._then);
+class _$DetailInspectionEventCopyWithImpl<$Res,
+        $Val extends DetailInspectionEvent>
+    implements $DetailInspectionEventCopyWith<$Res> {
+  _$DetailInspectionEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MachineEvent
+  /// Create a copy of DetailInspectionEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -86,13 +87,13 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$MachineEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$DetailInspectionEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MachineEvent
+  /// Create a copy of DetailInspectionEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -103,7 +104,7 @@ class _$StartedImpl implements _Started {
 
   @override
   String toString() {
-    return 'MachineEvent.started()';
+    return 'DetailInspectionEvent.started()';
   }
 
   @override
@@ -119,7 +120,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int id) getMachines,
+    required TResult Function(DetailInspectionModel model) postDetailInspection,
   }) {
     return started();
   }
@@ -128,7 +129,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int id)? getMachines,
+    TResult? Function(DetailInspectionModel model)? postDetailInspection,
   }) {
     return started?.call();
   }
@@ -137,7 +138,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int id)? getMachines,
+    TResult Function(DetailInspectionModel model)? postDetailInspection,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -150,7 +151,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetMachine value) getMachines,
+    required TResult Function(_PostDetailInspection value) postDetailInspection,
   }) {
     return started(this);
   }
@@ -159,7 +160,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetMachine value)? getMachines,
+    TResult? Function(_PostDetailInspection value)? postDetailInspection,
   }) {
     return started?.call(this);
   }
@@ -168,7 +169,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetMachine value)? getMachines,
+    TResult Function(_PostDetailInspection value)? postDetailInspection,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -178,102 +179,117 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements MachineEvent {
+abstract class _Started implements DetailInspectionEvent {
   const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$GetMachineImplCopyWith<$Res> {
-  factory _$$GetMachineImplCopyWith(
-          _$GetMachineImpl value, $Res Function(_$GetMachineImpl) then) =
-      __$$GetMachineImplCopyWithImpl<$Res>;
+abstract class _$$PostDetailInspectionImplCopyWith<$Res> {
+  factory _$$PostDetailInspectionImplCopyWith(_$PostDetailInspectionImpl value,
+          $Res Function(_$PostDetailInspectionImpl) then) =
+      __$$PostDetailInspectionImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int id});
+  $Res call({DetailInspectionModel model});
+
+  $DetailInspectionModelCopyWith<$Res> get model;
 }
 
 /// @nodoc
-class __$$GetMachineImplCopyWithImpl<$Res>
-    extends _$MachineEventCopyWithImpl<$Res, _$GetMachineImpl>
-    implements _$$GetMachineImplCopyWith<$Res> {
-  __$$GetMachineImplCopyWithImpl(
-      _$GetMachineImpl _value, $Res Function(_$GetMachineImpl) _then)
+class __$$PostDetailInspectionImplCopyWithImpl<$Res>
+    extends _$DetailInspectionEventCopyWithImpl<$Res,
+        _$PostDetailInspectionImpl>
+    implements _$$PostDetailInspectionImplCopyWith<$Res> {
+  __$$PostDetailInspectionImplCopyWithImpl(_$PostDetailInspectionImpl _value,
+      $Res Function(_$PostDetailInspectionImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MachineEvent
+  /// Create a copy of DetailInspectionEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? model = null,
   }) {
-    return _then(_$GetMachineImpl(
-      null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
+    return _then(_$PostDetailInspectionImpl(
+      null == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as DetailInspectionModel,
     ));
+  }
+
+  /// Create a copy of DetailInspectionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DetailInspectionModelCopyWith<$Res> get model {
+    return $DetailInspectionModelCopyWith<$Res>(_value.model, (value) {
+      return _then(_value.copyWith(model: value));
+    });
   }
 }
 
 /// @nodoc
 
-class _$GetMachineImpl implements _GetMachine {
-  const _$GetMachineImpl(this.id);
+class _$PostDetailInspectionImpl implements _PostDetailInspection {
+  const _$PostDetailInspectionImpl(this.model);
 
   @override
-  final int id;
+  final DetailInspectionModel model;
 
   @override
   String toString() {
-    return 'MachineEvent.getMachines(id: $id)';
+    return 'DetailInspectionEvent.postDetailInspection(model: $model)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetMachineImpl &&
-            (identical(other.id, id) || other.id == id));
+            other is _$PostDetailInspectionImpl &&
+            (identical(other.model, model) || other.model == model));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id);
+  int get hashCode => Object.hash(runtimeType, model);
 
-  /// Create a copy of MachineEvent
+  /// Create a copy of DetailInspectionEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetMachineImplCopyWith<_$GetMachineImpl> get copyWith =>
-      __$$GetMachineImplCopyWithImpl<_$GetMachineImpl>(this, _$identity);
+  _$$PostDetailInspectionImplCopyWith<_$PostDetailInspectionImpl>
+      get copyWith =>
+          __$$PostDetailInspectionImplCopyWithImpl<_$PostDetailInspectionImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int id) getMachines,
+    required TResult Function(DetailInspectionModel model) postDetailInspection,
   }) {
-    return getMachines(id);
+    return postDetailInspection(model);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int id)? getMachines,
+    TResult? Function(DetailInspectionModel model)? postDetailInspection,
   }) {
-    return getMachines?.call(id);
+    return postDetailInspection?.call(model);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int id)? getMachines,
+    TResult Function(DetailInspectionModel model)? postDetailInspection,
     required TResult orElse(),
   }) {
-    if (getMachines != null) {
-      return getMachines(id);
+    if (postDetailInspection != null) {
+      return postDetailInspection(model);
     }
     return orElse();
   }
@@ -282,54 +298,55 @@ class _$GetMachineImpl implements _GetMachine {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetMachine value) getMachines,
+    required TResult Function(_PostDetailInspection value) postDetailInspection,
   }) {
-    return getMachines(this);
+    return postDetailInspection(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetMachine value)? getMachines,
+    TResult? Function(_PostDetailInspection value)? postDetailInspection,
   }) {
-    return getMachines?.call(this);
+    return postDetailInspection?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetMachine value)? getMachines,
+    TResult Function(_PostDetailInspection value)? postDetailInspection,
     required TResult orElse(),
   }) {
-    if (getMachines != null) {
-      return getMachines(this);
+    if (postDetailInspection != null) {
+      return postDetailInspection(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetMachine implements MachineEvent {
-  const factory _GetMachine(final int id) = _$GetMachineImpl;
+abstract class _PostDetailInspection implements DetailInspectionEvent {
+  const factory _PostDetailInspection(final DetailInspectionModel model) =
+      _$PostDetailInspectionImpl;
 
-  int get id;
+  DetailInspectionModel get model;
 
-  /// Create a copy of MachineEvent
+  /// Create a copy of DetailInspectionEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GetMachineImplCopyWith<_$GetMachineImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PostDetailInspectionImplCopyWith<_$PostDetailInspectionImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$MachineState {
+mixin _$DetailInspectionState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String error) error,
     required TResult Function() loading,
-    required TResult Function(MachineModel machine) loaded,
+    required TResult Function(DetailInspectionModel itemsdata) loaded,
     required TResult Function() success,
   }) =>
       throw _privateConstructorUsedError;
@@ -338,7 +355,7 @@ mixin _$MachineState {
     TResult? Function()? initial,
     TResult? Function(String error)? error,
     TResult? Function()? loading,
-    TResult? Function(MachineModel machine)? loaded,
+    TResult? Function(DetailInspectionModel itemsdata)? loaded,
     TResult? Function()? success,
   }) =>
       throw _privateConstructorUsedError;
@@ -347,7 +364,7 @@ mixin _$MachineState {
     TResult Function()? initial,
     TResult Function(String error)? error,
     TResult Function()? loading,
-    TResult Function(MachineModel machine)? loaded,
+    TResult Function(DetailInspectionModel itemsdata)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) =>
@@ -383,23 +400,24 @@ mixin _$MachineState {
 }
 
 /// @nodoc
-abstract class $MachineStateCopyWith<$Res> {
-  factory $MachineStateCopyWith(
-          MachineState value, $Res Function(MachineState) then) =
-      _$MachineStateCopyWithImpl<$Res, MachineState>;
+abstract class $DetailInspectionStateCopyWith<$Res> {
+  factory $DetailInspectionStateCopyWith(DetailInspectionState value,
+          $Res Function(DetailInspectionState) then) =
+      _$DetailInspectionStateCopyWithImpl<$Res, DetailInspectionState>;
 }
 
 /// @nodoc
-class _$MachineStateCopyWithImpl<$Res, $Val extends MachineState>
-    implements $MachineStateCopyWith<$Res> {
-  _$MachineStateCopyWithImpl(this._value, this._then);
+class _$DetailInspectionStateCopyWithImpl<$Res,
+        $Val extends DetailInspectionState>
+    implements $DetailInspectionStateCopyWith<$Res> {
+  _$DetailInspectionStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MachineState
+  /// Create a copy of DetailInspectionState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -412,13 +430,13 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$MachineStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$DetailInspectionStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MachineState
+  /// Create a copy of DetailInspectionState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -429,7 +447,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'MachineState.initial()';
+    return 'DetailInspectionState.initial()';
   }
 
   @override
@@ -447,7 +465,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function(String error) error,
     required TResult Function() loading,
-    required TResult Function(MachineModel machine) loaded,
+    required TResult Function(DetailInspectionModel itemsdata) loaded,
     required TResult Function() success,
   }) {
     return initial();
@@ -459,7 +477,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function(String error)? error,
     TResult? Function()? loading,
-    TResult? Function(MachineModel machine)? loaded,
+    TResult? Function(DetailInspectionModel itemsdata)? loaded,
     TResult? Function()? success,
   }) {
     return initial?.call();
@@ -471,7 +489,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function(String error)? error,
     TResult Function()? loading,
-    TResult Function(MachineModel machine)? loaded,
+    TResult Function(DetailInspectionModel itemsdata)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -522,7 +540,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements MachineState {
+abstract class _Initial implements DetailInspectionState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -537,13 +555,13 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$MachineStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$DetailInspectionStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MachineState
+  /// Create a copy of DetailInspectionState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -569,7 +587,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'MachineState.error(error: $error)';
+    return 'DetailInspectionState.error(error: $error)';
   }
 
   @override
@@ -583,7 +601,7 @@ class _$ErrorImpl implements _Error {
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  /// Create a copy of MachineState
+  /// Create a copy of DetailInspectionState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -597,7 +615,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function(String error) error,
     required TResult Function() loading,
-    required TResult Function(MachineModel machine) loaded,
+    required TResult Function(DetailInspectionModel itemsdata) loaded,
     required TResult Function() success,
   }) {
     return error(this.error);
@@ -609,7 +627,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function(String error)? error,
     TResult? Function()? loading,
-    TResult? Function(MachineModel machine)? loaded,
+    TResult? Function(DetailInspectionModel itemsdata)? loaded,
     TResult? Function()? success,
   }) {
     return error?.call(this.error);
@@ -621,7 +639,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function(String error)? error,
     TResult Function()? loading,
-    TResult Function(MachineModel machine)? loaded,
+    TResult Function(DetailInspectionModel itemsdata)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -672,12 +690,12 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements MachineState {
+abstract class _Error implements DetailInspectionState {
   const factory _Error(final String error) = _$ErrorImpl;
 
   String get error;
 
-  /// Create a copy of MachineState
+  /// Create a copy of DetailInspectionState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
@@ -693,13 +711,13 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$MachineStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$DetailInspectionStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MachineState
+  /// Create a copy of DetailInspectionState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -710,7 +728,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'MachineState.loading()';
+    return 'DetailInspectionState.loading()';
   }
 
   @override
@@ -728,7 +746,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function(String error) error,
     required TResult Function() loading,
-    required TResult Function(MachineModel machine) loaded,
+    required TResult Function(DetailInspectionModel itemsdata) loaded,
     required TResult Function() success,
   }) {
     return loading();
@@ -740,7 +758,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function(String error)? error,
     TResult? Function()? loading,
-    TResult? Function(MachineModel machine)? loaded,
+    TResult? Function(DetailInspectionModel itemsdata)? loaded,
     TResult? Function()? success,
   }) {
     return loading?.call();
@@ -752,7 +770,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function(String error)? error,
     TResult Function()? loading,
-    TResult Function(MachineModel machine)? loaded,
+    TResult Function(DetailInspectionModel itemsdata)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -803,7 +821,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements MachineState {
+abstract class _Loading implements DetailInspectionState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -813,41 +831,41 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({MachineModel machine});
+  $Res call({DetailInspectionModel itemsdata});
 
-  $MachineModelCopyWith<$Res> get machine;
+  $DetailInspectionModelCopyWith<$Res> get itemsdata;
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$MachineStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$DetailInspectionStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MachineState
+  /// Create a copy of DetailInspectionState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? machine = null,
+    Object? itemsdata = null,
   }) {
     return _then(_$LoadedImpl(
-      null == machine
-          ? _value.machine
-          : machine // ignore: cast_nullable_to_non_nullable
-              as MachineModel,
+      null == itemsdata
+          ? _value.itemsdata
+          : itemsdata // ignore: cast_nullable_to_non_nullable
+              as DetailInspectionModel,
     ));
   }
 
-  /// Create a copy of MachineState
+  /// Create a copy of DetailInspectionState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $MachineModelCopyWith<$Res> get machine {
-    return $MachineModelCopyWith<$Res>(_value.machine, (value) {
-      return _then(_value.copyWith(machine: value));
+  $DetailInspectionModelCopyWith<$Res> get itemsdata {
+    return $DetailInspectionModelCopyWith<$Res>(_value.itemsdata, (value) {
+      return _then(_value.copyWith(itemsdata: value));
     });
   }
 }
@@ -855,14 +873,14 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(this.machine);
+  const _$LoadedImpl(this.itemsdata);
 
   @override
-  final MachineModel machine;
+  final DetailInspectionModel itemsdata;
 
   @override
   String toString() {
-    return 'MachineState.loaded(machine: $machine)';
+    return 'DetailInspectionState.loaded(itemsdata: $itemsdata)';
   }
 
   @override
@@ -870,13 +888,14 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            (identical(other.machine, machine) || other.machine == machine));
+            (identical(other.itemsdata, itemsdata) ||
+                other.itemsdata == itemsdata));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, machine);
+  int get hashCode => Object.hash(runtimeType, itemsdata);
 
-  /// Create a copy of MachineState
+  /// Create a copy of DetailInspectionState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -890,10 +909,10 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function() initial,
     required TResult Function(String error) error,
     required TResult Function() loading,
-    required TResult Function(MachineModel machine) loaded,
+    required TResult Function(DetailInspectionModel itemsdata) loaded,
     required TResult Function() success,
   }) {
-    return loaded(machine);
+    return loaded(itemsdata);
   }
 
   @override
@@ -902,10 +921,10 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function()? initial,
     TResult? Function(String error)? error,
     TResult? Function()? loading,
-    TResult? Function(MachineModel machine)? loaded,
+    TResult? Function(DetailInspectionModel itemsdata)? loaded,
     TResult? Function()? success,
   }) {
-    return loaded?.call(machine);
+    return loaded?.call(itemsdata);
   }
 
   @override
@@ -914,12 +933,12 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? initial,
     TResult Function(String error)? error,
     TResult Function()? loading,
-    TResult Function(MachineModel machine)? loaded,
+    TResult Function(DetailInspectionModel itemsdata)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(machine);
+      return loaded(itemsdata);
     }
     return orElse();
   }
@@ -965,12 +984,12 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements MachineState {
-  const factory _Loaded(final MachineModel machine) = _$LoadedImpl;
+abstract class _Loaded implements DetailInspectionState {
+  const factory _Loaded(final DetailInspectionModel itemsdata) = _$LoadedImpl;
 
-  MachineModel get machine;
+  DetailInspectionModel get itemsdata;
 
-  /// Create a copy of MachineState
+  /// Create a copy of DetailInspectionState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
@@ -986,13 +1005,13 @@ abstract class _$$SuccessImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$MachineStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$DetailInspectionStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MachineState
+  /// Create a copy of DetailInspectionState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -1003,7 +1022,7 @@ class _$SuccessImpl implements _Success {
 
   @override
   String toString() {
-    return 'MachineState.success()';
+    return 'DetailInspectionState.success()';
   }
 
   @override
@@ -1021,7 +1040,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function() initial,
     required TResult Function(String error) error,
     required TResult Function() loading,
-    required TResult Function(MachineModel machine) loaded,
+    required TResult Function(DetailInspectionModel itemsdata) loaded,
     required TResult Function() success,
   }) {
     return success();
@@ -1033,7 +1052,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? initial,
     TResult? Function(String error)? error,
     TResult? Function()? loading,
-    TResult? Function(MachineModel machine)? loaded,
+    TResult? Function(DetailInspectionModel itemsdata)? loaded,
     TResult? Function()? success,
   }) {
     return success?.call();
@@ -1045,7 +1064,7 @@ class _$SuccessImpl implements _Success {
     TResult Function()? initial,
     TResult Function(String error)? error,
     TResult Function()? loading,
-    TResult Function(MachineModel machine)? loaded,
+    TResult Function(DetailInspectionModel itemsdata)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -1096,6 +1115,6 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements MachineState {
+abstract class _Success implements DetailInspectionState {
   const factory _Success() = _$SuccessImpl;
 }

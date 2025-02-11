@@ -397,8 +397,7 @@ mixin _$InspectionitemModel {
   String get frequency => throw _privateConstructorUsedError;
   int get number => throw _privateConstructorUsedError;
   int get machineId => throw _privateConstructorUsedError;
-  String get imageUrl => throw _privateConstructorUsedError;
-  String get imageName => throw _privateConstructorUsedError;
+  String get imagePath => throw _privateConstructorUsedError;
 
   /// Serializes this InspectionitemModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -424,8 +423,7 @@ abstract class $InspectionitemModelCopyWith<$Res> {
       String frequency,
       int number,
       int machineId,
-      String imageUrl,
-      String imageName});
+      String imagePath});
 }
 
 /// @nodoc
@@ -450,8 +448,7 @@ class _$InspectionitemModelCopyWithImpl<$Res, $Val extends InspectionitemModel>
     Object? frequency = null,
     Object? number = null,
     Object? machineId = null,
-    Object? imageUrl = null,
-    Object? imageName = null,
+    Object? imagePath = null,
   }) {
     return _then(_value.copyWith(
       itemId: null == itemId
@@ -482,13 +479,9 @@ class _$InspectionitemModelCopyWithImpl<$Res, $Val extends InspectionitemModel>
           ? _value.machineId
           : machineId // ignore: cast_nullable_to_non_nullable
               as int,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageName: null == imageName
-          ? _value.imageName
-          : imageName // ignore: cast_nullable_to_non_nullable
+      imagePath: null == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -510,8 +503,7 @@ abstract class _$$InspectionitemModelImplCopyWith<$Res>
       String frequency,
       int number,
       int machineId,
-      String imageUrl,
-      String imageName});
+      String imagePath});
 }
 
 /// @nodoc
@@ -534,8 +526,7 @@ class __$$InspectionitemModelImplCopyWithImpl<$Res>
     Object? frequency = null,
     Object? number = null,
     Object? machineId = null,
-    Object? imageUrl = null,
-    Object? imageName = null,
+    Object? imagePath = null,
   }) {
     return _then(_$InspectionitemModelImpl(
       itemId: null == itemId
@@ -566,13 +557,9 @@ class __$$InspectionitemModelImplCopyWithImpl<$Res>
           ? _value.machineId
           : machineId // ignore: cast_nullable_to_non_nullable
               as int,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageName: null == imageName
-          ? _value.imageName
-          : imageName // ignore: cast_nullable_to_non_nullable
+      imagePath: null == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -591,8 +578,7 @@ class _$InspectionitemModelImpl
       required this.frequency,
       required this.number,
       required this.machineId,
-      required this.imageUrl,
-      required this.imageName});
+      required this.imagePath});
 
   factory _$InspectionitemModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$InspectionitemModelImplFromJson(json);
@@ -612,13 +598,11 @@ class _$InspectionitemModelImpl
   @override
   final int machineId;
   @override
-  final String imageUrl;
-  @override
-  final String imageName;
+  final String imagePath;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InspectionitemModel(itemId: $itemId, itemName: $itemName, specification: $specification, method: $method, frequency: $frequency, number: $number, machineId: $machineId, imageUrl: $imageUrl, imageName: $imageName)';
+    return 'InspectionitemModel(itemId: $itemId, itemName: $itemName, specification: $specification, method: $method, frequency: $frequency, number: $number, machineId: $machineId, imagePath: $imagePath)';
   }
 
   @override
@@ -633,8 +617,7 @@ class _$InspectionitemModelImpl
       ..add(DiagnosticsProperty('frequency', frequency))
       ..add(DiagnosticsProperty('number', number))
       ..add(DiagnosticsProperty('machineId', machineId))
-      ..add(DiagnosticsProperty('imageUrl', imageUrl))
-      ..add(DiagnosticsProperty('imageName', imageName));
+      ..add(DiagnosticsProperty('imagePath', imagePath));
   }
 
   @override
@@ -653,16 +636,14 @@ class _$InspectionitemModelImpl
             (identical(other.number, number) || other.number == number) &&
             (identical(other.machineId, machineId) ||
                 other.machineId == machineId) &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl) &&
-            (identical(other.imageName, imageName) ||
-                other.imageName == imageName));
+            (identical(other.imagePath, imagePath) ||
+                other.imagePath == imagePath));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, itemId, itemName, specification,
-      method, frequency, number, machineId, imageUrl, imageName);
+      method, frequency, number, machineId, imagePath);
 
   /// Create a copy of InspectionitemModel
   /// with the given fields replaced by the non-null parameter values.
@@ -690,8 +671,7 @@ abstract class _InspectionitemModel implements InspectionitemModel {
       required final String frequency,
       required final int number,
       required final int machineId,
-      required final String imageUrl,
-      required final String imageName}) = _$InspectionitemModelImpl;
+      required final String imagePath}) = _$InspectionitemModelImpl;
 
   factory _InspectionitemModel.fromJson(Map<String, dynamic> json) =
       _$InspectionitemModelImpl.fromJson;
@@ -711,9 +691,7 @@ abstract class _InspectionitemModel implements InspectionitemModel {
   @override
   int get machineId;
   @override
-  String get imageUrl;
-  @override
-  String get imageName;
+  String get imagePath;
 
   /// Create a copy of InspectionitemModel
   /// with the given fields replaced by the non-null parameter values.
