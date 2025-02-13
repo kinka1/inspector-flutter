@@ -19,20 +19,16 @@ class InspectionitemRepositoryImpl extends InspectionitemRepository {
 
       if (response.statusCode == 200) {
         final responseData = response.data;
-        logger.d("Response Data: $responseData");
 
         // ✅ Periksa apakah responseData adalah Map
         if (responseData is Map<String, dynamic> &&
             responseData['status'] == true) {
           final List<dynamic> machineData = responseData['data'];
-          logger.d("Machine Data: $machineData");
-
           if (machineData is List) {
             List<InspectionitemModel> items = machineData
                 .map((item) => InspectionitemModel.fromJson(item))
                 .toList();
 
-            logger.i("Parsed Items: $items");
             return items;
           } else {
             throw Exception('Invalid data format: Expected a List');

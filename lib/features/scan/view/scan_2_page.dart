@@ -32,7 +32,6 @@ class _Scan2PageState extends State<Scan2Page> {
     super.initState();
     context.read<MachineBloc>().add(MachineEvent.getMachines(widget.id));
     context.read<InspectionItemBloc>().add(InspectionItemEvent.GetInspectionItem(widget.id));
-    // logger.d('id: ${widget.id}');
   }
 
   @override

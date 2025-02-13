@@ -28,9 +28,8 @@ class UserData with _$UserData {
 @freezed
 class UserModel with _$UserModel{
   const factory UserModel({
-    required int userId,
-    required String username,
-    required String passwordHash,
+    required String userId,
+    required String userName,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

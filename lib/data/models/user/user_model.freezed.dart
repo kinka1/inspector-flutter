@@ -382,9 +382,8 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
-  int get userId => throw _privateConstructorUsedError;
-  String get username => throw _privateConstructorUsedError;
-  String get passwordHash => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
+  String get userName => throw _privateConstructorUsedError;
 
   /// Serializes this UserModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -401,7 +400,7 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
-  $Res call({int userId, String username, String passwordHash});
+  $Res call({String userId, String userName});
 }
 
 /// @nodoc
@@ -420,21 +419,16 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @override
   $Res call({
     Object? userId = null,
-    Object? username = null,
-    Object? passwordHash = null,
+    Object? userName = null,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
               as String,
-      passwordHash: null == passwordHash
-          ? _value.passwordHash
-          : passwordHash // ignore: cast_nullable_to_non_nullable
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -448,7 +442,7 @@ abstract class _$$UserModelImplCopyWith<$Res>
       __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int userId, String username, String passwordHash});
+  $Res call({String userId, String userName});
 }
 
 /// @nodoc
@@ -465,21 +459,16 @@ class __$$UserModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
-    Object? username = null,
-    Object? passwordHash = null,
+    Object? userName = null,
   }) {
     return _then(_$UserModelImpl(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
               as String,
-      passwordHash: null == passwordHash
-          ? _value.passwordHash
-          : passwordHash // ignore: cast_nullable_to_non_nullable
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -488,24 +477,19 @@ class __$$UserModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UserModelImpl with DiagnosticableTreeMixin implements _UserModel {
-  const _$UserModelImpl(
-      {required this.userId,
-      required this.username,
-      required this.passwordHash});
+  const _$UserModelImpl({required this.userId, required this.userName});
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
 
   @override
-  final int userId;
+  final String userId;
   @override
-  final String username;
-  @override
-  final String passwordHash;
+  final String userName;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserModel(userId: $userId, username: $username, passwordHash: $passwordHash)';
+    return 'UserModel(userId: $userId, userName: $userName)';
   }
 
   @override
@@ -514,8 +498,7 @@ class _$UserModelImpl with DiagnosticableTreeMixin implements _UserModel {
     properties
       ..add(DiagnosticsProperty('type', 'UserModel'))
       ..add(DiagnosticsProperty('userId', userId))
-      ..add(DiagnosticsProperty('username', username))
-      ..add(DiagnosticsProperty('passwordHash', passwordHash));
+      ..add(DiagnosticsProperty('userName', userName));
   }
 
   @override
@@ -524,15 +507,13 @@ class _$UserModelImpl with DiagnosticableTreeMixin implements _UserModel {
         (other.runtimeType == runtimeType &&
             other is _$UserModelImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.passwordHash, passwordHash) ||
-                other.passwordHash == passwordHash));
+            (identical(other.userName, userName) ||
+                other.userName == userName));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, userId, username, passwordHash);
+  int get hashCode => Object.hash(runtimeType, userId, userName);
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -552,19 +533,16 @@ class _$UserModelImpl with DiagnosticableTreeMixin implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
-      {required final int userId,
-      required final String username,
-      required final String passwordHash}) = _$UserModelImpl;
+      {required final String userId,
+      required final String userName}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
 
   @override
-  int get userId;
+  String get userId;
   @override
-  String get username;
-  @override
-  String get passwordHash;
+  String get userName;
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.

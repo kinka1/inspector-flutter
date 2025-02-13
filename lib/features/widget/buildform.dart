@@ -99,6 +99,8 @@ class _BuildformState extends State<Buildform> {
               hintText: "isi jika diperlukan",
               labelText: "Remark",
               textInputType: TextInputType.text,
+              LabelTextStyle: Theme.of(context).textTheme.bodyLarge!
+                  .copyWith(fontWeight: FontWeight.bold),
             ),
             BlocConsumer<DetailInspectionBloc, DetailInspectionState>(
               listener: (context, state) {
@@ -126,7 +128,7 @@ class _BuildformState extends State<Buildform> {
                       : () {
                           if (_formKey.currentState!.validate()) {
                             final des = _descriptionController.text.trim().isEmpty
-                                ? ""
+                                ? " "
                                 : _descriptionController.text;
                             context.read<DetailInspectionBloc>().add(
                                     DetailInspectionEvent.postDetailInspection(
@@ -166,7 +168,6 @@ class _BuildformState extends State<Buildform> {
             setState(() {
               selectedStatus = newValue ?? "OK";
             });
-            logger.i("Status selected: $newValue");
           },
         ),
         Text(value),

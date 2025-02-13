@@ -2,7 +2,9 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:application/core/color_values.dart';
 import 'package:application/data/bloc/DetailInspection/detail_inspection_bloc.dart';
 import 'package:application/data/models/InspectionItem/InspectionItem_model.dart';
+import 'package:application/data/models/user/user_model.dart';
 import 'package:application/features/InspectionItem/bloc/inspection_item_bloc.dart';
+import 'package:application/features/auth/bloc/auth_bloc.dart';
 import 'package:application/features/widget/appbarCus.dart';
 import 'package:application/features/widget/buildForm.dart';
 import 'package:application/features/widget/tombol.dart';
@@ -11,6 +13,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:logger/logger.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
@@ -24,15 +28,20 @@ class Scan3Page extends StatefulWidget {
 }
 
 class _Scan3PageState extends State<Scan3Page> {
+  final logger = Logger();
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    context.read<InspectionItemBloc>().add(InspectionItemEvent.GetInspectionItembyNumber(widget.id,widget.number));
-    
+    context.read<InspectionItemBloc>().add(
+        InspectionItemEvent.GetInspectionItembyNumber(
+            widget.id, widget.number));
+    context.read<AuthBloc>().add(const AuthEvent.me());
   }
+
   @override
   Widget build(BuildContext context) {
+    UserModel User;
     return Scaffold(
         appBar: appbarCus(context, "Daily Maintenance"),
         body: SingleChildScrollView(
@@ -47,7 +56,10 @@ class _Scan3PageState extends State<Scan3Page> {
                       enabled: state.maybeWhen(
                           loading: () => true, orElse: () => false),
                       child: state.maybeWhen(
-                        loadedbyNumber: (response) => Buildform(item: response,id: widget.id,),
+                        loadedbyNumber: (response) => Buildform(
+                          item: response,
+                          id: widget.id,
+                        ),
                         orElse: () => _buildSkeletonForm1(),
                         error: (message) => Center(
                           child: Text(
@@ -65,13 +77,12 @@ class _Scan3PageState extends State<Scan3Page> {
         ));
   }
 
-
   void onPressed() {
     Flushbar(
       title: 'Success',
       message: 'Data berhasil disimpan',
       duration: const Duration(seconds: 3),
-    )..show(context);
+    ).show(context);
     context.router.push(Scan2Route(id: widget.id));
   }
 
@@ -108,7 +119,7 @@ class _Scan3PageState extends State<Scan3Page> {
                 itemId: 0,
                 number: 0,
                 machineId: 0,
-                imagePath: 'loading...',
+                imagePath: 'http://10.0.2.2:5226/assets/gif/loading.gif',
               ),
             );
           }),

@@ -1,18 +1,19 @@
 import 'dart:convert';
 
+import 'package:application/data/models/user/user_model.dart';
 import 'package:application/data/repositories/auth/auth_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class AuthRepositoryImpl extends AuthRepository{
+class AuthRepositoryImpl extends AuthRepository {
   final _dio = Dio();
   final logger = Logger();
   @override
   Future<void> login(String username, String password) async {
     final prefs = await SharedPreferences.getInstance();
-    logger.i('API_BASE_URL: ${dotenv.env['API_BASE_URL']}/auth/login');
+   
     try {
       final response = await _dio.post(
         '${dotenv.env['API_BASE_URL']}/auth/login',
@@ -27,14 +28,12 @@ class AuthRepositoryImpl extends AuthRepository{
         final user = data['user'];
         final token = data['token'];
 
-        logger.i('User: $user');
-        logger.i('Token: $token');  
-
         // Parse dan format created_at
         // final DateTime parsedCreatedAt = DateTime.parse(createdAt);
         // final String formattedDate = DateFormat('yyyy-MM-dd').format(parsedCreatedAt);
-        // await prefs.setString('user', jsonEncode(user));
-        // await prefs.setString('token', jsonEncode(token));
+        await prefs.setString('user', jsonEncode(user));
+        await prefs.setString('token', jsonEncode(token));
+
         // await prefs.setString('created_at', formattedDate);
       }
     } on DioException catch (error) {
@@ -50,5 +49,26 @@ class AuthRepositoryImpl extends AuthRepository{
   @override
   Future<void> logout() async {
     await Future.delayed(Duration(seconds: 2));
+  }
+
+  @override
+  Future<UserModel> me() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    try {
+      final rawToken = prefs.getString('token');
+      final token = rawToken?.replaceAll('"', '');
+      final response = await _dio.get('${dotenv.env['API_BASE_URL']}/me',
+          options: Options(headers: {'Authorization': 'Bearer $token'}));
+      if (response.statusCode == 200) {
+        final dataUser = response.data['data'];
+        UserModel user = UserModel.fromJson(dataUser);
+        return user;
+      } else {
+        throw Exception('Failed to fetch user data');
+      }
+    } on DioException catch (error) {
+      throw Exception(error.message);
+    }
   }
 }

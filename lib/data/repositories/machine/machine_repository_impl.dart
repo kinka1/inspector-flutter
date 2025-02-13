@@ -11,7 +11,6 @@ class MachineRepositoryImpl extends MachineRepository {
   final logger = Logger();
   @override
   Future<MachineModel> getMachines(int id) async {
-    logger.i("id : $id");
     try {
       final response = await _dio.get('${dotenv.env['API_BASE_URL']}/machine/$id');
       await Future.delayed(Duration(seconds: 2));
