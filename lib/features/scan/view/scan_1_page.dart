@@ -1,10 +1,6 @@
 import 'package:application/core/color_values.dart';
-import 'package:application/data/models/machine/machine_model.dart';
-import 'package:application/features/home/view/home_page.dart';
 import 'package:application/features/widget/appbarCus.dart';
-import 'package:application/features/widget/buildHeader.dart';
 import 'package:application/features/widget/custom_text_field.dart';
-import 'package:application/features/widget/field.dart';
 import 'package:application/features/widget/tombol.dart';
 import 'package:application/routes/router.dart';
 import 'package:auto_route/auto_route.dart';
@@ -54,7 +50,7 @@ class _Scan1PageState extends State<Scan1Page> {
   void onPressed() {
     String id = _idController.text;
     if (id.isNotEmpty) {
-      context.router.push(Scan2Route(id: int.parse(id)));
+      context.router.push(Scan2Route(id: int.parse(id),status: " "));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(

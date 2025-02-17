@@ -1,19 +1,15 @@
 import 'package:another_flushbar/flushbar.dart';
-import 'package:application/core/color_values.dart';
-import 'package:application/data/bloc/DetailInspection/detail_inspection_bloc.dart';
+import 'package:application/data/models/DetailInspection/DetailInspection_model.dart';
 import 'package:application/data/models/InspectionItem/InspectionItem_model.dart';
-import 'package:application/data/models/user/user_model.dart';
 import 'package:application/features/InspectionItem/bloc/inspection_item_bloc.dart';
 import 'package:application/features/auth/bloc/auth_bloc.dart';
 import 'package:application/features/widget/appbarCus.dart';
 import 'package:application/features/widget/buildForm.dart';
-import 'package:application/features/widget/tombol.dart';
 import 'package:application/routes/router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:logger/logger.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -29,9 +25,9 @@ class Scan3Page extends StatefulWidget {
 
 class _Scan3PageState extends State<Scan3Page> {
   final logger = Logger();
+  List<DetailInspectionModel> savedDetails = []; // Menyimpan status form
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     context.read<InspectionItemBloc>().add(
         InspectionItemEvent.GetInspectionItembyNumber(
@@ -41,7 +37,6 @@ class _Scan3PageState extends State<Scan3Page> {
 
   @override
   Widget build(BuildContext context) {
-    UserModel User;
     return Scaffold(
         appBar: appbarCus(context, "Daily Maintenance"),
         body: SingleChildScrollView(
@@ -64,7 +59,7 @@ class _Scan3PageState extends State<Scan3Page> {
                         error: (message) => Center(
                           child: Text(
                             'Error: $message',
-                            style: TextStyle(fontSize: 25),
+                            style: const TextStyle(fontSize: 25),
                           ),
                         ),
                       ),
@@ -76,30 +71,28 @@ class _Scan3PageState extends State<Scan3Page> {
           ),
         ));
   }
+  void onSave(int number, String status, String description) {
+    setState(() {
+      final existingIndex = savedDetails.indexWhere((detail) => detail.number == number);
+      final newDetail = DetailInspectionModel(
+        itemName: "Example",
+        specification: "Example Spec",
+        method: "Example Method",
+        frequency: "Example Frequency",
+        number: number,
+        status: status,
+        description: description,
+        machineId: widget.id,
+        imageName: "example.png",
+      );
 
-  void onPressed() {
-    Flushbar(
-      title: 'Success',
-      message: 'Data berhasil disimpan',
-      duration: const Duration(seconds: 3),
-    ).show(context);
-    context.router.push(Scan2Route(id: widget.id));
+      if (existingIndex != -1) {
+        savedDetails[existingIndex] = newDetail; // Update
+      } else {
+        savedDetails.add(newDetail); // Tambah data baru
+      }
+    });
   }
-
-  // Widget _buildform(InspectionitemModel items) {
-  //   return ListView.separated(
-  //     shrinkWrap: true,
-  //     physics: const NeverScrollableScrollPhysics(),
-  //     itemCount: items.length,
-  //     separatorBuilder: (context, index) => const SizedBox(height: 12),
-  //     itemBuilder: (context, index) {
-  //       final item = items[index];
-  //       return Buildform(
-  //         item: item,
-  //       );
-  //     },
-  //   );
-  // }
 
   Widget _buildSkeletonForm1() {
     return SizedBox(
@@ -119,7 +112,7 @@ class _Scan3PageState extends State<Scan3Page> {
                 itemId: 0,
                 number: 0,
                 machineId: 0,
-                imagePath: 'http://10.0.2.2:5226/assets/gif/loading.gif',
+                imagePath: 'loading...',
               ),
             );
           }),

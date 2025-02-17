@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:application/data/models/machine/machine_model.dart';
 import 'package:application/data/repositories/machine/machine.dart';

@@ -1,8 +1,10 @@
 import 'package:application/core/app_theme_data.dart';
 import 'package:application/core/color_values.dart';
 import 'package:application/data/bloc/DetailInspection/detail_inspection_bloc.dart';
+import 'package:application/data/bloc/result/result_bloc.dart';
 import 'package:application/data/repositories/DetailInspection/detailInspection.dart';
 import 'package:application/data/repositories/InspectionItem/inspectionItem.dart';
+import 'package:application/data/repositories/Result/result_repository_impl.dart';
 import 'package:application/data/repositories/auth/auth.dart';
 import 'package:application/data/repositories/machine/machine_repository_impl.dart';
 import 'package:application/features/InspectionItem/bloc/inspection_item_bloc.dart';
@@ -58,6 +60,7 @@ class MainApp extends StatelessWidget {
                     InspectionItemBloc(InspectionitemRepositoryImpl())),
             BlocProvider(create: (_) => MachineBloc(MachineRepositoryImpl())),
             BlocProvider(create: (_) => DetailInspectionBloc(repository: DetailinspectionRepositoryImpl())),
+            BlocProvider(create: (_) => ResultBloc(repository: ResultRepositoryImpl())),
           ],
           child: NotificationListener<OverscrollIndicatorNotification>(
             onNotification: (OverscrollIndicatorNotification overscroll) {

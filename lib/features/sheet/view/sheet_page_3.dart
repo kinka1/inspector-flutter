@@ -6,7 +6,9 @@ import '../../../core/color_values.dart';
 
 @RoutePage()
 class Sheet3Page extends StatefulWidget {
-  const Sheet3Page({super.key});
+  Sheet3Page({super.key, required this.machineId, required this.number});
+  final int machineId;
+  final int number;
 
   @override
   State<Sheet3Page> createState() => _Sheet3PageState();

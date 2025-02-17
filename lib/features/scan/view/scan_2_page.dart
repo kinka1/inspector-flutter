@@ -1,10 +1,10 @@
 import 'package:application/core/color_values.dart';
+import 'package:application/data/models/DetailInspection/DetailInspection_model.dart';
 import 'package:application/data/models/InspectionItem/InspectionItem_model.dart';
 import 'package:application/data/models/machine/machine_model.dart';
 import 'package:application/features/InspectionItem/bloc/inspection_item_bloc.dart';
 import 'package:application/features/machine/bloc/machine_bloc.dart';
 import 'package:application/features/widget/appbarCus.dart';
-import 'package:application/features/widget/buildForm.dart';
 import 'package:application/features/widget/buildHeader.dart';
 import 'package:application/features/widget/kartu.dart';
 import 'package:application/features/widget/tombol.dart';
@@ -17,8 +17,9 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
 class Scan2Page extends StatefulWidget {
-  const Scan2Page({super.key, required this.id});
+  const Scan2Page({super.key, required this.id, required this.status});
   final int id;
+  final String status;
 
   @override
   State<Scan2Page> createState() => _Scan2PageState();
@@ -26,6 +27,7 @@ class Scan2Page extends StatefulWidget {
 
 class _Scan2PageState extends State<Scan2Page> {
   final logger = Logger();
+  List<DetailInspectionModel> savedDetails = []; // Menyimpan status form
 
   @override
   void initState() {
@@ -33,6 +35,21 @@ class _Scan2PageState extends State<Scan2Page> {
     context.read<MachineBloc>().add(MachineEvent.getMachines(widget.id));
     context.read<InspectionItemBloc>().add(InspectionItemEvent.GetInspectionItem(widget.id));
   }
+
+  // Fungsi mendapatkan status berdasarkan nomor form
+  String getStatus(int number) {
+    print("number: $number");
+    final detail = savedDetails.firstWhere(
+      (detail) => detail.number == number,
+      orElse: () => const DetailInspectionModel(
+        status: "Belum diisi", number: 0, itemName: "", specification: "", 
+        method: "", frequency: "", description: "", machineId: 0, imageName: ""),
+    );
+    return detail.status;
+  }
+
+  // Fungsi untuk menyimpan data yang diisi
+  
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +63,7 @@ class _Scan2PageState extends State<Scan2Page> {
             BlocBuilder<MachineBloc, MachineState>(
               builder: (context, state) {
                 return Skeletonizer(
-                  enabled:
-                      state.maybeWhen(loading: () => true, orElse: () => false),
+                  enabled: state.maybeWhen(loading: () => true, orElse: () => false),
                   child: state.maybeWhen(
                     loaded: (response) => BuildHeader(machine: response),
                     orElse: () => _buildSkeleton(),
@@ -64,11 +80,10 @@ class _Scan2PageState extends State<Scan2Page> {
             BlocBuilder<InspectionItemBloc, InspectionItemState>(
               builder: (context, state) {
                 return Skeletonizer(
-                  enabled:
-                      state.maybeWhen(loading: () => true, orElse: () => false),
+                  enabled: state.maybeWhen(loading: () => true, orElse: () => false),
                   child: state.maybeWhen(
                     loaded: (response) => _buildCard(response),
-                    orElse: () => _buildSkeletonForm1(),
+                    orElse: () => _buildSkeletonForm(),
                     error: (message) => Center(
                       child: Text(
                         'Error: $message',
@@ -79,8 +94,8 @@ class _Scan2PageState extends State<Scan2Page> {
                 );
               },
             ),
-            // const SizedBox(height: 20),
-            SizedBox(height: 10),
+            // BlocConsumer<Result>(builder: (), listener: listener),
+            const SizedBox(height: 10),
             tombol("Submit", onPressedSubmit),
           ],
         ),
@@ -96,9 +111,10 @@ class _Scan2PageState extends State<Scan2Page> {
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Kartu(
+              status: getStatus(items[index].number),
               caption: '${index + 1}',
               onPressed: () => AutoRouter.of(context)
-                  .push(Scan3Route(id: widget.id, number: index + 1)),
+                  .push(Scan3Route(id: widget.id, number: items[index].number)),
               width: double.infinity,
               height: 100,
             ),
@@ -108,26 +124,11 @@ class _Scan2PageState extends State<Scan2Page> {
     );
   }
 
-  // Widget _buildform(InspectionitemModel items) {
-  //   return ListView.separated(
-  //     shrinkWrap: true,
-  //     physics: const NeverScrollableScrollPhysics(),
-  //     itemCount: items.length,
-  //     separatorBuilder: (context, index) => const SizedBox(height: 12),
-  //     itemBuilder: (context, index) {
-  //       final item = items[index];
-  //       return Buildform(
-  //         item: item,
-  //       );
-  //     },
-  //   );
-  // }
-
   void onPressedSubmit() {
     AutoRouter.of(context).push(const HomeRoute());
   }
 
-  Widget _buildSkeletonForm1() {
+  Widget _buildSkeletonForm() {
     return SizedBox(
         height: 400,
         child: ListView.builder(

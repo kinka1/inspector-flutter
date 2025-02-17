@@ -1,3 +1,4 @@
+import 'package:application/data/models/Result/result_model.dart';
 import 'package:application/features/auth/views/login_page.dart';
 import 'package:application/features/scan/view/scan_1_page.dart';
 import 'package:application/features/scan/view/scan_2_page.dart';
@@ -38,11 +39,6 @@ class AppRouter extends _$AppRouter {
         CustomRoute(
           page: Scan3Route.page,
           path: '/scanPage3',
-          transitionsBuilder: TransitionsBuilders.fadeIn,
-        ),
-        CustomRoute(
-          page: ScanRoute.page,
-          path: '/scan',
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
         CustomRoute(

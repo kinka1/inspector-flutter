@@ -2,7 +2,6 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:application/core/color_values.dart';
 import 'package:application/features/auth/bloc/auth_bloc.dart';
 import 'package:application/features/widget/custom_text_field.dart';
-import 'package:application/features/widget/field.dart';
 import 'package:application/routes/router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';

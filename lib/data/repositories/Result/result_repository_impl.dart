@@ -1,21 +1,17 @@
-import 'dart:convert';
-
-import 'package:application/data/models/DetailInspection/DetailInspection_model.dart';
-import 'package:application/data/models/InspectionItem/InspectionItem_model.dart';
-import 'package:application/data/repositories/DetailInspection/detailInspection_repository.dart';
+import 'package:application/data/models/Result/result_model.dart';
+import 'package:application/data/repositories/Result/result_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
+class ResultRepositoryImpl extends ResultRepository {
   final logger = Logger();
   final _dio = Dio();
 
   @override
-  Future<void> addDetailInspection(DetailInspectionModel model) async {
+  Future<void> addResult(ResultModel model) async {
     final prefs = await SharedPreferences.getInstance();
-    String imageName = Uri.parse(model.imageName).pathSegments.last;
     try {
       final rawToken = prefs.getString('token');
       final token = rawToken?.replaceAll('"', '');
@@ -23,15 +19,10 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
         '${dotenv.env['API_BASE_URL']}/detail',
         options: Options(headers: {'Authorization': 'Bearer $token'}),
         data: {
-          'itemName': model.itemName,
-          'specification': model.specification,
-          'method': model.method,
-          'frequency': model.frequency,
-          'number': model.number,
+          // 'machineId': model.,
+          'userId': model.userId,
           'description': model.description,
           'status': model.status,
-          'machineId': model.machineId,
-          'imageName': imageName,
         },
       );
       response.statusCode;
@@ -39,6 +30,7 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
       if (response.statusCode == 200) {
         final data = response.data['data'];
         final user = data['user'];
+        final token = data['token'];
 
         // Parse dan format created_at
         // final DateTime parsedCreatedAt = DateTime.parse(createdAt);
@@ -57,25 +49,31 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
   }
 
   @override
-  Future<DetailInspectionModel> getDetailInspectionItem() async {
+  Future<List<ResultData>> getResult() async {
     try {
-      final response = await _dio.get('${dotenv.env['API_BASE_URL']}/detail/1');
+      final response = await _dio.get(
+          '${dotenv.env['API_BASE_URL']}/result/ed4baa1e-3201-4211-49e9-08dd458b8e12');
 
       await Future.delayed(Duration(seconds: 2));
-
+      logger.i("Get Inspection Items");
+      logger.i("Response : ${response.statusCode}");
       if (response.statusCode == 200) {
         final responseData = response.data;
 
         // ✅ Periksa apakah responseData adalah Map
         if (responseData is Map<String, dynamic> &&
             responseData['status'] == true) {
-          final machineData = responseData['data'];
+          final List<dynamic> ResponseGet = responseData['data'];
+          logger.i("ResponseGet : $ResponseGet");
+          if (ResponseGet is List) {
+            List<ResultData> items =
+                ResponseGet.map((item) => ResultData.fromJson(item)).toList();
+            logger.i("Items : $items");
 
-          DetailInspectionModel items = machineData
-              .map((item) => InspectionitemModel.fromJson(item))
-              .toList();
-          logger.i("item : $items");
-          return items;
+            return items;
+          } else {
+            throw Exception('Invalid data format: Expected a List');
+          }
         } else {
           throw Exception('Invalid response structure');
         }

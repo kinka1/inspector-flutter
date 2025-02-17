@@ -16,7 +16,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Buildform extends StatefulWidget {
   const Buildform({
@@ -34,7 +33,7 @@ class Buildform extends StatefulWidget {
 
 class _BuildformState extends State<Buildform> {
   final Logger logger = Logger();
-  late String selectedStatus = "OK";
+  late String selectedStatus = "";
 
   late TextEditingController _descriptionController;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -42,7 +41,6 @@ class _BuildformState extends State<Buildform> {
 
   @override
   void initState() {
-    DateTime date = DateTime.now();
     super.initState();
     _descriptionController = TextEditingController();
   }
@@ -99,14 +97,25 @@ class _BuildformState extends State<Buildform> {
               hintText: "isi jika diperlukan",
               labelText: "Remark",
               textInputType: TextInputType.text,
-              LabelTextStyle: Theme.of(context).textTheme.bodyLarge!
+              LabelTextStyle: Theme.of(context)
+                  .textTheme
+                  .bodyLarge!
                   .copyWith(fontWeight: FontWeight.bold),
             ),
             BlocConsumer<DetailInspectionBloc, DetailInspectionState>(
               listener: (context, state) {
                 state.maybeWhen(
-                  success: () =>
-                      AutoRouter.of(context).push(Scan2Route(id: widget.id)),
+                  success: () {
+                    Flushbar(
+                      title: 'Berhasil',
+                      message: 'Data berhasil disimpan',
+                      duration: const Duration(seconds: 2),
+                      backgroundColor: ColorValues.primary500,
+                    ).show(context).then((_) {
+                      AutoRouter.of(context).push(Scan2Route(id: widget.id,status: selectedStatus));
+                      logger.i("Status : $selectedStatus");
+                    });
+                  },
                   error: (error) => Flushbar(
                     title: 'Terjadi Kesalahan',
                     message: error,
@@ -127,9 +136,10 @@ class _BuildformState extends State<Buildform> {
                       ? null
                       : () {
                           if (_formKey.currentState!.validate()) {
-                            final des = _descriptionController.text.trim().isEmpty
-                                ? " "
-                                : _descriptionController.text;
+                            final des =
+                                _descriptionController.text.trim().isEmpty
+                                    ? " "
+                                    : _descriptionController.text;
                             context.read<DetailInspectionBloc>().add(
                                     DetailInspectionEvent.postDetailInspection(
                                         DetailInspectionModel(

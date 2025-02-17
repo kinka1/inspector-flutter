@@ -40,6 +40,7 @@ abstract class _$AppRouter extends RootStackRouter {
         child: Scan2Page(
           key: args.key,
           id: args.id,
+          status: args.status,
         ),
       );
     },
@@ -54,12 +55,6 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
-    ScanRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const ScanPage(),
-      );
-    },
     ScannerRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -67,15 +62,24 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     Sheet2Route.name: (routeData) {
+      final args = routeData.argsAs<Sheet2RouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const Sheet2Page(),
+        child: Sheet2Page(
+          key: args.key,
+          result: args.result,
+        ),
       );
     },
     Sheet3Route.name: (routeData) {
+      final args = routeData.argsAs<Sheet3RouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const Sheet3Page(),
+        child: Sheet3Page(
+          key: args.key,
+          machineId: args.machineId,
+          number: args.number,
+        ),
       );
     },
     SheetRoute.name: (routeData) {
@@ -135,12 +139,14 @@ class Scan2Route extends PageRouteInfo<Scan2RouteArgs> {
   Scan2Route({
     Key? key,
     required int id,
+    required String status,
     List<PageRouteInfo>? children,
   }) : super(
           Scan2Route.name,
           args: Scan2RouteArgs(
             key: key,
             id: id,
+            status: status,
           ),
           initialChildren: children,
         );
@@ -154,15 +160,18 @@ class Scan2RouteArgs {
   const Scan2RouteArgs({
     this.key,
     required this.id,
+    required this.status,
   });
 
   final Key? key;
 
   final int id;
 
+  final String status;
+
   @override
   String toString() {
-    return 'Scan2RouteArgs{key: $key, id: $id}';
+    return 'Scan2RouteArgs{key: $key, id: $id, status: $status}';
   }
 }
 
@@ -209,20 +218,6 @@ class Scan3RouteArgs {
 }
 
 /// generated route for
-/// [ScanPage]
-class ScanRoute extends PageRouteInfo<void> {
-  const ScanRoute({List<PageRouteInfo>? children})
-      : super(
-          ScanRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'ScanRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [ScannerPage]
 class ScannerRoute extends PageRouteInfo<void> {
   const ScannerRoute({List<PageRouteInfo>? children})
@@ -238,30 +233,81 @@ class ScannerRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [Sheet2Page]
-class Sheet2Route extends PageRouteInfo<void> {
-  const Sheet2Route({List<PageRouteInfo>? children})
-      : super(
+class Sheet2Route extends PageRouteInfo<Sheet2RouteArgs> {
+  Sheet2Route({
+    Key? key,
+    required ResultData result,
+    List<PageRouteInfo>? children,
+  }) : super(
           Sheet2Route.name,
+          args: Sheet2RouteArgs(
+            key: key,
+            result: result,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'Sheet2Route';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<Sheet2RouteArgs> page = PageInfo<Sheet2RouteArgs>(name);
+}
+
+class Sheet2RouteArgs {
+  const Sheet2RouteArgs({
+    this.key,
+    required this.result,
+  });
+
+  final Key? key;
+
+  final ResultData result;
+
+  @override
+  String toString() {
+    return 'Sheet2RouteArgs{key: $key, result: $result}';
+  }
 }
 
 /// generated route for
 /// [Sheet3Page]
-class Sheet3Route extends PageRouteInfo<void> {
-  const Sheet3Route({List<PageRouteInfo>? children})
-      : super(
+class Sheet3Route extends PageRouteInfo<Sheet3RouteArgs> {
+  Sheet3Route({
+    Key? key,
+    required int machineId,
+    required int number,
+    List<PageRouteInfo>? children,
+  }) : super(
           Sheet3Route.name,
+          args: Sheet3RouteArgs(
+            key: key,
+            machineId: machineId,
+            number: number,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'Sheet3Route';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<Sheet3RouteArgs> page = PageInfo<Sheet3RouteArgs>(name);
+}
+
+class Sheet3RouteArgs {
+  const Sheet3RouteArgs({
+    this.key,
+    required this.machineId,
+    required this.number,
+  });
+
+  final Key? key;
+
+  final int machineId;
+
+  final int number;
+
+  @override
+  String toString() {
+    return 'Sheet3RouteArgs{key: $key, machineId: $machineId, number: $number}';
+  }
 }
 
 /// generated route for

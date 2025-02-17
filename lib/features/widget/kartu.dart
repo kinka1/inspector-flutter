@@ -1,17 +1,15 @@
-
 import 'package:application/core/color_values.dart';
-import 'package:application/routes/router.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 class Kartu extends StatelessWidget {
-  const Kartu({super.key, required this.caption, required this.onPressed, this.width, this.height, this.textStyle});
+  const Kartu({super.key, required this.caption, required this.onPressed, this.width, this.height, this.textStyle, this.status});
+  
   final String caption;
   final VoidCallback onPressed;
   final double? width;
   final double? height;
   final TextStyle? textStyle;
-
+  final String? status; 
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +19,7 @@ class Kartu extends StatelessWidget {
         width: width ?? 60,
         height: height ?? 60,
         decoration: BoxDecoration(
-          color: ColorValues.grayscale400,
+          color: selectedColor(),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
@@ -31,6 +29,16 @@ class Kartu extends StatelessWidget {
           ),
         ),
       ),
-    );;
+    );
+  }
+
+  Color selectedColor() {
+    if (status == "OK") {
+      return ColorValues.primary400;
+    } else if (status == "Abnormal") {
+      return ColorValues.danger500;
+    } else {
+      return ColorValues.grayscale400; // Default jika belum diisi
+    }
   }
 }
