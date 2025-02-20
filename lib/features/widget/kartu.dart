@@ -35,10 +35,12 @@ class Kartu extends StatelessWidget {
   Color selectedColor() {
     if (status == "OK") {
       return ColorValues.primary400;
-    } else if (status == "Abnormal") {
+    } else if (status == "NG") {
       return ColorValues.danger500;
     } else {
       return ColorValues.grayscale400; // Default jika belum diisi
     }
   }
+
+
 }

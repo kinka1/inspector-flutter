@@ -38,7 +38,7 @@ class _Scan3PageState extends State<Scan3Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appbarCus(context, "Daily Maintenance"),
+        appBar: appbarCus(context, "Daily Maintenance",false),
         body: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.all(20),

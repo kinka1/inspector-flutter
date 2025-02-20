@@ -1,9 +1,10 @@
+
 import 'package:application/core/color_values.dart';
 import 'package:flutter/material.dart';
 
-PreferredSizeWidget appbarCus(BuildContext context, String title) {
+PreferredSizeWidget appbarCus(BuildContext context, String title, bool isLeading) {
   return AppBar(
-    automaticallyImplyLeading: false,
+    automaticallyImplyLeading: isLeading,
     backgroundColor: ColorValues.info400,
     title: Text(
       title,

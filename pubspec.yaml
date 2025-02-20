@@ -36,6 +36,7 @@ dependencies:
   logger: ^2.5.0
   http: ^1.3.0
   another_flushbar: ^1.12.30
+  adaptive_dialog: ^2.4.0
 
 dev_dependencies:
   flutter_test:

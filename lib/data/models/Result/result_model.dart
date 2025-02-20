@@ -8,22 +8,22 @@ part 'result_model.g.dart';
 
 @freezed
 class ResultResponse with _$ResultResponse {
-    const factory ResultResponse({
-      required bool status,
-      required ResultData data,
-    }) = _ResultResponse;
-  
-    factory ResultResponse.fromJson(Map<String, dynamic> json) =>
-        _$ResultResponseFromJson(json);
-  }
+  const factory ResultResponse({
+    required bool status,
+    required ResultData data,
+  }) = _ResultResponse;
 
-  @freezed
+  factory ResultResponse.fromJson(Map<String, dynamic> json) =>
+      _$ResultResponseFromJson(json);
+}
+
+@freezed
 class ResultData with _$ResultData {
   const factory ResultData({
     required String month,
     required int machineId,
     required MachineModel machine,
-    required List<ResultModel> data, 
+    required List<ResultModel> data,
   }) = _ResultData;
 
   factory ResultData.fromJson(Map<String, Object?> json) =>
@@ -31,7 +31,7 @@ class ResultData with _$ResultData {
 }
 
 @freezed
-class ResultModel with _$ResultModel{
+class ResultModel with _$ResultModel {
   const factory ResultModel({
     required int id,
     required String userId,

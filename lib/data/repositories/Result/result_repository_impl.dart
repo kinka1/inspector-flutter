@@ -10,33 +10,28 @@ class ResultRepositoryImpl extends ResultRepository {
   final _dio = Dio();
 
   @override
-  Future<void> addResult(ResultModel model) async {
+  Future<void> addResult(int machineId,String status,String description) async {
     final prefs = await SharedPreferences.getInstance();
     try {
+      logger.i("machineId : $machineId");
+      logger.i("description : $description");
+      logger.i("status : $status");
       final rawToken = prefs.getString('token');
       final token = rawToken?.replaceAll('"', '');
       final response = await _dio.post(
-        '${dotenv.env['API_BASE_URL']}/detail',
+        '${dotenv.env['API_BASE_URL']}/result',
         options: Options(headers: {'Authorization': 'Bearer $token'}),
         data: {
-          // 'machineId': model.,
-          'userId': model.userId,
-          'description': model.description,
-          'status': model.status,
+          'machineId': machineId,
+          'description': description,
+          'status':status,
         },
       );
-      response.statusCode;
+      logger.i("status code : ${response.statusCode}");
+      logger.d("response : $response");
 
       if (response.statusCode == 200) {
-        final data = response.data['data'];
-        final user = data['user'];
-        final token = data['token'];
-
-        // Parse dan format created_at
-        // final DateTime parsedCreatedAt = DateTime.parse(createdAt);
-        // final String formattedDate = DateFormat('yyyy-MM-dd').format(parsedCreatedAt);
-        // await prefs.setString('user', jsonEncode(user));
-        // await prefs.setString('token', jsonEncode(token));
+        return response.data;
       }
     } on DioException catch (error) {
       if (error.response!.statusCode == 401 ||
@@ -50,13 +45,17 @@ class ResultRepositoryImpl extends ResultRepository {
 
   @override
   Future<List<ResultData>> getResult() async {
+    final prefs = await SharedPreferences.getInstance();
     try {
+      final rawToken = prefs.getString('token');
+      final token = rawToken?.replaceAll('"', '');
       final response = await _dio.get(
-          '${dotenv.env['API_BASE_URL']}/result/ed4baa1e-3201-4211-49e9-08dd458b8e12');
+        '${dotenv.env['API_BASE_URL']}/result',
+        options: Options(headers: {'Authorization': 'Bearer $token'}),
+      );
+      logger.d("response : $response");
 
       await Future.delayed(Duration(seconds: 2));
-      logger.i("Get Inspection Items");
-      logger.i("Response : ${response.statusCode}");
       if (response.statusCode == 200) {
         final responseData = response.data;
 
@@ -64,13 +63,12 @@ class ResultRepositoryImpl extends ResultRepository {
         if (responseData is Map<String, dynamic> &&
             responseData['status'] == true) {
           final List<dynamic> ResponseGet = responseData['data'];
-          logger.i("ResponseGet : $ResponseGet");
           if (ResponseGet is List) {
             List<ResultData> items =
                 ResponseGet.map((item) => ResultData.fromJson(item)).toList();
-            logger.i("Items : $items");
-
+            logger.d("item : $items");
             return items;
+
           } else {
             throw Exception('Invalid data format: Expected a List');
           }

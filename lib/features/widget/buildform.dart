@@ -113,7 +113,6 @@ class _BuildformState extends State<Buildform> {
                       backgroundColor: ColorValues.primary500,
                     ).show(context).then((_) {
                       AutoRouter.of(context).push(Scan2Route(id: widget.id,status: selectedStatus));
-                      logger.i("Status : $selectedStatus");
                     });
                   },
                   error: (error) => Flushbar(

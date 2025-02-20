@@ -20,18 +20,24 @@ mixin _$ResultEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getResult,
+    required TResult Function(int machineId, String description, String status)
+        addResult,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getResult,
+    TResult? Function(int machineId, String description, String status)?
+        addResult,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getResult,
+    TResult Function(int machineId, String description, String status)?
+        addResult,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +45,21 @@ mixin _$ResultEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetResult value) getResult,
+    required TResult Function(_AddResult value) addResult,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetResult value)? getResult,
+    TResult? Function(_AddResult value)? addResult,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetResult value)? getResult,
+    TResult Function(_AddResult value)? addResult,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,6 +135,8 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getResult,
+    required TResult Function(int machineId, String description, String status)
+        addResult,
   }) {
     return started();
   }
@@ -135,6 +146,8 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getResult,
+    TResult? Function(int machineId, String description, String status)?
+        addResult,
   }) {
     return started?.call();
   }
@@ -144,6 +157,8 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getResult,
+    TResult Function(int machineId, String description, String status)?
+        addResult,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -157,6 +172,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetResult value) getResult,
+    required TResult Function(_AddResult value) addResult,
   }) {
     return started(this);
   }
@@ -166,6 +182,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetResult value)? getResult,
+    TResult? Function(_AddResult value)? addResult,
   }) {
     return started?.call(this);
   }
@@ -175,6 +192,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetResult value)? getResult,
+    TResult Function(_AddResult value)? addResult,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -237,6 +255,8 @@ class _$GetResultImpl with DiagnosticableTreeMixin implements _GetResult {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getResult,
+    required TResult Function(int machineId, String description, String status)
+        addResult,
   }) {
     return getResult();
   }
@@ -246,6 +266,8 @@ class _$GetResultImpl with DiagnosticableTreeMixin implements _GetResult {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getResult,
+    TResult? Function(int machineId, String description, String status)?
+        addResult,
   }) {
     return getResult?.call();
   }
@@ -255,6 +277,8 @@ class _$GetResultImpl with DiagnosticableTreeMixin implements _GetResult {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getResult,
+    TResult Function(int machineId, String description, String status)?
+        addResult,
     required TResult orElse(),
   }) {
     if (getResult != null) {
@@ -268,6 +292,7 @@ class _$GetResultImpl with DiagnosticableTreeMixin implements _GetResult {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetResult value) getResult,
+    required TResult Function(_AddResult value) addResult,
   }) {
     return getResult(this);
   }
@@ -277,6 +302,7 @@ class _$GetResultImpl with DiagnosticableTreeMixin implements _GetResult {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetResult value)? getResult,
+    TResult? Function(_AddResult value)? addResult,
   }) {
     return getResult?.call(this);
   }
@@ -286,6 +312,7 @@ class _$GetResultImpl with DiagnosticableTreeMixin implements _GetResult {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetResult value)? getResult,
+    TResult Function(_AddResult value)? addResult,
     required TResult orElse(),
   }) {
     if (getResult != null) {
@@ -300,6 +327,187 @@ abstract class _GetResult implements ResultEvent {
 }
 
 /// @nodoc
+abstract class _$$AddResultImplCopyWith<$Res> {
+  factory _$$AddResultImplCopyWith(
+          _$AddResultImpl value, $Res Function(_$AddResultImpl) then) =
+      __$$AddResultImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int machineId, String description, String status});
+}
+
+/// @nodoc
+class __$$AddResultImplCopyWithImpl<$Res>
+    extends _$ResultEventCopyWithImpl<$Res, _$AddResultImpl>
+    implements _$$AddResultImplCopyWith<$Res> {
+  __$$AddResultImplCopyWithImpl(
+      _$AddResultImpl _value, $Res Function(_$AddResultImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ResultEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? machineId = null,
+    Object? description = null,
+    Object? status = null,
+  }) {
+    return _then(_$AddResultImpl(
+      null == machineId
+          ? _value.machineId
+          : machineId // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
+  const _$AddResultImpl(this.machineId, this.description, this.status);
+
+  @override
+  final int machineId;
+  @override
+  final String description;
+  @override
+  final String status;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ResultEvent.addResult(machineId: $machineId, description: $description, status: $status)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResultEvent.addResult'))
+      ..add(DiagnosticsProperty('machineId', machineId))
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('status', status));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddResultImpl &&
+            (identical(other.machineId, machineId) ||
+                other.machineId == machineId) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, machineId, description, status);
+
+  /// Create a copy of ResultEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddResultImplCopyWith<_$AddResultImpl> get copyWith =>
+      __$$AddResultImplCopyWithImpl<_$AddResultImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getResult,
+    required TResult Function(int machineId, String description, String status)
+        addResult,
+  }) {
+    return addResult(machineId, description, status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getResult,
+    TResult? Function(int machineId, String description, String status)?
+        addResult,
+  }) {
+    return addResult?.call(machineId, description, status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getResult,
+    TResult Function(int machineId, String description, String status)?
+        addResult,
+    required TResult orElse(),
+  }) {
+    if (addResult != null) {
+      return addResult(machineId, description, status);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetResult value) getResult,
+    required TResult Function(_AddResult value) addResult,
+  }) {
+    return addResult(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetResult value)? getResult,
+    TResult? Function(_AddResult value)? addResult,
+  }) {
+    return addResult?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetResult value)? getResult,
+    TResult Function(_AddResult value)? addResult,
+    required TResult orElse(),
+  }) {
+    if (addResult != null) {
+      return addResult(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddResult implements ResultEvent {
+  const factory _AddResult(
+          final int machineId, final String description, final String status) =
+      _$AddResultImpl;
+
+  int get machineId;
+  String get description;
+  String get status;
+
+  /// Create a copy of ResultEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AddResultImplCopyWith<_$AddResultImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ResultState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -308,8 +516,7 @@ mixin _$ResultState {
     required TResult Function() success,
     required TResult Function(List<ResultData> result) loaded,
     required TResult Function(String error) error,
-    required TResult Function() loginSuccess,
-    required TResult Function() logoutSuccess,
+    required TResult Function() added,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -319,8 +526,7 @@ mixin _$ResultState {
     TResult? Function()? success,
     TResult? Function(List<ResultData> result)? loaded,
     TResult? Function(String error)? error,
-    TResult? Function()? loginSuccess,
-    TResult? Function()? logoutSuccess,
+    TResult? Function()? added,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -330,8 +536,7 @@ mixin _$ResultState {
     TResult Function()? success,
     TResult Function(List<ResultData> result)? loaded,
     TResult Function(String error)? error,
-    TResult Function()? loginSuccess,
-    TResult Function()? logoutSuccess,
+    TResult Function()? added,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -342,8 +547,7 @@ mixin _$ResultState {
     required TResult Function(_Success value) success,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
-    required TResult Function(_LoginSuccess value) loginSuccess,
-    required TResult Function(_LogoutSuccess value) logoutSuccess,
+    required TResult Function(_Added value) added,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -353,8 +557,7 @@ mixin _$ResultState {
     TResult? Function(_Success value)? success,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
-    TResult? Function(_LoginSuccess value)? loginSuccess,
-    TResult? Function(_LogoutSuccess value)? logoutSuccess,
+    TResult? Function(_Added value)? added,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -364,8 +567,7 @@ mixin _$ResultState {
     TResult Function(_Success value)? success,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_LoginSuccess value)? loginSuccess,
-    TResult Function(_LogoutSuccess value)? logoutSuccess,
+    TResult Function(_Added value)? added,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -444,8 +646,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     required TResult Function() success,
     required TResult Function(List<ResultData> result) loaded,
     required TResult Function(String error) error,
-    required TResult Function() loginSuccess,
-    required TResult Function() logoutSuccess,
+    required TResult Function() added,
   }) {
     return initial();
   }
@@ -458,8 +659,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult? Function()? success,
     TResult? Function(List<ResultData> result)? loaded,
     TResult? Function(String error)? error,
-    TResult? Function()? loginSuccess,
-    TResult? Function()? logoutSuccess,
+    TResult? Function()? added,
   }) {
     return initial?.call();
   }
@@ -472,8 +672,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult Function()? success,
     TResult Function(List<ResultData> result)? loaded,
     TResult Function(String error)? error,
-    TResult Function()? loginSuccess,
-    TResult Function()? logoutSuccess,
+    TResult Function()? added,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -490,8 +689,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(_Success value) success,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
-    required TResult Function(_LoginSuccess value) loginSuccess,
-    required TResult Function(_LogoutSuccess value) logoutSuccess,
+    required TResult Function(_Added value) added,
   }) {
     return initial(this);
   }
@@ -504,8 +702,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult? Function(_Success value)? success,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
-    TResult? Function(_LoginSuccess value)? loginSuccess,
-    TResult? Function(_LogoutSuccess value)? logoutSuccess,
+    TResult? Function(_Added value)? added,
   }) {
     return initial?.call(this);
   }
@@ -518,8 +715,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult Function(_Success value)? success,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_LoginSuccess value)? loginSuccess,
-    TResult Function(_LogoutSuccess value)? logoutSuccess,
+    TResult Function(_Added value)? added,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -585,8 +781,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     required TResult Function() success,
     required TResult Function(List<ResultData> result) loaded,
     required TResult Function(String error) error,
-    required TResult Function() loginSuccess,
-    required TResult Function() logoutSuccess,
+    required TResult Function() added,
   }) {
     return loading();
   }
@@ -599,8 +794,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     TResult? Function()? success,
     TResult? Function(List<ResultData> result)? loaded,
     TResult? Function(String error)? error,
-    TResult? Function()? loginSuccess,
-    TResult? Function()? logoutSuccess,
+    TResult? Function()? added,
   }) {
     return loading?.call();
   }
@@ -613,8 +807,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     TResult Function()? success,
     TResult Function(List<ResultData> result)? loaded,
     TResult Function(String error)? error,
-    TResult Function()? loginSuccess,
-    TResult Function()? logoutSuccess,
+    TResult Function()? added,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -631,8 +824,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     required TResult Function(_Success value) success,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
-    required TResult Function(_LoginSuccess value) loginSuccess,
-    required TResult Function(_LogoutSuccess value) logoutSuccess,
+    required TResult Function(_Added value) added,
   }) {
     return loading(this);
   }
@@ -645,8 +837,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     TResult? Function(_Success value)? success,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
-    TResult? Function(_LoginSuccess value)? loginSuccess,
-    TResult? Function(_LogoutSuccess value)? logoutSuccess,
+    TResult? Function(_Added value)? added,
   }) {
     return loading?.call(this);
   }
@@ -659,8 +850,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     TResult Function(_Success value)? success,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_LoginSuccess value)? loginSuccess,
-    TResult Function(_LogoutSuccess value)? logoutSuccess,
+    TResult Function(_Added value)? added,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -726,8 +916,7 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     required TResult Function() success,
     required TResult Function(List<ResultData> result) loaded,
     required TResult Function(String error) error,
-    required TResult Function() loginSuccess,
-    required TResult Function() logoutSuccess,
+    required TResult Function() added,
   }) {
     return success();
   }
@@ -740,8 +929,7 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     TResult? Function()? success,
     TResult? Function(List<ResultData> result)? loaded,
     TResult? Function(String error)? error,
-    TResult? Function()? loginSuccess,
-    TResult? Function()? logoutSuccess,
+    TResult? Function()? added,
   }) {
     return success?.call();
   }
@@ -754,8 +942,7 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     TResult Function()? success,
     TResult Function(List<ResultData> result)? loaded,
     TResult Function(String error)? error,
-    TResult Function()? loginSuccess,
-    TResult Function()? logoutSuccess,
+    TResult Function()? added,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -772,8 +959,7 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     required TResult Function(_Success value) success,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
-    required TResult Function(_LoginSuccess value) loginSuccess,
-    required TResult Function(_LogoutSuccess value) logoutSuccess,
+    required TResult Function(_Added value) added,
   }) {
     return success(this);
   }
@@ -786,8 +972,7 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     TResult? Function(_Success value)? success,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
-    TResult? Function(_LoginSuccess value)? loginSuccess,
-    TResult? Function(_LogoutSuccess value)? logoutSuccess,
+    TResult? Function(_Added value)? added,
   }) {
     return success?.call(this);
   }
@@ -800,8 +985,7 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     TResult Function(_Success value)? success,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_LoginSuccess value)? loginSuccess,
-    TResult Function(_LogoutSuccess value)? logoutSuccess,
+    TResult Function(_Added value)? added,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -902,8 +1086,7 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     required TResult Function() success,
     required TResult Function(List<ResultData> result) loaded,
     required TResult Function(String error) error,
-    required TResult Function() loginSuccess,
-    required TResult Function() logoutSuccess,
+    required TResult Function() added,
   }) {
     return loaded(result);
   }
@@ -916,8 +1099,7 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     TResult? Function()? success,
     TResult? Function(List<ResultData> result)? loaded,
     TResult? Function(String error)? error,
-    TResult? Function()? loginSuccess,
-    TResult? Function()? logoutSuccess,
+    TResult? Function()? added,
   }) {
     return loaded?.call(result);
   }
@@ -930,8 +1112,7 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     TResult Function()? success,
     TResult Function(List<ResultData> result)? loaded,
     TResult Function(String error)? error,
-    TResult Function()? loginSuccess,
-    TResult Function()? logoutSuccess,
+    TResult Function()? added,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -948,8 +1129,7 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     required TResult Function(_Success value) success,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
-    required TResult Function(_LoginSuccess value) loginSuccess,
-    required TResult Function(_LogoutSuccess value) logoutSuccess,
+    required TResult Function(_Added value) added,
   }) {
     return loaded(this);
   }
@@ -962,8 +1142,7 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     TResult? Function(_Success value)? success,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
-    TResult? Function(_LoginSuccess value)? loginSuccess,
-    TResult? Function(_LogoutSuccess value)? logoutSuccess,
+    TResult? Function(_Added value)? added,
   }) {
     return loaded?.call(this);
   }
@@ -976,8 +1155,7 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     TResult Function(_Success value)? success,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_LoginSuccess value)? loginSuccess,
-    TResult Function(_LogoutSuccess value)? logoutSuccess,
+    TResult Function(_Added value)? added,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1080,8 +1258,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     required TResult Function() success,
     required TResult Function(List<ResultData> result) loaded,
     required TResult Function(String error) error,
-    required TResult Function() loginSuccess,
-    required TResult Function() logoutSuccess,
+    required TResult Function() added,
   }) {
     return error(this.error);
   }
@@ -1094,8 +1271,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     TResult? Function()? success,
     TResult? Function(List<ResultData> result)? loaded,
     TResult? Function(String error)? error,
-    TResult? Function()? loginSuccess,
-    TResult? Function()? logoutSuccess,
+    TResult? Function()? added,
   }) {
     return error?.call(this.error);
   }
@@ -1108,8 +1284,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     TResult Function()? success,
     TResult Function(List<ResultData> result)? loaded,
     TResult Function(String error)? error,
-    TResult Function()? loginSuccess,
-    TResult Function()? logoutSuccess,
+    TResult Function()? added,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1126,8 +1301,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     required TResult Function(_Success value) success,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
-    required TResult Function(_LoginSuccess value) loginSuccess,
-    required TResult Function(_LogoutSuccess value) logoutSuccess,
+    required TResult Function(_Added value) added,
   }) {
     return error(this);
   }
@@ -1140,8 +1314,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     TResult? Function(_Success value)? success,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
-    TResult? Function(_LoginSuccess value)? loginSuccess,
-    TResult? Function(_LogoutSuccess value)? logoutSuccess,
+    TResult? Function(_Added value)? added,
   }) {
     return error?.call(this);
   }
@@ -1154,8 +1327,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     TResult Function(_Success value)? success,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_LoginSuccess value)? loginSuccess,
-    TResult Function(_LogoutSuccess value)? logoutSuccess,
+    TResult Function(_Added value)? added,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1178,18 +1350,18 @@ abstract class _Error implements ResultState {
 }
 
 /// @nodoc
-abstract class _$$LoginSuccessImplCopyWith<$Res> {
-  factory _$$LoginSuccessImplCopyWith(
-          _$LoginSuccessImpl value, $Res Function(_$LoginSuccessImpl) then) =
-      __$$LoginSuccessImplCopyWithImpl<$Res>;
+abstract class _$$AddedImplCopyWith<$Res> {
+  factory _$$AddedImplCopyWith(
+          _$AddedImpl value, $Res Function(_$AddedImpl) then) =
+      __$$AddedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoginSuccessImplCopyWithImpl<$Res>
-    extends _$ResultStateCopyWithImpl<$Res, _$LoginSuccessImpl>
-    implements _$$LoginSuccessImplCopyWith<$Res> {
-  __$$LoginSuccessImplCopyWithImpl(
-      _$LoginSuccessImpl _value, $Res Function(_$LoginSuccessImpl) _then)
+class __$$AddedImplCopyWithImpl<$Res>
+    extends _$ResultStateCopyWithImpl<$Res, _$AddedImpl>
+    implements _$$AddedImplCopyWith<$Res> {
+  __$$AddedImplCopyWithImpl(
+      _$AddedImpl _value, $Res Function(_$AddedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ResultState
@@ -1198,24 +1370,24 @@ class __$$LoginSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoginSuccessImpl with DiagnosticableTreeMixin implements _LoginSuccess {
-  const _$LoginSuccessImpl();
+class _$AddedImpl with DiagnosticableTreeMixin implements _Added {
+  const _$AddedImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ResultState.loginSuccess()';
+    return 'ResultState.added()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'ResultState.loginSuccess'));
+    properties.add(DiagnosticsProperty('type', 'ResultState.added'));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoginSuccessImpl);
+        (other.runtimeType == runtimeType && other is _$AddedImpl);
   }
 
   @override
@@ -1229,10 +1401,9 @@ class _$LoginSuccessImpl with DiagnosticableTreeMixin implements _LoginSuccess {
     required TResult Function() success,
     required TResult Function(List<ResultData> result) loaded,
     required TResult Function(String error) error,
-    required TResult Function() loginSuccess,
-    required TResult Function() logoutSuccess,
+    required TResult Function() added,
   }) {
-    return loginSuccess();
+    return added();
   }
 
   @override
@@ -1243,10 +1414,9 @@ class _$LoginSuccessImpl with DiagnosticableTreeMixin implements _LoginSuccess {
     TResult? Function()? success,
     TResult? Function(List<ResultData> result)? loaded,
     TResult? Function(String error)? error,
-    TResult? Function()? loginSuccess,
-    TResult? Function()? logoutSuccess,
+    TResult? Function()? added,
   }) {
-    return loginSuccess?.call();
+    return added?.call();
   }
 
   @override
@@ -1257,12 +1427,11 @@ class _$LoginSuccessImpl with DiagnosticableTreeMixin implements _LoginSuccess {
     TResult Function()? success,
     TResult Function(List<ResultData> result)? loaded,
     TResult Function(String error)? error,
-    TResult Function()? loginSuccess,
-    TResult Function()? logoutSuccess,
+    TResult Function()? added,
     required TResult orElse(),
   }) {
-    if (loginSuccess != null) {
-      return loginSuccess();
+    if (added != null) {
+      return added();
     }
     return orElse();
   }
@@ -1275,10 +1444,9 @@ class _$LoginSuccessImpl with DiagnosticableTreeMixin implements _LoginSuccess {
     required TResult Function(_Success value) success,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
-    required TResult Function(_LoginSuccess value) loginSuccess,
-    required TResult Function(_LogoutSuccess value) logoutSuccess,
+    required TResult Function(_Added value) added,
   }) {
-    return loginSuccess(this);
+    return added(this);
   }
 
   @override
@@ -1289,10 +1457,9 @@ class _$LoginSuccessImpl with DiagnosticableTreeMixin implements _LoginSuccess {
     TResult? Function(_Success value)? success,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
-    TResult? Function(_LoginSuccess value)? loginSuccess,
-    TResult? Function(_LogoutSuccess value)? logoutSuccess,
+    TResult? Function(_Added value)? added,
   }) {
-    return loginSuccess?.call(this);
+    return added?.call(this);
   }
 
   @override
@@ -1303,160 +1470,16 @@ class _$LoginSuccessImpl with DiagnosticableTreeMixin implements _LoginSuccess {
     TResult Function(_Success value)? success,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
-    TResult Function(_LoginSuccess value)? loginSuccess,
-    TResult Function(_LogoutSuccess value)? logoutSuccess,
+    TResult Function(_Added value)? added,
     required TResult orElse(),
   }) {
-    if (loginSuccess != null) {
-      return loginSuccess(this);
+    if (added != null) {
+      return added(this);
     }
     return orElse();
   }
 }
 
-abstract class _LoginSuccess implements ResultState {
-  const factory _LoginSuccess() = _$LoginSuccessImpl;
-}
-
-/// @nodoc
-abstract class _$$LogoutSuccessImplCopyWith<$Res> {
-  factory _$$LogoutSuccessImplCopyWith(
-          _$LogoutSuccessImpl value, $Res Function(_$LogoutSuccessImpl) then) =
-      __$$LogoutSuccessImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LogoutSuccessImplCopyWithImpl<$Res>
-    extends _$ResultStateCopyWithImpl<$Res, _$LogoutSuccessImpl>
-    implements _$$LogoutSuccessImplCopyWith<$Res> {
-  __$$LogoutSuccessImplCopyWithImpl(
-      _$LogoutSuccessImpl _value, $Res Function(_$LogoutSuccessImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ResultState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$LogoutSuccessImpl
-    with DiagnosticableTreeMixin
-    implements _LogoutSuccess {
-  const _$LogoutSuccessImpl();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ResultState.logoutSuccess()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'ResultState.logoutSuccess'));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LogoutSuccessImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function() success,
-    required TResult Function(List<ResultData> result) loaded,
-    required TResult Function(String error) error,
-    required TResult Function() loginSuccess,
-    required TResult Function() logoutSuccess,
-  }) {
-    return logoutSuccess();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function()? success,
-    TResult? Function(List<ResultData> result)? loaded,
-    TResult? Function(String error)? error,
-    TResult? Function()? loginSuccess,
-    TResult? Function()? logoutSuccess,
-  }) {
-    return logoutSuccess?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function()? success,
-    TResult Function(List<ResultData> result)? loaded,
-    TResult Function(String error)? error,
-    TResult Function()? loginSuccess,
-    TResult Function()? logoutSuccess,
-    required TResult orElse(),
-  }) {
-    if (logoutSuccess != null) {
-      return logoutSuccess();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
-    required TResult Function(_LoginSuccess value) loginSuccess,
-    required TResult Function(_LogoutSuccess value) logoutSuccess,
-  }) {
-    return logoutSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_LoginSuccess value)? loginSuccess,
-    TResult? Function(_LogoutSuccess value)? logoutSuccess,
-  }) {
-    return logoutSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
-    TResult Function(_LoginSuccess value)? loginSuccess,
-    TResult Function(_LogoutSuccess value)? logoutSuccess,
-    required TResult orElse(),
-  }) {
-    if (logoutSuccess != null) {
-      return logoutSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LogoutSuccess implements ResultState {
-  const factory _LogoutSuccess() = _$LogoutSuccessImpl;
+abstract class _Added implements ResultState {
+  const factory _Added() = _$AddedImpl;
 }

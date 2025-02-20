@@ -7,6 +7,7 @@ import 'package:application/features/machine/bloc/machine_bloc.dart';
 import 'package:application/features/widget/appbarCus.dart';
 import 'package:application/features/widget/buildHeader.dart';
 import 'package:application/features/widget/kartu.dart';
+import 'package:application/features/widget/showModal.dart';
 import 'package:application/features/widget/tombol.dart';
 import 'package:application/routes/router.dart';
 import 'package:auto_route/auto_route.dart';
@@ -33,7 +34,9 @@ class _Scan2PageState extends State<Scan2Page> {
   void initState() {
     super.initState();
     context.read<MachineBloc>().add(MachineEvent.getMachines(widget.id));
-    context.read<InspectionItemBloc>().add(InspectionItemEvent.GetInspectionItem(widget.id));
+    context
+        .read<InspectionItemBloc>()
+        .add(InspectionItemEvent.GetInspectionItem(widget.id));
   }
 
   // Fungsi mendapatkan status berdasarkan nomor form
@@ -42,62 +45,106 @@ class _Scan2PageState extends State<Scan2Page> {
     final detail = savedDetails.firstWhere(
       (detail) => detail.number == number,
       orElse: () => const DetailInspectionModel(
-        status: "Belum diisi", number: 0, itemName: "", specification: "", 
-        method: "", frequency: "", description: "", machineId: 0, imageName: ""),
+          status: "Belum diisi",
+          number: 0,
+          itemName: "",
+          specification: "",
+          method: "",
+          frequency: "",
+          description: "",
+          machineId: 0,
+          imageName: ""),
     );
     return detail.status;
   }
 
   // Fungsi untuk menyimpan data yang diisi
-  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbarCus(context, "Daily Maintenance"),
+      appBar: appbarCus(context, "Daily Maintenance",false),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            BlocBuilder<MachineBloc, MachineState>(
-              builder: (context, state) {
-                return Skeletonizer(
-                  enabled: state.maybeWhen(loading: () => true, orElse: () => false),
-                  child: state.maybeWhen(
-                    loaded: (response) => BuildHeader(machine: response),
-                    orElse: () => _buildSkeleton(),
-                    error: (message) => Center(
-                      child: Text(
-                        'Error: $message',
-                        style: const TextStyle(fontSize: 25, color: Colors.red),
+        child: Form(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              BlocBuilder<MachineBloc, MachineState>(
+                builder: (context, state) {
+                  return Skeletonizer(
+                    enabled: state.maybeWhen(
+                        loading: () => true, orElse: () => false),
+                    child: state.maybeWhen(
+                      loaded: (response) => BuildHeader(machine: response),
+                      orElse: () => _buildSkeleton(),
+                      error: (message) => Center(
+                        child: Text(
+                          'Error: $message',
+                          style:
+                              const TextStyle(fontSize: 25, color: Colors.red),
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
-            ),
-            BlocBuilder<InspectionItemBloc, InspectionItemState>(
-              builder: (context, state) {
-                return Skeletonizer(
-                  enabled: state.maybeWhen(loading: () => true, orElse: () => false),
-                  child: state.maybeWhen(
-                    loaded: (response) => _buildCard(response),
-                    orElse: () => _buildSkeletonForm(),
-                    error: (message) => Center(
-                      child: Text(
-                        'Error: $message',
-                        style: const TextStyle(fontSize: 25, color: Colors.red),
+                  );
+                },
+              ),
+              BlocBuilder<InspectionItemBloc, InspectionItemState>(
+                builder: (context, state) {
+                  return Skeletonizer(
+                    enabled: state.maybeWhen(
+                        loading: () => true, orElse: () => false),
+                    child: state.maybeWhen(
+                      loaded: (response) => _buildCard(response),
+                      orElse: () => _buildSkeletonForm(),
+                      error: (message) => Center(
+                        child: Text(
+                          'Error: $message',
+                          style:
+                              const TextStyle(fontSize: 25, color: Colors.red),
+                        ),
                       ),
                     ),
+                  );
+                },
+              ),
+              // BlocConsumer<Result>(builder: (), listener: listener),
+              const SizedBox(height: 10),
+              GestureDetector(
+                onTap: () {
+                  showModalBottomSheet(
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(4),
+                            topRight: Radius.circular(4)),
+                      ),
+                      backgroundColor: Colors.white,
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (BuildContext context) {
+                        return ShowModal(
+                          machineId: widget.id,
+                        );
+                      });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical:15),
+                  child: Container(
+                    height: 60,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: ColorValues.info400,
+                    ),
+                    child: Center(
+                      child: Text("Submit",
+                          style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+                    ),
                   ),
-                );
-              },
-            ),
-            // BlocConsumer<Result>(builder: (), listener: listener),
-            const SizedBox(height: 10),
-            tombol("Submit", onPressedSubmit),
-          ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -125,7 +172,9 @@ class _Scan2PageState extends State<Scan2Page> {
   }
 
   void onPressedSubmit() {
-    AutoRouter.of(context).push(const HomeRoute());
+    ShowModal(
+      machineId: widget.id,
+    );
   }
 
   Widget _buildSkeletonForm() {

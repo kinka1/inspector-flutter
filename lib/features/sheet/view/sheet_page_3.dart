@@ -1,128 +1,76 @@
+import 'package:application/data/bloc/DetailInspection/detail_inspection_bloc.dart';
+import 'package:application/data/models/DetailInspection/DetailInspection_model.dart';
+import 'package:application/features/widget/appbarCus.dart';
+import 'package:application/features/widget/kartu.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:simple_grid/simple_grid.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:logger/logger.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import '../../../core/color_values.dart';
 
 @RoutePage()
 class Sheet3Page extends StatefulWidget {
-  Sheet3Page({super.key, required this.machineId, required this.number});
+  Sheet3Page({
+    super.key,
+    required this.machineId,
+    required this.bulan,
+    required this.day,
+  });
   final int machineId;
-  final int number;
+  final String bulan;
+  final String day;
 
   @override
   State<Sheet3Page> createState() => _Sheet3PageState();
 }
 
 class _Sheet3PageState extends State<Sheet3Page> {
-  List<Map<String, String>> datas = [
-    {'title': 'AIR PRESSURE', 'desk': 'No'},
-    {'title': 'DRAIN FILTER', 'desk': 'Ok'},
-    {'title': 'BELT C/V U-BENDER', 'desk': 'Ok'},
-    {'title': 'B (BACK) PUSHER', 'desk': 'No'},
-    {'title': 'R (RIGHT) PUSHER', 'desk': 'Ok'},
-    {'title': 'F (FRONT) PUSHER', 'desk': 'No'},
-    {'title': 'DIE TILT', 'desk': 'Ok'},
-    {'title': 'ARM BENDING', 'desk': 'Ok'},
-  ];
+  final logger = Logger();
+
+  @override
+  void initState() {
+    super.initState();
+    String gabungan = "${widget.bulan}-${widget.day}";
+    logger.i("message : $gabungan");
+    context.read<DetailInspectionBloc>().add(
+          DetailInspectionEvent.getDetailInspectionList(widget.machineId, gabungan),
+        );
+  }
 
   @override
   Widget build(BuildContext context) {
-    final double fontSize = 16.0; // Ukuran font default
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: ColorValues.info400,
-        title: const Text(
-          'Checksheet',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 25,
-            color: Colors.white,
-          ),
-        ),
-      ),
+      appBar: appbarCus(context, "Checksheet", true),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  '4RF-PE-MDS-014 NOTCHING',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  'Bulan ke-1',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ],
+            Text(
+              "${widget.bulan}-${widget.day}",
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge!
+                  .copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20), // Jarak antar elemen
-            table("Inspection Item", "Status", fontSize),
-            const SizedBox(height: 10),
             Expanded(
-              child: ListView.builder(
-                itemCount: datas.length,
-                itemBuilder: (context, index) {
-                  final data = datas[index];
-                  final desk = data['desk']!;
-                  final backgroundColor = desk == 'No'
-                      ? Colors.red.shade100
-                      : desk == 'Ok'
-                      ? Colors.green.shade100
-                      : Colors.white;
-
-                  return SpGrid(
-                    children: [
-                      SpGridItem(
-                        sm: 6,
-                        child: Container(
-                          padding: const EdgeInsets.all(12),
-                          color: index % 2 == 0
-                              ? ColorValues.info100
-                              : Colors.white,
-                          child: Text(
-                            data['title']!,
-                            style: TextStyle(
-                              fontSize: fontSize,
-                              color: Colors.black,
-                            ),
-                          ),
+              child: BlocBuilder<DetailInspectionBloc, DetailInspectionState>(
+                builder: (context, state) {
+                  return Skeletonizer(
+                    enabled:
+                        state.maybeWhen(loading: () => true, orElse: () => false),
+                    child: state.maybeWhen(
+                      loadedList: (response) => _buildCard(response),
+                      orElse: () => _buildSkeletonForm(),
+                      error: (message) => Center(
+                        child: Text(
+                          'Error: $message',
+                          style: const TextStyle(fontSize: 25, color: Colors.red),
                         ),
                       ),
-                      SpGridItem(
-                        sm: 1,
-                        child: Container(
-                          height: 44,
-                          color: index % 2 == 0
-                              ? ColorValues.info100
-                              : Colors.white,
-                        ),
-                      ),
-                      SpGridItem(
-                        sm: 5,
-                        child: Container(
-                          padding: const EdgeInsets.all(12),
-                          color: backgroundColor,
-                          child: Text(
-                            desk,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: fontSize,
-                              fontWeight: FontWeight.bold,
-                              color: desk == 'No'
-                                  ? Colors.red
-                                  : desk == 'Yes'
-                                  ? Colors.green
-                                  : Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   );
                 },
               ),
@@ -133,48 +81,38 @@ class _Sheet3PageState extends State<Sheet3Page> {
     );
   }
 
-  Widget table(String kiri, String kanan, double size) {
-    return SpGrid(
-      children: [
-        SpGridItem(
-          sm: 6,
-          child: Container(
-            color: ColorValues.info400,
-            padding: const EdgeInsets.all(12),
-            child: Text(
-              kiri,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: size,
-                color: Colors.white,
-              ),
+  Widget _buildSkeletonForm() {
+    return ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Kartu(
+              caption: '${index + 1}',
+              onPressed: () {},
+              width: double.infinity,
+              height: 100,
             ),
-          ),
-        ),
-        SpGridItem(
-          sm: 1,
-          child: Container(
-            height: 44,
-            color: ColorValues.info400,
-          ),
-        ),
-        SpGridItem(
-          sm: 5,
-          child: Container(
-            color: ColorValues.info400,
-            padding: const EdgeInsets.all(12),
-            child: Text(
-              kanan,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: size,
-                color: Colors.white,
-              ),
+          );
+        },
+    );
+  }
+
+  Widget _buildCard(List<DetailInspectionGetModel> items) {
+    return ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Kartu(
+              status: items[index].status,
+              caption: '${index + 1}',
+              onPressed: () {},
+              width: double.infinity,
+              height: 100,
             ),
-          ),
-        ),
-      ],
+          );
+        },
     );
   }
 }

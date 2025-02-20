@@ -78,7 +78,8 @@ abstract class _$AppRouter extends RootStackRouter {
         child: Sheet3Page(
           key: args.key,
           machineId: args.machineId,
-          number: args.number,
+          bulan: args.bulan,
+          day: args.day,
         ),
       );
     },
@@ -274,14 +275,16 @@ class Sheet3Route extends PageRouteInfo<Sheet3RouteArgs> {
   Sheet3Route({
     Key? key,
     required int machineId,
-    required int number,
+    required String bulan,
+    required String day,
     List<PageRouteInfo>? children,
   }) : super(
           Sheet3Route.name,
           args: Sheet3RouteArgs(
             key: key,
             machineId: machineId,
-            number: number,
+            bulan: bulan,
+            day: day,
           ),
           initialChildren: children,
         );
@@ -295,18 +298,21 @@ class Sheet3RouteArgs {
   const Sheet3RouteArgs({
     this.key,
     required this.machineId,
-    required this.number,
+    required this.bulan,
+    required this.day,
   });
 
   final Key? key;
 
   final int machineId;
 
-  final int number;
+  final String bulan;
+
+  final String day;
 
   @override
   String toString() {
-    return 'Sheet3RouteArgs{key: $key, machineId: $machineId, number: $number}';
+    return 'Sheet3RouteArgs{key: $key, machineId: $machineId, bulan: $bulan, day: $day}';
   }
 }
 

@@ -10,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class Monthly extends StatefulWidget {
-  Monthly({super.key, required this.bulan});
+  const Monthly({super.key, required this.bulan});
 
   final String bulan;
 

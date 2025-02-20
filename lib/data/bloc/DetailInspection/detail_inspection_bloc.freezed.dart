@@ -20,18 +20,22 @@ mixin _$DetailInspectionEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(DetailInspectionModel model) postDetailInspection,
+    required TResult Function(int machineId, String tanggal)
+        getDetailInspectionList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(DetailInspectionModel model)? postDetailInspection,
+    TResult? Function(int machineId, String tanggal)? getDetailInspectionList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(DetailInspectionModel model)? postDetailInspection,
+    TResult Function(int machineId, String tanggal)? getDetailInspectionList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +43,22 @@ mixin _$DetailInspectionEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_PostDetailInspection value) postDetailInspection,
+    required TResult Function(_GetDetailInspectionList value)
+        getDetailInspectionList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_PostDetailInspection value)? postDetailInspection,
+    TResult? Function(_GetDetailInspectionList value)? getDetailInspectionList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_PostDetailInspection value)? postDetailInspection,
+    TResult Function(_GetDetailInspectionList value)? getDetailInspectionList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +129,8 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(DetailInspectionModel model) postDetailInspection,
+    required TResult Function(int machineId, String tanggal)
+        getDetailInspectionList,
   }) {
     return started();
   }
@@ -130,6 +140,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(DetailInspectionModel model)? postDetailInspection,
+    TResult? Function(int machineId, String tanggal)? getDetailInspectionList,
   }) {
     return started?.call();
   }
@@ -139,6 +150,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(DetailInspectionModel model)? postDetailInspection,
+    TResult Function(int machineId, String tanggal)? getDetailInspectionList,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -152,6 +164,8 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_PostDetailInspection value) postDetailInspection,
+    required TResult Function(_GetDetailInspectionList value)
+        getDetailInspectionList,
   }) {
     return started(this);
   }
@@ -161,6 +175,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_PostDetailInspection value)? postDetailInspection,
+    TResult? Function(_GetDetailInspectionList value)? getDetailInspectionList,
   }) {
     return started?.call(this);
   }
@@ -170,6 +185,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_PostDetailInspection value)? postDetailInspection,
+    TResult Function(_GetDetailInspectionList value)? getDetailInspectionList,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -268,6 +284,8 @@ class _$PostDetailInspectionImpl implements _PostDetailInspection {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(DetailInspectionModel model) postDetailInspection,
+    required TResult Function(int machineId, String tanggal)
+        getDetailInspectionList,
   }) {
     return postDetailInspection(model);
   }
@@ -277,6 +295,7 @@ class _$PostDetailInspectionImpl implements _PostDetailInspection {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(DetailInspectionModel model)? postDetailInspection,
+    TResult? Function(int machineId, String tanggal)? getDetailInspectionList,
   }) {
     return postDetailInspection?.call(model);
   }
@@ -286,6 +305,7 @@ class _$PostDetailInspectionImpl implements _PostDetailInspection {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(DetailInspectionModel model)? postDetailInspection,
+    TResult Function(int machineId, String tanggal)? getDetailInspectionList,
     required TResult orElse(),
   }) {
     if (postDetailInspection != null) {
@@ -299,6 +319,8 @@ class _$PostDetailInspectionImpl implements _PostDetailInspection {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_PostDetailInspection value) postDetailInspection,
+    required TResult Function(_GetDetailInspectionList value)
+        getDetailInspectionList,
   }) {
     return postDetailInspection(this);
   }
@@ -308,6 +330,7 @@ class _$PostDetailInspectionImpl implements _PostDetailInspection {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_PostDetailInspection value)? postDetailInspection,
+    TResult? Function(_GetDetailInspectionList value)? getDetailInspectionList,
   }) {
     return postDetailInspection?.call(this);
   }
@@ -317,6 +340,7 @@ class _$PostDetailInspectionImpl implements _PostDetailInspection {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_PostDetailInspection value)? postDetailInspection,
+    TResult Function(_GetDetailInspectionList value)? getDetailInspectionList,
     required TResult orElse(),
   }) {
     if (postDetailInspection != null) {
@@ -340,6 +364,170 @@ abstract class _PostDetailInspection implements DetailInspectionEvent {
 }
 
 /// @nodoc
+abstract class _$$GetDetailInspectionListImplCopyWith<$Res> {
+  factory _$$GetDetailInspectionListImplCopyWith(
+          _$GetDetailInspectionListImpl value,
+          $Res Function(_$GetDetailInspectionListImpl) then) =
+      __$$GetDetailInspectionListImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int machineId, String tanggal});
+}
+
+/// @nodoc
+class __$$GetDetailInspectionListImplCopyWithImpl<$Res>
+    extends _$DetailInspectionEventCopyWithImpl<$Res,
+        _$GetDetailInspectionListImpl>
+    implements _$$GetDetailInspectionListImplCopyWith<$Res> {
+  __$$GetDetailInspectionListImplCopyWithImpl(
+      _$GetDetailInspectionListImpl _value,
+      $Res Function(_$GetDetailInspectionListImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DetailInspectionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? machineId = null,
+    Object? tanggal = null,
+  }) {
+    return _then(_$GetDetailInspectionListImpl(
+      null == machineId
+          ? _value.machineId
+          : machineId // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == tanggal
+          ? _value.tanggal
+          : tanggal // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetDetailInspectionListImpl implements _GetDetailInspectionList {
+  const _$GetDetailInspectionListImpl(this.machineId, this.tanggal);
+
+  @override
+  final int machineId;
+  @override
+  final String tanggal;
+
+  @override
+  String toString() {
+    return 'DetailInspectionEvent.getDetailInspectionList(machineId: $machineId, tanggal: $tanggal)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetDetailInspectionListImpl &&
+            (identical(other.machineId, machineId) ||
+                other.machineId == machineId) &&
+            (identical(other.tanggal, tanggal) || other.tanggal == tanggal));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, machineId, tanggal);
+
+  /// Create a copy of DetailInspectionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetDetailInspectionListImplCopyWith<_$GetDetailInspectionListImpl>
+      get copyWith => __$$GetDetailInspectionListImplCopyWithImpl<
+          _$GetDetailInspectionListImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(DetailInspectionModel model) postDetailInspection,
+    required TResult Function(int machineId, String tanggal)
+        getDetailInspectionList,
+  }) {
+    return getDetailInspectionList(machineId, tanggal);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(DetailInspectionModel model)? postDetailInspection,
+    TResult? Function(int machineId, String tanggal)? getDetailInspectionList,
+  }) {
+    return getDetailInspectionList?.call(machineId, tanggal);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(DetailInspectionModel model)? postDetailInspection,
+    TResult Function(int machineId, String tanggal)? getDetailInspectionList,
+    required TResult orElse(),
+  }) {
+    if (getDetailInspectionList != null) {
+      return getDetailInspectionList(machineId, tanggal);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_PostDetailInspection value) postDetailInspection,
+    required TResult Function(_GetDetailInspectionList value)
+        getDetailInspectionList,
+  }) {
+    return getDetailInspectionList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_PostDetailInspection value)? postDetailInspection,
+    TResult? Function(_GetDetailInspectionList value)? getDetailInspectionList,
+  }) {
+    return getDetailInspectionList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_PostDetailInspection value)? postDetailInspection,
+    TResult Function(_GetDetailInspectionList value)? getDetailInspectionList,
+    required TResult orElse(),
+  }) {
+    if (getDetailInspectionList != null) {
+      return getDetailInspectionList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetDetailInspectionList implements DetailInspectionEvent {
+  const factory _GetDetailInspectionList(
+          final int machineId, final String tanggal) =
+      _$GetDetailInspectionListImpl;
+
+  int get machineId;
+  String get tanggal;
+
+  /// Create a copy of DetailInspectionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetDetailInspectionListImplCopyWith<_$GetDetailInspectionListImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$DetailInspectionState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -347,6 +535,8 @@ mixin _$DetailInspectionState {
     required TResult Function(String error) error,
     required TResult Function() loading,
     required TResult Function(DetailInspectionModel itemsdata) loaded,
+    required TResult Function(List<DetailInspectionGetModel> itemsdata)
+        loadedList,
     required TResult Function() success,
   }) =>
       throw _privateConstructorUsedError;
@@ -356,6 +546,7 @@ mixin _$DetailInspectionState {
     TResult? Function(String error)? error,
     TResult? Function()? loading,
     TResult? Function(DetailInspectionModel itemsdata)? loaded,
+    TResult? Function(List<DetailInspectionGetModel> itemsdata)? loadedList,
     TResult? Function()? success,
   }) =>
       throw _privateConstructorUsedError;
@@ -365,6 +556,7 @@ mixin _$DetailInspectionState {
     TResult Function(String error)? error,
     TResult Function()? loading,
     TResult Function(DetailInspectionModel itemsdata)? loaded,
+    TResult Function(List<DetailInspectionGetModel> itemsdata)? loadedList,
     TResult Function()? success,
     required TResult orElse(),
   }) =>
@@ -375,6 +567,7 @@ mixin _$DetailInspectionState {
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_LoadedList value) loadedList,
     required TResult Function(_Success value) success,
   }) =>
       throw _privateConstructorUsedError;
@@ -384,6 +577,7 @@ mixin _$DetailInspectionState {
     TResult? Function(_Error value)? error,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_LoadedList value)? loadedList,
     TResult? Function(_Success value)? success,
   }) =>
       throw _privateConstructorUsedError;
@@ -393,6 +587,7 @@ mixin _$DetailInspectionState {
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_LoadedList value)? loadedList,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) =>
@@ -466,6 +661,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function(String error) error,
     required TResult Function() loading,
     required TResult Function(DetailInspectionModel itemsdata) loaded,
+    required TResult Function(List<DetailInspectionGetModel> itemsdata)
+        loadedList,
     required TResult Function() success,
   }) {
     return initial();
@@ -478,6 +675,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(String error)? error,
     TResult? Function()? loading,
     TResult? Function(DetailInspectionModel itemsdata)? loaded,
+    TResult? Function(List<DetailInspectionGetModel> itemsdata)? loadedList,
     TResult? Function()? success,
   }) {
     return initial?.call();
@@ -490,6 +688,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(String error)? error,
     TResult Function()? loading,
     TResult Function(DetailInspectionModel itemsdata)? loaded,
+    TResult Function(List<DetailInspectionGetModel> itemsdata)? loadedList,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -506,6 +705,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_LoadedList value) loadedList,
     required TResult Function(_Success value) success,
   }) {
     return initial(this);
@@ -518,6 +718,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Error value)? error,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_LoadedList value)? loadedList,
     TResult? Function(_Success value)? success,
   }) {
     return initial?.call(this);
@@ -530,6 +731,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_LoadedList value)? loadedList,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
@@ -616,6 +818,8 @@ class _$ErrorImpl implements _Error {
     required TResult Function(String error) error,
     required TResult Function() loading,
     required TResult Function(DetailInspectionModel itemsdata) loaded,
+    required TResult Function(List<DetailInspectionGetModel> itemsdata)
+        loadedList,
     required TResult Function() success,
   }) {
     return error(this.error);
@@ -628,6 +832,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(String error)? error,
     TResult? Function()? loading,
     TResult? Function(DetailInspectionModel itemsdata)? loaded,
+    TResult? Function(List<DetailInspectionGetModel> itemsdata)? loadedList,
     TResult? Function()? success,
   }) {
     return error?.call(this.error);
@@ -640,6 +845,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(String error)? error,
     TResult Function()? loading,
     TResult Function(DetailInspectionModel itemsdata)? loaded,
+    TResult Function(List<DetailInspectionGetModel> itemsdata)? loadedList,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -656,6 +862,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_LoadedList value) loadedList,
     required TResult Function(_Success value) success,
   }) {
     return error(this);
@@ -668,6 +875,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Error value)? error,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_LoadedList value)? loadedList,
     TResult? Function(_Success value)? success,
   }) {
     return error?.call(this);
@@ -680,6 +888,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_LoadedList value)? loadedList,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
@@ -747,6 +956,8 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(String error) error,
     required TResult Function() loading,
     required TResult Function(DetailInspectionModel itemsdata) loaded,
+    required TResult Function(List<DetailInspectionGetModel> itemsdata)
+        loadedList,
     required TResult Function() success,
   }) {
     return loading();
@@ -759,6 +970,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(String error)? error,
     TResult? Function()? loading,
     TResult? Function(DetailInspectionModel itemsdata)? loaded,
+    TResult? Function(List<DetailInspectionGetModel> itemsdata)? loadedList,
     TResult? Function()? success,
   }) {
     return loading?.call();
@@ -771,6 +983,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(String error)? error,
     TResult Function()? loading,
     TResult Function(DetailInspectionModel itemsdata)? loaded,
+    TResult Function(List<DetailInspectionGetModel> itemsdata)? loadedList,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -787,6 +1000,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_LoadedList value) loadedList,
     required TResult Function(_Success value) success,
   }) {
     return loading(this);
@@ -799,6 +1013,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Error value)? error,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_LoadedList value)? loadedList,
     TResult? Function(_Success value)? success,
   }) {
     return loading?.call(this);
@@ -811,6 +1026,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_LoadedList value)? loadedList,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
@@ -910,6 +1126,8 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(String error) error,
     required TResult Function() loading,
     required TResult Function(DetailInspectionModel itemsdata) loaded,
+    required TResult Function(List<DetailInspectionGetModel> itemsdata)
+        loadedList,
     required TResult Function() success,
   }) {
     return loaded(itemsdata);
@@ -922,6 +1140,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(String error)? error,
     TResult? Function()? loading,
     TResult? Function(DetailInspectionModel itemsdata)? loaded,
+    TResult? Function(List<DetailInspectionGetModel> itemsdata)? loadedList,
     TResult? Function()? success,
   }) {
     return loaded?.call(itemsdata);
@@ -934,6 +1153,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(String error)? error,
     TResult Function()? loading,
     TResult Function(DetailInspectionModel itemsdata)? loaded,
+    TResult Function(List<DetailInspectionGetModel> itemsdata)? loadedList,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -950,6 +1170,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_LoadedList value) loadedList,
     required TResult Function(_Success value) success,
   }) {
     return loaded(this);
@@ -962,6 +1183,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Error value)? error,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_LoadedList value)? loadedList,
     TResult? Function(_Success value)? success,
   }) {
     return loaded?.call(this);
@@ -974,6 +1196,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_LoadedList value)? loadedList,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
@@ -993,6 +1216,180 @@ abstract class _Loaded implements DetailInspectionState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadedListImplCopyWith<$Res> {
+  factory _$$LoadedListImplCopyWith(
+          _$LoadedListImpl value, $Res Function(_$LoadedListImpl) then) =
+      __$$LoadedListImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<DetailInspectionGetModel> itemsdata});
+}
+
+/// @nodoc
+class __$$LoadedListImplCopyWithImpl<$Res>
+    extends _$DetailInspectionStateCopyWithImpl<$Res, _$LoadedListImpl>
+    implements _$$LoadedListImplCopyWith<$Res> {
+  __$$LoadedListImplCopyWithImpl(
+      _$LoadedListImpl _value, $Res Function(_$LoadedListImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DetailInspectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? itemsdata = null,
+  }) {
+    return _then(_$LoadedListImpl(
+      null == itemsdata
+          ? _value._itemsdata
+          : itemsdata // ignore: cast_nullable_to_non_nullable
+              as List<DetailInspectionGetModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadedListImpl implements _LoadedList {
+  const _$LoadedListImpl(final List<DetailInspectionGetModel> itemsdata)
+      : _itemsdata = itemsdata;
+
+  final List<DetailInspectionGetModel> _itemsdata;
+  @override
+  List<DetailInspectionGetModel> get itemsdata {
+    if (_itemsdata is EqualUnmodifiableListView) return _itemsdata;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_itemsdata);
+  }
+
+  @override
+  String toString() {
+    return 'DetailInspectionState.loadedList(itemsdata: $itemsdata)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadedListImpl &&
+            const DeepCollectionEquality()
+                .equals(other._itemsdata, _itemsdata));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_itemsdata));
+
+  /// Create a copy of DetailInspectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadedListImplCopyWith<_$LoadedListImpl> get copyWith =>
+      __$$LoadedListImplCopyWithImpl<_$LoadedListImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String error) error,
+    required TResult Function() loading,
+    required TResult Function(DetailInspectionModel itemsdata) loaded,
+    required TResult Function(List<DetailInspectionGetModel> itemsdata)
+        loadedList,
+    required TResult Function() success,
+  }) {
+    return loadedList(itemsdata);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String error)? error,
+    TResult? Function()? loading,
+    TResult? Function(DetailInspectionModel itemsdata)? loaded,
+    TResult? Function(List<DetailInspectionGetModel> itemsdata)? loadedList,
+    TResult? Function()? success,
+  }) {
+    return loadedList?.call(itemsdata);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String error)? error,
+    TResult Function()? loading,
+    TResult Function(DetailInspectionModel itemsdata)? loaded,
+    TResult Function(List<DetailInspectionGetModel> itemsdata)? loadedList,
+    TResult Function()? success,
+    required TResult orElse(),
+  }) {
+    if (loadedList != null) {
+      return loadedList(itemsdata);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_LoadedList value) loadedList,
+    required TResult Function(_Success value) success,
+  }) {
+    return loadedList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_LoadedList value)? loadedList,
+    TResult? Function(_Success value)? success,
+  }) {
+    return loadedList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Error value)? error,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_LoadedList value)? loadedList,
+    TResult Function(_Success value)? success,
+    required TResult orElse(),
+  }) {
+    if (loadedList != null) {
+      return loadedList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadedList implements DetailInspectionState {
+  const factory _LoadedList(final List<DetailInspectionGetModel> itemsdata) =
+      _$LoadedListImpl;
+
+  List<DetailInspectionGetModel> get itemsdata;
+
+  /// Create a copy of DetailInspectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadedListImplCopyWith<_$LoadedListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1041,6 +1438,8 @@ class _$SuccessImpl implements _Success {
     required TResult Function(String error) error,
     required TResult Function() loading,
     required TResult Function(DetailInspectionModel itemsdata) loaded,
+    required TResult Function(List<DetailInspectionGetModel> itemsdata)
+        loadedList,
     required TResult Function() success,
   }) {
     return success();
@@ -1053,6 +1452,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(String error)? error,
     TResult? Function()? loading,
     TResult? Function(DetailInspectionModel itemsdata)? loaded,
+    TResult? Function(List<DetailInspectionGetModel> itemsdata)? loadedList,
     TResult? Function()? success,
   }) {
     return success?.call();
@@ -1065,6 +1465,7 @@ class _$SuccessImpl implements _Success {
     TResult Function(String error)? error,
     TResult Function()? loading,
     TResult Function(DetailInspectionModel itemsdata)? loaded,
+    TResult Function(List<DetailInspectionGetModel> itemsdata)? loadedList,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -1081,6 +1482,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_Error value) error,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_LoadedList value) loadedList,
     required TResult Function(_Success value) success,
   }) {
     return success(this);
@@ -1093,6 +1495,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_Error value)? error,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_LoadedList value)? loadedList,
     TResult? Function(_Success value)? success,
   }) {
     return success?.call(this);
@@ -1105,6 +1508,7 @@ class _$SuccessImpl implements _Success {
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_LoadedList value)? loadedList,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {

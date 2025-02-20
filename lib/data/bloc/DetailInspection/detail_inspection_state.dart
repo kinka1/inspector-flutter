@@ -7,5 +7,7 @@ class DetailInspectionState with _$DetailInspectionState {
   const factory DetailInspectionState.loading() = _Loading;
   const factory DetailInspectionState.loaded(
       DetailInspectionModel itemsdata) = _Loaded;
+      const factory DetailInspectionState.loadedList(
+      List<DetailInspectionGetModel> itemsdata) = _LoadedList;
   const factory DetailInspectionState.success() = _Success;
 }

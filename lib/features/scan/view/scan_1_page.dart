@@ -20,7 +20,7 @@ class _Scan1PageState extends State<Scan1Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbarCus(context, "Daily Maintenance"),
+      appBar: appbarCus(context, "Daily Maintenance",false),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(

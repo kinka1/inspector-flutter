@@ -42,3 +42,23 @@ class DetailInspectionModel with _$DetailInspectionModel{
   factory DetailInspectionModel.fromJson(Map<String, dynamic> json) =>
       _$DetailInspectionModelFromJson(json);
 }
+
+@freezed
+class DetailInspectionGetModel with _$DetailInspectionGetModel{
+  const factory DetailInspectionGetModel({
+    required int id,
+    required String itemName,
+    required String specification,
+    required String method,
+    required String frequency,
+    required int number,
+    required String status,
+    required String description,
+    required int machineId,
+    required String imageName,
+    required DateTime tanggal,
+  }) = _DetailInspectionGetModel;
+
+  factory DetailInspectionGetModel.fromJson(Map<String, dynamic> json) =>
+      _$DetailInspectionGetModelFromJson(json);
+}

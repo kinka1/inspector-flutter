@@ -60,3 +60,35 @@ Map<String, dynamic> _$$DetailInspectionModelImplToJson(
       'machineId': instance.machineId,
       'imageName': instance.imageName,
     };
+
+_$DetailInspectionGetModelImpl _$$DetailInspectionGetModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DetailInspectionGetModelImpl(
+      id: (json['id'] as num).toInt(),
+      itemName: json['itemName'] as String,
+      specification: json['specification'] as String,
+      method: json['method'] as String,
+      frequency: json['frequency'] as String,
+      number: (json['number'] as num).toInt(),
+      status: json['status'] as String,
+      description: json['description'] as String,
+      machineId: (json['machineId'] as num).toInt(),
+      imageName: json['imageName'] as String,
+      tanggal: DateTime.parse(json['tanggal'] as String),
+    );
+
+Map<String, dynamic> _$$DetailInspectionGetModelImplToJson(
+        _$DetailInspectionGetModelImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'itemName': instance.itemName,
+      'specification': instance.specification,
+      'method': instance.method,
+      'frequency': instance.frequency,
+      'number': instance.number,
+      'status': instance.status,
+      'description': instance.description,
+      'machineId': instance.machineId,
+      'imageName': instance.imageName,
+      'tanggal': instance.tanggal.toIso8601String(),
+    };

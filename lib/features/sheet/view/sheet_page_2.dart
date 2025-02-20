@@ -1,9 +1,14 @@
+import 'package:application/data/bloc/result/result_bloc.dart';
 import 'package:application/data/models/Result/result_model.dart';
+import 'package:application/features/widget/appbarCus.dart';
 import 'package:application/features/widget/kartu.dart';
 import 'package:application/routes/router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:logger/logger.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../core/color_values.dart';
 
@@ -18,29 +23,23 @@ class Sheet2Page extends StatefulWidget {
 
 class _Sheet2PageState extends State<Sheet2Page> {
   int today = DateTime.now().day;
-
+  final logger = Logger();
   late Color warna = ColorValues.grayscale400;
 
   @override
   void initState() {
     super.initState();
+    logger.d("HASIL : ${widget.result}");
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: ColorValues.info400,
-        title: const Text(
-          'Checksheet',
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 25, color: Colors.white),
-        ),
-      ),
+      appBar: appbarCus(context, "Checksheet", true),
       body: Container(
         padding: const EdgeInsets.all(15),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,15 +65,30 @@ class _Sheet2PageState extends State<Sheet2Page> {
               ],
             ),
             const SizedBox(height: 20),
+            Text(
+              "PILIH TANGGAL : ",
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge!
+                  .copyWith(fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 20,
+            ),
             Wrap(
               spacing: 20, // Jarak horizontal antar elemen
               runSpacing: 20, // Jarak vertikal antar elemen
               children: [
                 for (var i = 1; i <= today; i++)
                   Kartu(
+                    status: _getStatusForDate(
+                        i), // Atau status default jika index di luar batas
                     onPressed: () {
                       AutoRouter.of(context).push(Sheet3Route(
-                          machineId: widget.result.machineId, number: i));
+                        bulan: widget.result.month,
+                        day: i.toString(),
+                        machineId: widget.result.machine.machineId,
+                      ));
                     },
                     caption: '$i',
                   ),
@@ -86,14 +100,27 @@ class _Sheet2PageState extends State<Sheet2Page> {
     );
   }
 
-  late String selectedstatus;
+  String _getStatusForDate(int date) {
+    // Cari data yang memiliki tanggal sama dengan `date`
+    var matchingData = widget.result.data.firstWhere(
+      (data) =>
+          DateFormat('dd').format(data.date) == date.toString().padLeft(2, '0'),
+      orElse: () {
+        return ResultModel(
+            id: 0,
+            userId: " ",
+            description: " ",
+            status: " ",
+            date: DateTime.now());
+      },
+    );
 
-  Color selectedColor() {
-    if (selectedstatus == "OK") {
-      warna = Colors.green;
-    } else if (selectedstatus == "Abnormal") {
-      warna = Colors.red;
+    // Jika ada data yang cocok, kembalikan statusnya
+    if (matchingData != null) {
+      return matchingData.status;
     }
-    return warna;
+
+    // Jika tidak ada data, kembalikan status default
+    return "Unknown";
   }
 }
