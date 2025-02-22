@@ -221,7 +221,7 @@ DetailInspectionData _$DetailInspectionDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DetailInspectionData {
-  DetailInspectionModel get item => throw _privateConstructorUsedError;
+  DetailInspectionGetModel get item => throw _privateConstructorUsedError;
 
   /// Serializes this DetailInspectionData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -239,9 +239,9 @@ abstract class $DetailInspectionDataCopyWith<$Res> {
           $Res Function(DetailInspectionData) then) =
       _$DetailInspectionDataCopyWithImpl<$Res, DetailInspectionData>;
   @useResult
-  $Res call({DetailInspectionModel item});
+  $Res call({DetailInspectionGetModel item});
 
-  $DetailInspectionModelCopyWith<$Res> get item;
+  $DetailInspectionGetModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -266,7 +266,7 @@ class _$DetailInspectionDataCopyWithImpl<$Res,
       item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as DetailInspectionModel,
+              as DetailInspectionGetModel,
     ) as $Val);
   }
 
@@ -274,8 +274,8 @@ class _$DetailInspectionDataCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $DetailInspectionModelCopyWith<$Res> get item {
-    return $DetailInspectionModelCopyWith<$Res>(_value.item, (value) {
+  $DetailInspectionGetModelCopyWith<$Res> get item {
+    return $DetailInspectionGetModelCopyWith<$Res>(_value.item, (value) {
       return _then(_value.copyWith(item: value) as $Val);
     });
   }
@@ -289,10 +289,10 @@ abstract class _$$DetailInspectionDataImplCopyWith<$Res>
       __$$DetailInspectionDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DetailInspectionModel item});
+  $Res call({DetailInspectionGetModel item});
 
   @override
-  $DetailInspectionModelCopyWith<$Res> get item;
+  $DetailInspectionGetModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -314,7 +314,7 @@ class __$$DetailInspectionDataImplCopyWithImpl<$Res>
       item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as DetailInspectionModel,
+              as DetailInspectionGetModel,
     ));
   }
 }
@@ -330,7 +330,7 @@ class _$DetailInspectionDataImpl
       _$$DetailInspectionDataImplFromJson(json);
 
   @override
-  final DetailInspectionModel item;
+  final DetailInspectionGetModel item;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -377,13 +377,14 @@ class _$DetailInspectionDataImpl
 
 abstract class _DetailInspectionData implements DetailInspectionData {
   const factory _DetailInspectionData(
-      {required final DetailInspectionModel item}) = _$DetailInspectionDataImpl;
+          {required final DetailInspectionGetModel item}) =
+      _$DetailInspectionDataImpl;
 
   factory _DetailInspectionData.fromJson(Map<String, dynamic> json) =
       _$DetailInspectionDataImpl.fromJson;
 
   @override
-  DetailInspectionModel get item;
+  DetailInspectionGetModel get item;
 
   /// Create a copy of DetailInspectionData
   /// with the given fields replaced by the non-null parameter values.
@@ -752,7 +753,7 @@ mixin _$DetailInspectionGetModel {
   String get status => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   int get machineId => throw _privateConstructorUsedError;
-  String get imageName => throw _privateConstructorUsedError;
+  String get imagePath => throw _privateConstructorUsedError;
   DateTime get tanggal => throw _privateConstructorUsedError;
 
   /// Serializes this DetailInspectionGetModel to a JSON map.
@@ -781,7 +782,7 @@ abstract class $DetailInspectionGetModelCopyWith<$Res> {
       String status,
       String description,
       int machineId,
-      String imageName,
+      String imagePath,
       DateTime tanggal});
 }
 
@@ -810,7 +811,7 @@ class _$DetailInspectionGetModelCopyWithImpl<$Res,
     Object? status = null,
     Object? description = null,
     Object? machineId = null,
-    Object? imageName = null,
+    Object? imagePath = null,
     Object? tanggal = null,
   }) {
     return _then(_value.copyWith(
@@ -850,9 +851,9 @@ class _$DetailInspectionGetModelCopyWithImpl<$Res,
           ? _value.machineId
           : machineId // ignore: cast_nullable_to_non_nullable
               as int,
-      imageName: null == imageName
-          ? _value.imageName
-          : imageName // ignore: cast_nullable_to_non_nullable
+      imagePath: null == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
               as String,
       tanggal: null == tanggal
           ? _value.tanggal
@@ -881,7 +882,7 @@ abstract class _$$DetailInspectionGetModelImplCopyWith<$Res>
       String status,
       String description,
       int machineId,
-      String imageName,
+      String imagePath,
       DateTime tanggal});
 }
 
@@ -909,7 +910,7 @@ class __$$DetailInspectionGetModelImplCopyWithImpl<$Res>
     Object? status = null,
     Object? description = null,
     Object? machineId = null,
-    Object? imageName = null,
+    Object? imagePath = null,
     Object? tanggal = null,
   }) {
     return _then(_$DetailInspectionGetModelImpl(
@@ -949,9 +950,9 @@ class __$$DetailInspectionGetModelImplCopyWithImpl<$Res>
           ? _value.machineId
           : machineId // ignore: cast_nullable_to_non_nullable
               as int,
-      imageName: null == imageName
-          ? _value.imageName
-          : imageName // ignore: cast_nullable_to_non_nullable
+      imagePath: null == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
               as String,
       tanggal: null == tanggal
           ? _value.tanggal
@@ -976,7 +977,7 @@ class _$DetailInspectionGetModelImpl
       required this.status,
       required this.description,
       required this.machineId,
-      required this.imageName,
+      required this.imagePath,
       required this.tanggal});
 
   factory _$DetailInspectionGetModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -1001,13 +1002,13 @@ class _$DetailInspectionGetModelImpl
   @override
   final int machineId;
   @override
-  final String imageName;
+  final String imagePath;
   @override
   final DateTime tanggal;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DetailInspectionGetModel(id: $id, itemName: $itemName, specification: $specification, method: $method, frequency: $frequency, number: $number, status: $status, description: $description, machineId: $machineId, imageName: $imageName, tanggal: $tanggal)';
+    return 'DetailInspectionGetModel(id: $id, itemName: $itemName, specification: $specification, method: $method, frequency: $frequency, number: $number, status: $status, description: $description, machineId: $machineId, imagePath: $imagePath, tanggal: $tanggal)';
   }
 
   @override
@@ -1024,7 +1025,7 @@ class _$DetailInspectionGetModelImpl
       ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('description', description))
       ..add(DiagnosticsProperty('machineId', machineId))
-      ..add(DiagnosticsProperty('imageName', imageName))
+      ..add(DiagnosticsProperty('imagePath', imagePath))
       ..add(DiagnosticsProperty('tanggal', tanggal));
   }
 
@@ -1047,8 +1048,8 @@ class _$DetailInspectionGetModelImpl
                 other.description == description) &&
             (identical(other.machineId, machineId) ||
                 other.machineId == machineId) &&
-            (identical(other.imageName, imageName) ||
-                other.imageName == imageName) &&
+            (identical(other.imagePath, imagePath) ||
+                other.imagePath == imagePath) &&
             (identical(other.tanggal, tanggal) || other.tanggal == tanggal));
   }
 
@@ -1065,7 +1066,7 @@ class _$DetailInspectionGetModelImpl
       status,
       description,
       machineId,
-      imageName,
+      imagePath,
       tanggal);
 
   /// Create a copy of DetailInspectionGetModel
@@ -1096,7 +1097,7 @@ abstract class _DetailInspectionGetModel implements DetailInspectionGetModel {
       required final String status,
       required final String description,
       required final int machineId,
-      required final String imageName,
+      required final String imagePath,
       required final DateTime tanggal}) = _$DetailInspectionGetModelImpl;
 
   factory _DetailInspectionGetModel.fromJson(Map<String, dynamic> json) =
@@ -1121,7 +1122,7 @@ abstract class _DetailInspectionGetModel implements DetailInspectionGetModel {
   @override
   int get machineId;
   @override
-  String get imageName;
+  String get imagePath;
   @override
   DateTime get tanggal;
 

@@ -18,7 +18,7 @@ class DetailInspectionResponse with _$DetailInspectionResponse {
   @freezed
 class DetailInspectionData with _$DetailInspectionData {
   const factory DetailInspectionData({
-    required DetailInspectionModel item,
+    required DetailInspectionGetModel item,
   }) = _DetailInspectionData;
 
   factory DetailInspectionData.fromJson(Map<String, Object?> json) =>
@@ -55,7 +55,7 @@ class DetailInspectionGetModel with _$DetailInspectionGetModel{
     required String status,
     required String description,
     required int machineId,
-    required String imageName,
+    required String imagePath,
     required DateTime tanggal,
   }) = _DetailInspectionGetModel;
 

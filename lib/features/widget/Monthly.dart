@@ -22,7 +22,6 @@ class _MonthlyState extends State<Monthly> {
   @override
   void initState() {
     super.initState();
-    // Panggil event untuk mengambil data saat inisialisasi
     context.read<ResultBloc>().add(ResultEvent.getResult());
   }
 
@@ -50,7 +49,6 @@ class _MonthlyState extends State<Monthly> {
     );
   }
 
-  // Widget untuk menampilkan data
   Widget _buildCard(List<ResultData> result, BuildContext context) {
     final filteredResults =
         result.where((r) => r.month == widget.bulan).toList();

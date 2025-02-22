@@ -27,10 +27,6 @@ class AuthRepositoryImpl extends AuthRepository {
         final data = response.data['data'];
         final user = data['user'];
         final token = data['token'];
-
-        // Parse dan format created_at
-        // final DateTime parsedCreatedAt = DateTime.parse(createdAt);
-        // final String formattedDate = DateFormat('yyyy-MM-dd').format(parsedCreatedAt);
         await prefs.setString('user', jsonEncode(user));
         await prefs.setString('token', jsonEncode(token));
 

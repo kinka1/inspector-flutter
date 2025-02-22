@@ -23,7 +23,7 @@ class _SheetPageState extends State<SheetPage> {
   @override
   void initState() {
     super.initState();
-    //context.read<ResultBloc>().add(ResultEvent.getResult());
+    context.read<ResultBloc>().add(ResultEvent.getResult());
   }
 
   @override

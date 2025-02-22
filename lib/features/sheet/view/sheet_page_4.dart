@@ -1,39 +1,33 @@
-import 'package:another_flushbar/flushbar.dart';
-import 'package:application/data/models/DetailInspection/DetailInspection_model.dart';
-import 'package:application/data/models/InspectionItem/InspectionItem_model.dart';
-import 'package:application/features/InspectionItem/bloc/inspection_item_bloc.dart';
-import 'package:application/features/auth/bloc/auth_bloc.dart';
+import 'package:application/data/bloc/DetailInspection/detail_inspection_bloc.dart';
+import 'package:application/data/bloc/result/result_bloc.dart';
 import 'package:application/features/widget/appbarCus.dart';
 import 'package:application/features/widget/buildForm.dart';
-import 'package:application/routes/router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
-class Scan3Page extends StatefulWidget {
-  const Scan3Page({super.key, required this.id, required this.number});
+class Sheet4Page extends StatefulWidget {
+  Sheet4Page({super.key, required this.id, required this.number, required this.bulan});
   final int id;
   final int number;
+  final String bulan;
 
   @override
-  State<Scan3Page> createState() => _Scan3PageState();
+  State<Sheet4Page> createState() => _Sheet4PageState();
 }
 
-class _Scan3PageState extends State<Scan3Page> {
+class _Sheet4PageState extends State<Sheet4Page> {
   final logger = Logger();
   List<DetailInspectionModel> savedDetails = []; 
   // Menyimpan status form
   @override
   void initState() {
     super.initState();
-    context.read<InspectionItemBloc>().add(
-        InspectionItemEvent.GetInspectionItembyNumber(
-            widget.id, widget.number));
-    context.read<AuthBloc>().add(const AuthEvent.me());
+    context.read<DetailInspectionBloc>().add(
+        DetailInspectionEvent.getDetailInspection(widget.id, widget.number, widget.bulan));
   }
 
   @override
@@ -46,13 +40,13 @@ class _Scan3PageState extends State<Scan3Page> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                BlocBuilder<InspectionItemBloc, InspectionItemState>(
+                BlocBuilder<DetailInspectionBloc, DetailInspectionState>(
                   builder: (context, state) {
                     return Skeletonizer(
                       enabled: state.maybeWhen(
                           loading: () => true, orElse: () => false),
                       child: state.maybeWhen(
-                        loadedbyNumber: (response) => Buildform(
+                        getData: (response) => Buildform(
                           item: response,
                           id: widget.id,
                         ),
@@ -72,6 +66,7 @@ class _Scan3PageState extends State<Scan3Page> {
           ),
         ));
   }
+  
   void onSave(int number, String status, String description) {
     setState(() {
       final existingIndex = savedDetails.indexWhere((detail) => detail.number == number);

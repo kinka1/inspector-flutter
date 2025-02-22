@@ -2,6 +2,6 @@ import 'package:application/data/models/DetailInspection/DetailInspection_model.
 
 abstract class DetailinspectionRepository {
   Future<void> addDetailInspection(DetailInspectionModel model);
-  Future<DetailInspectionModel> getDetailInspectionItem();
+  Future<DetailInspectionGetModel> getDetailInspectionItem(int machineId, int number, String tanggal);
   Future<List<DetailInspectionGetModel>> getDetailInspectionList(int machineId, String tanggal);
 }

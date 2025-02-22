@@ -79,7 +79,19 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           machineId: args.machineId,
           bulan: args.bulan,
-          day: args.day,
+          description: args.description,
+        ),
+      );
+    },
+    Sheet4Route.name: (routeData) {
+      final args = routeData.argsAs<Sheet4RouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: Sheet4Page(
+          key: args.key,
+          id: args.id,
+          number: args.number,
+          bulan: args.bulan,
         ),
       );
     },
@@ -276,7 +288,7 @@ class Sheet3Route extends PageRouteInfo<Sheet3RouteArgs> {
     Key? key,
     required int machineId,
     required String bulan,
-    required String day,
+    required String description,
     List<PageRouteInfo>? children,
   }) : super(
           Sheet3Route.name,
@@ -284,7 +296,7 @@ class Sheet3Route extends PageRouteInfo<Sheet3RouteArgs> {
             key: key,
             machineId: machineId,
             bulan: bulan,
-            day: day,
+            description: description,
           ),
           initialChildren: children,
         );
@@ -299,7 +311,7 @@ class Sheet3RouteArgs {
     this.key,
     required this.machineId,
     required this.bulan,
-    required this.day,
+    required this.description,
   });
 
   final Key? key;
@@ -308,11 +320,58 @@ class Sheet3RouteArgs {
 
   final String bulan;
 
-  final String day;
+  final String description;
 
   @override
   String toString() {
-    return 'Sheet3RouteArgs{key: $key, machineId: $machineId, bulan: $bulan, day: $day}';
+    return 'Sheet3RouteArgs{key: $key, machineId: $machineId, bulan: $bulan, description: $description}';
+  }
+}
+
+/// generated route for
+/// [Sheet4Page]
+class Sheet4Route extends PageRouteInfo<Sheet4RouteArgs> {
+  Sheet4Route({
+    Key? key,
+    required int id,
+    required int number,
+    required String bulan,
+    List<PageRouteInfo>? children,
+  }) : super(
+          Sheet4Route.name,
+          args: Sheet4RouteArgs(
+            key: key,
+            id: id,
+            number: number,
+            bulan: bulan,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'Sheet4Route';
+
+  static const PageInfo<Sheet4RouteArgs> page = PageInfo<Sheet4RouteArgs>(name);
+}
+
+class Sheet4RouteArgs {
+  const Sheet4RouteArgs({
+    this.key,
+    required this.id,
+    required this.number,
+    required this.bulan,
+  });
+
+  final Key? key;
+
+  final int id;
+
+  final int number;
+
+  final String bulan;
+
+  @override
+  String toString() {
+    return 'Sheet4RouteArgs{key: $key, id: $id, number: $number, bulan: $bulan}';
   }
 }
 

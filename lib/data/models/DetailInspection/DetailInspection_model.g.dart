@@ -23,8 +23,8 @@ Map<String, dynamic> _$$DetailInspectionResponseImplToJson(
 _$DetailInspectionDataImpl _$$DetailInspectionDataImplFromJson(
         Map<String, dynamic> json) =>
     _$DetailInspectionDataImpl(
-      item:
-          DetailInspectionModel.fromJson(json['item'] as Map<String, dynamic>),
+      item: DetailInspectionGetModel.fromJson(
+          json['item'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$DetailInspectionDataImplToJson(
@@ -73,7 +73,7 @@ _$DetailInspectionGetModelImpl _$$DetailInspectionGetModelImplFromJson(
       status: json['status'] as String,
       description: json['description'] as String,
       machineId: (json['machineId'] as num).toInt(),
-      imageName: json['imageName'] as String,
+      imagePath: json['imagePath'] as String,
       tanggal: DateTime.parse(json['tanggal'] as String),
     );
 
@@ -89,6 +89,6 @@ Map<String, dynamic> _$$DetailInspectionGetModelImplToJson(
       'status': instance.status,
       'description': instance.description,
       'machineId': instance.machineId,
-      'imageName': instance.imageName,
+      'imagePath': instance.imagePath,
       'tanggal': instance.tanggal.toIso8601String(),
     };

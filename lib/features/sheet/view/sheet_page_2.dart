@@ -82,11 +82,12 @@ class _Sheet2PageState extends State<Sheet2Page> {
                 for (var i = 1; i <= today; i++)
                   Kartu(
                     status: _getStatusForDate(
-                        i), // Atau status default jika index di luar batas
+                        i,"status"), // Atau status default jika index di luar batas
                     onPressed: () {
                       AutoRouter.of(context).push(Sheet3Route(
-                        bulan: widget.result.month,
-                        day: i.toString(),
+                        bulan: "${widget.result.month}-${i.toString().padLeft(2, '0')}",
+                        description: _getStatusForDate(
+                        i,"description"),
                         machineId: widget.result.machine.machineId,
                       ));
                     },
@@ -100,7 +101,7 @@ class _Sheet2PageState extends State<Sheet2Page> {
     );
   }
 
-  String _getStatusForDate(int date) {
+  String _getStatusForDate(int date,String type) {
     // Cari data yang memiliki tanggal sama dengan `date`
     var matchingData = widget.result.data.firstWhere(
       (data) =>
@@ -115,9 +116,15 @@ class _Sheet2PageState extends State<Sheet2Page> {
       },
     );
 
+    print("MATCHING DATA : $matchingData");
+
     // Jika ada data yang cocok, kembalikan statusnya
     if (matchingData != null) {
-      return matchingData.status;
+      if (type == "status") {
+        return matchingData.status;
+      } else if (type == "description") {
+        return matchingData.description;
+      }
     }
 
     // Jika tidak ada data, kembalikan status default

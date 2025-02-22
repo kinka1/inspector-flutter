@@ -1,6 +1,7 @@
 import 'package:application/data/bloc/DetailInspection/detail_inspection_bloc.dart';
 import 'package:application/data/models/DetailInspection/DetailInspection_model.dart';
 import 'package:application/features/widget/appbarCus.dart';
+import 'package:application/features/widget/custom_text_field.dart';
 import 'package:application/features/widget/kartu.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +16,11 @@ class Sheet3Page extends StatefulWidget {
     super.key,
     required this.machineId,
     required this.bulan,
-    required this.day,
+    required this.description,
   });
   final int machineId;
   final String bulan;
-  final String day;
+  final String description;
 
   @override
   State<Sheet3Page> createState() => _Sheet3PageState();
@@ -31,10 +32,9 @@ class _Sheet3PageState extends State<Sheet3Page> {
   @override
   void initState() {
     super.initState();
-    String gabungan = "${widget.bulan}-${widget.day}";
-    logger.i("message : $gabungan");
     context.read<DetailInspectionBloc>().add(
-          DetailInspectionEvent.getDetailInspectionList(widget.machineId, gabungan),
+          DetailInspectionEvent.getDetailInspectionList(
+              widget.machineId, widget.bulan),
         );
   }
 
@@ -48,7 +48,21 @@ class _Sheet3PageState extends State<Sheet3Page> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "${widget.bulan}-${widget.day}",
+              "${widget.bulan}",
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge!
+                  .copyWith(fontWeight: FontWeight.bold),
+            ),
+            Text(
+              "Remark : ",
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge!
+                  .copyWith(fontWeight: FontWeight.bold),
+            ),
+            Text(
+              widget.description,
               style: Theme.of(context)
                   .textTheme
                   .bodyLarge!
@@ -59,15 +73,16 @@ class _Sheet3PageState extends State<Sheet3Page> {
               child: BlocBuilder<DetailInspectionBloc, DetailInspectionState>(
                 builder: (context, state) {
                   return Skeletonizer(
-                    enabled:
-                        state.maybeWhen(loading: () => true, orElse: () => false),
+                    enabled: state.maybeWhen(
+                        loading: () => true, orElse: () => false),
                     child: state.maybeWhen(
                       loadedList: (response) => _buildCard(response),
                       orElse: () => _buildSkeletonForm(),
                       error: (message) => Center(
                         child: Text(
                           'Error: $message',
-                          style: const TextStyle(fontSize: 25, color: Colors.red),
+                          style:
+                              const TextStyle(fontSize: 25, color: Colors.red),
                         ),
                       ),
                     ),
@@ -83,36 +98,59 @@ class _Sheet3PageState extends State<Sheet3Page> {
 
   Widget _buildSkeletonForm() {
     return ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: Kartu(
-              caption: '${index + 1}',
-              onPressed: () {},
-              width: double.infinity,
-              height: 100,
-            ),
-          );
-        },
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Kartu(
+            caption: '${index + 1}',
+            onPressed: () {},
+            width: double.infinity,
+            height: 100,
+          ),
+        );
+      },
     );
   }
 
   Widget _buildCard(List<DetailInspectionGetModel> items) {
+    // Temukan nilai maksimal dari properti `number`
+    int maxNumber = items.isNotEmpty
+        ? items.map((item) => item.number).reduce((a, b) => a > b ? a : b)
+        : 0;
+
     return ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: Kartu(
-              status: items[index].status,
-              caption: '${index + 1}',
-              onPressed: () {},
-              width: double.infinity,
-              height: 100,
-            ),
-          );
-        },
+      itemCount: maxNumber, // Gunakan nilai maksimal sebagai jumlah kartu
+      itemBuilder: (context, index) {
+        // Cari item dengan `number` sesuai dengan indeks saat ini
+        final item = items.firstWhere(
+          (item) => item.number == index + 1,
+          orElse: () => DetailInspectionGetModel(
+            id: -1,
+            itemName: '',
+            specification: '',
+            method: '',
+            frequency: '',
+            number: index + 1,
+            status: 'N/A',
+            description: '',
+            machineId: -1,
+            imagePath: '',
+            tanggal: DateTime.now(),
+          ),
+        );
+
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Kartu(
+            status: item.status,
+            caption: '${item.number}',
+            onPressed: () {},
+            width: double.infinity,
+            height: 100,
+          ),
+        );
+      },
     );
   }
 }

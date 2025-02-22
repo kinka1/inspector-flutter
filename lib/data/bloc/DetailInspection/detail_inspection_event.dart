@@ -5,4 +5,5 @@ class DetailInspectionEvent with _$DetailInspectionEvent {
   const factory DetailInspectionEvent.started() = _Started;
   const factory DetailInspectionEvent.postDetailInspection(DetailInspectionModel model) = _PostDetailInspection;
   const factory DetailInspectionEvent.getDetailInspectionList(int machineId,String tanggal) = _GetDetailInspectionList;
+  const factory DetailInspectionEvent.getDetailInspection(int machineId,int number,String tanggal) = _GetDetailInspection;
 }

@@ -14,7 +14,7 @@ class Kartu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onPressed,
+      onTap: onPressed ?? () {},
       child: Container(
         width: width ?? 60,
         height: height ?? 60,

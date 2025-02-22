@@ -26,6 +26,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>{
   Future<void> _onLogin(_Login event, Emitter<AuthState> emit) async {
     emit(const AuthState.loading());
     try {
+      logger.i('masuk Login');
       await _repository.login(event.username, event.password);
       emit(const AuthState.loginSuccess());
     } catch (e) {

@@ -49,6 +49,7 @@ class ResultRepositoryImpl extends ResultRepository {
     try {
       final rawToken = prefs.getString('token');
       final token = rawToken?.replaceAll('"', '');
+      logger.d("token : $token");
       final response = await _dio.get(
         '${dotenv.env['API_BASE_URL']}/result',
         options: Options(headers: {'Authorization': 'Bearer $token'}),

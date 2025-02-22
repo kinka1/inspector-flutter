@@ -64,25 +64,29 @@ class LoginPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   BlocConsumer<AuthBloc, AuthState>(listener: (context, state) {
+                    print("state : $state");
                     state.maybeWhen(
                         loginSuccess: () {
+                          
                           AutoRouter.of(context).replace(const HomeRoute());
                         },
                         error: (error) => Flushbar(
-                              title: 'Ups! Sepertinya ada yang salah',
-                              message: error,
+                              title: 'Login Gagal',
+                              message: "Ups! Sepertinya ada yang salah",
                               duration: const Duration(seconds: 3),
                               backgroundColor: ColorValues.danger500,
                             ).show(context),
                         orElse: () => {});
-                  }, builder: (context, state) {
+                  }, 
+                  builder: (context, state) {
+                    print("current state : $state");
                     final isLoading = state.maybeWhen(
                       loading: () => true,
                       orElse: () => false,
                     );
-              
+
                     return ElevatedButton(
-                      onPressed: isLoading
+                      onPressed: isLoading 
                           ? null
                           : () {
                               _loginFormKey.currentState!.validate();
@@ -92,7 +96,8 @@ class LoginPage extends StatelessWidget {
                                   ));
                             },
                       style: ElevatedButton.styleFrom(
-                        minimumSize: Size(MediaQuery.of(context).size.width, 50),
+                        minimumSize:
+                            Size(MediaQuery.of(context).size.width, 50),
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         backgroundColor: ColorValues.info400,
                         shape: RoundedRectangleBorder(
