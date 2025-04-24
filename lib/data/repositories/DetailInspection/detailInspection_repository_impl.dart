@@ -1,11 +1,8 @@
-import 'dart:convert';
-import 'package:application/data/models/DetailInspection/DetailInspection_model.dart';
-import 'package:application/data/models/InspectionItem/InspectionItem_model.dart';
-import 'package:application/data/repositories/DetailInspection/detailInspection_repository.dart';
+import 'package:logger/logger.dart';
+import 'package:maintenanceApp/data/models/DetailInspection/DetailInspection_model.dart';
+import 'package:maintenanceApp/data/repositories/DetailInspection/detailInspection_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:intl/intl.dart';
-import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
@@ -13,44 +10,36 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
   final _dio = Dio();
 
   @override
-  Future<void> addDetailInspection(DetailInspectionModel model) async {
+  Future<void> addDetailInspection(DetailInspectionModelAdd model) async {
     final prefs = await SharedPreferences.getInstance();
-    String imageName = Uri.parse(model.imageName).pathSegments.last;
     try {
       final rawToken = prefs.getString('token');
       if (rawToken == null) {
         throw Exception('Token not found');
       }
       final token = rawToken.replaceAll('"', '');
-      logger.d("token $token");
-
+;
       final response = await _dio.post(
         '${dotenv.env['API_BASE_URL']}/detail',
         options: Options(headers: {'Authorization': 'Bearer $token'}),
         data: {
-          'itemName': model.itemName,
-          'specification': model.specification,
-          'method': model.method,
-          'frequency': model.frequency,
-          'number': model.number,
-          'description': model.description,
-          'status': model.status,
-          'machineId': model.machineId,
-          'imageName': imageName,
+          "machineInspectionId": model.machineInspectionId,
+          "status": model.status,
+          "ResultId": model.resultId,
+          "description": model.description,
+          "tanggal": model.tanggal
         },
       );
+      // logger.i("response : ${response.statusCode}");
 
       if (response.statusCode == 201 || response.statusCode == 200) {
-        logger.i('Detail inspection added successfully');
+        // logger.i('Detail inspection added successfully');
       } else if (response.statusCode != 200 || response.statusCode != 201) {
-        logger.e('Failed to add detail inspection: ${response.statusMessage}');
         throw Exception(
             'Failed to add detail inspection: ${response.statusMessage}');
       }
-
-      logger.i('Detail inspection added successfully');
     } on DioException catch (error) {
-      logger.e('DioException: ${error.message}');
+      // logger.e("status code : ${error.response?.statusCode},error : $error");
       if (error.response?.statusCode == 401 ||
           error.response?.statusCode == 404) {
         throw Exception('Unauthorized or resource not found');
@@ -58,14 +47,14 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
         throw Exception('Network error: ${error.message}');
       }
     } catch (error) {
-      logger.e('General error: $error');
+      // logger.e("error : $error");
       throw Exception('An unexpected error occurred: $error');
     }
   }
 
   @override
   Future<DetailInspectionGetModel> getDetailInspectionItem(
-      int machineId, int number, String tanggal) async {
+      String machineId, int number, String tanggal) async {
     final prefs = await SharedPreferences.getInstance();
     try {
       final rawToken = prefs.getString('token');
@@ -73,9 +62,9 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
         throw Exception('Token not found');
       }
       final token = rawToken.replaceAll('"', '');
-      logger.d("token $token");
-      final response = await _dio.get('${dotenv.env['API_BASE_URL']}/detail/$machineId/$number/tanggal=$tanggal',
-          options: Options(headers : {'Authorization': 'Bearer $token'}));
+      final response = await _dio.get(
+          '${dotenv.env['API_BASE_URL']}/detail/$machineId/$number/tanggal=$tanggal',
+          options: Options(headers: {'Authorization': 'Bearer $token'}));
 
       if (response.statusCode != 200) {
         throw Exception(
@@ -87,25 +76,23 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
           responseData['status'] == true) {
         final machineData = responseData['data'];
         final item = DetailInspectionGetModel.fromJson(machineData);
-        logger.i("Fetched detail inspection item: $item");
         return item;
       } else {
         throw Exception('Invalid response structure');
       }
     } on DioException catch (error) {
-      logger.e('DioException: ${error.message}');
       throw Exception('Network error: ${error.message}');
     } catch (error) {
-      logger.e('General error: $error');
       throw Exception('An unexpected error occurred: $error');
     }
   }
 
   @override
   Future<List<DetailInspectionGetModel>> getDetailInspectionList(
-      int machineId, String tanggal) async {
+      String machineId, String tanggal) async {
     final prefs = await SharedPreferences.getInstance();
     try {
+
       final rawToken = prefs.getString('token');
       if (rawToken == null) {
         throw Exception('Token not found');
@@ -114,12 +101,13 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
 
       final url =
           '${dotenv.env['API_BASE_URL']}/detail/$machineId/tanggal=$tanggal';
-      logger.i("Fetching URL: $url");
 
       final response = await _dio.get(
         url,
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
+
+      // logger.i("response : $response");
 
       if (response.statusCode != 200) {
         throw Exception(
@@ -127,30 +115,137 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
       }
 
       final responseData = response.data;
-      logger.i("Response data: $responseData");
+      // logger.i("response data : $responseData");
 
-      if (responseData is Map<String, dynamic> &&
-          responseData['status'] == true) {
-        final detailGet = responseData['data'];
-        logger.i("Detail Get : $detailGet");
-
-        if (detailGet is List<dynamic>) {
-          final items = detailGet
+      if (responseData['status'] == true) {
+        final List<dynamic> machineData = responseData['data'];
+        if (machineData is List) {
+          List<DetailInspectionGetModel> items = machineData
               .map((item) => DetailInspectionGetModel.fromJson(item))
               .toList();
-          logger.i("Fetched inspection items: $items");
+          // logger.i("response data yang berhasil : $items");
           return items;
         } else {
-          throw Exception('Invalid data structure: data is not a list');
+          throw Exception('Invalid data format: Expected a List');
         }
       } else {
         throw Exception('Invalid response: status is not true');
       }
     } on DioException catch (error) {
-      logger.e('DioException: ${error.message}');
+      // logger.e("status code : ${error.response?.statusCode},error : $error");
+      if (error.response?.statusCode == 401 ||
+          error.response?.statusCode == 404) {
+        throw Exception('Unauthorized or resource not found');
+      } else if (error.response?.statusCode == 500) {
+        throw Exception('Internal server error');
+      } else if (error.response?.statusCode == 400) {
+        throw Exception('Bad request: ${error.message}');
+      }
       throw Exception('Network error: ${error.message}');
     } catch (error) {
-      logger.e('General error: $error');
+      // logger.e("error : $error");
+      throw Exception('An unexpected error occurred: $error');
+    }
+  }
+  
+  @override
+  Future<DetailInspectionGetModel> getDetailInspectionSingle(String machineId, String tanggal) async {
+    final prefs = await SharedPreferences.getInstance();
+    try {
+      // logger.i("MASUK TRY REPO SINGLE DETAIL INSPECTION");
+      final rawToken = prefs.getString('token');
+      if (rawToken == null) {
+        throw Exception('Token not found');
+      }
+      final token = rawToken.replaceAll('"', '');
+      logger.d("ENDPOINT SINGLE : ${dotenv.env['API_BASE_URL']}/detail/machineId=$machineId/tanggal=$tanggal");
+      final response = await _dio.get(
+          '${dotenv.env['API_BASE_URL']}/detail/machineId=$machineId/tanggal=$tanggal',
+          options: Options(headers: {'Authorization': 'Bearer $token'}));
+
+      if (response.statusCode != 200) {
+        throw Exception(
+            'Failed to fetch detail inspection item: ${response.statusMessage}');
+      }
+
+      final responseData = response.data;
+      if (responseData is Map<String, dynamic> &&
+          responseData['status'] == true) {
+        final machineData = responseData['data'];
+        final item = DetailInspectionGetModel.fromJson(machineData);
+        return item;
+      } else {
+        throw Exception('Invalid response structure');
+      }
+    } on DioException catch (error) {
+      // logger.e("status code : ${error.response?.statusCode},error : $error");
+      throw Exception('Network error: ${error.message}');
+    } catch (error) {
+      // logger.e("TERJADI MASALAH DI REPO DETAIL INSPECTION SINGLE : $error");
+      throw Exception('An unexpected error occurred: $error');
+    }
+  }
+
+  Future<List<DetailInspectionGetModel>> getDetailInspectionByDateList(String formattedDate) async {
+    final prefs = await SharedPreferences.getInstance();
+    try {
+      // DateTime now = DateTime.now();
+      // String formattedDate = "${now.year}-${now.month}-${now.day}";
+      // logger.i("tanggal : $formattedDate");
+      // logger.i("masuk try detail");
+      final rawToken = prefs.getString('token');
+      if (rawToken == null) {
+        throw Exception('Token not found');
+      }
+      final token = rawToken.replaceAll('"', '');
+      logger.d("ENDPOINT OTHER : ${dotenv.env['API_BASE_URL']}/detail/date=$formattedDate");
+
+      final url =
+          '${dotenv.env['API_BASE_URL']}/detail/date=$formattedDate';
+
+      final response = await _dio.get(
+        url,
+        options: Options(headers: {'Authorization': 'Bearer $token'}),
+      );
+
+      // logger.i("response : $response");
+
+      if (response.statusCode != 200) {
+        throw Exception(
+            'Failed to fetch inspection items: ${response.statusMessage}');
+      }
+
+      final responseData = response.data;
+      // logger.i("response data : $responseData");
+
+      if (responseData['status'] == true) {
+        final List<dynamic> machineData = responseData['data'];
+        // logger.d("DATA RESPONSE : $machineData");
+        if (machineData is List) {
+          List<DetailInspectionGetModel> items = machineData
+              .map((item) => DetailInspectionGetModel.fromJson(item))
+              .toList();
+          // logger.i("response data yang berhasil : $items");
+          return items;
+        } else {
+          throw Exception('Invalid data format: Expected a List');
+        }
+      } else {
+        throw Exception('Invalid response: status is not true');
+      }
+    } on DioException catch (error) {
+      // logger.e("status code : ${error.response?.statusCode},error : $error");
+      if (error.response?.statusCode == 401 ||
+          error.response?.statusCode == 404) {
+        throw Exception('Unauthorized or resource not found');
+      } else if (error.response?.statusCode == 500) {
+        throw Exception('Internal server error');
+      } else if (error.response?.statusCode == 400) {
+        throw Exception('Bad request: ${error.message}');
+      }
+      throw Exception('Network error: ${error.message}');
+    } catch (error) {
+      // logger.e("error : $error");
       throw Exception('An unexpected error occurred: $error');
     }
   }

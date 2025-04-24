@@ -1,28 +1,33 @@
-import 'package:application/data/models/InspectionItem/InspectionItem_model.dart';
-import 'package:application/data/models/machine/machine_model.dart';
-import 'package:application/features/InspectionItem/bloc/inspection_item_bloc.dart';
-import 'package:application/features/widget/buildForm.dart';
-import 'package:application/features/widget/col.dart';
-import 'package:application/features/widget/textTitle.dart';
+import 'package:maintenanceApp/core/color_values.dart';
+import 'package:maintenanceApp/data/models/machine/machine_model.dart';
+import 'package:maintenanceApp/features/widget/col.dart';
+import 'package:maintenanceApp/features/widget/textTitle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart';
 import 'package:intl/intl.dart';
-import 'package:logger/logger.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class BuildHeader extends StatelessWidget {
-  BuildHeader({super.key, required this.machine});
+  BuildHeader({super.key, required this.machine, this.date});
   final String formattedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
   final MachineModel machine;
-  final logger = Logger();
+  final String? date;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(15.0),
+    Color warna = Colors.white;
+    double size = 20;
+    return Container(
+      padding: const EdgeInsets.only(left: 35.0, right: 35.0, bottom: 35.0),
+      decoration: const BoxDecoration(
+        color: ColorValues.hijauMain,
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(20),
+          bottomRight: Radius.circular(20),
+        ),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -32,21 +37,25 @@ class BuildHeader extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  col("Section Name : ", machine.sectionName),
-              textTitle(formattedDate),
-                ],
-              ),
-              col("Line : ", machine.line),
-              col("Machine Name : ", machine.machineName),
-              col("Machine Number : ", machine.machineNumber.toString()),
-              col("Dockument Number : ", machine.dockumentNo),
-
+              Col(
+                  title: "Section Name : ",
+                  caption: machine.sectionName,
+                  warna: warna,size: size,),
+              Col(title: "Line : ", caption: machine.line, warna: warna,size: size,),
+              Col(
+                  title: "Machine Name : ",
+                  caption: machine.machineName,
+                  warna: warna,size: size,),
+              Col(
+                  title: "Machine Number : ",
+                  caption: machine.machineNumber.toString(),
+                  warna: warna,size: size,),
+              Col(
+                  title: "Dockument Number : ",
+                  caption: machine.dockumentNo,
+                  warna: warna,size: size,),
             ],
           ),
-
         ],
       ),
     );

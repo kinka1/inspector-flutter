@@ -390,14 +390,14 @@ InspectionitemModel _$InspectionitemModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$InspectionitemModel {
-  int get itemId => throw _privateConstructorUsedError;
+  String get itemId => throw _privateConstructorUsedError;
   String get itemName => throw _privateConstructorUsedError;
   String get specification => throw _privateConstructorUsedError;
   String get method => throw _privateConstructorUsedError;
   String get frequency => throw _privateConstructorUsedError;
   int get number => throw _privateConstructorUsedError;
-  int get machineId => throw _privateConstructorUsedError;
   String get imagePath => throw _privateConstructorUsedError;
+  bool get isNumber => throw _privateConstructorUsedError;
 
   /// Serializes this InspectionitemModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -416,14 +416,14 @@ abstract class $InspectionitemModelCopyWith<$Res> {
       _$InspectionitemModelCopyWithImpl<$Res, InspectionitemModel>;
   @useResult
   $Res call(
-      {int itemId,
+      {String itemId,
       String itemName,
       String specification,
       String method,
       String frequency,
       int number,
-      int machineId,
-      String imagePath});
+      String imagePath,
+      bool isNumber});
 }
 
 /// @nodoc
@@ -447,14 +447,14 @@ class _$InspectionitemModelCopyWithImpl<$Res, $Val extends InspectionitemModel>
     Object? method = null,
     Object? frequency = null,
     Object? number = null,
-    Object? machineId = null,
     Object? imagePath = null,
+    Object? isNumber = null,
   }) {
     return _then(_value.copyWith(
       itemId: null == itemId
           ? _value.itemId
           : itemId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       itemName: null == itemName
           ? _value.itemName
           : itemName // ignore: cast_nullable_to_non_nullable
@@ -475,14 +475,14 @@ class _$InspectionitemModelCopyWithImpl<$Res, $Val extends InspectionitemModel>
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as int,
-      machineId: null == machineId
-          ? _value.machineId
-          : machineId // ignore: cast_nullable_to_non_nullable
-              as int,
       imagePath: null == imagePath
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
               as String,
+      isNumber: null == isNumber
+          ? _value.isNumber
+          : isNumber // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -496,14 +496,14 @@ abstract class _$$InspectionitemModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int itemId,
+      {String itemId,
       String itemName,
       String specification,
       String method,
       String frequency,
       int number,
-      int machineId,
-      String imagePath});
+      String imagePath,
+      bool isNumber});
 }
 
 /// @nodoc
@@ -525,14 +525,14 @@ class __$$InspectionitemModelImplCopyWithImpl<$Res>
     Object? method = null,
     Object? frequency = null,
     Object? number = null,
-    Object? machineId = null,
     Object? imagePath = null,
+    Object? isNumber = null,
   }) {
     return _then(_$InspectionitemModelImpl(
       itemId: null == itemId
           ? _value.itemId
           : itemId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       itemName: null == itemName
           ? _value.itemName
           : itemName // ignore: cast_nullable_to_non_nullable
@@ -553,14 +553,14 @@ class __$$InspectionitemModelImplCopyWithImpl<$Res>
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as int,
-      machineId: null == machineId
-          ? _value.machineId
-          : machineId // ignore: cast_nullable_to_non_nullable
-              as int,
       imagePath: null == imagePath
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
               as String,
+      isNumber: null == isNumber
+          ? _value.isNumber
+          : isNumber // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -577,14 +577,14 @@ class _$InspectionitemModelImpl
       required this.method,
       required this.frequency,
       required this.number,
-      required this.machineId,
-      required this.imagePath});
+      required this.imagePath,
+      required this.isNumber});
 
   factory _$InspectionitemModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$InspectionitemModelImplFromJson(json);
 
   @override
-  final int itemId;
+  final String itemId;
   @override
   final String itemName;
   @override
@@ -596,13 +596,13 @@ class _$InspectionitemModelImpl
   @override
   final int number;
   @override
-  final int machineId;
-  @override
   final String imagePath;
+  @override
+  final bool isNumber;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InspectionitemModel(itemId: $itemId, itemName: $itemName, specification: $specification, method: $method, frequency: $frequency, number: $number, machineId: $machineId, imagePath: $imagePath)';
+    return 'InspectionitemModel(itemId: $itemId, itemName: $itemName, specification: $specification, method: $method, frequency: $frequency, number: $number, imagePath: $imagePath, isNumber: $isNumber)';
   }
 
   @override
@@ -616,8 +616,8 @@ class _$InspectionitemModelImpl
       ..add(DiagnosticsProperty('method', method))
       ..add(DiagnosticsProperty('frequency', frequency))
       ..add(DiagnosticsProperty('number', number))
-      ..add(DiagnosticsProperty('machineId', machineId))
-      ..add(DiagnosticsProperty('imagePath', imagePath));
+      ..add(DiagnosticsProperty('imagePath', imagePath))
+      ..add(DiagnosticsProperty('isNumber', isNumber));
   }
 
   @override
@@ -634,16 +634,16 @@ class _$InspectionitemModelImpl
             (identical(other.frequency, frequency) ||
                 other.frequency == frequency) &&
             (identical(other.number, number) || other.number == number) &&
-            (identical(other.machineId, machineId) ||
-                other.machineId == machineId) &&
             (identical(other.imagePath, imagePath) ||
-                other.imagePath == imagePath));
+                other.imagePath == imagePath) &&
+            (identical(other.isNumber, isNumber) ||
+                other.isNumber == isNumber));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, itemId, itemName, specification,
-      method, frequency, number, machineId, imagePath);
+      method, frequency, number, imagePath, isNumber);
 
   /// Create a copy of InspectionitemModel
   /// with the given fields replaced by the non-null parameter values.
@@ -664,20 +664,20 @@ class _$InspectionitemModelImpl
 
 abstract class _InspectionitemModel implements InspectionitemModel {
   const factory _InspectionitemModel(
-      {required final int itemId,
+      {required final String itemId,
       required final String itemName,
       required final String specification,
       required final String method,
       required final String frequency,
       required final int number,
-      required final int machineId,
-      required final String imagePath}) = _$InspectionitemModelImpl;
+      required final String imagePath,
+      required final bool isNumber}) = _$InspectionitemModelImpl;
 
   factory _InspectionitemModel.fromJson(Map<String, dynamic> json) =
       _$InspectionitemModelImpl.fromJson;
 
   @override
-  int get itemId;
+  String get itemId;
   @override
   String get itemName;
   @override
@@ -689,9 +689,9 @@ abstract class _InspectionitemModel implements InspectionitemModel {
   @override
   int get number;
   @override
-  int get machineId;
-  @override
   String get imagePath;
+  @override
+  bool get isNumber;
 
   /// Create a copy of InspectionitemModel
   /// with the given fields replaced by the non-null parameter values.
@@ -699,4 +699,354 @@ abstract class _InspectionitemModel implements InspectionitemModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InspectionitemModelImplCopyWith<_$InspectionitemModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+InspectionitemMachineGetModel _$InspectionitemMachineGetModelFromJson(
+    Map<String, dynamic> json) {
+  return _InspectionitemMachineGetModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$InspectionitemMachineGetModel {
+  String get machineInspectionId => throw _privateConstructorUsedError;
+  String get itemId => throw _privateConstructorUsedError;
+  String get itemName => throw _privateConstructorUsedError;
+  String get specification => throw _privateConstructorUsedError;
+  String get method => throw _privateConstructorUsedError;
+  String get frequency => throw _privateConstructorUsedError;
+  int get number => throw _privateConstructorUsedError;
+  String get imagePath => throw _privateConstructorUsedError;
+  bool get isNumber => throw _privateConstructorUsedError;
+
+  /// Serializes this InspectionitemMachineGetModel to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of InspectionitemMachineGetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $InspectionitemMachineGetModelCopyWith<InspectionitemMachineGetModel>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InspectionitemMachineGetModelCopyWith<$Res> {
+  factory $InspectionitemMachineGetModelCopyWith(
+          InspectionitemMachineGetModel value,
+          $Res Function(InspectionitemMachineGetModel) then) =
+      _$InspectionitemMachineGetModelCopyWithImpl<$Res,
+          InspectionitemMachineGetModel>;
+  @useResult
+  $Res call(
+      {String machineInspectionId,
+      String itemId,
+      String itemName,
+      String specification,
+      String method,
+      String frequency,
+      int number,
+      String imagePath,
+      bool isNumber});
+}
+
+/// @nodoc
+class _$InspectionitemMachineGetModelCopyWithImpl<$Res,
+        $Val extends InspectionitemMachineGetModel>
+    implements $InspectionitemMachineGetModelCopyWith<$Res> {
+  _$InspectionitemMachineGetModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of InspectionitemMachineGetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? machineInspectionId = null,
+    Object? itemId = null,
+    Object? itemName = null,
+    Object? specification = null,
+    Object? method = null,
+    Object? frequency = null,
+    Object? number = null,
+    Object? imagePath = null,
+    Object? isNumber = null,
+  }) {
+    return _then(_value.copyWith(
+      machineInspectionId: null == machineInspectionId
+          ? _value.machineInspectionId
+          : machineInspectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      itemId: null == itemId
+          ? _value.itemId
+          : itemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      itemName: null == itemName
+          ? _value.itemName
+          : itemName // ignore: cast_nullable_to_non_nullable
+              as String,
+      specification: null == specification
+          ? _value.specification
+          : specification // ignore: cast_nullable_to_non_nullable
+              as String,
+      method: null == method
+          ? _value.method
+          : method // ignore: cast_nullable_to_non_nullable
+              as String,
+      frequency: null == frequency
+          ? _value.frequency
+          : frequency // ignore: cast_nullable_to_non_nullable
+              as String,
+      number: null == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as int,
+      imagePath: null == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String,
+      isNumber: null == isNumber
+          ? _value.isNumber
+          : isNumber // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$InspectionitemMachineGetModelImplCopyWith<$Res>
+    implements $InspectionitemMachineGetModelCopyWith<$Res> {
+  factory _$$InspectionitemMachineGetModelImplCopyWith(
+          _$InspectionitemMachineGetModelImpl value,
+          $Res Function(_$InspectionitemMachineGetModelImpl) then) =
+      __$$InspectionitemMachineGetModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String machineInspectionId,
+      String itemId,
+      String itemName,
+      String specification,
+      String method,
+      String frequency,
+      int number,
+      String imagePath,
+      bool isNumber});
+}
+
+/// @nodoc
+class __$$InspectionitemMachineGetModelImplCopyWithImpl<$Res>
+    extends _$InspectionitemMachineGetModelCopyWithImpl<$Res,
+        _$InspectionitemMachineGetModelImpl>
+    implements _$$InspectionitemMachineGetModelImplCopyWith<$Res> {
+  __$$InspectionitemMachineGetModelImplCopyWithImpl(
+      _$InspectionitemMachineGetModelImpl _value,
+      $Res Function(_$InspectionitemMachineGetModelImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of InspectionitemMachineGetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? machineInspectionId = null,
+    Object? itemId = null,
+    Object? itemName = null,
+    Object? specification = null,
+    Object? method = null,
+    Object? frequency = null,
+    Object? number = null,
+    Object? imagePath = null,
+    Object? isNumber = null,
+  }) {
+    return _then(_$InspectionitemMachineGetModelImpl(
+      machineInspectionId: null == machineInspectionId
+          ? _value.machineInspectionId
+          : machineInspectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      itemId: null == itemId
+          ? _value.itemId
+          : itemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      itemName: null == itemName
+          ? _value.itemName
+          : itemName // ignore: cast_nullable_to_non_nullable
+              as String,
+      specification: null == specification
+          ? _value.specification
+          : specification // ignore: cast_nullable_to_non_nullable
+              as String,
+      method: null == method
+          ? _value.method
+          : method // ignore: cast_nullable_to_non_nullable
+              as String,
+      frequency: null == frequency
+          ? _value.frequency
+          : frequency // ignore: cast_nullable_to_non_nullable
+              as String,
+      number: null == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as int,
+      imagePath: null == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String,
+      isNumber: null == isNumber
+          ? _value.isNumber
+          : isNumber // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$InspectionitemMachineGetModelImpl
+    with DiagnosticableTreeMixin
+    implements _InspectionitemMachineGetModel {
+  const _$InspectionitemMachineGetModelImpl(
+      {required this.machineInspectionId,
+      required this.itemId,
+      required this.itemName,
+      required this.specification,
+      required this.method,
+      required this.frequency,
+      required this.number,
+      required this.imagePath,
+      required this.isNumber});
+
+  factory _$InspectionitemMachineGetModelImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$InspectionitemMachineGetModelImplFromJson(json);
+
+  @override
+  final String machineInspectionId;
+  @override
+  final String itemId;
+  @override
+  final String itemName;
+  @override
+  final String specification;
+  @override
+  final String method;
+  @override
+  final String frequency;
+  @override
+  final int number;
+  @override
+  final String imagePath;
+  @override
+  final bool isNumber;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'InspectionitemMachineGetModel(machineInspectionId: $machineInspectionId, itemId: $itemId, itemName: $itemName, specification: $specification, method: $method, frequency: $frequency, number: $number, imagePath: $imagePath, isNumber: $isNumber)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'InspectionitemMachineGetModel'))
+      ..add(DiagnosticsProperty('machineInspectionId', machineInspectionId))
+      ..add(DiagnosticsProperty('itemId', itemId))
+      ..add(DiagnosticsProperty('itemName', itemName))
+      ..add(DiagnosticsProperty('specification', specification))
+      ..add(DiagnosticsProperty('method', method))
+      ..add(DiagnosticsProperty('frequency', frequency))
+      ..add(DiagnosticsProperty('number', number))
+      ..add(DiagnosticsProperty('imagePath', imagePath))
+      ..add(DiagnosticsProperty('isNumber', isNumber));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InspectionitemMachineGetModelImpl &&
+            (identical(other.machineInspectionId, machineInspectionId) ||
+                other.machineInspectionId == machineInspectionId) &&
+            (identical(other.itemId, itemId) || other.itemId == itemId) &&
+            (identical(other.itemName, itemName) ||
+                other.itemName == itemName) &&
+            (identical(other.specification, specification) ||
+                other.specification == specification) &&
+            (identical(other.method, method) || other.method == method) &&
+            (identical(other.frequency, frequency) ||
+                other.frequency == frequency) &&
+            (identical(other.number, number) || other.number == number) &&
+            (identical(other.imagePath, imagePath) ||
+                other.imagePath == imagePath) &&
+            (identical(other.isNumber, isNumber) ||
+                other.isNumber == isNumber));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, machineInspectionId, itemId,
+      itemName, specification, method, frequency, number, imagePath, isNumber);
+
+  /// Create a copy of InspectionitemMachineGetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InspectionitemMachineGetModelImplCopyWith<
+          _$InspectionitemMachineGetModelImpl>
+      get copyWith => __$$InspectionitemMachineGetModelImplCopyWithImpl<
+          _$InspectionitemMachineGetModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$InspectionitemMachineGetModelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _InspectionitemMachineGetModel
+    implements InspectionitemMachineGetModel {
+  const factory _InspectionitemMachineGetModel(
+      {required final String machineInspectionId,
+      required final String itemId,
+      required final String itemName,
+      required final String specification,
+      required final String method,
+      required final String frequency,
+      required final int number,
+      required final String imagePath,
+      required final bool isNumber}) = _$InspectionitemMachineGetModelImpl;
+
+  factory _InspectionitemMachineGetModel.fromJson(Map<String, dynamic> json) =
+      _$InspectionitemMachineGetModelImpl.fromJson;
+
+  @override
+  String get machineInspectionId;
+  @override
+  String get itemId;
+  @override
+  String get itemName;
+  @override
+  String get specification;
+  @override
+  String get method;
+  @override
+  String get frequency;
+  @override
+  int get number;
+  @override
+  String get imagePath;
+  @override
+  bool get isNumber;
+
+  /// Create a copy of InspectionitemMachineGetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$InspectionitemMachineGetModelImplCopyWith<
+          _$InspectionitemMachineGetModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

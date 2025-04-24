@@ -221,7 +221,7 @@ DetailInspectionData _$DetailInspectionDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DetailInspectionData {
-  DetailInspectionGetModel get item => throw _privateConstructorUsedError;
+  List<DetailInspectionGetModel> get item => throw _privateConstructorUsedError;
 
   /// Serializes this DetailInspectionData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -239,9 +239,7 @@ abstract class $DetailInspectionDataCopyWith<$Res> {
           $Res Function(DetailInspectionData) then) =
       _$DetailInspectionDataCopyWithImpl<$Res, DetailInspectionData>;
   @useResult
-  $Res call({DetailInspectionGetModel item});
-
-  $DetailInspectionGetModelCopyWith<$Res> get item;
+  $Res call({List<DetailInspectionGetModel> item});
 }
 
 /// @nodoc
@@ -266,18 +264,8 @@ class _$DetailInspectionDataCopyWithImpl<$Res,
       item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as DetailInspectionGetModel,
+              as List<DetailInspectionGetModel>,
     ) as $Val);
-  }
-
-  /// Create a copy of DetailInspectionData
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DetailInspectionGetModelCopyWith<$Res> get item {
-    return $DetailInspectionGetModelCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value) as $Val);
-    });
   }
 }
 
@@ -289,10 +277,7 @@ abstract class _$$DetailInspectionDataImplCopyWith<$Res>
       __$$DetailInspectionDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DetailInspectionGetModel item});
-
-  @override
-  $DetailInspectionGetModelCopyWith<$Res> get item;
+  $Res call({List<DetailInspectionGetModel> item});
 }
 
 /// @nodoc
@@ -312,9 +297,9 @@ class __$$DetailInspectionDataImplCopyWithImpl<$Res>
   }) {
     return _then(_$DetailInspectionDataImpl(
       item: null == item
-          ? _value.item
+          ? _value._item
           : item // ignore: cast_nullable_to_non_nullable
-              as DetailInspectionGetModel,
+              as List<DetailInspectionGetModel>,
     ));
   }
 }
@@ -324,13 +309,20 @@ class __$$DetailInspectionDataImplCopyWithImpl<$Res>
 class _$DetailInspectionDataImpl
     with DiagnosticableTreeMixin
     implements _DetailInspectionData {
-  const _$DetailInspectionDataImpl({required this.item});
+  const _$DetailInspectionDataImpl(
+      {required final List<DetailInspectionGetModel> item})
+      : _item = item;
 
   factory _$DetailInspectionDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$DetailInspectionDataImplFromJson(json);
 
+  final List<DetailInspectionGetModel> _item;
   @override
-  final DetailInspectionGetModel item;
+  List<DetailInspectionGetModel> get item {
+    if (_item is EqualUnmodifiableListView) return _item;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_item);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -350,12 +342,13 @@ class _$DetailInspectionDataImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DetailInspectionDataImpl &&
-            (identical(other.item, item) || other.item == item));
+            const DeepCollectionEquality().equals(other._item, _item));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, item);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_item));
 
   /// Create a copy of DetailInspectionData
   /// with the given fields replaced by the non-null parameter values.
@@ -377,14 +370,14 @@ class _$DetailInspectionDataImpl
 
 abstract class _DetailInspectionData implements DetailInspectionData {
   const factory _DetailInspectionData(
-          {required final DetailInspectionGetModel item}) =
+          {required final List<DetailInspectionGetModel> item}) =
       _$DetailInspectionDataImpl;
 
   factory _DetailInspectionData.fromJson(Map<String, dynamic> json) =
       _$DetailInspectionDataImpl.fromJson;
 
   @override
-  DetailInspectionGetModel get item;
+  List<DetailInspectionGetModel> get item;
 
   /// Create a copy of DetailInspectionData
   /// with the given fields replaced by the non-null parameter values.
@@ -401,15 +394,12 @@ DetailInspectionModel _$DetailInspectionModelFromJson(
 
 /// @nodoc
 mixin _$DetailInspectionModel {
-  String get itemName => throw _privateConstructorUsedError;
-  String get specification => throw _privateConstructorUsedError;
-  String get method => throw _privateConstructorUsedError;
-  String get frequency => throw _privateConstructorUsedError;
-  int get number => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  String get machineInspectionId => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  int get machineId => throw _privateConstructorUsedError;
-  String get imageName => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
+  DateTime get tanggal => throw _privateConstructorUsedError;
+  String get resultId => throw _privateConstructorUsedError;
 
   /// Serializes this DetailInspectionModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -428,15 +418,12 @@ abstract class $DetailInspectionModelCopyWith<$Res> {
       _$DetailInspectionModelCopyWithImpl<$Res, DetailInspectionModel>;
   @useResult
   $Res call(
-      {String itemName,
-      String specification,
-      String method,
-      String frequency,
-      int number,
-      String status,
+      {int id,
+      String machineInspectionId,
       String description,
-      int machineId,
-      String imageName});
+      String status,
+      DateTime tanggal,
+      String resultId});
 }
 
 /// @nodoc
@@ -455,52 +442,37 @@ class _$DetailInspectionModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? itemName = null,
-    Object? specification = null,
-    Object? method = null,
-    Object? frequency = null,
-    Object? number = null,
-    Object? status = null,
+    Object? id = null,
+    Object? machineInspectionId = null,
     Object? description = null,
-    Object? machineId = null,
-    Object? imageName = null,
+    Object? status = null,
+    Object? tanggal = null,
+    Object? resultId = null,
   }) {
     return _then(_value.copyWith(
-      itemName: null == itemName
-          ? _value.itemName
-          : itemName // ignore: cast_nullable_to_non_nullable
-              as String,
-      specification: null == specification
-          ? _value.specification
-          : specification // ignore: cast_nullable_to_non_nullable
-              as String,
-      method: null == method
-          ? _value.method
-          : method // ignore: cast_nullable_to_non_nullable
-              as String,
-      frequency: null == frequency
-          ? _value.frequency
-          : frequency // ignore: cast_nullable_to_non_nullable
-              as String,
-      number: null == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      machineInspectionId: null == machineInspectionId
+          ? _value.machineInspectionId
+          : machineInspectionId // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      machineId: null == machineId
-          ? _value.machineId
-          : machineId // ignore: cast_nullable_to_non_nullable
-              as int,
-      imageName: null == imageName
-          ? _value.imageName
-          : imageName // ignore: cast_nullable_to_non_nullable
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      tanggal: null == tanggal
+          ? _value.tanggal
+          : tanggal // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      resultId: null == resultId
+          ? _value.resultId
+          : resultId // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -516,15 +488,12 @@ abstract class _$$DetailInspectionModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String itemName,
-      String specification,
-      String method,
-      String frequency,
-      int number,
-      String status,
+      {int id,
+      String machineInspectionId,
       String description,
-      int machineId,
-      String imageName});
+      String status,
+      DateTime tanggal,
+      String resultId});
 }
 
 /// @nodoc
@@ -541,52 +510,37 @@ class __$$DetailInspectionModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? itemName = null,
-    Object? specification = null,
-    Object? method = null,
-    Object? frequency = null,
-    Object? number = null,
-    Object? status = null,
+    Object? id = null,
+    Object? machineInspectionId = null,
     Object? description = null,
-    Object? machineId = null,
-    Object? imageName = null,
+    Object? status = null,
+    Object? tanggal = null,
+    Object? resultId = null,
   }) {
     return _then(_$DetailInspectionModelImpl(
-      itemName: null == itemName
-          ? _value.itemName
-          : itemName // ignore: cast_nullable_to_non_nullable
-              as String,
-      specification: null == specification
-          ? _value.specification
-          : specification // ignore: cast_nullable_to_non_nullable
-              as String,
-      method: null == method
-          ? _value.method
-          : method // ignore: cast_nullable_to_non_nullable
-              as String,
-      frequency: null == frequency
-          ? _value.frequency
-          : frequency // ignore: cast_nullable_to_non_nullable
-              as String,
-      number: null == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      machineInspectionId: null == machineInspectionId
+          ? _value.machineInspectionId
+          : machineInspectionId // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      machineId: null == machineId
-          ? _value.machineId
-          : machineId // ignore: cast_nullable_to_non_nullable
-              as int,
-      imageName: null == imageName
-          ? _value.imageName
-          : imageName // ignore: cast_nullable_to_non_nullable
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      tanggal: null == tanggal
+          ? _value.tanggal
+          : tanggal // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      resultId: null == resultId
+          ? _value.resultId
+          : resultId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -598,41 +552,32 @@ class _$DetailInspectionModelImpl
     with DiagnosticableTreeMixin
     implements _DetailInspectionModel {
   const _$DetailInspectionModelImpl(
-      {required this.itemName,
-      required this.specification,
-      required this.method,
-      required this.frequency,
-      required this.number,
-      required this.status,
+      {required this.id,
+      required this.machineInspectionId,
       required this.description,
-      required this.machineId,
-      required this.imageName});
+      required this.status,
+      required this.tanggal,
+      required this.resultId});
 
   factory _$DetailInspectionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DetailInspectionModelImplFromJson(json);
 
   @override
-  final String itemName;
+  final int id;
   @override
-  final String specification;
-  @override
-  final String method;
-  @override
-  final String frequency;
-  @override
-  final int number;
-  @override
-  final String status;
+  final String machineInspectionId;
   @override
   final String description;
   @override
-  final int machineId;
+  final String status;
   @override
-  final String imageName;
+  final DateTime tanggal;
+  @override
+  final String resultId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DetailInspectionModel(itemName: $itemName, specification: $specification, method: $method, frequency: $frequency, number: $number, status: $status, description: $description, machineId: $machineId, imageName: $imageName)';
+    return 'DetailInspectionModel(id: $id, machineInspectionId: $machineInspectionId, description: $description, status: $status, tanggal: $tanggal, resultId: $resultId)';
   }
 
   @override
@@ -640,15 +585,12 @@ class _$DetailInspectionModelImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'DetailInspectionModel'))
-      ..add(DiagnosticsProperty('itemName', itemName))
-      ..add(DiagnosticsProperty('specification', specification))
-      ..add(DiagnosticsProperty('method', method))
-      ..add(DiagnosticsProperty('frequency', frequency))
-      ..add(DiagnosticsProperty('number', number))
-      ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('machineInspectionId', machineInspectionId))
       ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('machineId', machineId))
-      ..add(DiagnosticsProperty('imageName', imageName));
+      ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty('tanggal', tanggal))
+      ..add(DiagnosticsProperty('resultId', resultId));
   }
 
   @override
@@ -656,27 +598,21 @@ class _$DetailInspectionModelImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DetailInspectionModelImpl &&
-            (identical(other.itemName, itemName) ||
-                other.itemName == itemName) &&
-            (identical(other.specification, specification) ||
-                other.specification == specification) &&
-            (identical(other.method, method) || other.method == method) &&
-            (identical(other.frequency, frequency) ||
-                other.frequency == frequency) &&
-            (identical(other.number, number) || other.number == number) &&
-            (identical(other.status, status) || other.status == status) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.machineInspectionId, machineInspectionId) ||
+                other.machineInspectionId == machineInspectionId) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.machineId, machineId) ||
-                other.machineId == machineId) &&
-            (identical(other.imageName, imageName) ||
-                other.imageName == imageName));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.tanggal, tanggal) || other.tanggal == tanggal) &&
+            (identical(other.resultId, resultId) ||
+                other.resultId == resultId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, itemName, specification, method,
-      frequency, number, status, description, machineId, imageName);
+  int get hashCode => Object.hash(runtimeType, id, machineInspectionId,
+      description, status, tanggal, resultId);
 
   /// Create a copy of DetailInspectionModel
   /// with the given fields replaced by the non-null parameter values.
@@ -697,43 +633,291 @@ class _$DetailInspectionModelImpl
 
 abstract class _DetailInspectionModel implements DetailInspectionModel {
   const factory _DetailInspectionModel(
-      {required final String itemName,
-      required final String specification,
-      required final String method,
-      required final String frequency,
-      required final int number,
-      required final String status,
+      {required final int id,
+      required final String machineInspectionId,
       required final String description,
-      required final int machineId,
-      required final String imageName}) = _$DetailInspectionModelImpl;
+      required final String status,
+      required final DateTime tanggal,
+      required final String resultId}) = _$DetailInspectionModelImpl;
 
   factory _DetailInspectionModel.fromJson(Map<String, dynamic> json) =
       _$DetailInspectionModelImpl.fromJson;
 
   @override
-  String get itemName;
+  int get id;
   @override
-  String get specification;
-  @override
-  String get method;
-  @override
-  String get frequency;
-  @override
-  int get number;
-  @override
-  String get status;
+  String get machineInspectionId;
   @override
   String get description;
   @override
-  int get machineId;
+  String get status;
   @override
-  String get imageName;
+  DateTime get tanggal;
+  @override
+  String get resultId;
 
   /// Create a copy of DetailInspectionModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DetailInspectionModelImplCopyWith<_$DetailInspectionModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+DetailInspectionModelAdd _$DetailInspectionModelAddFromJson(
+    Map<String, dynamic> json) {
+  return _DetailInspectionModelAdd.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DetailInspectionModelAdd {
+  String get machineInspectionId => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
+  int get resultId => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  String get tanggal => throw _privateConstructorUsedError;
+
+  /// Serializes this DetailInspectionModelAdd to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of DetailInspectionModelAdd
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $DetailInspectionModelAddCopyWith<DetailInspectionModelAdd> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DetailInspectionModelAddCopyWith<$Res> {
+  factory $DetailInspectionModelAddCopyWith(DetailInspectionModelAdd value,
+          $Res Function(DetailInspectionModelAdd) then) =
+      _$DetailInspectionModelAddCopyWithImpl<$Res, DetailInspectionModelAdd>;
+  @useResult
+  $Res call(
+      {String machineInspectionId,
+      String status,
+      int resultId,
+      String description,
+      String tanggal});
+}
+
+/// @nodoc
+class _$DetailInspectionModelAddCopyWithImpl<$Res,
+        $Val extends DetailInspectionModelAdd>
+    implements $DetailInspectionModelAddCopyWith<$Res> {
+  _$DetailInspectionModelAddCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of DetailInspectionModelAdd
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? machineInspectionId = null,
+    Object? status = null,
+    Object? resultId = null,
+    Object? description = null,
+    Object? tanggal = null,
+  }) {
+    return _then(_value.copyWith(
+      machineInspectionId: null == machineInspectionId
+          ? _value.machineInspectionId
+          : machineInspectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      resultId: null == resultId
+          ? _value.resultId
+          : resultId // ignore: cast_nullable_to_non_nullable
+              as int,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      tanggal: null == tanggal
+          ? _value.tanggal
+          : tanggal // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$DetailInspectionModelAddImplCopyWith<$Res>
+    implements $DetailInspectionModelAddCopyWith<$Res> {
+  factory _$$DetailInspectionModelAddImplCopyWith(
+          _$DetailInspectionModelAddImpl value,
+          $Res Function(_$DetailInspectionModelAddImpl) then) =
+      __$$DetailInspectionModelAddImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String machineInspectionId,
+      String status,
+      int resultId,
+      String description,
+      String tanggal});
+}
+
+/// @nodoc
+class __$$DetailInspectionModelAddImplCopyWithImpl<$Res>
+    extends _$DetailInspectionModelAddCopyWithImpl<$Res,
+        _$DetailInspectionModelAddImpl>
+    implements _$$DetailInspectionModelAddImplCopyWith<$Res> {
+  __$$DetailInspectionModelAddImplCopyWithImpl(
+      _$DetailInspectionModelAddImpl _value,
+      $Res Function(_$DetailInspectionModelAddImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DetailInspectionModelAdd
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? machineInspectionId = null,
+    Object? status = null,
+    Object? resultId = null,
+    Object? description = null,
+    Object? tanggal = null,
+  }) {
+    return _then(_$DetailInspectionModelAddImpl(
+      machineInspectionId: null == machineInspectionId
+          ? _value.machineInspectionId
+          : machineInspectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      resultId: null == resultId
+          ? _value.resultId
+          : resultId // ignore: cast_nullable_to_non_nullable
+              as int,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      tanggal: null == tanggal
+          ? _value.tanggal
+          : tanggal // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$DetailInspectionModelAddImpl
+    with DiagnosticableTreeMixin
+    implements _DetailInspectionModelAdd {
+  const _$DetailInspectionModelAddImpl(
+      {required this.machineInspectionId,
+      required this.status,
+      required this.resultId,
+      required this.description,
+      required this.tanggal});
+
+  factory _$DetailInspectionModelAddImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DetailInspectionModelAddImplFromJson(json);
+
+  @override
+  final String machineInspectionId;
+  @override
+  final String status;
+  @override
+  final int resultId;
+  @override
+  final String description;
+  @override
+  final String tanggal;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DetailInspectionModelAdd(machineInspectionId: $machineInspectionId, status: $status, resultId: $resultId, description: $description, tanggal: $tanggal)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DetailInspectionModelAdd'))
+      ..add(DiagnosticsProperty('machineInspectionId', machineInspectionId))
+      ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty('resultId', resultId))
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('tanggal', tanggal));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DetailInspectionModelAddImpl &&
+            (identical(other.machineInspectionId, machineInspectionId) ||
+                other.machineInspectionId == machineInspectionId) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.resultId, resultId) ||
+                other.resultId == resultId) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.tanggal, tanggal) || other.tanggal == tanggal));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, machineInspectionId, status, resultId, description, tanggal);
+
+  /// Create a copy of DetailInspectionModelAdd
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DetailInspectionModelAddImplCopyWith<_$DetailInspectionModelAddImpl>
+      get copyWith => __$$DetailInspectionModelAddImplCopyWithImpl<
+          _$DetailInspectionModelAddImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DetailInspectionModelAddImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DetailInspectionModelAdd implements DetailInspectionModelAdd {
+  const factory _DetailInspectionModelAdd(
+      {required final String machineInspectionId,
+      required final String status,
+      required final int resultId,
+      required final String description,
+      required final String tanggal}) = _$DetailInspectionModelAddImpl;
+
+  factory _DetailInspectionModelAdd.fromJson(Map<String, dynamic> json) =
+      _$DetailInspectionModelAddImpl.fromJson;
+
+  @override
+  String get machineInspectionId;
+  @override
+  String get status;
+  @override
+  int get resultId;
+  @override
+  String get description;
+  @override
+  String get tanggal;
+
+  /// Create a copy of DetailInspectionModelAdd
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DetailInspectionModelAddImplCopyWith<_$DetailInspectionModelAddImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -745,16 +929,11 @@ DetailInspectionGetModel _$DetailInspectionGetModelFromJson(
 /// @nodoc
 mixin _$DetailInspectionGetModel {
   int get id => throw _privateConstructorUsedError;
-  String get itemName => throw _privateConstructorUsedError;
-  String get specification => throw _privateConstructorUsedError;
-  String get method => throw _privateConstructorUsedError;
-  String get frequency => throw _privateConstructorUsedError;
-  int get number => throw _privateConstructorUsedError;
+  String get machineInspectionId => throw _privateConstructorUsedError;
+  MachineModel get machine => throw _privateConstructorUsedError;
+  InspectionitemModel get inspectionItem => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  int get machineId => throw _privateConstructorUsedError;
-  String get imagePath => throw _privateConstructorUsedError;
-  DateTime get tanggal => throw _privateConstructorUsedError;
 
   /// Serializes this DetailInspectionGetModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -774,16 +953,14 @@ abstract class $DetailInspectionGetModelCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String itemName,
-      String specification,
-      String method,
-      String frequency,
-      int number,
+      String machineInspectionId,
+      MachineModel machine,
+      InspectionitemModel inspectionItem,
       String status,
-      String description,
-      int machineId,
-      String imagePath,
-      DateTime tanggal});
+      String description});
+
+  $MachineModelCopyWith<$Res> get machine;
+  $InspectionitemModelCopyWith<$Res> get inspectionItem;
 }
 
 /// @nodoc
@@ -803,42 +980,29 @@ class _$DetailInspectionGetModelCopyWithImpl<$Res,
   @override
   $Res call({
     Object? id = null,
-    Object? itemName = null,
-    Object? specification = null,
-    Object? method = null,
-    Object? frequency = null,
-    Object? number = null,
+    Object? machineInspectionId = null,
+    Object? machine = null,
+    Object? inspectionItem = null,
     Object? status = null,
     Object? description = null,
-    Object? machineId = null,
-    Object? imagePath = null,
-    Object? tanggal = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      itemName: null == itemName
-          ? _value.itemName
-          : itemName // ignore: cast_nullable_to_non_nullable
+      machineInspectionId: null == machineInspectionId
+          ? _value.machineInspectionId
+          : machineInspectionId // ignore: cast_nullable_to_non_nullable
               as String,
-      specification: null == specification
-          ? _value.specification
-          : specification // ignore: cast_nullable_to_non_nullable
-              as String,
-      method: null == method
-          ? _value.method
-          : method // ignore: cast_nullable_to_non_nullable
-              as String,
-      frequency: null == frequency
-          ? _value.frequency
-          : frequency // ignore: cast_nullable_to_non_nullable
-              as String,
-      number: null == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as int,
+      machine: null == machine
+          ? _value.machine
+          : machine // ignore: cast_nullable_to_non_nullable
+              as MachineModel,
+      inspectionItem: null == inspectionItem
+          ? _value.inspectionItem
+          : inspectionItem // ignore: cast_nullable_to_non_nullable
+              as InspectionitemModel,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -847,19 +1011,27 @@ class _$DetailInspectionGetModelCopyWithImpl<$Res,
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      machineId: null == machineId
-          ? _value.machineId
-          : machineId // ignore: cast_nullable_to_non_nullable
-              as int,
-      imagePath: null == imagePath
-          ? _value.imagePath
-          : imagePath // ignore: cast_nullable_to_non_nullable
-              as String,
-      tanggal: null == tanggal
-          ? _value.tanggal
-          : tanggal // ignore: cast_nullable_to_non_nullable
-              as DateTime,
     ) as $Val);
+  }
+
+  /// Create a copy of DetailInspectionGetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MachineModelCopyWith<$Res> get machine {
+    return $MachineModelCopyWith<$Res>(_value.machine, (value) {
+      return _then(_value.copyWith(machine: value) as $Val);
+    });
+  }
+
+  /// Create a copy of DetailInspectionGetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $InspectionitemModelCopyWith<$Res> get inspectionItem {
+    return $InspectionitemModelCopyWith<$Res>(_value.inspectionItem, (value) {
+      return _then(_value.copyWith(inspectionItem: value) as $Val);
+    });
   }
 }
 
@@ -874,16 +1046,16 @@ abstract class _$$DetailInspectionGetModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
-      String itemName,
-      String specification,
-      String method,
-      String frequency,
-      int number,
+      String machineInspectionId,
+      MachineModel machine,
+      InspectionitemModel inspectionItem,
       String status,
-      String description,
-      int machineId,
-      String imagePath,
-      DateTime tanggal});
+      String description});
+
+  @override
+  $MachineModelCopyWith<$Res> get machine;
+  @override
+  $InspectionitemModelCopyWith<$Res> get inspectionItem;
 }
 
 /// @nodoc
@@ -902,42 +1074,29 @@ class __$$DetailInspectionGetModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? itemName = null,
-    Object? specification = null,
-    Object? method = null,
-    Object? frequency = null,
-    Object? number = null,
+    Object? machineInspectionId = null,
+    Object? machine = null,
+    Object? inspectionItem = null,
     Object? status = null,
     Object? description = null,
-    Object? machineId = null,
-    Object? imagePath = null,
-    Object? tanggal = null,
   }) {
     return _then(_$DetailInspectionGetModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      itemName: null == itemName
-          ? _value.itemName
-          : itemName // ignore: cast_nullable_to_non_nullable
+      machineInspectionId: null == machineInspectionId
+          ? _value.machineInspectionId
+          : machineInspectionId // ignore: cast_nullable_to_non_nullable
               as String,
-      specification: null == specification
-          ? _value.specification
-          : specification // ignore: cast_nullable_to_non_nullable
-              as String,
-      method: null == method
-          ? _value.method
-          : method // ignore: cast_nullable_to_non_nullable
-              as String,
-      frequency: null == frequency
-          ? _value.frequency
-          : frequency // ignore: cast_nullable_to_non_nullable
-              as String,
-      number: null == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as int,
+      machine: null == machine
+          ? _value.machine
+          : machine // ignore: cast_nullable_to_non_nullable
+              as MachineModel,
+      inspectionItem: null == inspectionItem
+          ? _value.inspectionItem
+          : inspectionItem // ignore: cast_nullable_to_non_nullable
+              as InspectionitemModel,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -946,18 +1105,6 @@ class __$$DetailInspectionGetModelImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      machineId: null == machineId
-          ? _value.machineId
-          : machineId // ignore: cast_nullable_to_non_nullable
-              as int,
-      imagePath: null == imagePath
-          ? _value.imagePath
-          : imagePath // ignore: cast_nullable_to_non_nullable
-              as String,
-      tanggal: null == tanggal
-          ? _value.tanggal
-          : tanggal // ignore: cast_nullable_to_non_nullable
-              as DateTime,
     ));
   }
 }
@@ -969,16 +1116,11 @@ class _$DetailInspectionGetModelImpl
     implements _DetailInspectionGetModel {
   const _$DetailInspectionGetModelImpl(
       {required this.id,
-      required this.itemName,
-      required this.specification,
-      required this.method,
-      required this.frequency,
-      required this.number,
+      required this.machineInspectionId,
+      required this.machine,
+      required this.inspectionItem,
       required this.status,
-      required this.description,
-      required this.machineId,
-      required this.imagePath,
-      required this.tanggal});
+      required this.description});
 
   factory _$DetailInspectionGetModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DetailInspectionGetModelImplFromJson(json);
@@ -986,29 +1128,19 @@ class _$DetailInspectionGetModelImpl
   @override
   final int id;
   @override
-  final String itemName;
+  final String machineInspectionId;
   @override
-  final String specification;
+  final MachineModel machine;
   @override
-  final String method;
-  @override
-  final String frequency;
-  @override
-  final int number;
+  final InspectionitemModel inspectionItem;
   @override
   final String status;
   @override
   final String description;
-  @override
-  final int machineId;
-  @override
-  final String imagePath;
-  @override
-  final DateTime tanggal;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DetailInspectionGetModel(id: $id, itemName: $itemName, specification: $specification, method: $method, frequency: $frequency, number: $number, status: $status, description: $description, machineId: $machineId, imagePath: $imagePath, tanggal: $tanggal)';
+    return 'DetailInspectionGetModel(id: $id, machineInspectionId: $machineInspectionId, machine: $machine, inspectionItem: $inspectionItem, status: $status, description: $description)';
   }
 
   @override
@@ -1017,16 +1149,11 @@ class _$DetailInspectionGetModelImpl
     properties
       ..add(DiagnosticsProperty('type', 'DetailInspectionGetModel'))
       ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('itemName', itemName))
-      ..add(DiagnosticsProperty('specification', specification))
-      ..add(DiagnosticsProperty('method', method))
-      ..add(DiagnosticsProperty('frequency', frequency))
-      ..add(DiagnosticsProperty('number', number))
+      ..add(DiagnosticsProperty('machineInspectionId', machineInspectionId))
+      ..add(DiagnosticsProperty('machine', machine))
+      ..add(DiagnosticsProperty('inspectionItem', inspectionItem))
       ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('machineId', machineId))
-      ..add(DiagnosticsProperty('imagePath', imagePath))
-      ..add(DiagnosticsProperty('tanggal', tanggal));
+      ..add(DiagnosticsProperty('description', description));
   }
 
   @override
@@ -1035,39 +1162,20 @@ class _$DetailInspectionGetModelImpl
         (other.runtimeType == runtimeType &&
             other is _$DetailInspectionGetModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.itemName, itemName) ||
-                other.itemName == itemName) &&
-            (identical(other.specification, specification) ||
-                other.specification == specification) &&
-            (identical(other.method, method) || other.method == method) &&
-            (identical(other.frequency, frequency) ||
-                other.frequency == frequency) &&
-            (identical(other.number, number) || other.number == number) &&
+            (identical(other.machineInspectionId, machineInspectionId) ||
+                other.machineInspectionId == machineInspectionId) &&
+            (identical(other.machine, machine) || other.machine == machine) &&
+            (identical(other.inspectionItem, inspectionItem) ||
+                other.inspectionItem == inspectionItem) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.machineId, machineId) ||
-                other.machineId == machineId) &&
-            (identical(other.imagePath, imagePath) ||
-                other.imagePath == imagePath) &&
-            (identical(other.tanggal, tanggal) || other.tanggal == tanggal));
+                other.description == description));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      itemName,
-      specification,
-      method,
-      frequency,
-      number,
-      status,
-      description,
-      machineId,
-      imagePath,
-      tanggal);
+  int get hashCode => Object.hash(runtimeType, id, machineInspectionId, machine,
+      inspectionItem, status, description);
 
   /// Create a copy of DetailInspectionGetModel
   /// with the given fields replaced by the non-null parameter values.
@@ -1089,16 +1197,11 @@ class _$DetailInspectionGetModelImpl
 abstract class _DetailInspectionGetModel implements DetailInspectionGetModel {
   const factory _DetailInspectionGetModel(
       {required final int id,
-      required final String itemName,
-      required final String specification,
-      required final String method,
-      required final String frequency,
-      required final int number,
+      required final String machineInspectionId,
+      required final MachineModel machine,
+      required final InspectionitemModel inspectionItem,
       required final String status,
-      required final String description,
-      required final int machineId,
-      required final String imagePath,
-      required final DateTime tanggal}) = _$DetailInspectionGetModelImpl;
+      required final String description}) = _$DetailInspectionGetModelImpl;
 
   factory _DetailInspectionGetModel.fromJson(Map<String, dynamic> json) =
       _$DetailInspectionGetModelImpl.fromJson;
@@ -1106,25 +1209,15 @@ abstract class _DetailInspectionGetModel implements DetailInspectionGetModel {
   @override
   int get id;
   @override
-  String get itemName;
+  String get machineInspectionId;
   @override
-  String get specification;
+  MachineModel get machine;
   @override
-  String get method;
-  @override
-  String get frequency;
-  @override
-  int get number;
+  InspectionitemModel get inspectionItem;
   @override
   String get status;
   @override
   String get description;
-  @override
-  int get machineId;
-  @override
-  String get imagePath;
-  @override
-  DateTime get tanggal;
 
   /// Create a copy of DetailInspectionGetModel
   /// with the given fields replaced by the non-null parameter values.

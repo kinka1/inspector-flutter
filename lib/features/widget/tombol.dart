@@ -1,4 +1,4 @@
-import 'package:application/core/color_values.dart';
+import 'package:maintenanceApp/core/color_values.dart';
 import 'package:flutter/material.dart';
 
 Widget tombol(String text, VoidCallback onPressed) {
@@ -12,6 +12,6 @@ Widget tombol(String text, VoidCallback onPressed) {
     ),
     onPressed: onPressed,
     child: Text(text,
-        style: TextStyle(fontSize: 20, color: Colors.white)),
+        style: const TextStyle(fontSize: 20, color: Colors.white)),
   );
 }

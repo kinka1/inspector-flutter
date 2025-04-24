@@ -20,24 +20,36 @@ mixin _$ResultEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getResult,
-    required TResult Function(int machineId, String description, String status)
-        addResult,
+    required TResult Function(String status) addResult,
+    required TResult Function() getResultAll,
+    required TResult Function(ResultModel model) UpdateStatus,
+    required TResult Function(String tanggal) getResultByDatelist,
+    required TResult Function(String tanggal) getResultByDate,
+    required TResult Function(String tanggal) getResultByDateForHomepage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getResult,
-    TResult? Function(int machineId, String description, String status)?
-        addResult,
+    TResult? Function(String status)? addResult,
+    TResult? Function()? getResultAll,
+    TResult? Function(ResultModel model)? UpdateStatus,
+    TResult? Function(String tanggal)? getResultByDatelist,
+    TResult? Function(String tanggal)? getResultByDate,
+    TResult? Function(String tanggal)? getResultByDateForHomepage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getResult,
-    TResult Function(int machineId, String description, String status)?
-        addResult,
+    TResult Function(String status)? addResult,
+    TResult Function()? getResultAll,
+    TResult Function(ResultModel model)? UpdateStatus,
+    TResult Function(String tanggal)? getResultByDatelist,
+    TResult Function(String tanggal)? getResultByDate,
+    TResult Function(String tanggal)? getResultByDateForHomepage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -46,6 +58,12 @@ mixin _$ResultEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_GetResult value) getResult,
     required TResult Function(_AddResult value) addResult,
+    required TResult Function(_GetResultAll value) getResultAll,
+    required TResult Function(_UpdateStatus value) UpdateStatus,
+    required TResult Function(_GetResultByDatelist value) getResultByDatelist,
+    required TResult Function(_GetResultByDate value) getResultByDate,
+    required TResult Function(_GetResultByDateForHomepage value)
+        getResultByDateForHomepage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +71,12 @@ mixin _$ResultEvent {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetResult value)? getResult,
     TResult? Function(_AddResult value)? addResult,
+    TResult? Function(_GetResultAll value)? getResultAll,
+    TResult? Function(_UpdateStatus value)? UpdateStatus,
+    TResult? Function(_GetResultByDatelist value)? getResultByDatelist,
+    TResult? Function(_GetResultByDate value)? getResultByDate,
+    TResult? Function(_GetResultByDateForHomepage value)?
+        getResultByDateForHomepage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +84,12 @@ mixin _$ResultEvent {
     TResult Function(_Started value)? started,
     TResult Function(_GetResult value)? getResult,
     TResult Function(_AddResult value)? addResult,
+    TResult Function(_GetResultAll value)? getResultAll,
+    TResult Function(_UpdateStatus value)? UpdateStatus,
+    TResult Function(_GetResultByDatelist value)? getResultByDatelist,
+    TResult Function(_GetResultByDate value)? getResultByDate,
+    TResult Function(_GetResultByDateForHomepage value)?
+        getResultByDateForHomepage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,8 +165,12 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getResult,
-    required TResult Function(int machineId, String description, String status)
-        addResult,
+    required TResult Function(String status) addResult,
+    required TResult Function() getResultAll,
+    required TResult Function(ResultModel model) UpdateStatus,
+    required TResult Function(String tanggal) getResultByDatelist,
+    required TResult Function(String tanggal) getResultByDate,
+    required TResult Function(String tanggal) getResultByDateForHomepage,
   }) {
     return started();
   }
@@ -146,8 +180,12 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getResult,
-    TResult? Function(int machineId, String description, String status)?
-        addResult,
+    TResult? Function(String status)? addResult,
+    TResult? Function()? getResultAll,
+    TResult? Function(ResultModel model)? UpdateStatus,
+    TResult? Function(String tanggal)? getResultByDatelist,
+    TResult? Function(String tanggal)? getResultByDate,
+    TResult? Function(String tanggal)? getResultByDateForHomepage,
   }) {
     return started?.call();
   }
@@ -157,8 +195,12 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getResult,
-    TResult Function(int machineId, String description, String status)?
-        addResult,
+    TResult Function(String status)? addResult,
+    TResult Function()? getResultAll,
+    TResult Function(ResultModel model)? UpdateStatus,
+    TResult Function(String tanggal)? getResultByDatelist,
+    TResult Function(String tanggal)? getResultByDate,
+    TResult Function(String tanggal)? getResultByDateForHomepage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -173,6 +215,12 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_GetResult value) getResult,
     required TResult Function(_AddResult value) addResult,
+    required TResult Function(_GetResultAll value) getResultAll,
+    required TResult Function(_UpdateStatus value) UpdateStatus,
+    required TResult Function(_GetResultByDatelist value) getResultByDatelist,
+    required TResult Function(_GetResultByDate value) getResultByDate,
+    required TResult Function(_GetResultByDateForHomepage value)
+        getResultByDateForHomepage,
   }) {
     return started(this);
   }
@@ -183,6 +231,12 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetResult value)? getResult,
     TResult? Function(_AddResult value)? addResult,
+    TResult? Function(_GetResultAll value)? getResultAll,
+    TResult? Function(_UpdateStatus value)? UpdateStatus,
+    TResult? Function(_GetResultByDatelist value)? getResultByDatelist,
+    TResult? Function(_GetResultByDate value)? getResultByDate,
+    TResult? Function(_GetResultByDateForHomepage value)?
+        getResultByDateForHomepage,
   }) {
     return started?.call(this);
   }
@@ -193,6 +247,12 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_GetResult value)? getResult,
     TResult Function(_AddResult value)? addResult,
+    TResult Function(_GetResultAll value)? getResultAll,
+    TResult Function(_UpdateStatus value)? UpdateStatus,
+    TResult Function(_GetResultByDatelist value)? getResultByDatelist,
+    TResult Function(_GetResultByDate value)? getResultByDate,
+    TResult Function(_GetResultByDateForHomepage value)?
+        getResultByDateForHomepage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -255,8 +315,12 @@ class _$GetResultImpl with DiagnosticableTreeMixin implements _GetResult {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getResult,
-    required TResult Function(int machineId, String description, String status)
-        addResult,
+    required TResult Function(String status) addResult,
+    required TResult Function() getResultAll,
+    required TResult Function(ResultModel model) UpdateStatus,
+    required TResult Function(String tanggal) getResultByDatelist,
+    required TResult Function(String tanggal) getResultByDate,
+    required TResult Function(String tanggal) getResultByDateForHomepage,
   }) {
     return getResult();
   }
@@ -266,8 +330,12 @@ class _$GetResultImpl with DiagnosticableTreeMixin implements _GetResult {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getResult,
-    TResult? Function(int machineId, String description, String status)?
-        addResult,
+    TResult? Function(String status)? addResult,
+    TResult? Function()? getResultAll,
+    TResult? Function(ResultModel model)? UpdateStatus,
+    TResult? Function(String tanggal)? getResultByDatelist,
+    TResult? Function(String tanggal)? getResultByDate,
+    TResult? Function(String tanggal)? getResultByDateForHomepage,
   }) {
     return getResult?.call();
   }
@@ -277,8 +345,12 @@ class _$GetResultImpl with DiagnosticableTreeMixin implements _GetResult {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getResult,
-    TResult Function(int machineId, String description, String status)?
-        addResult,
+    TResult Function(String status)? addResult,
+    TResult Function()? getResultAll,
+    TResult Function(ResultModel model)? UpdateStatus,
+    TResult Function(String tanggal)? getResultByDatelist,
+    TResult Function(String tanggal)? getResultByDate,
+    TResult Function(String tanggal)? getResultByDateForHomepage,
     required TResult orElse(),
   }) {
     if (getResult != null) {
@@ -293,6 +365,12 @@ class _$GetResultImpl with DiagnosticableTreeMixin implements _GetResult {
     required TResult Function(_Started value) started,
     required TResult Function(_GetResult value) getResult,
     required TResult Function(_AddResult value) addResult,
+    required TResult Function(_GetResultAll value) getResultAll,
+    required TResult Function(_UpdateStatus value) UpdateStatus,
+    required TResult Function(_GetResultByDatelist value) getResultByDatelist,
+    required TResult Function(_GetResultByDate value) getResultByDate,
+    required TResult Function(_GetResultByDateForHomepage value)
+        getResultByDateForHomepage,
   }) {
     return getResult(this);
   }
@@ -303,6 +381,12 @@ class _$GetResultImpl with DiagnosticableTreeMixin implements _GetResult {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetResult value)? getResult,
     TResult? Function(_AddResult value)? addResult,
+    TResult? Function(_GetResultAll value)? getResultAll,
+    TResult? Function(_UpdateStatus value)? UpdateStatus,
+    TResult? Function(_GetResultByDatelist value)? getResultByDatelist,
+    TResult? Function(_GetResultByDate value)? getResultByDate,
+    TResult? Function(_GetResultByDateForHomepage value)?
+        getResultByDateForHomepage,
   }) {
     return getResult?.call(this);
   }
@@ -313,6 +397,12 @@ class _$GetResultImpl with DiagnosticableTreeMixin implements _GetResult {
     TResult Function(_Started value)? started,
     TResult Function(_GetResult value)? getResult,
     TResult Function(_AddResult value)? addResult,
+    TResult Function(_GetResultAll value)? getResultAll,
+    TResult Function(_UpdateStatus value)? UpdateStatus,
+    TResult Function(_GetResultByDatelist value)? getResultByDatelist,
+    TResult Function(_GetResultByDate value)? getResultByDate,
+    TResult Function(_GetResultByDateForHomepage value)?
+        getResultByDateForHomepage,
     required TResult orElse(),
   }) {
     if (getResult != null) {
@@ -332,7 +422,7 @@ abstract class _$$AddResultImplCopyWith<$Res> {
           _$AddResultImpl value, $Res Function(_$AddResultImpl) then) =
       __$$AddResultImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int machineId, String description, String status});
+  $Res call({String status});
 }
 
 /// @nodoc
@@ -348,19 +438,9 @@ class __$$AddResultImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? machineId = null,
-    Object? description = null,
     Object? status = null,
   }) {
     return _then(_$AddResultImpl(
-      null == machineId
-          ? _value.machineId
-          : machineId // ignore: cast_nullable_to_non_nullable
-              as int,
-      null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
       null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -372,18 +452,14 @@ class __$$AddResultImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
-  const _$AddResultImpl(this.machineId, this.description, this.status);
+  const _$AddResultImpl(this.status);
 
-  @override
-  final int machineId;
-  @override
-  final String description;
   @override
   final String status;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ResultEvent.addResult(machineId: $machineId, description: $description, status: $status)';
+    return 'ResultEvent.addResult(status: $status)';
   }
 
   @override
@@ -391,8 +467,6 @@ class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ResultEvent.addResult'))
-      ..add(DiagnosticsProperty('machineId', machineId))
-      ..add(DiagnosticsProperty('description', description))
       ..add(DiagnosticsProperty('status', status));
   }
 
@@ -401,15 +475,11 @@ class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddResultImpl &&
-            (identical(other.machineId, machineId) ||
-                other.machineId == machineId) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
             (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, machineId, description, status);
+  int get hashCode => Object.hash(runtimeType, status);
 
   /// Create a copy of ResultEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -424,10 +494,14 @@ class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getResult,
-    required TResult Function(int machineId, String description, String status)
-        addResult,
+    required TResult Function(String status) addResult,
+    required TResult Function() getResultAll,
+    required TResult Function(ResultModel model) UpdateStatus,
+    required TResult Function(String tanggal) getResultByDatelist,
+    required TResult Function(String tanggal) getResultByDate,
+    required TResult Function(String tanggal) getResultByDateForHomepage,
   }) {
-    return addResult(machineId, description, status);
+    return addResult(status);
   }
 
   @override
@@ -435,10 +509,14 @@ class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getResult,
-    TResult? Function(int machineId, String description, String status)?
-        addResult,
+    TResult? Function(String status)? addResult,
+    TResult? Function()? getResultAll,
+    TResult? Function(ResultModel model)? UpdateStatus,
+    TResult? Function(String tanggal)? getResultByDatelist,
+    TResult? Function(String tanggal)? getResultByDate,
+    TResult? Function(String tanggal)? getResultByDateForHomepage,
   }) {
-    return addResult?.call(machineId, description, status);
+    return addResult?.call(status);
   }
 
   @override
@@ -446,12 +524,16 @@ class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getResult,
-    TResult Function(int machineId, String description, String status)?
-        addResult,
+    TResult Function(String status)? addResult,
+    TResult Function()? getResultAll,
+    TResult Function(ResultModel model)? UpdateStatus,
+    TResult Function(String tanggal)? getResultByDatelist,
+    TResult Function(String tanggal)? getResultByDate,
+    TResult Function(String tanggal)? getResultByDateForHomepage,
     required TResult orElse(),
   }) {
     if (addResult != null) {
-      return addResult(machineId, description, status);
+      return addResult(status);
     }
     return orElse();
   }
@@ -462,6 +544,12 @@ class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
     required TResult Function(_Started value) started,
     required TResult Function(_GetResult value) getResult,
     required TResult Function(_AddResult value) addResult,
+    required TResult Function(_GetResultAll value) getResultAll,
+    required TResult Function(_UpdateStatus value) UpdateStatus,
+    required TResult Function(_GetResultByDatelist value) getResultByDatelist,
+    required TResult Function(_GetResultByDate value) getResultByDate,
+    required TResult Function(_GetResultByDateForHomepage value)
+        getResultByDateForHomepage,
   }) {
     return addResult(this);
   }
@@ -472,6 +560,12 @@ class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetResult value)? getResult,
     TResult? Function(_AddResult value)? addResult,
+    TResult? Function(_GetResultAll value)? getResultAll,
+    TResult? Function(_UpdateStatus value)? UpdateStatus,
+    TResult? Function(_GetResultByDatelist value)? getResultByDatelist,
+    TResult? Function(_GetResultByDate value)? getResultByDate,
+    TResult? Function(_GetResultByDateForHomepage value)?
+        getResultByDateForHomepage,
   }) {
     return addResult?.call(this);
   }
@@ -482,6 +576,12 @@ class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
     TResult Function(_Started value)? started,
     TResult Function(_GetResult value)? getResult,
     TResult Function(_AddResult value)? addResult,
+    TResult Function(_GetResultAll value)? getResultAll,
+    TResult Function(_UpdateStatus value)? UpdateStatus,
+    TResult Function(_GetResultByDatelist value)? getResultByDatelist,
+    TResult Function(_GetResultByDate value)? getResultByDate,
+    TResult Function(_GetResultByDateForHomepage value)?
+        getResultByDateForHomepage,
     required TResult orElse(),
   }) {
     if (addResult != null) {
@@ -492,12 +592,8 @@ class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
 }
 
 abstract class _AddResult implements ResultEvent {
-  const factory _AddResult(
-          final int machineId, final String description, final String status) =
-      _$AddResultImpl;
+  const factory _AddResult(final String status) = _$AddResultImpl;
 
-  int get machineId;
-  String get description;
   String get status;
 
   /// Create a copy of ResultEvent
@@ -508,15 +604,946 @@ abstract class _AddResult implements ResultEvent {
 }
 
 /// @nodoc
+abstract class _$$GetResultAllImplCopyWith<$Res> {
+  factory _$$GetResultAllImplCopyWith(
+          _$GetResultAllImpl value, $Res Function(_$GetResultAllImpl) then) =
+      __$$GetResultAllImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetResultAllImplCopyWithImpl<$Res>
+    extends _$ResultEventCopyWithImpl<$Res, _$GetResultAllImpl>
+    implements _$$GetResultAllImplCopyWith<$Res> {
+  __$$GetResultAllImplCopyWithImpl(
+      _$GetResultAllImpl _value, $Res Function(_$GetResultAllImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ResultEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$GetResultAllImpl with DiagnosticableTreeMixin implements _GetResultAll {
+  const _$GetResultAllImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ResultEvent.getResultAll()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'ResultEvent.getResultAll'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetResultAllImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getResult,
+    required TResult Function(String status) addResult,
+    required TResult Function() getResultAll,
+    required TResult Function(ResultModel model) UpdateStatus,
+    required TResult Function(String tanggal) getResultByDatelist,
+    required TResult Function(String tanggal) getResultByDate,
+    required TResult Function(String tanggal) getResultByDateForHomepage,
+  }) {
+    return getResultAll();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getResult,
+    TResult? Function(String status)? addResult,
+    TResult? Function()? getResultAll,
+    TResult? Function(ResultModel model)? UpdateStatus,
+    TResult? Function(String tanggal)? getResultByDatelist,
+    TResult? Function(String tanggal)? getResultByDate,
+    TResult? Function(String tanggal)? getResultByDateForHomepage,
+  }) {
+    return getResultAll?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getResult,
+    TResult Function(String status)? addResult,
+    TResult Function()? getResultAll,
+    TResult Function(ResultModel model)? UpdateStatus,
+    TResult Function(String tanggal)? getResultByDatelist,
+    TResult Function(String tanggal)? getResultByDate,
+    TResult Function(String tanggal)? getResultByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (getResultAll != null) {
+      return getResultAll();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetResult value) getResult,
+    required TResult Function(_AddResult value) addResult,
+    required TResult Function(_GetResultAll value) getResultAll,
+    required TResult Function(_UpdateStatus value) UpdateStatus,
+    required TResult Function(_GetResultByDatelist value) getResultByDatelist,
+    required TResult Function(_GetResultByDate value) getResultByDate,
+    required TResult Function(_GetResultByDateForHomepage value)
+        getResultByDateForHomepage,
+  }) {
+    return getResultAll(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetResult value)? getResult,
+    TResult? Function(_AddResult value)? addResult,
+    TResult? Function(_GetResultAll value)? getResultAll,
+    TResult? Function(_UpdateStatus value)? UpdateStatus,
+    TResult? Function(_GetResultByDatelist value)? getResultByDatelist,
+    TResult? Function(_GetResultByDate value)? getResultByDate,
+    TResult? Function(_GetResultByDateForHomepage value)?
+        getResultByDateForHomepage,
+  }) {
+    return getResultAll?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetResult value)? getResult,
+    TResult Function(_AddResult value)? addResult,
+    TResult Function(_GetResultAll value)? getResultAll,
+    TResult Function(_UpdateStatus value)? UpdateStatus,
+    TResult Function(_GetResultByDatelist value)? getResultByDatelist,
+    TResult Function(_GetResultByDate value)? getResultByDate,
+    TResult Function(_GetResultByDateForHomepage value)?
+        getResultByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (getResultAll != null) {
+      return getResultAll(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetResultAll implements ResultEvent {
+  const factory _GetResultAll() = _$GetResultAllImpl;
+}
+
+/// @nodoc
+abstract class _$$UpdateStatusImplCopyWith<$Res> {
+  factory _$$UpdateStatusImplCopyWith(
+          _$UpdateStatusImpl value, $Res Function(_$UpdateStatusImpl) then) =
+      __$$UpdateStatusImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ResultModel model});
+
+  $ResultModelCopyWith<$Res> get model;
+}
+
+/// @nodoc
+class __$$UpdateStatusImplCopyWithImpl<$Res>
+    extends _$ResultEventCopyWithImpl<$Res, _$UpdateStatusImpl>
+    implements _$$UpdateStatusImplCopyWith<$Res> {
+  __$$UpdateStatusImplCopyWithImpl(
+      _$UpdateStatusImpl _value, $Res Function(_$UpdateStatusImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ResultEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? model = null,
+  }) {
+    return _then(_$UpdateStatusImpl(
+      null == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as ResultModel,
+    ));
+  }
+
+  /// Create a copy of ResultEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ResultModelCopyWith<$Res> get model {
+    return $ResultModelCopyWith<$Res>(_value.model, (value) {
+      return _then(_value.copyWith(model: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UpdateStatusImpl with DiagnosticableTreeMixin implements _UpdateStatus {
+  const _$UpdateStatusImpl(this.model);
+
+  @override
+  final ResultModel model;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ResultEvent.UpdateStatus(model: $model)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResultEvent.UpdateStatus'))
+      ..add(DiagnosticsProperty('model', model));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateStatusImpl &&
+            (identical(other.model, model) || other.model == model));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, model);
+
+  /// Create a copy of ResultEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateStatusImplCopyWith<_$UpdateStatusImpl> get copyWith =>
+      __$$UpdateStatusImplCopyWithImpl<_$UpdateStatusImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getResult,
+    required TResult Function(String status) addResult,
+    required TResult Function() getResultAll,
+    required TResult Function(ResultModel model) UpdateStatus,
+    required TResult Function(String tanggal) getResultByDatelist,
+    required TResult Function(String tanggal) getResultByDate,
+    required TResult Function(String tanggal) getResultByDateForHomepage,
+  }) {
+    return UpdateStatus(model);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getResult,
+    TResult? Function(String status)? addResult,
+    TResult? Function()? getResultAll,
+    TResult? Function(ResultModel model)? UpdateStatus,
+    TResult? Function(String tanggal)? getResultByDatelist,
+    TResult? Function(String tanggal)? getResultByDate,
+    TResult? Function(String tanggal)? getResultByDateForHomepage,
+  }) {
+    return UpdateStatus?.call(model);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getResult,
+    TResult Function(String status)? addResult,
+    TResult Function()? getResultAll,
+    TResult Function(ResultModel model)? UpdateStatus,
+    TResult Function(String tanggal)? getResultByDatelist,
+    TResult Function(String tanggal)? getResultByDate,
+    TResult Function(String tanggal)? getResultByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (UpdateStatus != null) {
+      return UpdateStatus(model);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetResult value) getResult,
+    required TResult Function(_AddResult value) addResult,
+    required TResult Function(_GetResultAll value) getResultAll,
+    required TResult Function(_UpdateStatus value) UpdateStatus,
+    required TResult Function(_GetResultByDatelist value) getResultByDatelist,
+    required TResult Function(_GetResultByDate value) getResultByDate,
+    required TResult Function(_GetResultByDateForHomepage value)
+        getResultByDateForHomepage,
+  }) {
+    return UpdateStatus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetResult value)? getResult,
+    TResult? Function(_AddResult value)? addResult,
+    TResult? Function(_GetResultAll value)? getResultAll,
+    TResult? Function(_UpdateStatus value)? UpdateStatus,
+    TResult? Function(_GetResultByDatelist value)? getResultByDatelist,
+    TResult? Function(_GetResultByDate value)? getResultByDate,
+    TResult? Function(_GetResultByDateForHomepage value)?
+        getResultByDateForHomepage,
+  }) {
+    return UpdateStatus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetResult value)? getResult,
+    TResult Function(_AddResult value)? addResult,
+    TResult Function(_GetResultAll value)? getResultAll,
+    TResult Function(_UpdateStatus value)? UpdateStatus,
+    TResult Function(_GetResultByDatelist value)? getResultByDatelist,
+    TResult Function(_GetResultByDate value)? getResultByDate,
+    TResult Function(_GetResultByDateForHomepage value)?
+        getResultByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (UpdateStatus != null) {
+      return UpdateStatus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateStatus implements ResultEvent {
+  const factory _UpdateStatus(final ResultModel model) = _$UpdateStatusImpl;
+
+  ResultModel get model;
+
+  /// Create a copy of ResultEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateStatusImplCopyWith<_$UpdateStatusImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetResultByDatelistImplCopyWith<$Res> {
+  factory _$$GetResultByDatelistImplCopyWith(_$GetResultByDatelistImpl value,
+          $Res Function(_$GetResultByDatelistImpl) then) =
+      __$$GetResultByDatelistImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String tanggal});
+}
+
+/// @nodoc
+class __$$GetResultByDatelistImplCopyWithImpl<$Res>
+    extends _$ResultEventCopyWithImpl<$Res, _$GetResultByDatelistImpl>
+    implements _$$GetResultByDatelistImplCopyWith<$Res> {
+  __$$GetResultByDatelistImplCopyWithImpl(_$GetResultByDatelistImpl _value,
+      $Res Function(_$GetResultByDatelistImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ResultEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tanggal = null,
+  }) {
+    return _then(_$GetResultByDatelistImpl(
+      null == tanggal
+          ? _value.tanggal
+          : tanggal // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetResultByDatelistImpl
+    with DiagnosticableTreeMixin
+    implements _GetResultByDatelist {
+  const _$GetResultByDatelistImpl(this.tanggal);
+
+  @override
+  final String tanggal;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ResultEvent.getResultByDatelist(tanggal: $tanggal)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResultEvent.getResultByDatelist'))
+      ..add(DiagnosticsProperty('tanggal', tanggal));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetResultByDatelistImpl &&
+            (identical(other.tanggal, tanggal) || other.tanggal == tanggal));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, tanggal);
+
+  /// Create a copy of ResultEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetResultByDatelistImplCopyWith<_$GetResultByDatelistImpl> get copyWith =>
+      __$$GetResultByDatelistImplCopyWithImpl<_$GetResultByDatelistImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getResult,
+    required TResult Function(String status) addResult,
+    required TResult Function() getResultAll,
+    required TResult Function(ResultModel model) UpdateStatus,
+    required TResult Function(String tanggal) getResultByDatelist,
+    required TResult Function(String tanggal) getResultByDate,
+    required TResult Function(String tanggal) getResultByDateForHomepage,
+  }) {
+    return getResultByDatelist(tanggal);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getResult,
+    TResult? Function(String status)? addResult,
+    TResult? Function()? getResultAll,
+    TResult? Function(ResultModel model)? UpdateStatus,
+    TResult? Function(String tanggal)? getResultByDatelist,
+    TResult? Function(String tanggal)? getResultByDate,
+    TResult? Function(String tanggal)? getResultByDateForHomepage,
+  }) {
+    return getResultByDatelist?.call(tanggal);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getResult,
+    TResult Function(String status)? addResult,
+    TResult Function()? getResultAll,
+    TResult Function(ResultModel model)? UpdateStatus,
+    TResult Function(String tanggal)? getResultByDatelist,
+    TResult Function(String tanggal)? getResultByDate,
+    TResult Function(String tanggal)? getResultByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (getResultByDatelist != null) {
+      return getResultByDatelist(tanggal);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetResult value) getResult,
+    required TResult Function(_AddResult value) addResult,
+    required TResult Function(_GetResultAll value) getResultAll,
+    required TResult Function(_UpdateStatus value) UpdateStatus,
+    required TResult Function(_GetResultByDatelist value) getResultByDatelist,
+    required TResult Function(_GetResultByDate value) getResultByDate,
+    required TResult Function(_GetResultByDateForHomepage value)
+        getResultByDateForHomepage,
+  }) {
+    return getResultByDatelist(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetResult value)? getResult,
+    TResult? Function(_AddResult value)? addResult,
+    TResult? Function(_GetResultAll value)? getResultAll,
+    TResult? Function(_UpdateStatus value)? UpdateStatus,
+    TResult? Function(_GetResultByDatelist value)? getResultByDatelist,
+    TResult? Function(_GetResultByDate value)? getResultByDate,
+    TResult? Function(_GetResultByDateForHomepage value)?
+        getResultByDateForHomepage,
+  }) {
+    return getResultByDatelist?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetResult value)? getResult,
+    TResult Function(_AddResult value)? addResult,
+    TResult Function(_GetResultAll value)? getResultAll,
+    TResult Function(_UpdateStatus value)? UpdateStatus,
+    TResult Function(_GetResultByDatelist value)? getResultByDatelist,
+    TResult Function(_GetResultByDate value)? getResultByDate,
+    TResult Function(_GetResultByDateForHomepage value)?
+        getResultByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (getResultByDatelist != null) {
+      return getResultByDatelist(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetResultByDatelist implements ResultEvent {
+  const factory _GetResultByDatelist(final String tanggal) =
+      _$GetResultByDatelistImpl;
+
+  String get tanggal;
+
+  /// Create a copy of ResultEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetResultByDatelistImplCopyWith<_$GetResultByDatelistImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetResultByDateImplCopyWith<$Res> {
+  factory _$$GetResultByDateImplCopyWith(_$GetResultByDateImpl value,
+          $Res Function(_$GetResultByDateImpl) then) =
+      __$$GetResultByDateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String tanggal});
+}
+
+/// @nodoc
+class __$$GetResultByDateImplCopyWithImpl<$Res>
+    extends _$ResultEventCopyWithImpl<$Res, _$GetResultByDateImpl>
+    implements _$$GetResultByDateImplCopyWith<$Res> {
+  __$$GetResultByDateImplCopyWithImpl(
+      _$GetResultByDateImpl _value, $Res Function(_$GetResultByDateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ResultEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tanggal = null,
+  }) {
+    return _then(_$GetResultByDateImpl(
+      null == tanggal
+          ? _value.tanggal
+          : tanggal // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetResultByDateImpl
+    with DiagnosticableTreeMixin
+    implements _GetResultByDate {
+  const _$GetResultByDateImpl(this.tanggal);
+
+  @override
+  final String tanggal;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ResultEvent.getResultByDate(tanggal: $tanggal)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResultEvent.getResultByDate'))
+      ..add(DiagnosticsProperty('tanggal', tanggal));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetResultByDateImpl &&
+            (identical(other.tanggal, tanggal) || other.tanggal == tanggal));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, tanggal);
+
+  /// Create a copy of ResultEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetResultByDateImplCopyWith<_$GetResultByDateImpl> get copyWith =>
+      __$$GetResultByDateImplCopyWithImpl<_$GetResultByDateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getResult,
+    required TResult Function(String status) addResult,
+    required TResult Function() getResultAll,
+    required TResult Function(ResultModel model) UpdateStatus,
+    required TResult Function(String tanggal) getResultByDatelist,
+    required TResult Function(String tanggal) getResultByDate,
+    required TResult Function(String tanggal) getResultByDateForHomepage,
+  }) {
+    return getResultByDate(tanggal);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getResult,
+    TResult? Function(String status)? addResult,
+    TResult? Function()? getResultAll,
+    TResult? Function(ResultModel model)? UpdateStatus,
+    TResult? Function(String tanggal)? getResultByDatelist,
+    TResult? Function(String tanggal)? getResultByDate,
+    TResult? Function(String tanggal)? getResultByDateForHomepage,
+  }) {
+    return getResultByDate?.call(tanggal);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getResult,
+    TResult Function(String status)? addResult,
+    TResult Function()? getResultAll,
+    TResult Function(ResultModel model)? UpdateStatus,
+    TResult Function(String tanggal)? getResultByDatelist,
+    TResult Function(String tanggal)? getResultByDate,
+    TResult Function(String tanggal)? getResultByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (getResultByDate != null) {
+      return getResultByDate(tanggal);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetResult value) getResult,
+    required TResult Function(_AddResult value) addResult,
+    required TResult Function(_GetResultAll value) getResultAll,
+    required TResult Function(_UpdateStatus value) UpdateStatus,
+    required TResult Function(_GetResultByDatelist value) getResultByDatelist,
+    required TResult Function(_GetResultByDate value) getResultByDate,
+    required TResult Function(_GetResultByDateForHomepage value)
+        getResultByDateForHomepage,
+  }) {
+    return getResultByDate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetResult value)? getResult,
+    TResult? Function(_AddResult value)? addResult,
+    TResult? Function(_GetResultAll value)? getResultAll,
+    TResult? Function(_UpdateStatus value)? UpdateStatus,
+    TResult? Function(_GetResultByDatelist value)? getResultByDatelist,
+    TResult? Function(_GetResultByDate value)? getResultByDate,
+    TResult? Function(_GetResultByDateForHomepage value)?
+        getResultByDateForHomepage,
+  }) {
+    return getResultByDate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetResult value)? getResult,
+    TResult Function(_AddResult value)? addResult,
+    TResult Function(_GetResultAll value)? getResultAll,
+    TResult Function(_UpdateStatus value)? UpdateStatus,
+    TResult Function(_GetResultByDatelist value)? getResultByDatelist,
+    TResult Function(_GetResultByDate value)? getResultByDate,
+    TResult Function(_GetResultByDateForHomepage value)?
+        getResultByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (getResultByDate != null) {
+      return getResultByDate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetResultByDate implements ResultEvent {
+  const factory _GetResultByDate(final String tanggal) = _$GetResultByDateImpl;
+
+  String get tanggal;
+
+  /// Create a copy of ResultEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetResultByDateImplCopyWith<_$GetResultByDateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetResultByDateForHomepageImplCopyWith<$Res> {
+  factory _$$GetResultByDateForHomepageImplCopyWith(
+          _$GetResultByDateForHomepageImpl value,
+          $Res Function(_$GetResultByDateForHomepageImpl) then) =
+      __$$GetResultByDateForHomepageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String tanggal});
+}
+
+/// @nodoc
+class __$$GetResultByDateForHomepageImplCopyWithImpl<$Res>
+    extends _$ResultEventCopyWithImpl<$Res, _$GetResultByDateForHomepageImpl>
+    implements _$$GetResultByDateForHomepageImplCopyWith<$Res> {
+  __$$GetResultByDateForHomepageImplCopyWithImpl(
+      _$GetResultByDateForHomepageImpl _value,
+      $Res Function(_$GetResultByDateForHomepageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ResultEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tanggal = null,
+  }) {
+    return _then(_$GetResultByDateForHomepageImpl(
+      null == tanggal
+          ? _value.tanggal
+          : tanggal // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetResultByDateForHomepageImpl
+    with DiagnosticableTreeMixin
+    implements _GetResultByDateForHomepage {
+  const _$GetResultByDateForHomepageImpl(this.tanggal);
+
+  @override
+  final String tanggal;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ResultEvent.getResultByDateForHomepage(tanggal: $tanggal)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'ResultEvent.getResultByDateForHomepage'))
+      ..add(DiagnosticsProperty('tanggal', tanggal));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetResultByDateForHomepageImpl &&
+            (identical(other.tanggal, tanggal) || other.tanggal == tanggal));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, tanggal);
+
+  /// Create a copy of ResultEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetResultByDateForHomepageImplCopyWith<_$GetResultByDateForHomepageImpl>
+      get copyWith => __$$GetResultByDateForHomepageImplCopyWithImpl<
+          _$GetResultByDateForHomepageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getResult,
+    required TResult Function(String status) addResult,
+    required TResult Function() getResultAll,
+    required TResult Function(ResultModel model) UpdateStatus,
+    required TResult Function(String tanggal) getResultByDatelist,
+    required TResult Function(String tanggal) getResultByDate,
+    required TResult Function(String tanggal) getResultByDateForHomepage,
+  }) {
+    return getResultByDateForHomepage(tanggal);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getResult,
+    TResult? Function(String status)? addResult,
+    TResult? Function()? getResultAll,
+    TResult? Function(ResultModel model)? UpdateStatus,
+    TResult? Function(String tanggal)? getResultByDatelist,
+    TResult? Function(String tanggal)? getResultByDate,
+    TResult? Function(String tanggal)? getResultByDateForHomepage,
+  }) {
+    return getResultByDateForHomepage?.call(tanggal);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getResult,
+    TResult Function(String status)? addResult,
+    TResult Function()? getResultAll,
+    TResult Function(ResultModel model)? UpdateStatus,
+    TResult Function(String tanggal)? getResultByDatelist,
+    TResult Function(String tanggal)? getResultByDate,
+    TResult Function(String tanggal)? getResultByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (getResultByDateForHomepage != null) {
+      return getResultByDateForHomepage(tanggal);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetResult value) getResult,
+    required TResult Function(_AddResult value) addResult,
+    required TResult Function(_GetResultAll value) getResultAll,
+    required TResult Function(_UpdateStatus value) UpdateStatus,
+    required TResult Function(_GetResultByDatelist value) getResultByDatelist,
+    required TResult Function(_GetResultByDate value) getResultByDate,
+    required TResult Function(_GetResultByDateForHomepage value)
+        getResultByDateForHomepage,
+  }) {
+    return getResultByDateForHomepage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetResult value)? getResult,
+    TResult? Function(_AddResult value)? addResult,
+    TResult? Function(_GetResultAll value)? getResultAll,
+    TResult? Function(_UpdateStatus value)? UpdateStatus,
+    TResult? Function(_GetResultByDatelist value)? getResultByDatelist,
+    TResult? Function(_GetResultByDate value)? getResultByDate,
+    TResult? Function(_GetResultByDateForHomepage value)?
+        getResultByDateForHomepage,
+  }) {
+    return getResultByDateForHomepage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetResult value)? getResult,
+    TResult Function(_AddResult value)? addResult,
+    TResult Function(_GetResultAll value)? getResultAll,
+    TResult Function(_UpdateStatus value)? UpdateStatus,
+    TResult Function(_GetResultByDatelist value)? getResultByDatelist,
+    TResult Function(_GetResultByDate value)? getResultByDate,
+    TResult Function(_GetResultByDateForHomepage value)?
+        getResultByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (getResultByDateForHomepage != null) {
+      return getResultByDateForHomepage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetResultByDateForHomepage implements ResultEvent {
+  const factory _GetResultByDateForHomepage(final String tanggal) =
+      _$GetResultByDateForHomepageImpl;
+
+  String get tanggal;
+
+  /// Create a copy of ResultEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetResultByDateForHomepageImplCopyWith<_$GetResultByDateForHomepageImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ResultState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(List<ResultData> result) loaded,
+    required TResult Function(ResultModel result) loaded,
+    required TResult Function(
+            List<ResultModel> result, int OKCount, int NGCount)
+        getAll,
     required TResult Function(String error) error,
-    required TResult Function() added,
+    required TResult Function(ResultModel model) update,
+    required TResult Function(ResultModel model) added,
+    required TResult Function(List<ResultGet> result) loadedByDateList,
+    required TResult Function(ResultModel result) loadedByDate,
+    required TResult Function(ResultModel result) loadedByDateForHomepage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -524,9 +1551,15 @@ mixin _$ResultState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(List<ResultData> result)? loaded,
+    TResult? Function(ResultModel result)? loaded,
+    TResult? Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
     TResult? Function(String error)? error,
-    TResult? Function()? added,
+    TResult? Function(ResultModel model)? update,
+    TResult? Function(ResultModel model)? added,
+    TResult? Function(List<ResultGet> result)? loadedByDateList,
+    TResult? Function(ResultModel result)? loadedByDate,
+    TResult? Function(ResultModel result)? loadedByDateForHomepage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -534,9 +1567,15 @@ mixin _$ResultState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(List<ResultData> result)? loaded,
+    TResult Function(ResultModel result)? loaded,
+    TResult Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
     TResult Function(String error)? error,
-    TResult Function()? added,
+    TResult Function(ResultModel model)? update,
+    TResult Function(ResultModel model)? added,
+    TResult Function(List<ResultGet> result)? loadedByDateList,
+    TResult Function(ResultModel result)? loadedByDate,
+    TResult Function(ResultModel result)? loadedByDateForHomepage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -546,8 +1585,14 @@ mixin _$ResultState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_GetAll value) getAll,
     required TResult Function(_Error value) error,
+    required TResult Function(_Update value) update,
     required TResult Function(_Added value) added,
+    required TResult Function(_LoadedByDateList value) loadedByDateList,
+    required TResult Function(_LoadedByDate value) loadedByDate,
+    required TResult Function(_LoadedByDateForHomepage value)
+        loadedByDateForHomepage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -556,8 +1601,13 @@ mixin _$ResultState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_GetAll value)? getAll,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Update value)? update,
     TResult? Function(_Added value)? added,
+    TResult? Function(_LoadedByDateList value)? loadedByDateList,
+    TResult? Function(_LoadedByDate value)? loadedByDate,
+    TResult? Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -566,8 +1616,13 @@ mixin _$ResultState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_GetAll value)? getAll,
     TResult Function(_Error value)? error,
+    TResult Function(_Update value)? update,
     TResult Function(_Added value)? added,
+    TResult Function(_LoadedByDateList value)? loadedByDateList,
+    TResult Function(_LoadedByDate value)? loadedByDate,
+    TResult Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -644,9 +1699,16 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(List<ResultData> result) loaded,
+    required TResult Function(ResultModel result) loaded,
+    required TResult Function(
+            List<ResultModel> result, int OKCount, int NGCount)
+        getAll,
     required TResult Function(String error) error,
-    required TResult Function() added,
+    required TResult Function(ResultModel model) update,
+    required TResult Function(ResultModel model) added,
+    required TResult Function(List<ResultGet> result) loadedByDateList,
+    required TResult Function(ResultModel result) loadedByDate,
+    required TResult Function(ResultModel result) loadedByDateForHomepage,
   }) {
     return initial();
   }
@@ -657,9 +1719,15 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(List<ResultData> result)? loaded,
+    TResult? Function(ResultModel result)? loaded,
+    TResult? Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
     TResult? Function(String error)? error,
-    TResult? Function()? added,
+    TResult? Function(ResultModel model)? update,
+    TResult? Function(ResultModel model)? added,
+    TResult? Function(List<ResultGet> result)? loadedByDateList,
+    TResult? Function(ResultModel result)? loadedByDate,
+    TResult? Function(ResultModel result)? loadedByDateForHomepage,
   }) {
     return initial?.call();
   }
@@ -670,9 +1738,15 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(List<ResultData> result)? loaded,
+    TResult Function(ResultModel result)? loaded,
+    TResult Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
     TResult Function(String error)? error,
-    TResult Function()? added,
+    TResult Function(ResultModel model)? update,
+    TResult Function(ResultModel model)? added,
+    TResult Function(List<ResultGet> result)? loadedByDateList,
+    TResult Function(ResultModel result)? loadedByDate,
+    TResult Function(ResultModel result)? loadedByDateForHomepage,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -688,8 +1762,14 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_GetAll value) getAll,
     required TResult Function(_Error value) error,
+    required TResult Function(_Update value) update,
     required TResult Function(_Added value) added,
+    required TResult Function(_LoadedByDateList value) loadedByDateList,
+    required TResult Function(_LoadedByDate value) loadedByDate,
+    required TResult Function(_LoadedByDateForHomepage value)
+        loadedByDateForHomepage,
   }) {
     return initial(this);
   }
@@ -701,8 +1781,13 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_GetAll value)? getAll,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Update value)? update,
     TResult? Function(_Added value)? added,
+    TResult? Function(_LoadedByDateList value)? loadedByDateList,
+    TResult? Function(_LoadedByDate value)? loadedByDate,
+    TResult? Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
   }) {
     return initial?.call(this);
   }
@@ -714,8 +1799,13 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_GetAll value)? getAll,
     TResult Function(_Error value)? error,
+    TResult Function(_Update value)? update,
     TResult Function(_Added value)? added,
+    TResult Function(_LoadedByDateList value)? loadedByDateList,
+    TResult Function(_LoadedByDate value)? loadedByDate,
+    TResult Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -779,9 +1869,16 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(List<ResultData> result) loaded,
+    required TResult Function(ResultModel result) loaded,
+    required TResult Function(
+            List<ResultModel> result, int OKCount, int NGCount)
+        getAll,
     required TResult Function(String error) error,
-    required TResult Function() added,
+    required TResult Function(ResultModel model) update,
+    required TResult Function(ResultModel model) added,
+    required TResult Function(List<ResultGet> result) loadedByDateList,
+    required TResult Function(ResultModel result) loadedByDate,
+    required TResult Function(ResultModel result) loadedByDateForHomepage,
   }) {
     return loading();
   }
@@ -792,9 +1889,15 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(List<ResultData> result)? loaded,
+    TResult? Function(ResultModel result)? loaded,
+    TResult? Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
     TResult? Function(String error)? error,
-    TResult? Function()? added,
+    TResult? Function(ResultModel model)? update,
+    TResult? Function(ResultModel model)? added,
+    TResult? Function(List<ResultGet> result)? loadedByDateList,
+    TResult? Function(ResultModel result)? loadedByDate,
+    TResult? Function(ResultModel result)? loadedByDateForHomepage,
   }) {
     return loading?.call();
   }
@@ -805,9 +1908,15 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(List<ResultData> result)? loaded,
+    TResult Function(ResultModel result)? loaded,
+    TResult Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
     TResult Function(String error)? error,
-    TResult Function()? added,
+    TResult Function(ResultModel model)? update,
+    TResult Function(ResultModel model)? added,
+    TResult Function(List<ResultGet> result)? loadedByDateList,
+    TResult Function(ResultModel result)? loadedByDate,
+    TResult Function(ResultModel result)? loadedByDateForHomepage,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -823,8 +1932,14 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_GetAll value) getAll,
     required TResult Function(_Error value) error,
+    required TResult Function(_Update value) update,
     required TResult Function(_Added value) added,
+    required TResult Function(_LoadedByDateList value) loadedByDateList,
+    required TResult Function(_LoadedByDate value) loadedByDate,
+    required TResult Function(_LoadedByDateForHomepage value)
+        loadedByDateForHomepage,
   }) {
     return loading(this);
   }
@@ -836,8 +1951,13 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_GetAll value)? getAll,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Update value)? update,
     TResult? Function(_Added value)? added,
+    TResult? Function(_LoadedByDateList value)? loadedByDateList,
+    TResult? Function(_LoadedByDate value)? loadedByDate,
+    TResult? Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
   }) {
     return loading?.call(this);
   }
@@ -849,8 +1969,13 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_GetAll value)? getAll,
     TResult Function(_Error value)? error,
+    TResult Function(_Update value)? update,
     TResult Function(_Added value)? added,
+    TResult Function(_LoadedByDateList value)? loadedByDateList,
+    TResult Function(_LoadedByDate value)? loadedByDate,
+    TResult Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -914,9 +2039,16 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(List<ResultData> result) loaded,
+    required TResult Function(ResultModel result) loaded,
+    required TResult Function(
+            List<ResultModel> result, int OKCount, int NGCount)
+        getAll,
     required TResult Function(String error) error,
-    required TResult Function() added,
+    required TResult Function(ResultModel model) update,
+    required TResult Function(ResultModel model) added,
+    required TResult Function(List<ResultGet> result) loadedByDateList,
+    required TResult Function(ResultModel result) loadedByDate,
+    required TResult Function(ResultModel result) loadedByDateForHomepage,
   }) {
     return success();
   }
@@ -927,9 +2059,15 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(List<ResultData> result)? loaded,
+    TResult? Function(ResultModel result)? loaded,
+    TResult? Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
     TResult? Function(String error)? error,
-    TResult? Function()? added,
+    TResult? Function(ResultModel model)? update,
+    TResult? Function(ResultModel model)? added,
+    TResult? Function(List<ResultGet> result)? loadedByDateList,
+    TResult? Function(ResultModel result)? loadedByDate,
+    TResult? Function(ResultModel result)? loadedByDateForHomepage,
   }) {
     return success?.call();
   }
@@ -940,9 +2078,15 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(List<ResultData> result)? loaded,
+    TResult Function(ResultModel result)? loaded,
+    TResult Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
     TResult Function(String error)? error,
-    TResult Function()? added,
+    TResult Function(ResultModel model)? update,
+    TResult Function(ResultModel model)? added,
+    TResult Function(List<ResultGet> result)? loadedByDateList,
+    TResult Function(ResultModel result)? loadedByDate,
+    TResult Function(ResultModel result)? loadedByDateForHomepage,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -958,8 +2102,14 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_GetAll value) getAll,
     required TResult Function(_Error value) error,
+    required TResult Function(_Update value) update,
     required TResult Function(_Added value) added,
+    required TResult Function(_LoadedByDateList value) loadedByDateList,
+    required TResult Function(_LoadedByDate value) loadedByDate,
+    required TResult Function(_LoadedByDateForHomepage value)
+        loadedByDateForHomepage,
   }) {
     return success(this);
   }
@@ -971,8 +2121,13 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_GetAll value)? getAll,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Update value)? update,
     TResult? Function(_Added value)? added,
+    TResult? Function(_LoadedByDateList value)? loadedByDateList,
+    TResult? Function(_LoadedByDate value)? loadedByDate,
+    TResult? Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
   }) {
     return success?.call(this);
   }
@@ -984,8 +2139,13 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_GetAll value)? getAll,
     TResult Function(_Error value)? error,
+    TResult Function(_Update value)? update,
     TResult Function(_Added value)? added,
+    TResult Function(_LoadedByDateList value)? loadedByDateList,
+    TResult Function(_LoadedByDate value)? loadedByDate,
+    TResult Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -1005,7 +2165,9 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<ResultData> result});
+  $Res call({ResultModel result});
+
+  $ResultModelCopyWith<$Res> get result;
 }
 
 /// @nodoc
@@ -1025,25 +2187,30 @@ class __$$LoadedImplCopyWithImpl<$Res>
   }) {
     return _then(_$LoadedImpl(
       null == result
-          ? _value._result
+          ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as List<ResultData>,
+              as ResultModel,
     ));
+  }
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ResultModelCopyWith<$Res> get result {
+    return $ResultModelCopyWith<$Res>(_value.result, (value) {
+      return _then(_value.copyWith(result: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
-  const _$LoadedImpl(final List<ResultData> result) : _result = result;
+  const _$LoadedImpl(this.result);
 
-  final List<ResultData> _result;
   @override
-  List<ResultData> get result {
-    if (_result is EqualUnmodifiableListView) return _result;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_result);
-  }
+  final ResultModel result;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -1063,12 +2230,11 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(other._result, _result));
+            (identical(other.result, result) || other.result == result));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_result));
+  int get hashCode => Object.hash(runtimeType, result);
 
   /// Create a copy of ResultState
   /// with the given fields replaced by the non-null parameter values.
@@ -1084,9 +2250,16 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(List<ResultData> result) loaded,
+    required TResult Function(ResultModel result) loaded,
+    required TResult Function(
+            List<ResultModel> result, int OKCount, int NGCount)
+        getAll,
     required TResult Function(String error) error,
-    required TResult Function() added,
+    required TResult Function(ResultModel model) update,
+    required TResult Function(ResultModel model) added,
+    required TResult Function(List<ResultGet> result) loadedByDateList,
+    required TResult Function(ResultModel result) loadedByDate,
+    required TResult Function(ResultModel result) loadedByDateForHomepage,
   }) {
     return loaded(result);
   }
@@ -1097,9 +2270,15 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(List<ResultData> result)? loaded,
+    TResult? Function(ResultModel result)? loaded,
+    TResult? Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
     TResult? Function(String error)? error,
-    TResult? Function()? added,
+    TResult? Function(ResultModel model)? update,
+    TResult? Function(ResultModel model)? added,
+    TResult? Function(List<ResultGet> result)? loadedByDateList,
+    TResult? Function(ResultModel result)? loadedByDate,
+    TResult? Function(ResultModel result)? loadedByDateForHomepage,
   }) {
     return loaded?.call(result);
   }
@@ -1110,9 +2289,15 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(List<ResultData> result)? loaded,
+    TResult Function(ResultModel result)? loaded,
+    TResult Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
     TResult Function(String error)? error,
-    TResult Function()? added,
+    TResult Function(ResultModel model)? update,
+    TResult Function(ResultModel model)? added,
+    TResult Function(List<ResultGet> result)? loadedByDateList,
+    TResult Function(ResultModel result)? loadedByDate,
+    TResult Function(ResultModel result)? loadedByDateForHomepage,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1128,8 +2313,14 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_GetAll value) getAll,
     required TResult Function(_Error value) error,
+    required TResult Function(_Update value) update,
     required TResult Function(_Added value) added,
+    required TResult Function(_LoadedByDateList value) loadedByDateList,
+    required TResult Function(_LoadedByDate value) loadedByDate,
+    required TResult Function(_LoadedByDateForHomepage value)
+        loadedByDateForHomepage,
   }) {
     return loaded(this);
   }
@@ -1141,8 +2332,13 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_GetAll value)? getAll,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Update value)? update,
     TResult? Function(_Added value)? added,
+    TResult? Function(_LoadedByDateList value)? loadedByDateList,
+    TResult? Function(_LoadedByDate value)? loadedByDate,
+    TResult? Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
   }) {
     return loaded?.call(this);
   }
@@ -1154,8 +2350,13 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_GetAll value)? getAll,
     TResult Function(_Error value)? error,
+    TResult Function(_Update value)? update,
     TResult Function(_Added value)? added,
+    TResult Function(_LoadedByDateList value)? loadedByDateList,
+    TResult Function(_LoadedByDate value)? loadedByDate,
+    TResult Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1166,14 +2367,250 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
 }
 
 abstract class _Loaded implements ResultState {
-  const factory _Loaded(final List<ResultData> result) = _$LoadedImpl;
+  const factory _Loaded(final ResultModel result) = _$LoadedImpl;
 
-  List<ResultData> get result;
+  ResultModel get result;
 
   /// Create a copy of ResultState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetAllImplCopyWith<$Res> {
+  factory _$$GetAllImplCopyWith(
+          _$GetAllImpl value, $Res Function(_$GetAllImpl) then) =
+      __$$GetAllImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<ResultModel> result, int OKCount, int NGCount});
+}
+
+/// @nodoc
+class __$$GetAllImplCopyWithImpl<$Res>
+    extends _$ResultStateCopyWithImpl<$Res, _$GetAllImpl>
+    implements _$$GetAllImplCopyWith<$Res> {
+  __$$GetAllImplCopyWithImpl(
+      _$GetAllImpl _value, $Res Function(_$GetAllImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? result = null,
+    Object? OKCount = null,
+    Object? NGCount = null,
+  }) {
+    return _then(_$GetAllImpl(
+      null == result
+          ? _value._result
+          : result // ignore: cast_nullable_to_non_nullable
+              as List<ResultModel>,
+      null == OKCount
+          ? _value.OKCount
+          : OKCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == NGCount
+          ? _value.NGCount
+          : NGCount // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetAllImpl with DiagnosticableTreeMixin implements _GetAll {
+  const _$GetAllImpl(final List<ResultModel> result, this.OKCount, this.NGCount)
+      : _result = result;
+
+  final List<ResultModel> _result;
+  @override
+  List<ResultModel> get result {
+    if (_result is EqualUnmodifiableListView) return _result;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_result);
+  }
+
+  @override
+  final int OKCount;
+  @override
+  final int NGCount;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ResultState.getAll(result: $result, OKCount: $OKCount, NGCount: $NGCount)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResultState.getAll'))
+      ..add(DiagnosticsProperty('result', result))
+      ..add(DiagnosticsProperty('OKCount', OKCount))
+      ..add(DiagnosticsProperty('NGCount', NGCount));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetAllImpl &&
+            const DeepCollectionEquality().equals(other._result, _result) &&
+            (identical(other.OKCount, OKCount) || other.OKCount == OKCount) &&
+            (identical(other.NGCount, NGCount) || other.NGCount == NGCount));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_result), OKCount, NGCount);
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetAllImplCopyWith<_$GetAllImpl> get copyWith =>
+      __$$GetAllImplCopyWithImpl<_$GetAllImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() success,
+    required TResult Function(ResultModel result) loaded,
+    required TResult Function(
+            List<ResultModel> result, int OKCount, int NGCount)
+        getAll,
+    required TResult Function(String error) error,
+    required TResult Function(ResultModel model) update,
+    required TResult Function(ResultModel model) added,
+    required TResult Function(List<ResultGet> result) loadedByDateList,
+    required TResult Function(ResultModel result) loadedByDate,
+    required TResult Function(ResultModel result) loadedByDateForHomepage,
+  }) {
+    return getAll(result, OKCount, NGCount);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? success,
+    TResult? Function(ResultModel result)? loaded,
+    TResult? Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
+    TResult? Function(String error)? error,
+    TResult? Function(ResultModel model)? update,
+    TResult? Function(ResultModel model)? added,
+    TResult? Function(List<ResultGet> result)? loadedByDateList,
+    TResult? Function(ResultModel result)? loadedByDate,
+    TResult? Function(ResultModel result)? loadedByDateForHomepage,
+  }) {
+    return getAll?.call(result, OKCount, NGCount);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(ResultModel result)? loaded,
+    TResult Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
+    TResult Function(String error)? error,
+    TResult Function(ResultModel model)? update,
+    TResult Function(ResultModel model)? added,
+    TResult Function(List<ResultGet> result)? loadedByDateList,
+    TResult Function(ResultModel result)? loadedByDate,
+    TResult Function(ResultModel result)? loadedByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (getAll != null) {
+      return getAll(result, OKCount, NGCount);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Update value) update,
+    required TResult Function(_Added value) added,
+    required TResult Function(_LoadedByDateList value) loadedByDateList,
+    required TResult Function(_LoadedByDate value) loadedByDate,
+    required TResult Function(_LoadedByDateForHomepage value)
+        loadedByDateForHomepage,
+  }) {
+    return getAll(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Update value)? update,
+    TResult? Function(_Added value)? added,
+    TResult? Function(_LoadedByDateList value)? loadedByDateList,
+    TResult? Function(_LoadedByDate value)? loadedByDate,
+    TResult? Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
+  }) {
+    return getAll?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_Error value)? error,
+    TResult Function(_Update value)? update,
+    TResult Function(_Added value)? added,
+    TResult Function(_LoadedByDateList value)? loadedByDateList,
+    TResult Function(_LoadedByDate value)? loadedByDate,
+    TResult Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (getAll != null) {
+      return getAll(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetAll implements ResultState {
+  const factory _GetAll(final List<ResultModel> result, final int OKCount,
+      final int NGCount) = _$GetAllImpl;
+
+  List<ResultModel> get result;
+  int get OKCount;
+  int get NGCount;
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetAllImplCopyWith<_$GetAllImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1256,9 +2693,16 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(List<ResultData> result) loaded,
+    required TResult Function(ResultModel result) loaded,
+    required TResult Function(
+            List<ResultModel> result, int OKCount, int NGCount)
+        getAll,
     required TResult Function(String error) error,
-    required TResult Function() added,
+    required TResult Function(ResultModel model) update,
+    required TResult Function(ResultModel model) added,
+    required TResult Function(List<ResultGet> result) loadedByDateList,
+    required TResult Function(ResultModel result) loadedByDate,
+    required TResult Function(ResultModel result) loadedByDateForHomepage,
   }) {
     return error(this.error);
   }
@@ -1269,9 +2713,15 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(List<ResultData> result)? loaded,
+    TResult? Function(ResultModel result)? loaded,
+    TResult? Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
     TResult? Function(String error)? error,
-    TResult? Function()? added,
+    TResult? Function(ResultModel model)? update,
+    TResult? Function(ResultModel model)? added,
+    TResult? Function(List<ResultGet> result)? loadedByDateList,
+    TResult? Function(ResultModel result)? loadedByDate,
+    TResult? Function(ResultModel result)? loadedByDateForHomepage,
   }) {
     return error?.call(this.error);
   }
@@ -1282,9 +2732,15 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(List<ResultData> result)? loaded,
+    TResult Function(ResultModel result)? loaded,
+    TResult Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
     TResult Function(String error)? error,
-    TResult Function()? added,
+    TResult Function(ResultModel model)? update,
+    TResult Function(ResultModel model)? added,
+    TResult Function(List<ResultGet> result)? loadedByDateList,
+    TResult Function(ResultModel result)? loadedByDate,
+    TResult Function(ResultModel result)? loadedByDateForHomepage,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1300,8 +2756,14 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_GetAll value) getAll,
     required TResult Function(_Error value) error,
+    required TResult Function(_Update value) update,
     required TResult Function(_Added value) added,
+    required TResult Function(_LoadedByDateList value) loadedByDateList,
+    required TResult Function(_LoadedByDate value) loadedByDate,
+    required TResult Function(_LoadedByDateForHomepage value)
+        loadedByDateForHomepage,
   }) {
     return error(this);
   }
@@ -1313,8 +2775,13 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_GetAll value)? getAll,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Update value)? update,
     TResult? Function(_Added value)? added,
+    TResult? Function(_LoadedByDateList value)? loadedByDateList,
+    TResult? Function(_LoadedByDate value)? loadedByDate,
+    TResult? Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
   }) {
     return error?.call(this);
   }
@@ -1326,8 +2793,13 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_GetAll value)? getAll,
     TResult Function(_Error value)? error,
+    TResult Function(_Update value)? update,
     TResult Function(_Added value)? added,
+    TResult Function(_LoadedByDateList value)? loadedByDateList,
+    TResult Function(_LoadedByDate value)? loadedByDate,
+    TResult Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1350,10 +2822,233 @@ abstract class _Error implements ResultState {
 }
 
 /// @nodoc
+abstract class _$$UpdateImplCopyWith<$Res> {
+  factory _$$UpdateImplCopyWith(
+          _$UpdateImpl value, $Res Function(_$UpdateImpl) then) =
+      __$$UpdateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ResultModel model});
+
+  $ResultModelCopyWith<$Res> get model;
+}
+
+/// @nodoc
+class __$$UpdateImplCopyWithImpl<$Res>
+    extends _$ResultStateCopyWithImpl<$Res, _$UpdateImpl>
+    implements _$$UpdateImplCopyWith<$Res> {
+  __$$UpdateImplCopyWithImpl(
+      _$UpdateImpl _value, $Res Function(_$UpdateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? model = null,
+  }) {
+    return _then(_$UpdateImpl(
+      null == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as ResultModel,
+    ));
+  }
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ResultModelCopyWith<$Res> get model {
+    return $ResultModelCopyWith<$Res>(_value.model, (value) {
+      return _then(_value.copyWith(model: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UpdateImpl with DiagnosticableTreeMixin implements _Update {
+  const _$UpdateImpl(this.model);
+
+  @override
+  final ResultModel model;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ResultState.update(model: $model)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResultState.update'))
+      ..add(DiagnosticsProperty('model', model));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateImpl &&
+            (identical(other.model, model) || other.model == model));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, model);
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateImplCopyWith<_$UpdateImpl> get copyWith =>
+      __$$UpdateImplCopyWithImpl<_$UpdateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() success,
+    required TResult Function(ResultModel result) loaded,
+    required TResult Function(
+            List<ResultModel> result, int OKCount, int NGCount)
+        getAll,
+    required TResult Function(String error) error,
+    required TResult Function(ResultModel model) update,
+    required TResult Function(ResultModel model) added,
+    required TResult Function(List<ResultGet> result) loadedByDateList,
+    required TResult Function(ResultModel result) loadedByDate,
+    required TResult Function(ResultModel result) loadedByDateForHomepage,
+  }) {
+    return update(model);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? success,
+    TResult? Function(ResultModel result)? loaded,
+    TResult? Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
+    TResult? Function(String error)? error,
+    TResult? Function(ResultModel model)? update,
+    TResult? Function(ResultModel model)? added,
+    TResult? Function(List<ResultGet> result)? loadedByDateList,
+    TResult? Function(ResultModel result)? loadedByDate,
+    TResult? Function(ResultModel result)? loadedByDateForHomepage,
+  }) {
+    return update?.call(model);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(ResultModel result)? loaded,
+    TResult Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
+    TResult Function(String error)? error,
+    TResult Function(ResultModel model)? update,
+    TResult Function(ResultModel model)? added,
+    TResult Function(List<ResultGet> result)? loadedByDateList,
+    TResult Function(ResultModel result)? loadedByDate,
+    TResult Function(ResultModel result)? loadedByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (update != null) {
+      return update(model);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Update value) update,
+    required TResult Function(_Added value) added,
+    required TResult Function(_LoadedByDateList value) loadedByDateList,
+    required TResult Function(_LoadedByDate value) loadedByDate,
+    required TResult Function(_LoadedByDateForHomepage value)
+        loadedByDateForHomepage,
+  }) {
+    return update(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Update value)? update,
+    TResult? Function(_Added value)? added,
+    TResult? Function(_LoadedByDateList value)? loadedByDateList,
+    TResult? Function(_LoadedByDate value)? loadedByDate,
+    TResult? Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
+  }) {
+    return update?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_Error value)? error,
+    TResult Function(_Update value)? update,
+    TResult Function(_Added value)? added,
+    TResult Function(_LoadedByDateList value)? loadedByDateList,
+    TResult Function(_LoadedByDate value)? loadedByDate,
+    TResult Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (update != null) {
+      return update(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Update implements ResultState {
+  const factory _Update(final ResultModel model) = _$UpdateImpl;
+
+  ResultModel get model;
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateImplCopyWith<_$UpdateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$AddedImplCopyWith<$Res> {
   factory _$$AddedImplCopyWith(
           _$AddedImpl value, $Res Function(_$AddedImpl) then) =
       __$$AddedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ResultModel model});
+
+  $ResultModelCopyWith<$Res> get model;
 }
 
 /// @nodoc
@@ -1366,32 +3061,69 @@ class __$$AddedImplCopyWithImpl<$Res>
 
   /// Create a copy of ResultState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? model = null,
+  }) {
+    return _then(_$AddedImpl(
+      null == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as ResultModel,
+    ));
+  }
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ResultModelCopyWith<$Res> get model {
+    return $ResultModelCopyWith<$Res>(_value.model, (value) {
+      return _then(_value.copyWith(model: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$AddedImpl with DiagnosticableTreeMixin implements _Added {
-  const _$AddedImpl();
+  const _$AddedImpl(this.model);
+
+  @override
+  final ResultModel model;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ResultState.added()';
+    return 'ResultState.added(model: $model)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'ResultState.added'));
+    properties
+      ..add(DiagnosticsProperty('type', 'ResultState.added'))
+      ..add(DiagnosticsProperty('model', model));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AddedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$AddedImpl &&
+            (identical(other.model, model) || other.model == model));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, model);
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddedImplCopyWith<_$AddedImpl> get copyWith =>
+      __$$AddedImplCopyWithImpl<_$AddedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1399,11 +3131,18 @@ class _$AddedImpl with DiagnosticableTreeMixin implements _Added {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(List<ResultData> result) loaded,
+    required TResult Function(ResultModel result) loaded,
+    required TResult Function(
+            List<ResultModel> result, int OKCount, int NGCount)
+        getAll,
     required TResult Function(String error) error,
-    required TResult Function() added,
+    required TResult Function(ResultModel model) update,
+    required TResult Function(ResultModel model) added,
+    required TResult Function(List<ResultGet> result) loadedByDateList,
+    required TResult Function(ResultModel result) loadedByDate,
+    required TResult Function(ResultModel result) loadedByDateForHomepage,
   }) {
-    return added();
+    return added(model);
   }
 
   @override
@@ -1412,11 +3151,17 @@ class _$AddedImpl with DiagnosticableTreeMixin implements _Added {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(List<ResultData> result)? loaded,
+    TResult? Function(ResultModel result)? loaded,
+    TResult? Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
     TResult? Function(String error)? error,
-    TResult? Function()? added,
+    TResult? Function(ResultModel model)? update,
+    TResult? Function(ResultModel model)? added,
+    TResult? Function(List<ResultGet> result)? loadedByDateList,
+    TResult? Function(ResultModel result)? loadedByDate,
+    TResult? Function(ResultModel result)? loadedByDateForHomepage,
   }) {
-    return added?.call();
+    return added?.call(model);
   }
 
   @override
@@ -1425,13 +3170,19 @@ class _$AddedImpl with DiagnosticableTreeMixin implements _Added {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(List<ResultData> result)? loaded,
+    TResult Function(ResultModel result)? loaded,
+    TResult Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
     TResult Function(String error)? error,
-    TResult Function()? added,
+    TResult Function(ResultModel model)? update,
+    TResult Function(ResultModel model)? added,
+    TResult Function(List<ResultGet> result)? loadedByDateList,
+    TResult Function(ResultModel result)? loadedByDate,
+    TResult Function(ResultModel result)? loadedByDateForHomepage,
     required TResult orElse(),
   }) {
     if (added != null) {
-      return added();
+      return added(model);
     }
     return orElse();
   }
@@ -1443,8 +3194,14 @@ class _$AddedImpl with DiagnosticableTreeMixin implements _Added {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_GetAll value) getAll,
     required TResult Function(_Error value) error,
+    required TResult Function(_Update value) update,
     required TResult Function(_Added value) added,
+    required TResult Function(_LoadedByDateList value) loadedByDateList,
+    required TResult Function(_LoadedByDate value) loadedByDate,
+    required TResult Function(_LoadedByDateForHomepage value)
+        loadedByDateForHomepage,
   }) {
     return added(this);
   }
@@ -1456,8 +3213,13 @@ class _$AddedImpl with DiagnosticableTreeMixin implements _Added {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_GetAll value)? getAll,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Update value)? update,
     TResult? Function(_Added value)? added,
+    TResult? Function(_LoadedByDateList value)? loadedByDateList,
+    TResult? Function(_LoadedByDate value)? loadedByDate,
+    TResult? Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
   }) {
     return added?.call(this);
   }
@@ -1469,8 +3231,13 @@ class _$AddedImpl with DiagnosticableTreeMixin implements _Added {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_GetAll value)? getAll,
     TResult Function(_Error value)? error,
+    TResult Function(_Update value)? update,
     TResult Function(_Added value)? added,
+    TResult Function(_LoadedByDateList value)? loadedByDateList,
+    TResult Function(_LoadedByDate value)? loadedByDate,
+    TResult Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
     required TResult orElse(),
   }) {
     if (added != null) {
@@ -1481,5 +3248,674 @@ class _$AddedImpl with DiagnosticableTreeMixin implements _Added {
 }
 
 abstract class _Added implements ResultState {
-  const factory _Added() = _$AddedImpl;
+  const factory _Added(final ResultModel model) = _$AddedImpl;
+
+  ResultModel get model;
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AddedImplCopyWith<_$AddedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadedByDateListImplCopyWith<$Res> {
+  factory _$$LoadedByDateListImplCopyWith(_$LoadedByDateListImpl value,
+          $Res Function(_$LoadedByDateListImpl) then) =
+      __$$LoadedByDateListImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<ResultGet> result});
+}
+
+/// @nodoc
+class __$$LoadedByDateListImplCopyWithImpl<$Res>
+    extends _$ResultStateCopyWithImpl<$Res, _$LoadedByDateListImpl>
+    implements _$$LoadedByDateListImplCopyWith<$Res> {
+  __$$LoadedByDateListImplCopyWithImpl(_$LoadedByDateListImpl _value,
+      $Res Function(_$LoadedByDateListImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? result = null,
+  }) {
+    return _then(_$LoadedByDateListImpl(
+      null == result
+          ? _value._result
+          : result // ignore: cast_nullable_to_non_nullable
+              as List<ResultGet>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadedByDateListImpl
+    with DiagnosticableTreeMixin
+    implements _LoadedByDateList {
+  const _$LoadedByDateListImpl(final List<ResultGet> result) : _result = result;
+
+  final List<ResultGet> _result;
+  @override
+  List<ResultGet> get result {
+    if (_result is EqualUnmodifiableListView) return _result;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_result);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ResultState.loadedByDateList(result: $result)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResultState.loadedByDateList'))
+      ..add(DiagnosticsProperty('result', result));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadedByDateListImpl &&
+            const DeepCollectionEquality().equals(other._result, _result));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_result));
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadedByDateListImplCopyWith<_$LoadedByDateListImpl> get copyWith =>
+      __$$LoadedByDateListImplCopyWithImpl<_$LoadedByDateListImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() success,
+    required TResult Function(ResultModel result) loaded,
+    required TResult Function(
+            List<ResultModel> result, int OKCount, int NGCount)
+        getAll,
+    required TResult Function(String error) error,
+    required TResult Function(ResultModel model) update,
+    required TResult Function(ResultModel model) added,
+    required TResult Function(List<ResultGet> result) loadedByDateList,
+    required TResult Function(ResultModel result) loadedByDate,
+    required TResult Function(ResultModel result) loadedByDateForHomepage,
+  }) {
+    return loadedByDateList(result);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? success,
+    TResult? Function(ResultModel result)? loaded,
+    TResult? Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
+    TResult? Function(String error)? error,
+    TResult? Function(ResultModel model)? update,
+    TResult? Function(ResultModel model)? added,
+    TResult? Function(List<ResultGet> result)? loadedByDateList,
+    TResult? Function(ResultModel result)? loadedByDate,
+    TResult? Function(ResultModel result)? loadedByDateForHomepage,
+  }) {
+    return loadedByDateList?.call(result);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(ResultModel result)? loaded,
+    TResult Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
+    TResult Function(String error)? error,
+    TResult Function(ResultModel model)? update,
+    TResult Function(ResultModel model)? added,
+    TResult Function(List<ResultGet> result)? loadedByDateList,
+    TResult Function(ResultModel result)? loadedByDate,
+    TResult Function(ResultModel result)? loadedByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (loadedByDateList != null) {
+      return loadedByDateList(result);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Update value) update,
+    required TResult Function(_Added value) added,
+    required TResult Function(_LoadedByDateList value) loadedByDateList,
+    required TResult Function(_LoadedByDate value) loadedByDate,
+    required TResult Function(_LoadedByDateForHomepage value)
+        loadedByDateForHomepage,
+  }) {
+    return loadedByDateList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Update value)? update,
+    TResult? Function(_Added value)? added,
+    TResult? Function(_LoadedByDateList value)? loadedByDateList,
+    TResult? Function(_LoadedByDate value)? loadedByDate,
+    TResult? Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
+  }) {
+    return loadedByDateList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_Error value)? error,
+    TResult Function(_Update value)? update,
+    TResult Function(_Added value)? added,
+    TResult Function(_LoadedByDateList value)? loadedByDateList,
+    TResult Function(_LoadedByDate value)? loadedByDate,
+    TResult Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (loadedByDateList != null) {
+      return loadedByDateList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadedByDateList implements ResultState {
+  const factory _LoadedByDateList(final List<ResultGet> result) =
+      _$LoadedByDateListImpl;
+
+  List<ResultGet> get result;
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadedByDateListImplCopyWith<_$LoadedByDateListImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadedByDateImplCopyWith<$Res> {
+  factory _$$LoadedByDateImplCopyWith(
+          _$LoadedByDateImpl value, $Res Function(_$LoadedByDateImpl) then) =
+      __$$LoadedByDateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ResultModel result});
+
+  $ResultModelCopyWith<$Res> get result;
+}
+
+/// @nodoc
+class __$$LoadedByDateImplCopyWithImpl<$Res>
+    extends _$ResultStateCopyWithImpl<$Res, _$LoadedByDateImpl>
+    implements _$$LoadedByDateImplCopyWith<$Res> {
+  __$$LoadedByDateImplCopyWithImpl(
+      _$LoadedByDateImpl _value, $Res Function(_$LoadedByDateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? result = null,
+  }) {
+    return _then(_$LoadedByDateImpl(
+      null == result
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as ResultModel,
+    ));
+  }
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ResultModelCopyWith<$Res> get result {
+    return $ResultModelCopyWith<$Res>(_value.result, (value) {
+      return _then(_value.copyWith(result: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$LoadedByDateImpl with DiagnosticableTreeMixin implements _LoadedByDate {
+  const _$LoadedByDateImpl(this.result);
+
+  @override
+  final ResultModel result;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ResultState.loadedByDate(result: $result)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResultState.loadedByDate'))
+      ..add(DiagnosticsProperty('result', result));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadedByDateImpl &&
+            (identical(other.result, result) || other.result == result));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, result);
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadedByDateImplCopyWith<_$LoadedByDateImpl> get copyWith =>
+      __$$LoadedByDateImplCopyWithImpl<_$LoadedByDateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() success,
+    required TResult Function(ResultModel result) loaded,
+    required TResult Function(
+            List<ResultModel> result, int OKCount, int NGCount)
+        getAll,
+    required TResult Function(String error) error,
+    required TResult Function(ResultModel model) update,
+    required TResult Function(ResultModel model) added,
+    required TResult Function(List<ResultGet> result) loadedByDateList,
+    required TResult Function(ResultModel result) loadedByDate,
+    required TResult Function(ResultModel result) loadedByDateForHomepage,
+  }) {
+    return loadedByDate(result);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? success,
+    TResult? Function(ResultModel result)? loaded,
+    TResult? Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
+    TResult? Function(String error)? error,
+    TResult? Function(ResultModel model)? update,
+    TResult? Function(ResultModel model)? added,
+    TResult? Function(List<ResultGet> result)? loadedByDateList,
+    TResult? Function(ResultModel result)? loadedByDate,
+    TResult? Function(ResultModel result)? loadedByDateForHomepage,
+  }) {
+    return loadedByDate?.call(result);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(ResultModel result)? loaded,
+    TResult Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
+    TResult Function(String error)? error,
+    TResult Function(ResultModel model)? update,
+    TResult Function(ResultModel model)? added,
+    TResult Function(List<ResultGet> result)? loadedByDateList,
+    TResult Function(ResultModel result)? loadedByDate,
+    TResult Function(ResultModel result)? loadedByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (loadedByDate != null) {
+      return loadedByDate(result);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Update value) update,
+    required TResult Function(_Added value) added,
+    required TResult Function(_LoadedByDateList value) loadedByDateList,
+    required TResult Function(_LoadedByDate value) loadedByDate,
+    required TResult Function(_LoadedByDateForHomepage value)
+        loadedByDateForHomepage,
+  }) {
+    return loadedByDate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Update value)? update,
+    TResult? Function(_Added value)? added,
+    TResult? Function(_LoadedByDateList value)? loadedByDateList,
+    TResult? Function(_LoadedByDate value)? loadedByDate,
+    TResult? Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
+  }) {
+    return loadedByDate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_Error value)? error,
+    TResult Function(_Update value)? update,
+    TResult Function(_Added value)? added,
+    TResult Function(_LoadedByDateList value)? loadedByDateList,
+    TResult Function(_LoadedByDate value)? loadedByDate,
+    TResult Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (loadedByDate != null) {
+      return loadedByDate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadedByDate implements ResultState {
+  const factory _LoadedByDate(final ResultModel result) = _$LoadedByDateImpl;
+
+  ResultModel get result;
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadedByDateImplCopyWith<_$LoadedByDateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadedByDateForHomepageImplCopyWith<$Res> {
+  factory _$$LoadedByDateForHomepageImplCopyWith(
+          _$LoadedByDateForHomepageImpl value,
+          $Res Function(_$LoadedByDateForHomepageImpl) then) =
+      __$$LoadedByDateForHomepageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ResultModel result});
+
+  $ResultModelCopyWith<$Res> get result;
+}
+
+/// @nodoc
+class __$$LoadedByDateForHomepageImplCopyWithImpl<$Res>
+    extends _$ResultStateCopyWithImpl<$Res, _$LoadedByDateForHomepageImpl>
+    implements _$$LoadedByDateForHomepageImplCopyWith<$Res> {
+  __$$LoadedByDateForHomepageImplCopyWithImpl(
+      _$LoadedByDateForHomepageImpl _value,
+      $Res Function(_$LoadedByDateForHomepageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? result = null,
+  }) {
+    return _then(_$LoadedByDateForHomepageImpl(
+      null == result
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as ResultModel,
+    ));
+  }
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ResultModelCopyWith<$Res> get result {
+    return $ResultModelCopyWith<$Res>(_value.result, (value) {
+      return _then(_value.copyWith(result: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$LoadedByDateForHomepageImpl
+    with DiagnosticableTreeMixin
+    implements _LoadedByDateForHomepage {
+  const _$LoadedByDateForHomepageImpl(this.result);
+
+  @override
+  final ResultModel result;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ResultState.loadedByDateForHomepage(result: $result)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResultState.loadedByDateForHomepage'))
+      ..add(DiagnosticsProperty('result', result));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadedByDateForHomepageImpl &&
+            (identical(other.result, result) || other.result == result));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, result);
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadedByDateForHomepageImplCopyWith<_$LoadedByDateForHomepageImpl>
+      get copyWith => __$$LoadedByDateForHomepageImplCopyWithImpl<
+          _$LoadedByDateForHomepageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() success,
+    required TResult Function(ResultModel result) loaded,
+    required TResult Function(
+            List<ResultModel> result, int OKCount, int NGCount)
+        getAll,
+    required TResult Function(String error) error,
+    required TResult Function(ResultModel model) update,
+    required TResult Function(ResultModel model) added,
+    required TResult Function(List<ResultGet> result) loadedByDateList,
+    required TResult Function(ResultModel result) loadedByDate,
+    required TResult Function(ResultModel result) loadedByDateForHomepage,
+  }) {
+    return loadedByDateForHomepage(result);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? success,
+    TResult? Function(ResultModel result)? loaded,
+    TResult? Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
+    TResult? Function(String error)? error,
+    TResult? Function(ResultModel model)? update,
+    TResult? Function(ResultModel model)? added,
+    TResult? Function(List<ResultGet> result)? loadedByDateList,
+    TResult? Function(ResultModel result)? loadedByDate,
+    TResult? Function(ResultModel result)? loadedByDateForHomepage,
+  }) {
+    return loadedByDateForHomepage?.call(result);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(ResultModel result)? loaded,
+    TResult Function(List<ResultModel> result, int OKCount, int NGCount)?
+        getAll,
+    TResult Function(String error)? error,
+    TResult Function(ResultModel model)? update,
+    TResult Function(ResultModel model)? added,
+    TResult Function(List<ResultGet> result)? loadedByDateList,
+    TResult Function(ResultModel result)? loadedByDate,
+    TResult Function(ResultModel result)? loadedByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (loadedByDateForHomepage != null) {
+      return loadedByDateForHomepage(result);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Update value) update,
+    required TResult Function(_Added value) added,
+    required TResult Function(_LoadedByDateList value) loadedByDateList,
+    required TResult Function(_LoadedByDate value) loadedByDate,
+    required TResult Function(_LoadedByDateForHomepage value)
+        loadedByDateForHomepage,
+  }) {
+    return loadedByDateForHomepage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Update value)? update,
+    TResult? Function(_Added value)? added,
+    TResult? Function(_LoadedByDateList value)? loadedByDateList,
+    TResult? Function(_LoadedByDate value)? loadedByDate,
+    TResult? Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
+  }) {
+    return loadedByDateForHomepage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_Error value)? error,
+    TResult Function(_Update value)? update,
+    TResult Function(_Added value)? added,
+    TResult Function(_LoadedByDateList value)? loadedByDateList,
+    TResult Function(_LoadedByDate value)? loadedByDate,
+    TResult Function(_LoadedByDateForHomepage value)? loadedByDateForHomepage,
+    required TResult orElse(),
+  }) {
+    if (loadedByDateForHomepage != null) {
+      return loadedByDateForHomepage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadedByDateForHomepage implements ResultState {
+  const factory _LoadedByDateForHomepage(final ResultModel result) =
+      _$LoadedByDateForHomepageImpl;
+
+  ResultModel get result;
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadedByDateForHomepageImplCopyWith<_$LoadedByDateForHomepageImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

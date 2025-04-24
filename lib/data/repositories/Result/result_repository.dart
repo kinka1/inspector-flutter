@@ -1,6 +1,13 @@
-import 'package:application/data/models/Result/result_model.dart';
+import 'package:maintenanceApp/data/models/Result/result_model.dart';
 
 abstract class ResultRepository {
-  Future<void> addResult(int machineId,String description,String status);
-  Future<List<ResultData>> getResult();
+  Future<ResultModel> addResult(String status);
+  Future<ResultModel> getResult();
+  Future<List<ResultModel>> getResultAll();
+  Future<List<ResultGet>> getResultByDatelist(String tanggal);
+  Future<ResultModel> getResultByDate(String tanggal);
+  Future<void> updateResultStatus(ResultModel model);
+
+
+  
 }

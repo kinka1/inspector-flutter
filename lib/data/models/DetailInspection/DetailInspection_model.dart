@@ -1,24 +1,26 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:maintenanceApp/data/models/InspectionItem/InspectionItem_model.dart';
+import 'package:maintenanceApp/data/models/machine/machine_model.dart';
 
 part 'DetailInspection_model.freezed.dart';
 part 'DetailInspection_model.g.dart';
 
 @freezed
 class DetailInspectionResponse with _$DetailInspectionResponse {
-    const factory DetailInspectionResponse({
-      required bool status,
-      required DetailInspectionData data,
-    }) = _DetailInspectionResponse;
-  
-    factory DetailInspectionResponse.fromJson(Map<String, dynamic> json) =>
-        _$DetailInspectionResponseFromJson(json);
-  }
+  const factory DetailInspectionResponse({
+    required bool status,
+    required DetailInspectionData data,
+  }) = _DetailInspectionResponse;
 
-  @freezed
+  factory DetailInspectionResponse.fromJson(Map<String, dynamic> json) =>
+      _$DetailInspectionResponseFromJson(json);
+}
+
+@freezed
 class DetailInspectionData with _$DetailInspectionData {
   const factory DetailInspectionData({
-    required DetailInspectionGetModel item,
+    required List<DetailInspectionGetModel> item,
   }) = _DetailInspectionData;
 
   factory DetailInspectionData.fromJson(Map<String, Object?> json) =>
@@ -26,17 +28,14 @@ class DetailInspectionData with _$DetailInspectionData {
 }
 
 @freezed
-class DetailInspectionModel with _$DetailInspectionModel{
+class DetailInspectionModel with _$DetailInspectionModel {
   const factory DetailInspectionModel({
-    required String itemName,
-    required String specification,
-    required String method,
-    required String frequency,
-    required int number,
-    required String status,
+    required int id,
+    required String machineInspectionId,
     required String description,
-    required int machineId,
-    required String imageName
+    required String status,
+    required DateTime tanggal,
+    required String resultId,
   }) = _DetailInspectionModel;
 
   factory DetailInspectionModel.fromJson(Map<String, dynamic> json) =>
@@ -44,21 +43,42 @@ class DetailInspectionModel with _$DetailInspectionModel{
 }
 
 @freezed
-class DetailInspectionGetModel with _$DetailInspectionGetModel{
-  const factory DetailInspectionGetModel({
-    required int id,
-    required String itemName,
-    required String specification,
-    required String method,
-    required String frequency,
-    required int number,
+class DetailInspectionModelAdd with _$DetailInspectionModelAdd {
+  const factory DetailInspectionModelAdd({
+    required String machineInspectionId,
     required String status,
+    required int resultId,
     required String description,
-    required int machineId,
-    required String imagePath,
-    required DateTime tanggal,
-  }) = _DetailInspectionGetModel;
+    required String tanggal,
+  }) = _DetailInspectionModelAdd;
+
+  factory DetailInspectionModelAdd.fromJson(Map<String, dynamic> json) =>
+      _$DetailInspectionModelAddFromJson(json);
+}
+
+@freezed
+class DetailInspectionGetModel with _$DetailInspectionGetModel {
+  const factory DetailInspectionGetModel(
+      {required int id,
+      required String machineInspectionId,
+      required MachineModel machine,
+      required InspectionitemModel inspectionItem,
+      required String status,
+      required String description,
+}) = _DetailInspectionGetModel;
 
   factory DetailInspectionGetModel.fromJson(Map<String, dynamic> json) =>
       _$DetailInspectionGetModelFromJson(json);
+}
+
+class DetailInspectionTempModel {
+  final String status;
+  final String line;
+  final String machineName;
+
+  DetailInspectionTempModel({
+    required this.status,
+    required this.line,
+    required this.machineName,
+  });
 }

@@ -1,11 +1,11 @@
-import 'package:application/core/color_values.dart';
+import 'package:maintenanceApp/core/color_values.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 
 class AppThemeData {
   static ThemeData getTheme(BuildContext context) {
-    const Color primaryColor = ColorValues.info400;
+    const Color primaryColor = ColorValues.hijauMain;
     final Map<int, Color> primaryColorMap = {
       50: primaryColor,
       100: primaryColor,
@@ -33,10 +33,10 @@ class AppThemeData {
           showSelectedLabels: true,
           showUnselectedLabels: true,
           type: BottomNavigationBarType.fixed,
-          selectedItemColor: ColorValues.info400,
+          selectedItemColor: ColorValues.kuningButton,
           unselectedItemColor: ColorValues.grayscale300,
           selectedLabelStyle: GoogleFonts.plusJakartaSans(
-              color: ColorValues.info400,
+              color: ColorValues.hijauMain,
               fontSize: 12,
               fontWeight: FontWeight.w600),
           unselectedLabelStyle: GoogleFonts.plusJakartaSans(
@@ -63,14 +63,14 @@ class AppThemeData {
               fontSize: 20,
               color: Colors.black,),
           bodyMedium: GoogleFonts.plusJakartaSans(
-            fontSize: 15,
+            fontSize: 18,
             color: Colors.black,
             fontWeight: FontWeight.normal,
           ),
           bodySmall: GoogleFonts.plusJakartaSans(
-              fontSize: 11, fontWeight: FontWeight.normal),
+              fontSize: 15, fontWeight: FontWeight.normal),
           titleLarge: GoogleFonts.plusJakartaSans(
-            fontSize: 17,
+            fontSize: 20,
             color: ColorValues.grayscale900,
             letterSpacing: -0.5,
           ),

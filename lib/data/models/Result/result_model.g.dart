@@ -41,7 +41,6 @@ _$ResultModelImpl _$$ResultModelImplFromJson(Map<String, dynamic> json) =>
     _$ResultModelImpl(
       id: (json['id'] as num).toInt(),
       userId: json['userId'] as String,
-      description: json['description'] as String,
       status: json['status'] as String,
       date: DateTime.parse(json['date'] as String),
     );
@@ -50,7 +49,26 @@ Map<String, dynamic> _$$ResultModelImplToJson(_$ResultModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'userId': instance.userId,
-      'description': instance.description,
+      'status': instance.status,
+      'date': instance.date.toIso8601String(),
+    };
+
+_$ResultGetImpl _$$ResultGetImplFromJson(Map<String, dynamic> json) =>
+    _$ResultGetImpl(
+      id: (json['id'] as num).toInt(),
+      machineId: json['machineId'] as String,
+      machine: MachineModel.fromJson(json['machine'] as Map<String, dynamic>),
+      userId: json['userId'] as String,
+      status: json['status'] as String,
+      date: DateTime.parse(json['date'] as String),
+    );
+
+Map<String, dynamic> _$$ResultGetImplToJson(_$ResultGetImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'machineId': instance.machineId,
+      'machine': instance.machine,
+      'userId': instance.userId,
       'status': instance.status,
       'date': instance.date.toIso8601String(),
     };

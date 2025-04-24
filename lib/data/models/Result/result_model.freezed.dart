@@ -463,7 +463,6 @@ ResultModel _$ResultModelFromJson(Map<String, dynamic> json) {
 mixin _$ResultModel {
   int get id => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
 
@@ -483,12 +482,7 @@ abstract class $ResultModelCopyWith<$Res> {
           ResultModel value, $Res Function(ResultModel) then) =
       _$ResultModelCopyWithImpl<$Res, ResultModel>;
   @useResult
-  $Res call(
-      {int id,
-      String userId,
-      String description,
-      String status,
-      DateTime date});
+  $Res call({int id, String userId, String status, DateTime date});
 }
 
 /// @nodoc
@@ -508,7 +502,6 @@ class _$ResultModelCopyWithImpl<$Res, $Val extends ResultModel>
   $Res call({
     Object? id = null,
     Object? userId = null,
-    Object? description = null,
     Object? status = null,
     Object? date = null,
   }) {
@@ -520,10 +513,6 @@ class _$ResultModelCopyWithImpl<$Res, $Val extends ResultModel>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
               as String,
       status: null == status
           ? _value.status
@@ -545,12 +534,7 @@ abstract class _$$ResultModelImplCopyWith<$Res>
       __$$ResultModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int id,
-      String userId,
-      String description,
-      String status,
-      DateTime date});
+  $Res call({int id, String userId, String status, DateTime date});
 }
 
 /// @nodoc
@@ -568,7 +552,6 @@ class __$$ResultModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? userId = null,
-    Object? description = null,
     Object? status = null,
     Object? date = null,
   }) {
@@ -580,10 +563,6 @@ class __$$ResultModelImplCopyWithImpl<$Res>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
               as String,
       status: null == status
           ? _value.status
@@ -603,7 +582,6 @@ class _$ResultModelImpl with DiagnosticableTreeMixin implements _ResultModel {
   const _$ResultModelImpl(
       {required this.id,
       required this.userId,
-      required this.description,
       required this.status,
       required this.date});
 
@@ -615,15 +593,13 @@ class _$ResultModelImpl with DiagnosticableTreeMixin implements _ResultModel {
   @override
   final String userId;
   @override
-  final String description;
-  @override
   final String status;
   @override
   final DateTime date;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ResultModel(id: $id, userId: $userId, description: $description, status: $status, date: $date)';
+    return 'ResultModel(id: $id, userId: $userId, status: $status, date: $date)';
   }
 
   @override
@@ -633,7 +609,6 @@ class _$ResultModelImpl with DiagnosticableTreeMixin implements _ResultModel {
       ..add(DiagnosticsProperty('type', 'ResultModel'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('userId', userId))
-      ..add(DiagnosticsProperty('description', description))
       ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('date', date));
   }
@@ -645,16 +620,13 @@ class _$ResultModelImpl with DiagnosticableTreeMixin implements _ResultModel {
             other is _$ResultModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.date, date) || other.date == date));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, userId, description, status, date);
+  int get hashCode => Object.hash(runtimeType, id, userId, status, date);
 
   /// Create a copy of ResultModel
   /// with the given fields replaced by the non-null parameter values.
@@ -676,7 +648,6 @@ abstract class _ResultModel implements ResultModel {
   const factory _ResultModel(
       {required final int id,
       required final String userId,
-      required final String description,
       required final String status,
       required final DateTime date}) = _$ResultModelImpl;
 
@@ -688,8 +659,6 @@ abstract class _ResultModel implements ResultModel {
   @override
   String get userId;
   @override
-  String get description;
-  @override
   String get status;
   @override
   DateTime get date;
@@ -699,5 +668,287 @@ abstract class _ResultModel implements ResultModel {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ResultModelImplCopyWith<_$ResultModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ResultGet _$ResultGetFromJson(Map<String, dynamic> json) {
+  return _ResultGet.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ResultGet {
+  int get id => throw _privateConstructorUsedError;
+  String get machineId => throw _privateConstructorUsedError;
+  MachineModel get machine => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
+  DateTime get date => throw _privateConstructorUsedError;
+
+  /// Serializes this ResultGet to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of ResultGet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ResultGetCopyWith<ResultGet> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ResultGetCopyWith<$Res> {
+  factory $ResultGetCopyWith(ResultGet value, $Res Function(ResultGet) then) =
+      _$ResultGetCopyWithImpl<$Res, ResultGet>;
+  @useResult
+  $Res call(
+      {int id,
+      String machineId,
+      MachineModel machine,
+      String userId,
+      String status,
+      DateTime date});
+
+  $MachineModelCopyWith<$Res> get machine;
+}
+
+/// @nodoc
+class _$ResultGetCopyWithImpl<$Res, $Val extends ResultGet>
+    implements $ResultGetCopyWith<$Res> {
+  _$ResultGetCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ResultGet
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? machineId = null,
+    Object? machine = null,
+    Object? userId = null,
+    Object? status = null,
+    Object? date = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      machineId: null == machineId
+          ? _value.machineId
+          : machineId // ignore: cast_nullable_to_non_nullable
+              as String,
+      machine: null == machine
+          ? _value.machine
+          : machine // ignore: cast_nullable_to_non_nullable
+              as MachineModel,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ) as $Val);
+  }
+
+  /// Create a copy of ResultGet
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MachineModelCopyWith<$Res> get machine {
+    return $MachineModelCopyWith<$Res>(_value.machine, (value) {
+      return _then(_value.copyWith(machine: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$ResultGetImplCopyWith<$Res>
+    implements $ResultGetCopyWith<$Res> {
+  factory _$$ResultGetImplCopyWith(
+          _$ResultGetImpl value, $Res Function(_$ResultGetImpl) then) =
+      __$$ResultGetImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      String machineId,
+      MachineModel machine,
+      String userId,
+      String status,
+      DateTime date});
+
+  @override
+  $MachineModelCopyWith<$Res> get machine;
+}
+
+/// @nodoc
+class __$$ResultGetImplCopyWithImpl<$Res>
+    extends _$ResultGetCopyWithImpl<$Res, _$ResultGetImpl>
+    implements _$$ResultGetImplCopyWith<$Res> {
+  __$$ResultGetImplCopyWithImpl(
+      _$ResultGetImpl _value, $Res Function(_$ResultGetImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ResultGet
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? machineId = null,
+    Object? machine = null,
+    Object? userId = null,
+    Object? status = null,
+    Object? date = null,
+  }) {
+    return _then(_$ResultGetImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      machineId: null == machineId
+          ? _value.machineId
+          : machineId // ignore: cast_nullable_to_non_nullable
+              as String,
+      machine: null == machine
+          ? _value.machine
+          : machine // ignore: cast_nullable_to_non_nullable
+              as MachineModel,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ResultGetImpl with DiagnosticableTreeMixin implements _ResultGet {
+  const _$ResultGetImpl(
+      {required this.id,
+      required this.machineId,
+      required this.machine,
+      required this.userId,
+      required this.status,
+      required this.date});
+
+  factory _$ResultGetImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ResultGetImplFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String machineId;
+  @override
+  final MachineModel machine;
+  @override
+  final String userId;
+  @override
+  final String status;
+  @override
+  final DateTime date;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ResultGet(id: $id, machineId: $machineId, machine: $machine, userId: $userId, status: $status, date: $date)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResultGet'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('machineId', machineId))
+      ..add(DiagnosticsProperty('machine', machine))
+      ..add(DiagnosticsProperty('userId', userId))
+      ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty('date', date));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ResultGetImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.machineId, machineId) ||
+                other.machineId == machineId) &&
+            (identical(other.machine, machine) || other.machine == machine) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.date, date) || other.date == date));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, id, machineId, machine, userId, status, date);
+
+  /// Create a copy of ResultGet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ResultGetImplCopyWith<_$ResultGetImpl> get copyWith =>
+      __$$ResultGetImplCopyWithImpl<_$ResultGetImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ResultGetImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ResultGet implements ResultGet {
+  const factory _ResultGet(
+      {required final int id,
+      required final String machineId,
+      required final MachineModel machine,
+      required final String userId,
+      required final String status,
+      required final DateTime date}) = _$ResultGetImpl;
+
+  factory _ResultGet.fromJson(Map<String, dynamic> json) =
+      _$ResultGetImpl.fromJson;
+
+  @override
+  int get id;
+  @override
+  String get machineId;
+  @override
+  MachineModel get machine;
+  @override
+  String get userId;
+  @override
+  String get status;
+  @override
+  DateTime get date;
+
+  /// Create a copy of ResultGet
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ResultGetImplCopyWith<_$ResultGetImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

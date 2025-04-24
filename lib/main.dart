@@ -1,16 +1,20 @@
-import 'package:application/core/app_theme_data.dart';
-import 'package:application/core/color_values.dart';
-import 'package:application/data/bloc/DetailInspection/detail_inspection_bloc.dart';
-import 'package:application/data/bloc/result/result_bloc.dart';
-import 'package:application/data/repositories/DetailInspection/detailInspection.dart';
-import 'package:application/data/repositories/InspectionItem/inspectionItem.dart';
-import 'package:application/data/repositories/Result/result_repository_impl.dart';
-import 'package:application/data/repositories/auth/auth.dart';
-import 'package:application/data/repositories/machine/machine_repository_impl.dart';
-import 'package:application/features/InspectionItem/bloc/inspection_item_bloc.dart';
-import 'package:application/features/auth/bloc/auth_bloc.dart';
-import 'package:application/features/machine/bloc/machine_bloc.dart';
-import 'package:application/routes/router.dart';
+import 'package:maintenanceApp/core/app_theme_data.dart';
+import 'package:maintenanceApp/core/color_values.dart';
+import 'package:maintenanceApp/data/bloc/DetailInspection/detail_inspection_bloc.dart';
+import 'package:maintenanceApp/data/bloc/machineInspection/machine_inspection_bloc.dart';
+import 'package:maintenanceApp/data/bloc/other/other_bloc.dart';
+import 'package:maintenanceApp/data/bloc/result/result_bloc.dart';
+import 'package:maintenanceApp/data/repositories/DetailInspection/detailInspection.dart';
+import 'package:maintenanceApp/data/repositories/InspectionItem/inspectionItem.dart';
+import 'package:maintenanceApp/data/repositories/MachineInspection/machine_inspection_repository_impl.dart';
+import 'package:maintenanceApp/data/repositories/Result/result_repository_impl.dart';
+import 'package:maintenanceApp/data/repositories/auth/auth.dart';
+import 'package:maintenanceApp/data/repositories/machine/machine_repository_impl.dart';
+import 'package:maintenanceApp/data/bloc/InspectionItem/inspection_item_bloc.dart';
+import 'package:maintenanceApp/data/bloc/auth/auth_bloc.dart';
+import 'package:maintenanceApp/data/bloc/machine/machine_bloc.dart';
+import 'package:maintenanceApp/data/repositories/other/other_repository_impl.dart';
+import 'package:maintenanceApp/routes/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -61,6 +65,8 @@ class MainApp extends StatelessWidget {
             BlocProvider(create: (_) => MachineBloc(MachineRepositoryImpl())),
             BlocProvider(create: (_) => DetailInspectionBloc(repository: DetailinspectionRepositoryImpl())),
             BlocProvider(create: (_) => ResultBloc(repository: ResultRepositoryImpl())),
+            BlocProvider(create: (_) => MachineInspectionBloc(MachineInspectionRepositoryImpl())),
+            BlocProvider(create: (_) => OtherBloc(OtherRepositoryImpl())),
           ],
           child: NotificationListener<OverscrollIndicatorNotification>(
             onNotification: (OverscrollIndicatorNotification overscroll) {

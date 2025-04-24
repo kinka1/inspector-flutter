@@ -387,11 +387,11 @@ MachineModel _$MachineModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MachineModel {
-  int get machineId => throw _privateConstructorUsedError;
+  String get machineId => throw _privateConstructorUsedError;
   String get sectionName => throw _privateConstructorUsedError;
   String get line => throw _privateConstructorUsedError;
   String get machineName => throw _privateConstructorUsedError;
-  int get machineNumber => throw _privateConstructorUsedError;
+  String get machineNumber => throw _privateConstructorUsedError;
   String get dockumentNo => throw _privateConstructorUsedError;
 
   /// Serializes this MachineModel to a JSON map.
@@ -411,11 +411,11 @@ abstract class $MachineModelCopyWith<$Res> {
       _$MachineModelCopyWithImpl<$Res, MachineModel>;
   @useResult
   $Res call(
-      {int machineId,
+      {String machineId,
       String sectionName,
       String line,
       String machineName,
-      int machineNumber,
+      String machineNumber,
       String dockumentNo});
 }
 
@@ -445,7 +445,7 @@ class _$MachineModelCopyWithImpl<$Res, $Val extends MachineModel>
       machineId: null == machineId
           ? _value.machineId
           : machineId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       sectionName: null == sectionName
           ? _value.sectionName
           : sectionName // ignore: cast_nullable_to_non_nullable
@@ -461,7 +461,7 @@ class _$MachineModelCopyWithImpl<$Res, $Val extends MachineModel>
       machineNumber: null == machineNumber
           ? _value.machineNumber
           : machineNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       dockumentNo: null == dockumentNo
           ? _value.dockumentNo
           : dockumentNo // ignore: cast_nullable_to_non_nullable
@@ -479,11 +479,11 @@ abstract class _$$MachineModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int machineId,
+      {String machineId,
       String sectionName,
       String line,
       String machineName,
-      int machineNumber,
+      String machineNumber,
       String dockumentNo});
 }
 
@@ -511,7 +511,7 @@ class __$$MachineModelImplCopyWithImpl<$Res>
       machineId: null == machineId
           ? _value.machineId
           : machineId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       sectionName: null == sectionName
           ? _value.sectionName
           : sectionName // ignore: cast_nullable_to_non_nullable
@@ -527,7 +527,7 @@ class __$$MachineModelImplCopyWithImpl<$Res>
       machineNumber: null == machineNumber
           ? _value.machineNumber
           : machineNumber // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       dockumentNo: null == dockumentNo
           ? _value.dockumentNo
           : dockumentNo // ignore: cast_nullable_to_non_nullable
@@ -551,7 +551,7 @@ class _$MachineModelImpl with DiagnosticableTreeMixin implements _MachineModel {
       _$$MachineModelImplFromJson(json);
 
   @override
-  final int machineId;
+  final String machineId;
   @override
   final String sectionName;
   @override
@@ -559,7 +559,7 @@ class _$MachineModelImpl with DiagnosticableTreeMixin implements _MachineModel {
   @override
   final String machineName;
   @override
-  final int machineNumber;
+  final String machineNumber;
   @override
   final String dockumentNo;
 
@@ -622,18 +622,18 @@ class _$MachineModelImpl with DiagnosticableTreeMixin implements _MachineModel {
 
 abstract class _MachineModel implements MachineModel {
   const factory _MachineModel(
-      {required final int machineId,
+      {required final String machineId,
       required final String sectionName,
       required final String line,
       required final String machineName,
-      required final int machineNumber,
+      required final String machineNumber,
       required final String dockumentNo}) = _$MachineModelImpl;
 
   factory _MachineModel.fromJson(Map<String, dynamic> json) =
       _$MachineModelImpl.fromJson;
 
   @override
-  int get machineId;
+  String get machineId;
   @override
   String get sectionName;
   @override
@@ -641,7 +641,7 @@ abstract class _MachineModel implements MachineModel {
   @override
   String get machineName;
   @override
-  int get machineNumber;
+  String get machineNumber;
   @override
   String get dockumentNo;
 

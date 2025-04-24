@@ -1,15 +1,13 @@
 
-import 'package:application/data/models/machine/machine_model.dart';
-import 'package:application/data/repositories/machine/machine.dart';
+import 'package:maintenanceApp/data/models/machine/machine_model.dart';
+import 'package:maintenanceApp/data/repositories/machine/machine.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:logger/logger.dart';
 
 class MachineRepositoryImpl extends MachineRepository {
   final _dio = Dio();
-  final logger = Logger();
   @override
-  Future<MachineModel> getMachines(int id) async {
+  Future<MachineModel> getMachines(String id) async {
     try {
       final response = await _dio.get('${dotenv.env['API_BASE_URL']}/machine/$id');
       await Future.delayed(Duration(seconds: 2));

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 Widget textTitle(String text) {
@@ -6,6 +5,6 @@ Widget textTitle(String text) {
       style: const TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 20,
-        color: Colors.black,
+        color: Colors.white,
       ));
 }

@@ -6,16 +6,16 @@ part 'InspectionItem_model.g.dart';
 
 @freezed
 class InspectionitemResponse with _$InspectionitemResponse {
-    const factory InspectionitemResponse({
-      required bool status,
-      required InspectionItemData data,
-    }) = _InspectionitemResponse;
-  
-    factory InspectionitemResponse.fromJson(Map<String, dynamic> json) =>
-        _$InspectionitemResponseFromJson(json);
-  }
+  const factory InspectionitemResponse({
+    required bool status,
+    required InspectionItemData data,
+  }) = _InspectionitemResponse;
 
-  @freezed
+  factory InspectionitemResponse.fromJson(Map<String, dynamic> json) =>
+      _$InspectionitemResponseFromJson(json);
+}
+
+@freezed
 class InspectionItemData with _$InspectionItemData {
   const factory InspectionItemData({
     required List<InspectionitemModel> item,
@@ -26,18 +26,34 @@ class InspectionItemData with _$InspectionItemData {
 }
 
 @freezed
-class InspectionitemModel with _$InspectionitemModel{
-  const factory InspectionitemModel({
-    required int itemId,
-    required String itemName,
-    required String specification,
-    required String method,
-    required String frequency,
-    required int number,
-    required int machineId,
-    required String imagePath,
-  }) = _InspectionitemModel;
+class InspectionitemModel with _$InspectionitemModel {
+  const factory InspectionitemModel(
+      {required String itemId,
+      required String itemName,
+      required String specification,
+      required String method,
+      required String frequency,
+      required int number,
+      required String imagePath,
+      required bool isNumber}) = _InspectionitemModel;
 
   factory InspectionitemModel.fromJson(Map<String, dynamic> json) =>
       _$InspectionitemModelFromJson(json);
+}
+
+@freezed
+class InspectionitemMachineGetModel with _$InspectionitemMachineGetModel {
+  const factory InspectionitemMachineGetModel(
+      {required String machineInspectionId,
+      required String itemId,
+      required String itemName,
+      required String specification,
+      required String method,
+      required String frequency,
+      required int number,
+      required String imagePath,
+      required bool isNumber}) = _InspectionitemMachineGetModel;
+
+  factory InspectionitemMachineGetModel.fromJson(Map<String, dynamic> json) =>
+      _$InspectionitemMachineGetModelFromJson(json);
 }

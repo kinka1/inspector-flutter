@@ -37,14 +37,14 @@ Map<String, dynamic> _$$InspectionItemDataImplToJson(
 _$InspectionitemModelImpl _$$InspectionitemModelImplFromJson(
         Map<String, dynamic> json) =>
     _$InspectionitemModelImpl(
-      itemId: (json['itemId'] as num).toInt(),
+      itemId: json['itemId'] as String,
       itemName: json['itemName'] as String,
       specification: json['specification'] as String,
       method: json['method'] as String,
       frequency: json['frequency'] as String,
       number: (json['number'] as num).toInt(),
-      machineId: (json['machineId'] as num).toInt(),
       imagePath: json['imagePath'] as String,
+      isNumber: json['isNumber'] as bool,
     );
 
 Map<String, dynamic> _$$InspectionitemModelImplToJson(
@@ -56,6 +56,34 @@ Map<String, dynamic> _$$InspectionitemModelImplToJson(
       'method': instance.method,
       'frequency': instance.frequency,
       'number': instance.number,
-      'machineId': instance.machineId,
       'imagePath': instance.imagePath,
+      'isNumber': instance.isNumber,
+    };
+
+_$InspectionitemMachineGetModelImpl
+    _$$InspectionitemMachineGetModelImplFromJson(Map<String, dynamic> json) =>
+        _$InspectionitemMachineGetModelImpl(
+          machineInspectionId: json['machineInspectionId'] as String,
+          itemId: json['itemId'] as String,
+          itemName: json['itemName'] as String,
+          specification: json['specification'] as String,
+          method: json['method'] as String,
+          frequency: json['frequency'] as String,
+          number: (json['number'] as num).toInt(),
+          imagePath: json['imagePath'] as String,
+          isNumber: json['isNumber'] as bool,
+        );
+
+Map<String, dynamic> _$$InspectionitemMachineGetModelImplToJson(
+        _$InspectionitemMachineGetModelImpl instance) =>
+    <String, dynamic>{
+      'machineInspectionId': instance.machineInspectionId,
+      'itemId': instance.itemId,
+      'itemName': instance.itemName,
+      'specification': instance.specification,
+      'method': instance.method,
+      'frequency': instance.frequency,
+      'number': instance.number,
+      'imagePath': instance.imagePath,
+      'isNumber': instance.isNumber,
     };

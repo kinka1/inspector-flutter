@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 class ColorValues {
   static const grayscale50 = Color(0xFFF8FAFC);
   static const grayscale100 = Color(0xFFF1F5F9);
@@ -34,4 +36,15 @@ class ColorValues {
   static const danger300 = Color(0xFFFCA5A5);
   static const danger400 = Color(0xFFF87171);
   static const danger500 = Color(0xFFEF4444);
+  static const hijauMain = Color(0xFF34C759);
+  static const hijauOK= Color(0xFF86FF70);
+  static const hijauBUtton = Color(0xFF70FFC3);
+  static const hijauBorder = Color(0xFF22A405);
+  static const hijauCheckSheet = Color(0xFF68E69D);
+  static const merahNG = Color(0xFFFF736C);
+  static const merahBorder = Color(0xFFA40507);
+  static const merahButton = Color(0xFFFF736B);
+  static const merahCheckSheet = Color(0xFFF77E7E);
+  static const kuningKOSING = Color(0xFFFFF600);
+  static const kuningButton = Color(0xFFFFCC00);
 }

@@ -1,5 +1,5 @@
-import 'package:application/data/models/DetailInspection/DetailInspection_model.dart';
-import 'package:application/data/models/machine/machine_model.dart';
+import 'package:maintenanceApp/data/models/DetailInspection/DetailInspection_model.dart';
+import 'package:maintenanceApp/data/models/machine/machine_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -35,11 +35,25 @@ class ResultModel with _$ResultModel {
   const factory ResultModel({
     required int id,
     required String userId,
-    required String description,
     required String status,
     required DateTime date,
   }) = _ResultModel;
 
   factory ResultModel.fromJson(Map<String, dynamic> json) =>
       _$ResultModelFromJson(json);
+}
+
+@freezed
+class ResultGet with _$ResultGet {
+  const factory ResultGet({
+    required int id,
+    required String machineId,
+    required MachineModel machine,
+    required String userId,
+    required String status,
+    required DateTime date,
+  }) = _ResultGet;
+
+  factory ResultGet.fromJson(Map<String, dynamic> json) =>
+      _$ResultGetFromJson(json);
 }

@@ -1,44 +1,50 @@
 import 'package:another_flushbar/flushbar.dart';
-import 'package:application/core/color_values.dart';
-import 'package:application/features/auth/bloc/auth_bloc.dart';
-import 'package:application/features/widget/custom_text_field.dart';
-import 'package:application/routes/router.dart';
+import 'package:logger/logger.dart';
+import 'package:maintenanceApp/core/color_values.dart';
+import 'package:maintenanceApp/data/bloc/auth/auth_bloc.dart';
+import 'package:maintenanceApp/features/widget/custom_text_field.dart';
+import 'package:maintenanceApp/routes/router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 @RoutePage()
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
     final TextEditingController _usernameController = TextEditingController();
     final TextEditingController _passwordController = TextEditingController();
+    bool _isPassword = true;
+
     return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: ColorValues.info400,
-          title: const Text(
-            'Login',
-            style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 25, color: Colors.white),
-          ),
-        ),
-        body: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 50),
+      body: SafeArea(
+        child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
             child: Form(
               key: _loginFormKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 20),
+                  Image.asset(
+                    "assets/images/login.png",
+                  ),
+                  // const SizedBox(height: 20),
                   CustomTextField(
                     controller: _usernameController,
                     hintText: "Yanto gaming",
                     labelText: "Username",
                     textInputType: TextInputType.text,
+                    borderRadius: 10,
                     validator: (value) =>
                         value!.isEmpty ? "username tidak boleh kosong" : null,
                     LabelTextStyle: Theme.of(context)
@@ -55,7 +61,8 @@ class LoginPage extends StatelessWidget {
                     textInputType: TextInputType.text,
                     validator: (value) =>
                         value!.isEmpty ? "Password tidak boleh kosong" : null,
-                    isPassword: true,
+                    isPassword: _isPassword,
+                    borderRadius: 10,
                     LabelTextStyle: Theme.of(context)
                         .textTheme
                         .bodyLarge
@@ -64,11 +71,9 @@ class LoginPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   BlocConsumer<AuthBloc, AuthState>(listener: (context, state) {
-                    print("state : $state");
                     state.maybeWhen(
                         loginSuccess: () {
-                          
-                          AutoRouter.of(context).replace(const HomeRoute());
+                          AutoRouter.of(context).replace(HomeRoute(code: 0));
                         },
                         error: (error) => Flushbar(
                               title: 'Login Gagal',
@@ -77,16 +82,14 @@ class LoginPage extends StatelessWidget {
                               backgroundColor: ColorValues.danger500,
                             ).show(context),
                         orElse: () => {});
-                  }, 
-                  builder: (context, state) {
-                    print("current state : $state");
+                  }, builder: (context, state) {
                     final isLoading = state.maybeWhen(
                       loading: () => true,
                       orElse: () => false,
                     );
 
                     return ElevatedButton(
-                      onPressed: isLoading 
+                      onPressed: isLoading
                           ? null
                           : () {
                               _loginFormKey.currentState!.validate();
@@ -99,7 +102,7 @@ class LoginPage extends StatelessWidget {
                         minimumSize:
                             Size(MediaQuery.of(context).size.width, 50),
                         padding: const EdgeInsets.symmetric(vertical: 10),
-                        backgroundColor: ColorValues.info400,
+                        backgroundColor: ColorValues.hijauMain,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -132,6 +135,8 @@ class LoginPage extends StatelessWidget {
                   }),
                 ],
               ),
-            )));
+            )),
+      ),
+    );
   }
 }

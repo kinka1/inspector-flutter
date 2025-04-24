@@ -1,153 +1,92 @@
 import 'package:another_flushbar/flushbar.dart';
-import 'package:application/core/color_values.dart';
-import 'package:application/data/bloc/result/result_bloc.dart';
-import 'package:application/data/models/Result/result_model.dart';
-import 'package:application/features/widget/custom_text_field.dart';
-import 'package:application/features/widget/textTitle.dart';
-import 'package:application/routes/router.dart';
+import 'package:logger/logger.dart';
+import 'package:maintenanceApp/core/color_values.dart';
+import 'package:maintenanceApp/data/bloc/result/result_bloc.dart';
+import 'package:maintenanceApp/data/models/Result/result_model.dart';
+import 'package:maintenanceApp/routes/router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ShowModal extends StatefulWidget {
-  const ShowModal({super.key, required this.machineId});
-  final int machineId;
-
+  const ShowModal(
+      {super.key,
+      required this.machineId,
+      required this.status,
+      required this.resultId});
+  final String machineId;
+  final String status;
+  final int resultId;
   @override
   State<ShowModal> createState() => _ShowModalState();
 }
 
 class _ShowModalState extends State<ShowModal> {
-  late TextEditingController _descriptionController = TextEditingController();
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  late String selectedStatus = "";
+  final logger = Logger();
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: MediaQuery.of(context).viewInsets,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
-        child: Form(
-          key: _formKey,
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Konfirmasi',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyLarge!
-                            .copyWith(fontWeight: FontWeight.bold)),
-                    Material(
-                      color: Colors.white,
-                      child: IconButton(
-                        padding: EdgeInsets.zero,
-                        constraints: const BoxConstraints(),
-                        icon: const Icon(Icons.cancel_outlined),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24),
-                Row(
-                  children: [
-                    textTitle("Status: "),
-                    Expanded(
-                      child: Row(
-                        children: [
-                          _buildRadioButton("OK"),
-                          const SizedBox(width: 10),
-                          _buildRadioButton("NG"),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 16),
-                CustomTextField(
-                  controller: _descriptionController,
-                  hintText: "isi jika diperlukan",
-                  labelText: "Remark",
-                  textInputType: TextInputType.text,
-                  LabelTextStyle: Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 16),
-                BlocConsumer<ResultBloc, ResultState>(
-                    builder: (context, state) {
-                  final isLoading =
-                      state.maybeWhen(orElse: () => false, loading: () => true);
-                  return ElevatedButton(
-                    onPressed: selectedStatus.isEmpty
-                        ? null
-                        : () {
-                            if (_formKey.currentState!.validate()) {
-                              final des =
-                                  _descriptionController.text.trim().isEmpty
-                                      ? " "
-                                      : _descriptionController.text;
-                              context.read<ResultBloc>().add(
-                                  ResultEvent.addResult(
-                                      widget.machineId, selectedStatus, des));
-                            }
-                          },
-                    style: Theme.of(context).elevatedButtonTheme.style,
-                    child: isLoading
-                        ? const CircularProgressIndicator(color: Colors.white)
-                        : const Text("Submit",
-                            style: TextStyle(color: Colors.white)),
-                  );
-                }, listener: (context, state) {
-                  state.maybeWhen(
-                    added: () {
-                      Flushbar(
-                        title: 'Berhasil',
-                        message: 'Data berhasil disimpan',
-                        duration: const Duration(seconds: 2),
-                        backgroundColor: ColorValues.primary500,
-                      ).show(context).then((_) {
-                        AutoRouter.of(context).push(const HomeRoute());
-                      });
-                    },
-                    error: (error) => Flushbar(
-                      title: 'Terjadi Kesalahan',
-                      message: "Terjadi kesalahan saat menyimpan data",
-                      duration: const Duration(seconds: 3),
-                      backgroundColor: ColorValues.danger500,
-                    ).show(context),
-                    orElse: () => {},
-                  );
-                })
-              ]),
-        ),
-      ),
-    );
+  void initState() {
+    super.initState();
   }
 
-  Widget _buildRadioButton(String value) {
-    return Row(
-      children: [
-        Radio<String>(
-          value: value,
-          groupValue: selectedStatus,
-          onChanged: (newValue) {
-            if (!mounted) return;
-            setState(() {
-              selectedStatus = newValue ?? "OK";
-            });
-          },
-        ),
-        Text(value),
-      ],
-    );
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<ResultBloc, ResultState>(builder: (context, state) {
+      final isLoading =
+          state.maybeWhen(orElse: () => false, loading: () => true);
+      return GestureDetector(
+        onTap: () {
+          logger.d("STATUS KIRIM : ${widget.status}");
+          context.read<ResultBloc>().add(ResultEvent.UpdateStatus(ResultModel(
+              date: DateTime.now(),
+              status: widget.status,
+              id: widget.resultId,
+              userId: '-')));
+        },
+        child: isLoading
+            ? const CircularProgressIndicator()
+            : Container(
+                margin:
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 35),
+                height: 60,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: ColorValues.kuningButton,
+                ),
+                child: Center(
+                  child: Text(
+                    "Kirim",
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                ),
+              ),
+      );
+    }, listener: (context, state) {
+      state.maybeWhen(
+        success: () {
+          Flushbar(
+            title: 'Berhasil',
+            message: 'Data berhasil disimpan',
+            duration: const Duration(seconds: 2),
+            backgroundColor: ColorValues.primary500,
+          )
+          .show(context).then((_) {
+            AutoRouter.of(context).push(HomeRoute(code:0));
+          }
+          )
+          ;
+        },
+        error: (error) => Flushbar(
+          title: 'Terjadi Kesalahan',
+          message: "Terjadi kesalahan saat pengiriman data",
+          duration: const Duration(seconds: 3),
+          backgroundColor: ColorValues.danger500,
+        ).show(context),
+        orElse: () => {},
+      );
+    });
   }
 }

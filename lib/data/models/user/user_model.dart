@@ -30,6 +30,7 @@ class UserModel with _$UserModel{
   const factory UserModel({
     required String userId,
     required String userName,
+    // required String password,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

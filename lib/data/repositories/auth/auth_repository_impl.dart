@@ -1,19 +1,20 @@
 import 'dart:convert';
 
-import 'package:application/data/models/user/user_model.dart';
-import 'package:application/data/repositories/auth/auth_repository.dart';
+// import 'package:logger/logger.dart';
+import 'package:maintenanceApp/data/models/user/user_model.dart';
+import 'package:maintenanceApp/data/repositories/auth/auth_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
+  // // final logger = Logger();
   final _dio = Dio();
-  final logger = Logger();
+
   @override
   Future<void> login(String username, String password) async {
     final prefs = await SharedPreferences.getInstance();
-   
+
     try {
       final response = await _dio.post(
         '${dotenv.env['API_BASE_URL']}/auth/login',
@@ -25,11 +26,13 @@ class AuthRepositoryImpl extends AuthRepository {
 
       if (response.statusCode == 200) {
         final data = response.data['data'];
+        // logger.i("data : $data");
         final user = data['user'];
         final token = data['token'];
+        final Username = user['userName'];
         await prefs.setString('user', jsonEncode(user));
         await prefs.setString('token', jsonEncode(token));
-
+        await prefs.setString('username', jsonEncode(Username));
         // await prefs.setString('created_at', formattedDate);
       }
     } on DioException catch (error) {
