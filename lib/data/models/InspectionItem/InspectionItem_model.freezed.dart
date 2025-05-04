@@ -398,6 +398,7 @@ mixin _$InspectionitemModel {
   int get number => throw _privateConstructorUsedError;
   String get imagePath => throw _privateConstructorUsedError;
   bool get isNumber => throw _privateConstructorUsedError;
+  String get prasyarat => throw _privateConstructorUsedError;
 
   /// Serializes this InspectionitemModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -423,7 +424,8 @@ abstract class $InspectionitemModelCopyWith<$Res> {
       String frequency,
       int number,
       String imagePath,
-      bool isNumber});
+      bool isNumber,
+      String prasyarat});
 }
 
 /// @nodoc
@@ -449,6 +451,7 @@ class _$InspectionitemModelCopyWithImpl<$Res, $Val extends InspectionitemModel>
     Object? number = null,
     Object? imagePath = null,
     Object? isNumber = null,
+    Object? prasyarat = null,
   }) {
     return _then(_value.copyWith(
       itemId: null == itemId
@@ -483,6 +486,10 @@ class _$InspectionitemModelCopyWithImpl<$Res, $Val extends InspectionitemModel>
           ? _value.isNumber
           : isNumber // ignore: cast_nullable_to_non_nullable
               as bool,
+      prasyarat: null == prasyarat
+          ? _value.prasyarat
+          : prasyarat // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -503,7 +510,8 @@ abstract class _$$InspectionitemModelImplCopyWith<$Res>
       String frequency,
       int number,
       String imagePath,
-      bool isNumber});
+      bool isNumber,
+      String prasyarat});
 }
 
 /// @nodoc
@@ -527,6 +535,7 @@ class __$$InspectionitemModelImplCopyWithImpl<$Res>
     Object? number = null,
     Object? imagePath = null,
     Object? isNumber = null,
+    Object? prasyarat = null,
   }) {
     return _then(_$InspectionitemModelImpl(
       itemId: null == itemId
@@ -561,6 +570,10 @@ class __$$InspectionitemModelImplCopyWithImpl<$Res>
           ? _value.isNumber
           : isNumber // ignore: cast_nullable_to_non_nullable
               as bool,
+      prasyarat: null == prasyarat
+          ? _value.prasyarat
+          : prasyarat // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -578,7 +591,8 @@ class _$InspectionitemModelImpl
       required this.frequency,
       required this.number,
       required this.imagePath,
-      required this.isNumber});
+      required this.isNumber,
+      required this.prasyarat});
 
   factory _$InspectionitemModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$InspectionitemModelImplFromJson(json);
@@ -599,10 +613,12 @@ class _$InspectionitemModelImpl
   final String imagePath;
   @override
   final bool isNumber;
+  @override
+  final String prasyarat;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InspectionitemModel(itemId: $itemId, itemName: $itemName, specification: $specification, method: $method, frequency: $frequency, number: $number, imagePath: $imagePath, isNumber: $isNumber)';
+    return 'InspectionitemModel(itemId: $itemId, itemName: $itemName, specification: $specification, method: $method, frequency: $frequency, number: $number, imagePath: $imagePath, isNumber: $isNumber, prasyarat: $prasyarat)';
   }
 
   @override
@@ -617,7 +633,8 @@ class _$InspectionitemModelImpl
       ..add(DiagnosticsProperty('frequency', frequency))
       ..add(DiagnosticsProperty('number', number))
       ..add(DiagnosticsProperty('imagePath', imagePath))
-      ..add(DiagnosticsProperty('isNumber', isNumber));
+      ..add(DiagnosticsProperty('isNumber', isNumber))
+      ..add(DiagnosticsProperty('prasyarat', prasyarat));
   }
 
   @override
@@ -637,13 +654,15 @@ class _$InspectionitemModelImpl
             (identical(other.imagePath, imagePath) ||
                 other.imagePath == imagePath) &&
             (identical(other.isNumber, isNumber) ||
-                other.isNumber == isNumber));
+                other.isNumber == isNumber) &&
+            (identical(other.prasyarat, prasyarat) ||
+                other.prasyarat == prasyarat));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, itemId, itemName, specification,
-      method, frequency, number, imagePath, isNumber);
+      method, frequency, number, imagePath, isNumber, prasyarat);
 
   /// Create a copy of InspectionitemModel
   /// with the given fields replaced by the non-null parameter values.
@@ -671,7 +690,8 @@ abstract class _InspectionitemModel implements InspectionitemModel {
       required final String frequency,
       required final int number,
       required final String imagePath,
-      required final bool isNumber}) = _$InspectionitemModelImpl;
+      required final bool isNumber,
+      required final String prasyarat}) = _$InspectionitemModelImpl;
 
   factory _InspectionitemModel.fromJson(Map<String, dynamic> json) =
       _$InspectionitemModelImpl.fromJson;
@@ -692,6 +712,8 @@ abstract class _InspectionitemModel implements InspectionitemModel {
   String get imagePath;
   @override
   bool get isNumber;
+  @override
+  String get prasyarat;
 
   /// Create a copy of InspectionitemModel
   /// with the given fields replaced by the non-null parameter values.
@@ -717,6 +739,7 @@ mixin _$InspectionitemMachineGetModel {
   int get number => throw _privateConstructorUsedError;
   String get imagePath => throw _privateConstructorUsedError;
   bool get isNumber => throw _privateConstructorUsedError;
+  String get prasyarat => throw _privateConstructorUsedError;
 
   /// Serializes this InspectionitemMachineGetModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -745,7 +768,8 @@ abstract class $InspectionitemMachineGetModelCopyWith<$Res> {
       String frequency,
       int number,
       String imagePath,
-      bool isNumber});
+      bool isNumber,
+      String prasyarat});
 }
 
 /// @nodoc
@@ -773,6 +797,7 @@ class _$InspectionitemMachineGetModelCopyWithImpl<$Res,
     Object? number = null,
     Object? imagePath = null,
     Object? isNumber = null,
+    Object? prasyarat = null,
   }) {
     return _then(_value.copyWith(
       machineInspectionId: null == machineInspectionId
@@ -811,6 +836,10 @@ class _$InspectionitemMachineGetModelCopyWithImpl<$Res,
           ? _value.isNumber
           : isNumber // ignore: cast_nullable_to_non_nullable
               as bool,
+      prasyarat: null == prasyarat
+          ? _value.prasyarat
+          : prasyarat // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -833,7 +862,8 @@ abstract class _$$InspectionitemMachineGetModelImplCopyWith<$Res>
       String frequency,
       int number,
       String imagePath,
-      bool isNumber});
+      bool isNumber,
+      String prasyarat});
 }
 
 /// @nodoc
@@ -860,6 +890,7 @@ class __$$InspectionitemMachineGetModelImplCopyWithImpl<$Res>
     Object? number = null,
     Object? imagePath = null,
     Object? isNumber = null,
+    Object? prasyarat = null,
   }) {
     return _then(_$InspectionitemMachineGetModelImpl(
       machineInspectionId: null == machineInspectionId
@@ -898,6 +929,10 @@ class __$$InspectionitemMachineGetModelImplCopyWithImpl<$Res>
           ? _value.isNumber
           : isNumber // ignore: cast_nullable_to_non_nullable
               as bool,
+      prasyarat: null == prasyarat
+          ? _value.prasyarat
+          : prasyarat // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -916,7 +951,8 @@ class _$InspectionitemMachineGetModelImpl
       required this.frequency,
       required this.number,
       required this.imagePath,
-      required this.isNumber});
+      required this.isNumber,
+      required this.prasyarat});
 
   factory _$InspectionitemMachineGetModelImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -940,10 +976,12 @@ class _$InspectionitemMachineGetModelImpl
   final String imagePath;
   @override
   final bool isNumber;
+  @override
+  final String prasyarat;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InspectionitemMachineGetModel(machineInspectionId: $machineInspectionId, itemId: $itemId, itemName: $itemName, specification: $specification, method: $method, frequency: $frequency, number: $number, imagePath: $imagePath, isNumber: $isNumber)';
+    return 'InspectionitemMachineGetModel(machineInspectionId: $machineInspectionId, itemId: $itemId, itemName: $itemName, specification: $specification, method: $method, frequency: $frequency, number: $number, imagePath: $imagePath, isNumber: $isNumber, prasyarat: $prasyarat)';
   }
 
   @override
@@ -959,7 +997,8 @@ class _$InspectionitemMachineGetModelImpl
       ..add(DiagnosticsProperty('frequency', frequency))
       ..add(DiagnosticsProperty('number', number))
       ..add(DiagnosticsProperty('imagePath', imagePath))
-      ..add(DiagnosticsProperty('isNumber', isNumber));
+      ..add(DiagnosticsProperty('isNumber', isNumber))
+      ..add(DiagnosticsProperty('prasyarat', prasyarat));
   }
 
   @override
@@ -981,13 +1020,25 @@ class _$InspectionitemMachineGetModelImpl
             (identical(other.imagePath, imagePath) ||
                 other.imagePath == imagePath) &&
             (identical(other.isNumber, isNumber) ||
-                other.isNumber == isNumber));
+                other.isNumber == isNumber) &&
+            (identical(other.prasyarat, prasyarat) ||
+                other.prasyarat == prasyarat));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, machineInspectionId, itemId,
-      itemName, specification, method, frequency, number, imagePath, isNumber);
+  int get hashCode => Object.hash(
+      runtimeType,
+      machineInspectionId,
+      itemId,
+      itemName,
+      specification,
+      method,
+      frequency,
+      number,
+      imagePath,
+      isNumber,
+      prasyarat);
 
   /// Create a copy of InspectionitemMachineGetModel
   /// with the given fields replaced by the non-null parameter values.
@@ -1018,7 +1069,8 @@ abstract class _InspectionitemMachineGetModel
       required final String frequency,
       required final int number,
       required final String imagePath,
-      required final bool isNumber}) = _$InspectionitemMachineGetModelImpl;
+      required final bool isNumber,
+      required final String prasyarat}) = _$InspectionitemMachineGetModelImpl;
 
   factory _InspectionitemMachineGetModel.fromJson(Map<String, dynamic> json) =
       _$InspectionitemMachineGetModelImpl.fromJson;
@@ -1041,6 +1093,8 @@ abstract class _InspectionitemMachineGetModel
   String get imagePath;
   @override
   bool get isNumber;
+  @override
+  String get prasyarat;
 
   /// Create a copy of InspectionitemMachineGetModel
   /// with the given fields replaced by the non-null parameter values.

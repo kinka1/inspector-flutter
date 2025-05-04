@@ -21,6 +21,7 @@ class Buildform extends StatefulWidget {
     required this.machineInspectionId,
     required this.ResultId,
     required this.machineId,
+    required this.margin,
     // required this.machineInspectionId,
   });
 
@@ -28,6 +29,7 @@ class Buildform extends StatefulWidget {
   final String machineInspectionId;
   final int ResultId;
   final String machineId;
+  final double margin;
 
   @override
   State<Buildform> createState() => _BuildformState();
@@ -41,6 +43,8 @@ class _BuildformState extends State<Buildform> {
   late TextEditingController _descriptionController;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final logger = Logger();
+  String status = "-";
+  double height = 0;
 
   @override
   void initState() {
@@ -57,6 +61,11 @@ class _BuildformState extends State<Buildform> {
   List<DetailInspectionModel> savedDetails = [];
   @override
   Widget build(BuildContext context) {
+    if (widget.item.isNumber == true) {
+      height = 0.45;
+    } else {
+      height = 0.51;
+    }
     return Container(
       // padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       child: Form(
@@ -79,7 +88,8 @@ class _BuildformState extends State<Buildform> {
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height * 0.51,
+              margin: EdgeInsets.only(top: widget.margin),
+              height: MediaQuery.of(context).size.height * height,
               padding: const EdgeInsets.only(right: 30, left: 30, top: 40),
               decoration: BoxDecoration(
                 color: ColorValues.hijauMain,
@@ -111,31 +121,33 @@ class _BuildformState extends State<Buildform> {
                       flexSize: 2,
                       caption: widget.item.frequency,
                       warna: Colors.white),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: Text("Status",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 25,
-                                    color: Colors.white)),
-                      ),
-                      Expanded(
-                        flex: 3,
-                        child: Row(
+                  widget.item.isNumber == false
+                      ? Row(
                           children: [
-                            _buildCard("OK"),
-                            const SizedBox(width: 10),
-                            _buildCard("NG"),
+                            Expanded(
+                              flex: 2,
+                              child: Text("Status",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 25,
+                                          color: Colors.white)),
+                            ),
+                            Expanded(
+                              flex: 3,
+                              child: Row(
+                                children: [
+                                  _buildCard("OK"),
+                                  const SizedBox(width: 10),
+                                  _buildCard("NG"),
+                                ],
+                              ),
+                            ),
                           ],
-                        ),
-                      ),
-                    ],
-                  ),
+                        )
+                      : const SizedBox(),
                   CustomTextField(
                     controller: _descriptionController,
                     hintText:
@@ -177,87 +189,95 @@ class _BuildformState extends State<Buildform> {
                       );
 
                       return GestureDetector(
-                        onTap: isLoading
-                            ? () => const CircularProgressIndicator()
-                            : () {
-                                if (_formKey.currentState!.validate()) {
-                                  // if(widget.)
-                                  if (widget.item.isNumber == true) {
-                                    if (_descriptionController.text.isEmpty) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        const SnackBar(
-                                            content:
-                                                Text("DESKRIPSI WAJIB DIISI")),
-                                      );
+                          onTap: isLoading
+                              ? () => const CircularProgressIndicator()
+                              : () {
+                                  if (_formKey.currentState!.validate()) {
+                                    // if(widget.)
+                                    if (widget.item.isNumber == true) {
+                                      if (_descriptionController.text.isEmpty) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                              content: Text(
+                                                  "DESKRIPSI WAJIB DIISI")),
+                                        );
+                                        return;
+                                      }
+                                      if (widget.item.prasyarat != "-") {
+                                        final prasyarat = widget.item.prasyarat;
+                                        if (isNumeric(
+                                            _descriptionController.text)) {
+                                          double actual = double.parse(
+                                              _descriptionController.text);
+                                          logger.d("actual : $actual");
+                                          if (isValidInput(
+                                              _descriptionController.text,
+                                              prasyarat)) {
+                                            selectedStatus = "OK";
+                                            logger.i("VALIDASI BERHASIL");
+                                          } else {
+                                            selectedStatus = "NG";
+                                            logger.i("VALIDASI GAGAL");
+                                          }
+                                        } else {
+                                          Flushbar(
+                                            title: 'Terjadi Kesalahan',
+                                            message: "MASUKKAN ANGKA",
+                                            duration:
+                                                const Duration(seconds: 3),
+                                            backgroundColor:
+                                                ColorValues.danger500,
+                                          ).show(context);
+                                          return;
+                                        }
+                                      }
+                                    }
+                                    logger
+                                        .d("selectedStatus : $selectedStatus");
+                                    if (selectedStatus == " ") {
+                                      Flushbar(
+                                        title: 'Terjadi Kesalahan',
+                                        message: "Status Belum Dipilih",
+                                        duration: const Duration(seconds: 3),
+                                        backgroundColor: ColorValues.danger500,
+                                      ).show(context);
                                       return;
                                     }
+
+                                    final des = _descriptionController.text
+                                            .trim()
+                                            .isEmpty
+                                        ? "-"
+                                        : _descriptionController.text;
+
+                                    context.read<DetailInspectionBloc>().add(
+                                            DetailInspectionEvent
+                                                .postDetailInspection(
+                                          DetailInspectionModelAdd(
+                                            description: des,
+                                            status: selectedStatus,
+                                            machineInspectionId:
+                                                widget.machineInspectionId,
+                                            tanggal: tanggal is DateTime
+                                                ? DateFormat('yyyy-MM-dd')
+                                                    .format(DateTime.now())
+                                                : tanggal,
+                                            resultId: widget.ResultId,
+                                          ),
+                                        ));
+
+                                    AutoRouter.of(context).push(Scan2Route(
+                                        machineId: widget.machineId,
+                                        number: widget.item.number,
+                                        status: selectedStatus,
+                                        ResultId: widget.ResultId, buId: 'REF'));
                                   }
-                                  if (selectedStatus == " ") {
-                                    Flushbar(
-                                      title: 'Terjadi Kesalahan',
-                                      message: "Status Belum Dipilih",
-                                      duration: const Duration(seconds: 3),
-                                      backgroundColor: ColorValues.danger500,
-                                    ).show(context);
-                                    return;
-                                  }
-
-                                  final des =
-                                      _descriptionController.text.trim().isEmpty
-                                          ? "-"
-                                          : _descriptionController.text;
-
-                                  context.read<DetailInspectionBloc>().add(
-                                          DetailInspectionEvent
-                                              .postDetailInspection(
-                                        DetailInspectionModelAdd(
-                                          description: des,
-                                          status: selectedStatus,
-                                          machineInspectionId:
-                                              widget.machineInspectionId,
-                                          tanggal: tanggal is DateTime
-                                              ? DateFormat('yyyy-MM-dd')
-                                                  .format(DateTime.now())
-                                              : tanggal,
-                                          resultId: widget.ResultId,
-                                        ),
-                                      ));
-
-                                  AutoRouter.of(context).push(Scan2Route(
-                                      machineId: widget.machineId,
-                                      number: widget.item.number,
-                                      status: selectedStatus,
-                                      ResultId: widget.ResultId));
-                                }
-                              },
-                        child: isLoading
-                            ? const CircularProgressIndicator(
-                                color: Colors.white)
-                            : Container(
-                                alignment: Alignment.center,
-                                margin: const EdgeInsets.only(top: 20),
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 20),
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Colors.black,
-                                      width: 1.2,
-                                    ),
-                                    color: ColorValues.kuningButton,
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Text(
-                                  "Simpan",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 25),
-                                ),
-                              ),
-                      );
+                                },
+                          child: isLoading
+                              ? const CircularProgressIndicator(
+                                  color: Colors.white)
+                              : _buildButton(20));
                     },
                   ),
                 ],
@@ -267,6 +287,61 @@ class _BuildformState extends State<Buildform> {
         ),
       ),
     );
+  }
+
+  Widget _buildButton(double top) {
+    return Container(
+      alignment: Alignment.center,
+      margin: EdgeInsets.only(top: top),
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      width: double.infinity,
+      decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.black,
+            width: 1.2,
+          ),
+          color: ColorValues.kuningButton,
+          borderRadius: BorderRadius.circular(10)),
+      child: Text(
+        "Simpan",
+        style: Theme.of(context)
+            .textTheme
+            .bodyMedium!
+            .copyWith(fontWeight: FontWeight.bold, fontSize: 25),
+      ),
+    );
+  }
+
+  bool isNumeric(String s) {
+    if (s.isEmpty) return false;
+    return double.tryParse(s) != null;
+  }
+
+  bool isValidInput(String input, String requirement) {
+    final numInput = double.tryParse(input);
+    logger.d("input: $input, requirement: $requirement, numInput: $numInput");
+    if (numInput == null) return false;
+
+    if (requirement.startsWith('range:')) {
+      logger.i("masuk range");
+      final parts = requirement.replaceFirst('range:', '').split('~');
+      final min = double.parse(parts[0]);
+      final max = double.parse(parts[1]);
+      return numInput >= min && numInput <= max;
+    } else if (requirement.startsWith('min:')) {
+      final min = double.parse(requirement.replaceFirst('min:', ''));
+      return numInput >= min;
+    } else if (requirement.startsWith('max:')) {
+      final max = double.parse(requirement.replaceFirst('max:', ''));
+      return numInput <= max;
+    } else if (requirement.startsWith('<')) {
+      final max = double.parse(requirement.replaceFirst('<', ''));
+      return numInput < max;
+    } else if (requirement.startsWith('>')) {
+      final min = double.parse(requirement.replaceFirst('>', ''));
+      return numInput > min;
+    }
+    return true; // Jika requirement kosong
   }
 
   Widget _buildCard(String value) {

@@ -35,7 +35,8 @@ class InspectionitemModel with _$InspectionitemModel {
       required String frequency,
       required int number,
       required String imagePath,
-      required bool isNumber}) = _InspectionitemModel;
+      required bool isNumber,
+      required String prasyarat}) = _InspectionitemModel;
 
   factory InspectionitemModel.fromJson(Map<String, dynamic> json) =>
       _$InspectionitemModelFromJson(json);
@@ -52,7 +53,8 @@ class InspectionitemMachineGetModel with _$InspectionitemMachineGetModel {
       required String frequency,
       required int number,
       required String imagePath,
-      required bool isNumber}) = _InspectionitemMachineGetModel;
+      required bool isNumber,
+      required String prasyarat}) = _InspectionitemMachineGetModel;
 
   factory InspectionitemMachineGetModel.fromJson(Map<String, dynamic> json) =>
       _$InspectionitemMachineGetModelFromJson(json);

@@ -34,7 +34,7 @@ class ResultData with _$ResultData {
 class ResultModel with _$ResultModel {
   const factory ResultModel({
     required int id,
-    required String userId,
+    required int userId,
     required String status,
     required DateTime date,
   }) = _ResultModel;
@@ -46,12 +46,13 @@ class ResultModel with _$ResultModel {
 @freezed
 class ResultGet with _$ResultGet {
   const factory ResultGet({
-    required int id,
-    required String machineId,
-    required MachineModel machine,
-    required String userId,
+    required int resultid,
+    required int userId,
     required String status,
-    required DateTime date,
+    required String date,
+    required int machineId,
+    required MachineModel machine,
+    required String buId
   }) = _ResultGet;
 
   factory ResultGet.fromJson(Map<String, dynamic> json) =>

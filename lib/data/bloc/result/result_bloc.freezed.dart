@@ -23,7 +23,7 @@ mixin _$ResultEvent {
     required TResult Function(String status) addResult,
     required TResult Function() getResultAll,
     required TResult Function(ResultModel model) UpdateStatus,
-    required TResult Function(String tanggal) getResultByDatelist,
+    required TResult Function(String buId, String tanggal) getResultByDatelist,
     required TResult Function(String tanggal) getResultByDate,
     required TResult Function(String tanggal) getResultByDateForHomepage,
   }) =>
@@ -35,7 +35,7 @@ mixin _$ResultEvent {
     TResult? Function(String status)? addResult,
     TResult? Function()? getResultAll,
     TResult? Function(ResultModel model)? UpdateStatus,
-    TResult? Function(String tanggal)? getResultByDatelist,
+    TResult? Function(String buId, String tanggal)? getResultByDatelist,
     TResult? Function(String tanggal)? getResultByDate,
     TResult? Function(String tanggal)? getResultByDateForHomepage,
   }) =>
@@ -47,7 +47,7 @@ mixin _$ResultEvent {
     TResult Function(String status)? addResult,
     TResult Function()? getResultAll,
     TResult Function(ResultModel model)? UpdateStatus,
-    TResult Function(String tanggal)? getResultByDatelist,
+    TResult Function(String buId, String tanggal)? getResultByDatelist,
     TResult Function(String tanggal)? getResultByDate,
     TResult Function(String tanggal)? getResultByDateForHomepage,
     required TResult orElse(),
@@ -168,7 +168,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     required TResult Function(String status) addResult,
     required TResult Function() getResultAll,
     required TResult Function(ResultModel model) UpdateStatus,
-    required TResult Function(String tanggal) getResultByDatelist,
+    required TResult Function(String buId, String tanggal) getResultByDatelist,
     required TResult Function(String tanggal) getResultByDate,
     required TResult Function(String tanggal) getResultByDateForHomepage,
   }) {
@@ -183,7 +183,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     TResult? Function(String status)? addResult,
     TResult? Function()? getResultAll,
     TResult? Function(ResultModel model)? UpdateStatus,
-    TResult? Function(String tanggal)? getResultByDatelist,
+    TResult? Function(String buId, String tanggal)? getResultByDatelist,
     TResult? Function(String tanggal)? getResultByDate,
     TResult? Function(String tanggal)? getResultByDateForHomepage,
   }) {
@@ -198,7 +198,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     TResult Function(String status)? addResult,
     TResult Function()? getResultAll,
     TResult Function(ResultModel model)? UpdateStatus,
-    TResult Function(String tanggal)? getResultByDatelist,
+    TResult Function(String buId, String tanggal)? getResultByDatelist,
     TResult Function(String tanggal)? getResultByDate,
     TResult Function(String tanggal)? getResultByDateForHomepage,
     required TResult orElse(),
@@ -318,7 +318,7 @@ class _$GetResultImpl with DiagnosticableTreeMixin implements _GetResult {
     required TResult Function(String status) addResult,
     required TResult Function() getResultAll,
     required TResult Function(ResultModel model) UpdateStatus,
-    required TResult Function(String tanggal) getResultByDatelist,
+    required TResult Function(String buId, String tanggal) getResultByDatelist,
     required TResult Function(String tanggal) getResultByDate,
     required TResult Function(String tanggal) getResultByDateForHomepage,
   }) {
@@ -333,7 +333,7 @@ class _$GetResultImpl with DiagnosticableTreeMixin implements _GetResult {
     TResult? Function(String status)? addResult,
     TResult? Function()? getResultAll,
     TResult? Function(ResultModel model)? UpdateStatus,
-    TResult? Function(String tanggal)? getResultByDatelist,
+    TResult? Function(String buId, String tanggal)? getResultByDatelist,
     TResult? Function(String tanggal)? getResultByDate,
     TResult? Function(String tanggal)? getResultByDateForHomepage,
   }) {
@@ -348,7 +348,7 @@ class _$GetResultImpl with DiagnosticableTreeMixin implements _GetResult {
     TResult Function(String status)? addResult,
     TResult Function()? getResultAll,
     TResult Function(ResultModel model)? UpdateStatus,
-    TResult Function(String tanggal)? getResultByDatelist,
+    TResult Function(String buId, String tanggal)? getResultByDatelist,
     TResult Function(String tanggal)? getResultByDate,
     TResult Function(String tanggal)? getResultByDateForHomepage,
     required TResult orElse(),
@@ -497,7 +497,7 @@ class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
     required TResult Function(String status) addResult,
     required TResult Function() getResultAll,
     required TResult Function(ResultModel model) UpdateStatus,
-    required TResult Function(String tanggal) getResultByDatelist,
+    required TResult Function(String buId, String tanggal) getResultByDatelist,
     required TResult Function(String tanggal) getResultByDate,
     required TResult Function(String tanggal) getResultByDateForHomepage,
   }) {
@@ -512,7 +512,7 @@ class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
     TResult? Function(String status)? addResult,
     TResult? Function()? getResultAll,
     TResult? Function(ResultModel model)? UpdateStatus,
-    TResult? Function(String tanggal)? getResultByDatelist,
+    TResult? Function(String buId, String tanggal)? getResultByDatelist,
     TResult? Function(String tanggal)? getResultByDate,
     TResult? Function(String tanggal)? getResultByDateForHomepage,
   }) {
@@ -527,7 +527,7 @@ class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
     TResult Function(String status)? addResult,
     TResult Function()? getResultAll,
     TResult Function(ResultModel model)? UpdateStatus,
-    TResult Function(String tanggal)? getResultByDatelist,
+    TResult Function(String buId, String tanggal)? getResultByDatelist,
     TResult Function(String tanggal)? getResultByDate,
     TResult Function(String tanggal)? getResultByDateForHomepage,
     required TResult orElse(),
@@ -655,7 +655,7 @@ class _$GetResultAllImpl with DiagnosticableTreeMixin implements _GetResultAll {
     required TResult Function(String status) addResult,
     required TResult Function() getResultAll,
     required TResult Function(ResultModel model) UpdateStatus,
-    required TResult Function(String tanggal) getResultByDatelist,
+    required TResult Function(String buId, String tanggal) getResultByDatelist,
     required TResult Function(String tanggal) getResultByDate,
     required TResult Function(String tanggal) getResultByDateForHomepage,
   }) {
@@ -670,7 +670,7 @@ class _$GetResultAllImpl with DiagnosticableTreeMixin implements _GetResultAll {
     TResult? Function(String status)? addResult,
     TResult? Function()? getResultAll,
     TResult? Function(ResultModel model)? UpdateStatus,
-    TResult? Function(String tanggal)? getResultByDatelist,
+    TResult? Function(String buId, String tanggal)? getResultByDatelist,
     TResult? Function(String tanggal)? getResultByDate,
     TResult? Function(String tanggal)? getResultByDateForHomepage,
   }) {
@@ -685,7 +685,7 @@ class _$GetResultAllImpl with DiagnosticableTreeMixin implements _GetResultAll {
     TResult Function(String status)? addResult,
     TResult Function()? getResultAll,
     TResult Function(ResultModel model)? UpdateStatus,
-    TResult Function(String tanggal)? getResultByDatelist,
+    TResult Function(String buId, String tanggal)? getResultByDatelist,
     TResult Function(String tanggal)? getResultByDate,
     TResult Function(String tanggal)? getResultByDateForHomepage,
     required TResult orElse(),
@@ -846,7 +846,7 @@ class _$UpdateStatusImpl with DiagnosticableTreeMixin implements _UpdateStatus {
     required TResult Function(String status) addResult,
     required TResult Function() getResultAll,
     required TResult Function(ResultModel model) UpdateStatus,
-    required TResult Function(String tanggal) getResultByDatelist,
+    required TResult Function(String buId, String tanggal) getResultByDatelist,
     required TResult Function(String tanggal) getResultByDate,
     required TResult Function(String tanggal) getResultByDateForHomepage,
   }) {
@@ -861,7 +861,7 @@ class _$UpdateStatusImpl with DiagnosticableTreeMixin implements _UpdateStatus {
     TResult? Function(String status)? addResult,
     TResult? Function()? getResultAll,
     TResult? Function(ResultModel model)? UpdateStatus,
-    TResult? Function(String tanggal)? getResultByDatelist,
+    TResult? Function(String buId, String tanggal)? getResultByDatelist,
     TResult? Function(String tanggal)? getResultByDate,
     TResult? Function(String tanggal)? getResultByDateForHomepage,
   }) {
@@ -876,7 +876,7 @@ class _$UpdateStatusImpl with DiagnosticableTreeMixin implements _UpdateStatus {
     TResult Function(String status)? addResult,
     TResult Function()? getResultAll,
     TResult Function(ResultModel model)? UpdateStatus,
-    TResult Function(String tanggal)? getResultByDatelist,
+    TResult Function(String buId, String tanggal)? getResultByDatelist,
     TResult Function(String tanggal)? getResultByDate,
     TResult Function(String tanggal)? getResultByDateForHomepage,
     required TResult orElse(),
@@ -958,7 +958,7 @@ abstract class _$$GetResultByDatelistImplCopyWith<$Res> {
           $Res Function(_$GetResultByDatelistImpl) then) =
       __$$GetResultByDatelistImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String tanggal});
+  $Res call({String buId, String tanggal});
 }
 
 /// @nodoc
@@ -974,9 +974,14 @@ class __$$GetResultByDatelistImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? buId = null,
     Object? tanggal = null,
   }) {
     return _then(_$GetResultByDatelistImpl(
+      null == buId
+          ? _value.buId
+          : buId // ignore: cast_nullable_to_non_nullable
+              as String,
       null == tanggal
           ? _value.tanggal
           : tanggal // ignore: cast_nullable_to_non_nullable
@@ -990,14 +995,16 @@ class __$$GetResultByDatelistImplCopyWithImpl<$Res>
 class _$GetResultByDatelistImpl
     with DiagnosticableTreeMixin
     implements _GetResultByDatelist {
-  const _$GetResultByDatelistImpl(this.tanggal);
+  const _$GetResultByDatelistImpl(this.buId, this.tanggal);
 
+  @override
+  final String buId;
   @override
   final String tanggal;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ResultEvent.getResultByDatelist(tanggal: $tanggal)';
+    return 'ResultEvent.getResultByDatelist(buId: $buId, tanggal: $tanggal)';
   }
 
   @override
@@ -1005,6 +1012,7 @@ class _$GetResultByDatelistImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ResultEvent.getResultByDatelist'))
+      ..add(DiagnosticsProperty('buId', buId))
       ..add(DiagnosticsProperty('tanggal', tanggal));
   }
 
@@ -1013,11 +1021,12 @@ class _$GetResultByDatelistImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetResultByDatelistImpl &&
+            (identical(other.buId, buId) || other.buId == buId) &&
             (identical(other.tanggal, tanggal) || other.tanggal == tanggal));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tanggal);
+  int get hashCode => Object.hash(runtimeType, buId, tanggal);
 
   /// Create a copy of ResultEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1036,11 +1045,11 @@ class _$GetResultByDatelistImpl
     required TResult Function(String status) addResult,
     required TResult Function() getResultAll,
     required TResult Function(ResultModel model) UpdateStatus,
-    required TResult Function(String tanggal) getResultByDatelist,
+    required TResult Function(String buId, String tanggal) getResultByDatelist,
     required TResult Function(String tanggal) getResultByDate,
     required TResult Function(String tanggal) getResultByDateForHomepage,
   }) {
-    return getResultByDatelist(tanggal);
+    return getResultByDatelist(buId, tanggal);
   }
 
   @override
@@ -1051,11 +1060,11 @@ class _$GetResultByDatelistImpl
     TResult? Function(String status)? addResult,
     TResult? Function()? getResultAll,
     TResult? Function(ResultModel model)? UpdateStatus,
-    TResult? Function(String tanggal)? getResultByDatelist,
+    TResult? Function(String buId, String tanggal)? getResultByDatelist,
     TResult? Function(String tanggal)? getResultByDate,
     TResult? Function(String tanggal)? getResultByDateForHomepage,
   }) {
-    return getResultByDatelist?.call(tanggal);
+    return getResultByDatelist?.call(buId, tanggal);
   }
 
   @override
@@ -1066,13 +1075,13 @@ class _$GetResultByDatelistImpl
     TResult Function(String status)? addResult,
     TResult Function()? getResultAll,
     TResult Function(ResultModel model)? UpdateStatus,
-    TResult Function(String tanggal)? getResultByDatelist,
+    TResult Function(String buId, String tanggal)? getResultByDatelist,
     TResult Function(String tanggal)? getResultByDate,
     TResult Function(String tanggal)? getResultByDateForHomepage,
     required TResult orElse(),
   }) {
     if (getResultByDatelist != null) {
-      return getResultByDatelist(tanggal);
+      return getResultByDatelist(buId, tanggal);
     }
     return orElse();
   }
@@ -1131,9 +1140,10 @@ class _$GetResultByDatelistImpl
 }
 
 abstract class _GetResultByDatelist implements ResultEvent {
-  const factory _GetResultByDatelist(final String tanggal) =
+  const factory _GetResultByDatelist(final String buId, final String tanggal) =
       _$GetResultByDatelistImpl;
 
+  String get buId;
   String get tanggal;
 
   /// Create a copy of ResultEvent
@@ -1227,7 +1237,7 @@ class _$GetResultByDateImpl
     required TResult Function(String status) addResult,
     required TResult Function() getResultAll,
     required TResult Function(ResultModel model) UpdateStatus,
-    required TResult Function(String tanggal) getResultByDatelist,
+    required TResult Function(String buId, String tanggal) getResultByDatelist,
     required TResult Function(String tanggal) getResultByDate,
     required TResult Function(String tanggal) getResultByDateForHomepage,
   }) {
@@ -1242,7 +1252,7 @@ class _$GetResultByDateImpl
     TResult? Function(String status)? addResult,
     TResult? Function()? getResultAll,
     TResult? Function(ResultModel model)? UpdateStatus,
-    TResult? Function(String tanggal)? getResultByDatelist,
+    TResult? Function(String buId, String tanggal)? getResultByDatelist,
     TResult? Function(String tanggal)? getResultByDate,
     TResult? Function(String tanggal)? getResultByDateForHomepage,
   }) {
@@ -1257,7 +1267,7 @@ class _$GetResultByDateImpl
     TResult Function(String status)? addResult,
     TResult Function()? getResultAll,
     TResult Function(ResultModel model)? UpdateStatus,
-    TResult Function(String tanggal)? getResultByDatelist,
+    TResult Function(String buId, String tanggal)? getResultByDatelist,
     TResult Function(String tanggal)? getResultByDate,
     TResult Function(String tanggal)? getResultByDateForHomepage,
     required TResult orElse(),
@@ -1420,7 +1430,7 @@ class _$GetResultByDateForHomepageImpl
     required TResult Function(String status) addResult,
     required TResult Function() getResultAll,
     required TResult Function(ResultModel model) UpdateStatus,
-    required TResult Function(String tanggal) getResultByDatelist,
+    required TResult Function(String buId, String tanggal) getResultByDatelist,
     required TResult Function(String tanggal) getResultByDate,
     required TResult Function(String tanggal) getResultByDateForHomepage,
   }) {
@@ -1435,7 +1445,7 @@ class _$GetResultByDateForHomepageImpl
     TResult? Function(String status)? addResult,
     TResult? Function()? getResultAll,
     TResult? Function(ResultModel model)? UpdateStatus,
-    TResult? Function(String tanggal)? getResultByDatelist,
+    TResult? Function(String buId, String tanggal)? getResultByDatelist,
     TResult? Function(String tanggal)? getResultByDate,
     TResult? Function(String tanggal)? getResultByDateForHomepage,
   }) {
@@ -1450,7 +1460,7 @@ class _$GetResultByDateForHomepageImpl
     TResult Function(String status)? addResult,
     TResult Function()? getResultAll,
     TResult Function(ResultModel model)? UpdateStatus,
-    TResult Function(String tanggal)? getResultByDatelist,
+    TResult Function(String buId, String tanggal)? getResultByDatelist,
     TResult Function(String tanggal)? getResultByDate,
     TResult Function(String tanggal)? getResultByDateForHomepage,
     required TResult orElse(),

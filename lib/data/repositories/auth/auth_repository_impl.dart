@@ -30,10 +30,14 @@ class AuthRepositoryImpl extends AuthRepository {
         final user = data['user'];
         final token = data['token'];
         final Username = user['userName'];
+        final BU = user['buId'];
         await prefs.setString('user', jsonEncode(user));
         await prefs.setString('token', jsonEncode(token));
         await prefs.setString('username', jsonEncode(Username));
+        await prefs.setString('buId', jsonEncode(BU));
         // await prefs.setString('created_at', formattedDate);
+        print("data : $data");
+        print("BU : $BU");
       }
     } on DioException catch (error) {
       if (error.response!.statusCode == 401 ||

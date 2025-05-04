@@ -10,28 +10,31 @@ import 'package:maintenanceApp/data/models/DetailInspection/DetailInspection_mod
 import 'package:maintenanceApp/data/models/Other/other_model.dart';
 import 'package:maintenanceApp/data/models/Result/result_model.dart';
 import 'package:maintenanceApp/data/parse.dart';
+import 'package:maintenanceApp/features/pages.dart';
 import 'package:maintenanceApp/features/widget/custom_text_field.dart';
 import 'package:maintenanceApp/routes/router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 @RoutePage()
-class HomePage extends StatefulWidget {
-  const HomePage({super.key, this.code, this.date});
+class HomenewPage extends StatefulWidget {
+  const HomenewPage({super.key, this.code, this.date});
   final int? code;
   final String? date;
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomenewPage> createState() => _HomenewPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomenewPageState extends State<HomenewPage> {
   late final TextEditingController _machineIdController =
       TextEditingController();
   final logger = Logger();
   String _BU = "-";
-  List<ResultGet> _resultGet= [];
+  List<ResultGet> _resultGet = [];
+  int _selectedIndex = 0;
 
   int _okCount = 0;
   int _ngCount = 0;
@@ -40,13 +43,13 @@ class _HomePageState extends State<HomePage> {
 
   String? _status;
   List<DetailInspectionGetModel> _detailInspection = [];
-  String? Username = "======";
+  String? Username = "";
   List<OtherModel> _other = [];
 
   Future<void> _getAuth() async {
     final prefs = await SharedPreferences.getInstance();
     final rawToken = prefs.getString('username');
-    final rawBU = prefs.getString('BU');
+    final rawBU = prefs.getString('buId');
     setState(() {
       Username = rawToken!.replaceAll('"', '');
       _BU = rawBU!.replaceAll('"', '');
@@ -56,37 +59,49 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    // _getAuth();
+    _getAuth();
     _machineIdController.clear();
     _machineIdController.text = "";
-    logger.i("Init HomePage");
-    logger.d("MACHINE iD INITSTATE : ${_machineIdController.text}");
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _machineIdController.dispose();
   }
 
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _tabPages = [
+      // Tab 0 - Homepage
+      _home(context),
+
+      // Tab 1 - Halaman Lain (misal: Riwayat)
+      SheetPage(),
+    ];
+    context.read<ResultBloc>().add(ResultEvent.getResultByDatelist(
+        _BU, parseToStringDate(DateTime.now())));
     return MultiBlocListener(
       listeners: [
         BlocListener<ResultBloc, ResultState>(
           listener: (context, state) {
+            logger.d("state di result : $state");
             state.maybeWhen(
               added: (response) {
-                // logger.d("RESULT ID : $response");
                 _resultId = response.id;
               },
               loading: () => true,
               loadedByDateList: (result) {
+                logger.i("masuk ke loaded list result");
                 _resultGet = result;
               },
               loadedByDateForHomepage: (result) {
-                // _resultId = result.id;
                 _status = result.status;
                 String machineId = "-";
                 machineId = _machineIdController.text;
@@ -96,10 +111,10 @@ class _HomePageState extends State<HomePage> {
                   logger.d("RESULT ID KIRIM  : $_resultId");
                   AutoRouter.of(context)
                       .push(Scan2Route(
-                    // key: UniqueKey(),
                     machineId: machineId,
                     status: _status ?? '-',
-                    ResultId: _resultId, buId: _BU,
+                    ResultId: _resultId,
+                    buId: _BU,
                   ))
                       .then((_) {
                     _machineIdController.clear();
@@ -108,6 +123,7 @@ class _HomePageState extends State<HomePage> {
                 logger.d("RESULT ID :$_resultId");
               },
               orElse: () {
+                logger.e("terjadi kesalahan   ");
                 return SizedBox();
               },
             );
@@ -115,11 +131,9 @@ class _HomePageState extends State<HomePage> {
         ),
         BlocListener<DetailInspectionBloc, DetailInspectionState>(
           listener: (context, state) {
-            // logger.d("STATE DETAIL INSPECTION : $state");
             state.maybeWhen(
               loading: () => true,
               loadedbyMachineIdAndDate: (result) {
-                // logger.d("RESULT ID PADA HOMEPAGE : ${result.id}");
                 if (result.id == 0) {
                   context
                       .read<ResultBloc>()
@@ -128,42 +142,87 @@ class _HomePageState extends State<HomePage> {
                   _resultId = result.id;
                 }
               },
-              orElse: () {
-                // logger.e("terjadi masalah DI DETAIL PADA HOMEPAGE");
-              },
+              orElse: () {},
               loadedByMachine: (result) {
                 _detailInspection = result;
               },
-              loadedByDateList: (result) {
-
-              },
+              loadedByDateList: (result) {},
             );
           },
         ),
-        BlocListener<OtherBloc, OtherState>(listener: (context, state) {
-          state.maybeWhen(
-            loading: () => true,
-            loadedAll: (result) {
-              // logger.d("RESULT OTHER : $result");
-              _other = result;
-            },
-            orElse: () {},
-          );
-        }),
+        BlocListener<OtherBloc, OtherState>(
+          listener: (context, state) {
+            state.maybeWhen(
+              loading: () => true,
+              loadedAll: (result) {
+                _other = result;
+              },
+              orElse: () {},
+            );
+          },
+        ),
       ],
       child: Scaffold(
         appBar: _buildAppBar(context),
-        body: SingleChildScrollView(
-          child: Container(
-            color: ColorValues.hijauMain,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildHeader(context),
-                _buildResultList(context),
-              ],
+        body: _tabPages[_selectedIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: ColorValues.primary700,
+          unselectedItemColor: Colors.black,
+          type: BottomNavigationBarType.fixed,
+
+          // Ubah style semua label
+          selectedLabelStyle: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: ColorValues.primary700),
+          unselectedLabelStyle:
+              const TextStyle(fontSize: 15, color: Colors.black),
+
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+                size: 30,
+              ),
+              label: "Beranda",
             ),
-          ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.history,
+                size: 30,
+              ),
+              label: "Riwayat",
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _home(BuildContext context) {
+    return SingleChildScrollView(
+      child: Container(
+        // height: MediaQuery.of(context).size.height,
+        color: Colors.white,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            _buildHeader(context),
+            // _contain(),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 20),
+              child: Text(
+                "RIWAYAT HARI INI",
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
+            ),
+            _buildResultList(context),
+          ],
         ),
       ),
     );
@@ -183,7 +242,7 @@ class _HomePageState extends State<HomePage> {
               .copyWith(fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),
-      backgroundColor: ColorValues.hijauMain,
+      backgroundColor: ColorValues.primary700,
       actions: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -197,29 +256,92 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildHeader(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+    return Container(
+        // color: ColorValues.danger500,
+        margin: EdgeInsets.only(bottom: 10),
+        height: MediaQuery.of(context).size.height * 0.3,
+        // height: 300,
+        padding: const EdgeInsets.only(right: 30, left: 30, top: 10),
+        decoration: BoxDecoration(
+          color: ColorValues.primary700,
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.elliptical(1000, 300),
+              bottomRight: Radius.elliptical(1000, 300)),
+          // border: Border.all(color: Colors.white),
+        ),
+        child: _buildCardhome());
+  }
+
+  Widget _buildCardhome() {
+    return Container(
+      margin: EdgeInsets.only(top: 30),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      height: 10,
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+          // border: Border.all(color: Colors.black),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey,
+              offset: Offset(
+                0.0,
+                0.0,
+              ),
+              blurRadius: 1.0,
+              spreadRadius: 1.0,
+            ), //
+            BoxShadow(
+              color: Colors.black,
+              offset: Offset(0.0, 0.0),
+              blurRadius: 0.0,
+              spreadRadius: 0.0,
+            ),
+          ]),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildWelcomeMessage(context),
-          const SizedBox(height: 10),
+          const SizedBox(height: 20),
+          // Text("Masukkan Id Check Sheet "),
           _buildSearchRow(context),
           const SizedBox(height: 20),
-          _buildCheckSheetButton(context),
         ],
       ),
     );
   }
 
   Widget _buildWelcomeMessage(BuildContext context) {
-    _getAuth();
-    return Text(
-      "Selamat Datang, ${Username}",
-      style: Theme.of(context)
-          .textTheme
-          .bodyLarge!
-          .copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+    // _getAuth();
+    return Row(
+      children: [
+        Icon(
+          Icons.account_circle,
+          size: 70,
+          color: ColorValues.primary800,
+        ),
+        Container(
+          padding: EdgeInsets.only(left: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "${Username}",
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 25),
+              ),
+              Text(
+                "BU : ${_BU}",
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: ColorValues.grayscale600),
+              )
+            ],
+          ),
+        )
+      ],
     );
   }
 
@@ -230,8 +352,8 @@ class _HomePageState extends State<HomePage> {
           flex: 3,
           child: CustomTextField(
             controller: _machineIdController,
-            hintText: "Masukan Id Machine",
-            labelText: "Id Machine",
+            hintText: "Masukan ID MESIN",
+            labelText: "ID MESIN",
             textInputType: TextInputType.text,
             borderRadius: 10,
             validator: (value) =>
@@ -239,7 +361,7 @@ class _HomePageState extends State<HomePage> {
             LabelTextStyle: Theme.of(context)
                 .textTheme
                 .bodyLarge
-                ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                ?.copyWith(color: Colors.black, fontWeight: FontWeight.bold),
           ),
         ),
         const SizedBox(width: 20),
@@ -248,20 +370,25 @@ class _HomePageState extends State<HomePage> {
           child: Container(
               margin: const EdgeInsets.only(top: 30),
               child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: ColorValues.kuningButton,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      side: const BorderSide(color: Colors.black)),
-                  padding: const EdgeInsets.symmetric(vertical: 11),
-                ),
-                onPressed: () => _handleSearch(context),
-                child: Text(
-                  "Cari",
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      fontWeight: FontWeight.bold, color: Colors.black),
-                ),
-              )),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: ColorValues.primary700,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: const BorderSide(color: Colors.white)),
+                    padding: const EdgeInsets.symmetric(vertical: 7),
+                  ),
+                  onPressed: () => _handleSearch(context),
+                  child: Icon(
+                    Icons.search,
+                    color: Colors.white,
+                    size: 35,
+                  )
+                  // Text(
+                  //   "Cari",
+                  //   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  //       fontWeight: FontWeight.bold, color: Colors.white),
+                  // ),
+                  )),
         )
       ],
     );
@@ -289,44 +416,16 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildResultList(BuildContext context) {
-    context.read<ResultBloc>().add(ResultEvent.getResultByDatelist(_BU, parseToStringDate(DateTime.now())));
     return Container(
         height: MediaQuery.of(context).size.height * 0.6,
         decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
-          ),
+          color: Colors.red,
         ),
         padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 40),
-        child: _buildHistory(_resultGet, _other));
+        child: _buildHistory());
   }
 
-  Widget _buildHistory(
-      List<ResultGet> resultList, List<OtherModel> otherList) {
-    int ok = 0;
-    int ng = 0;
-    int condition = 0;
-
-    if (condition != 0) {
-      context
-          .read<DetailInspectionBloc>()
-          .add(const DetailInspectionEvent.getDetailInspectionByMachine());
-      context.read<OtherBloc>().add(const OtherEvent.getOtherAll());
-    }
-    if (resultList.isEmpty) {
-      return const Center(
-        child: Text("Tidak ada data"),
-      );
-    }
-    ok = resultList.where((result) => result.status == "OK").length;
-    ng = resultList.where((result) => result.status == "NG").length;
-    if (resultList[0].status == "-"){
-      return SizedBox();
-    }
-
-
+  Widget _buildHistory() {
     // Set<int> otherResultIds = otherList.map((other) => other.resultId).toSet();
 
     // List<ResultGet> updatedDetailList = detaillist.map((detail) {
@@ -344,7 +443,107 @@ class _HomePageState extends State<HomePage> {
     //     return detail;
     //   }
     // }).toList();
+    return BlocBuilder<ResultBloc, ResultState>(
+      builder: (context, state) {
+        return Skeletonizer(
+          enabled: state.maybeWhen(
+            loading: () => true,
+            orElse: () => false,
+          ),
+          child: state.maybeWhen(
+            loading: () {
+              return SizedBox(
+                height: MediaQuery.of(context).size.height * 0.7,
+                child: const Center(child: CircularProgressIndicator()),
+              );
+            },
+            loadedByDateList: (response) {
+              if (response.isEmpty) {
+                return SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.7,
+                  child: const Center(
+                    child: Text(
+                      'Data tidak ditemukan',
+                    ),
+                  ),
+                );
+              } else {
+                return _buildHistoryssss(response);
+              }
+            },
+            orElse: () {
+              return Center(
+                child: Text("TERJADI KESALAHAN"),
+              );
+            },
+            error: (message) => Center(
+              child: Text(
+                'Error: $message',
+                style: const TextStyle(fontSize: 25, color: Colors.red),
+              ),
+            ),
+          ),
+        );
+      },
+    );
 
+    // return StatefulBuilder(
+    //   builder: (context, setState) {
+    //     final results = resultList;
+    //     return Column(
+    //       crossAxisAlignment: CrossAxisAlignment.start,
+    //       children: [
+    //         Row(
+    //           mainAxisAlignment: MainAxisAlignment.spaceAround,
+    //           children: [
+    //             _buildCard("OK :", ok.toString(), ColorValues.hijauBUtton),
+    //             _buildCard("NG :", ng.toString(), ColorValues.merahButton),
+    //           ],
+    //         ),
+    //         SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+    //         if (results.isNotEmpty)
+    //           ListView.builder(
+    //             shrinkWrap: true,
+    //             itemCount: results.length,
+    //             itemBuilder: (context, index) => Padding(
+    //               padding: const EdgeInsets.symmetric(vertical: 8.0),
+    //               child: _buildHistoryItem(
+    //                 results[index],
+    //               ),
+    //             ),
+    //           )
+    //         else
+    //           const SizedBox()
+    //       ],
+    //     );
+    //   },
+    // );
+  }
+
+  Widget _buildHistoryssss(List<ResultGet> resultList) {
+    int ok = 0;
+    int ng = 0;
+    int condition = 1;
+
+    if (condition == 0) {
+      context
+          .read<DetailInspectionBloc>()
+          .add(const DetailInspectionEvent.getDetailInspectionByMachine());
+      context.read<OtherBloc>().add(const OtherEvent.getOtherAll());
+    }
+    logger.d("result : $resultList");
+    if (resultList.isEmpty) {
+      return Center(
+        child: Text("TERJADI KESALAHAN"),
+      );
+    }
+    ok = resultList.where((result) => result.status == "OK").length;
+    ng = resultList.where((result) => result.status == "NG").length;
+    if (resultList[0].status == "-") {
+      return Center(
+        child: Text("TIDAK ADA CHECKSHEET"),
+      );
+    }
     return StatefulBuilder(
       builder: (context, setState) {
         final results = resultList;
@@ -459,8 +658,8 @@ class _HomePageState extends State<HomePage> {
         DetailInspectionEvent.getDetailInspectionByMachineIdAndDate(
             id, formattedDate));
 
-    context
-        .read<ResultBloc>()
-        .add(ResultEvent.getResultByDateForHomepage(formattedDate));
+    // context
+    //     .read<ResultBloc>()
+    //     .add(ResultEvent.getResultByDateForHomepage(formattedDate));
   }
 }

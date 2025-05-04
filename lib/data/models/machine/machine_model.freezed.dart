@@ -387,12 +387,13 @@ MachineModel _$MachineModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MachineModel {
-  String get machineId => throw _privateConstructorUsedError;
+  int get machineId => throw _privateConstructorUsedError;
   String get sectionName => throw _privateConstructorUsedError;
   String get line => throw _privateConstructorUsedError;
   String get machineName => throw _privateConstructorUsedError;
   String get machineNumber => throw _privateConstructorUsedError;
   String get dockumentNo => throw _privateConstructorUsedError;
+  String get buId => throw _privateConstructorUsedError;
 
   /// Serializes this MachineModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -411,12 +412,13 @@ abstract class $MachineModelCopyWith<$Res> {
       _$MachineModelCopyWithImpl<$Res, MachineModel>;
   @useResult
   $Res call(
-      {String machineId,
+      {int machineId,
       String sectionName,
       String line,
       String machineName,
       String machineNumber,
-      String dockumentNo});
+      String dockumentNo,
+      String buId});
 }
 
 /// @nodoc
@@ -440,12 +442,13 @@ class _$MachineModelCopyWithImpl<$Res, $Val extends MachineModel>
     Object? machineName = null,
     Object? machineNumber = null,
     Object? dockumentNo = null,
+    Object? buId = null,
   }) {
     return _then(_value.copyWith(
       machineId: null == machineId
           ? _value.machineId
           : machineId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       sectionName: null == sectionName
           ? _value.sectionName
           : sectionName // ignore: cast_nullable_to_non_nullable
@@ -466,6 +469,10 @@ class _$MachineModelCopyWithImpl<$Res, $Val extends MachineModel>
           ? _value.dockumentNo
           : dockumentNo // ignore: cast_nullable_to_non_nullable
               as String,
+      buId: null == buId
+          ? _value.buId
+          : buId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -479,12 +486,13 @@ abstract class _$$MachineModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String machineId,
+      {int machineId,
       String sectionName,
       String line,
       String machineName,
       String machineNumber,
-      String dockumentNo});
+      String dockumentNo,
+      String buId});
 }
 
 /// @nodoc
@@ -506,12 +514,13 @@ class __$$MachineModelImplCopyWithImpl<$Res>
     Object? machineName = null,
     Object? machineNumber = null,
     Object? dockumentNo = null,
+    Object? buId = null,
   }) {
     return _then(_$MachineModelImpl(
       machineId: null == machineId
           ? _value.machineId
           : machineId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       sectionName: null == sectionName
           ? _value.sectionName
           : sectionName // ignore: cast_nullable_to_non_nullable
@@ -532,6 +541,10 @@ class __$$MachineModelImplCopyWithImpl<$Res>
           ? _value.dockumentNo
           : dockumentNo // ignore: cast_nullable_to_non_nullable
               as String,
+      buId: null == buId
+          ? _value.buId
+          : buId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -545,13 +558,14 @@ class _$MachineModelImpl with DiagnosticableTreeMixin implements _MachineModel {
       required this.line,
       required this.machineName,
       required this.machineNumber,
-      required this.dockumentNo});
+      required this.dockumentNo,
+      required this.buId});
 
   factory _$MachineModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$MachineModelImplFromJson(json);
 
   @override
-  final String machineId;
+  final int machineId;
   @override
   final String sectionName;
   @override
@@ -562,10 +576,12 @@ class _$MachineModelImpl with DiagnosticableTreeMixin implements _MachineModel {
   final String machineNumber;
   @override
   final String dockumentNo;
+  @override
+  final String buId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MachineModel(machineId: $machineId, sectionName: $sectionName, line: $line, machineName: $machineName, machineNumber: $machineNumber, dockumentNo: $dockumentNo)';
+    return 'MachineModel(machineId: $machineId, sectionName: $sectionName, line: $line, machineName: $machineName, machineNumber: $machineNumber, dockumentNo: $dockumentNo, buId: $buId)';
   }
 
   @override
@@ -578,7 +594,8 @@ class _$MachineModelImpl with DiagnosticableTreeMixin implements _MachineModel {
       ..add(DiagnosticsProperty('line', line))
       ..add(DiagnosticsProperty('machineName', machineName))
       ..add(DiagnosticsProperty('machineNumber', machineNumber))
-      ..add(DiagnosticsProperty('dockumentNo', dockumentNo));
+      ..add(DiagnosticsProperty('dockumentNo', dockumentNo))
+      ..add(DiagnosticsProperty('buId', buId));
   }
 
   @override
@@ -596,13 +613,14 @@ class _$MachineModelImpl with DiagnosticableTreeMixin implements _MachineModel {
             (identical(other.machineNumber, machineNumber) ||
                 other.machineNumber == machineNumber) &&
             (identical(other.dockumentNo, dockumentNo) ||
-                other.dockumentNo == dockumentNo));
+                other.dockumentNo == dockumentNo) &&
+            (identical(other.buId, buId) || other.buId == buId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, machineId, sectionName, line,
-      machineName, machineNumber, dockumentNo);
+      machineName, machineNumber, dockumentNo, buId);
 
   /// Create a copy of MachineModel
   /// with the given fields replaced by the non-null parameter values.
@@ -622,18 +640,19 @@ class _$MachineModelImpl with DiagnosticableTreeMixin implements _MachineModel {
 
 abstract class _MachineModel implements MachineModel {
   const factory _MachineModel(
-      {required final String machineId,
+      {required final int machineId,
       required final String sectionName,
       required final String line,
       required final String machineName,
       required final String machineNumber,
-      required final String dockumentNo}) = _$MachineModelImpl;
+      required final String dockumentNo,
+      required final String buId}) = _$MachineModelImpl;
 
   factory _MachineModel.fromJson(Map<String, dynamic> json) =
       _$MachineModelImpl.fromJson;
 
   @override
-  String get machineId;
+  int get machineId;
   @override
   String get sectionName;
   @override
@@ -644,6 +663,8 @@ abstract class _MachineModel implements MachineModel {
   String get machineNumber;
   @override
   String get dockumentNo;
+  @override
+  String get buId;
 
   /// Create a copy of MachineModel
   /// with the given fields replaced by the non-null parameter values.

@@ -107,7 +107,7 @@ class _ScanOtherPageState extends State<ScanOtherPage> {
                               machineId: widget.machineId,
                               status: "NG",
                               ResultId: widget.resultId,
-                              statusOther: "NG",));
+                              statusOther: "NG", buId: 'REF',));
                         },
                   child: isLoading
                       ? const CircularProgressIndicator(color: Colors.white)

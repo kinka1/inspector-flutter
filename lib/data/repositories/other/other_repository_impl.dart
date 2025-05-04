@@ -59,7 +59,7 @@ class OtherRepositoryImpl extends OtherRepository {
       // logger.i('Response status code: ${response.statusCode}');
       if (response.statusCode == 200) {
         final dataUser = response.data['data'];
-        // logger.i('Data user other: $dataUser');
+        logger.i('Data user other: $dataUser');
         OtherModel other = OtherModel.fromJson(dataUser);
         // logger.i('Other data: ${other}');
         return other;

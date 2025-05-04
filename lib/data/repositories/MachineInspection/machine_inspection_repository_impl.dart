@@ -8,12 +8,12 @@ class MachineInspectionRepositoryImpl extends MachineInspectionRepository {
   final logger = Logger();
   final _dio = Dio();
   @override
-  Future<MachineInspectionModel> getInspectionItem(String id) async {
+  Future<MachineInspectionModel> getInspectionItem(String id,String buId) async {
   try {
     logger.i("MASUK TRY REPO MACHINE INSPECTION, machine id : $id");
     final response =
-        await _dio.get('${dotenv.env['API_BASE_URL']}/machineInspection/$id');
-    // logger.i("RESPONSE MACHINE INSPECTION : ${response}");
+        await _dio.get('${dotenv.env['API_BASE_URL']}/machineInspection/BU=$buId/$id');
+    logger.i("RESPONSE MACHINE INSPECTION : ${response}");
 
     if (response.statusCode == 200) {
       final responseData = response.data;

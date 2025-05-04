@@ -1,6 +1,7 @@
 import 'package:maintenanceApp/data/models/InspectionItem/InspectionItem_model.dart';
 import 'package:maintenanceApp/data/models/Result/result_model.dart';
 import 'package:maintenanceApp/features/auth/views/login_page.dart';
+import 'package:maintenanceApp/features/home/view/homeNew_page.dart';
 import 'package:maintenanceApp/features/scan/view/scan_2_page.dart';
 import 'package:maintenanceApp/features/scan/view/scan_3_page.dart';
 import 'package:auto_route/auto_route.dart';
@@ -17,6 +18,12 @@ class AppRouter extends _$AppRouter {
         CustomRoute(
           page: HomeRoute.page,
           path: '/home',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+          // initial: true,
+        ),
+        CustomRoute(
+          page: HomenewRoute.page,
+          path: '/homenew',
           transitionsBuilder: TransitionsBuilders.fadeIn,
           // initial: true,
         ),

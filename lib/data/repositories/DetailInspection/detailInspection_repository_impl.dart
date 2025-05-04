@@ -107,7 +107,7 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
 
-      // logger.i("response : $response");
+      logger.i("response LIST DETAIL: $response");
 
       if (response.statusCode != 200) {
         throw Exception(
@@ -173,15 +173,16 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
           responseData['status'] == true) {
         final machineData = responseData['data'];
         final item = DetailInspectionGetModel.fromJson(machineData);
+        logger.d("item single: $item");
         return item;
       } else {
         throw Exception('Invalid response structure');
       }
     } on DioException catch (error) {
-      // logger.e("status code : ${error.response?.statusCode},error : $error");
+      logger.e("status code : ${error.response?.statusCode},error : $error");
       throw Exception('Network error: ${error.message}');
     } catch (error) {
-      // logger.e("TERJADI MASALAH DI REPO DETAIL INSPECTION SINGLE : $error");
+      logger.e("TERJADI MASALAH DI REPO DETAIL INSPECTION SINGLE : $error");
       throw Exception('An unexpected error occurred: $error');
     }
   }
@@ -208,7 +209,7 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
 
-      // logger.i("response : $response");
+      logger.i("response list: $response");
 
       if (response.statusCode != 200) {
         throw Exception(

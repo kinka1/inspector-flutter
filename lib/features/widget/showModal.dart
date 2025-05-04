@@ -40,7 +40,7 @@ class _ShowModalState extends State<ShowModal> {
               date: DateTime.now(),
               status: widget.status,
               id: widget.resultId,
-              userId: '-')));
+              userId: 0)));
         },
         child: isLoading
             ? const CircularProgressIndicator()

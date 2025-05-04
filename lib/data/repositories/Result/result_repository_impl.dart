@@ -1,4 +1,4 @@
-// import 'package:logger/logger.dart';
+import 'package:logger/logger.dart';
 import 'package:maintenanceApp/data/models/Result/result_model.dart';
 import 'package:maintenanceApp/data/repositories/Result/result_repository.dart';
 import 'package:dio/dio.dart';
@@ -6,7 +6,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ResultRepositoryImpl extends ResultRepository {
-  // // final logger = Logger();
+  final logger = Logger();
   final _dio = Dio();
 
   @override
@@ -126,14 +126,14 @@ class ResultRepositoryImpl extends ResultRepository {
     }
   }
 
-  Future<List<ResultGet>> getResultByDatelist(String tanggal) async {
+  Future<List<ResultGet>> getResultByDatelist(String buId,String tanggal) async {
     final prefs = await SharedPreferences.getInstance();
     try {
       final rawToken = prefs.getString('token');
       final token = rawToken?.replaceAll('"', '');
       // logger.i("masuk try repository");
       final response = await _dio.get(
-        '${dotenv.env['API_BASE_URL']}/result/$tanggal',
+        '${dotenv.env['API_BASE_URL']}/result/$buId/$tanggal',
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
 
@@ -144,14 +144,15 @@ class ResultRepositoryImpl extends ResultRepository {
         final responseData = response.data;
 
         // ✅ Periksa apakah responseData adalah Map
-        // logger.i("HIT BERHASIL ");
+        logger.i("HIT BERHASIL , response data = $responseData");
         if (responseData is Map<String, dynamic> &&
             responseData['status'] == true) {
           final List<dynamic> ResponseGet = responseData['data'];
+          logger.d("response data : $ResponseGet");
           if (ResponseGet is List) {
             List<ResultGet> items =
                 ResponseGet.map((item) => ResultGet.fromJson(item)).toList();
-            // logger.d("item :$items");
+            logger.d("item :$items");
             return items;
           } else {
             throw Exception('Invalid data format: Expected a List');

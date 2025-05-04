@@ -646,19 +646,19 @@ mixin _$MachineInspectionEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String id) GetMachineInspection,
+    required TResult Function(String id, String buId) GetMachineInspection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String id)? GetMachineInspection,
+    TResult? Function(String id, String buId)? GetMachineInspection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String id)? GetMachineInspection,
+    TResult Function(String id, String buId)? GetMachineInspection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -747,7 +747,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String id) GetMachineInspection,
+    required TResult Function(String id, String buId) GetMachineInspection,
   }) {
     return started();
   }
@@ -756,7 +756,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String id)? GetMachineInspection,
+    TResult? Function(String id, String buId)? GetMachineInspection,
   }) {
     return started?.call();
   }
@@ -765,7 +765,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String id)? GetMachineInspection,
+    TResult Function(String id, String buId)? GetMachineInspection,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -816,7 +816,7 @@ abstract class _$$GetMachineInspectionImplCopyWith<$Res> {
           $Res Function(_$GetMachineInspectionImpl) then) =
       __$$GetMachineInspectionImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String id});
+  $Res call({String id, String buId});
 }
 
 /// @nodoc
@@ -834,11 +834,16 @@ class __$$GetMachineInspectionImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? buId = null,
   }) {
     return _then(_$GetMachineInspectionImpl(
       null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == buId
+          ? _value.buId
+          : buId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -847,14 +852,16 @@ class __$$GetMachineInspectionImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetMachineInspectionImpl implements _GetMachineInspection {
-  const _$GetMachineInspectionImpl(this.id);
+  const _$GetMachineInspectionImpl(this.id, this.buId);
 
   @override
   final String id;
+  @override
+  final String buId;
 
   @override
   String toString() {
-    return 'MachineInspectionEvent.GetMachineInspection(id: $id)';
+    return 'MachineInspectionEvent.GetMachineInspection(id: $id, buId: $buId)';
   }
 
   @override
@@ -862,11 +869,12 @@ class _$GetMachineInspectionImpl implements _GetMachineInspection {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetMachineInspectionImpl &&
-            (identical(other.id, id) || other.id == id));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.buId, buId) || other.buId == buId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id);
+  int get hashCode => Object.hash(runtimeType, id, buId);
 
   /// Create a copy of MachineInspectionEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -882,29 +890,29 @@ class _$GetMachineInspectionImpl implements _GetMachineInspection {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String id) GetMachineInspection,
+    required TResult Function(String id, String buId) GetMachineInspection,
   }) {
-    return GetMachineInspection(id);
+    return GetMachineInspection(id, buId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String id)? GetMachineInspection,
+    TResult? Function(String id, String buId)? GetMachineInspection,
   }) {
-    return GetMachineInspection?.call(id);
+    return GetMachineInspection?.call(id, buId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String id)? GetMachineInspection,
+    TResult Function(String id, String buId)? GetMachineInspection,
     required TResult orElse(),
   }) {
     if (GetMachineInspection != null) {
-      return GetMachineInspection(id);
+      return GetMachineInspection(id, buId);
     }
     return orElse();
   }
@@ -942,10 +950,11 @@ class _$GetMachineInspectionImpl implements _GetMachineInspection {
 }
 
 abstract class _GetMachineInspection implements MachineInspectionEvent {
-  const factory _GetMachineInspection(final String id) =
+  const factory _GetMachineInspection(final String id, final String buId) =
       _$GetMachineInspectionImpl;
 
   String get id;
+  String get buId;
 
   /// Create a copy of MachineInspectionEvent
   /// with the given fields replaced by the non-null parameter values.

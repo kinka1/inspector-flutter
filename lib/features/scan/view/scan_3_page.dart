@@ -1,4 +1,5 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:logger/logger.dart';
 import 'package:maintenanceApp/data/bloc/result/result.dart';
 import 'package:maintenanceApp/data/models/DetailInspection/DetailInspection_model.dart';
 import 'package:maintenanceApp/data/models/InspectionItem/InspectionItem_model.dart';
@@ -29,14 +30,18 @@ class Scan3Page extends StatefulWidget {
 
 class _Scan3PageState extends State<Scan3Page> {
   int ResultId = 0;
+  final logger = Logger();
+  double margin = 0;
   @override
   void initState() {
     super.initState();
     context.read<ResultBloc>().add(const ResultEvent.getResult());
   }
+  
 
   @override
   Widget build(BuildContext context) {
+    logger.d("isnumber : ${widget.model.isNumber}");
     return Scaffold(
         appBar: appbarCus(context, "Daily Maintenance", false),
         body: SingleChildScrollView(
@@ -49,11 +54,14 @@ class _Scan3PageState extends State<Scan3Page> {
                     return state.maybeWhen(
                       loaded: (response) {
                         ResultId = response.id;
+                        widget.model.isNumber == true
+                            ? margin = 50
+                            : margin = 0;
                         return Buildform(
                           item: widget.model,
                           ResultId: ResultId,
                           machineInspectionId: widget.machineInspectionId,
-                          machineId: widget.machineId,
+                          machineId: widget.machineId, margin: margin,
                         );
                       },
                       orElse: () => Center(

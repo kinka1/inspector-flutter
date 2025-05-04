@@ -32,12 +32,13 @@ Map<String, dynamic> _$$MachineDataImplToJson(_$MachineDataImpl instance) =>
 
 _$MachineModelImpl _$$MachineModelImplFromJson(Map<String, dynamic> json) =>
     _$MachineModelImpl(
-      machineId: json['machineId'] as String,
+      machineId: (json['machineId'] as num).toInt(),
       sectionName: json['sectionName'] as String,
       line: json['line'] as String,
       machineName: json['machineName'] as String,
       machineNumber: json['machineNumber'] as String,
       dockumentNo: json['dockumentNo'] as String,
+      buId: json['buId'] as String,
     );
 
 Map<String, dynamic> _$$MachineModelImplToJson(_$MachineModelImpl instance) =>
@@ -48,4 +49,5 @@ Map<String, dynamic> _$$MachineModelImplToJson(_$MachineModelImpl instance) =>
       'machineName': instance.machineName,
       'machineNumber': instance.machineNumber,
       'dockumentNo': instance.dockumentNo,
+      'buId': instance.buId,
     };

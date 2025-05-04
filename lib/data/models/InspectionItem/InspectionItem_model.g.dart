@@ -45,6 +45,7 @@ _$InspectionitemModelImpl _$$InspectionitemModelImplFromJson(
       number: (json['number'] as num).toInt(),
       imagePath: json['imagePath'] as String,
       isNumber: json['isNumber'] as bool,
+      prasyarat: json['prasyarat'] as String,
     );
 
 Map<String, dynamic> _$$InspectionitemModelImplToJson(
@@ -58,6 +59,7 @@ Map<String, dynamic> _$$InspectionitemModelImplToJson(
       'number': instance.number,
       'imagePath': instance.imagePath,
       'isNumber': instance.isNumber,
+      'prasyarat': instance.prasyarat,
     };
 
 _$InspectionitemMachineGetModelImpl
@@ -72,6 +74,7 @@ _$InspectionitemMachineGetModelImpl
           number: (json['number'] as num).toInt(),
           imagePath: json['imagePath'] as String,
           isNumber: json['isNumber'] as bool,
+          prasyarat: json['prasyarat'] as String,
         );
 
 Map<String, dynamic> _$$InspectionitemMachineGetModelImplToJson(
@@ -86,4 +89,5 @@ Map<String, dynamic> _$$InspectionitemMachineGetModelImplToJson(
       'number': instance.number,
       'imagePath': instance.imagePath,
       'isNumber': instance.isNumber,
+      'prasyarat': instance.prasyarat,
     };

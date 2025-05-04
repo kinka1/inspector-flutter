@@ -26,7 +26,7 @@ class Scan2Page extends StatefulWidget {
     required this.status,
     this.number,
     required this.ResultId,
-    this.statusOther,
+    this.statusOther, required this.buId,
   });
 
   final int ResultId;
@@ -34,6 +34,7 @@ class Scan2Page extends StatefulWidget {
   final String? status;
   final int? number;
   final String? statusOther;
+  final String buId;
 
   @override
   State<Scan2Page> createState() => _Scan2PageState();
@@ -52,17 +53,17 @@ class _Scan2PageState extends State<Scan2Page> {
     logger.d("machine ID DI PAGE 2: ${widget.machineId}");
 
     context.read<MachineInspectionBloc>().add(
-          MachineInspectionEvent.GetMachineInspection(widget.machineId),
+          MachineInspectionEvent.GetMachineInspection(widget.machineId,widget.buId),
         );
     Future.delayed(const Duration(seconds: 1), () {
       context.read<DetailInspectionBloc>().add(
           DetailInspectionEvent.getDetailByDate(widget.machineId, tanggal));
     });
-    Future.delayed(const Duration(seconds: 1), () {
-      context.read<OtherBloc>().add(
-            OtherEvent.getOther(widget.ResultId, tanggal),
-          );
-    });
+    // Future.delayed(const Duration(seconds: 1), () {
+    //   context.read<OtherBloc>().add(
+    //         OtherEvent.getOther(widget.ResultId, tanggal),
+    //       );
+    // });
   }
 
   @override
@@ -87,7 +88,9 @@ class _Scan2PageState extends State<Scan2Page> {
                           ],
                         );
                       },
-                      orElse: () => const SizedBox(),
+                      orElse: () => const Center(
+                        child: Text("TERJADI KESALAHAN"),
+                      ),
                     );
                   },
                 ),
@@ -102,6 +105,7 @@ class _Scan2PageState extends State<Scan2Page> {
   Widget _buildDetailAndButtons(MachineInspectionModel machine) {
     return BlocBuilder<DetailInspectionBloc, DetailInspectionState>(
       builder: (context, state) {
+        logger.d("state detail inspection: $state");
         return state.maybeWhen(
           loading: () => const CircularProgressIndicator(),
           loadedbyDate: (items) {
@@ -224,7 +228,7 @@ class _Scan2PageState extends State<Scan2Page> {
             onPressed: () {
               context.read<MachineInspectionBloc>().add(
                     MachineInspectionEvent.GetMachineInspection(
-                        widget.machineId),
+                        widget.machineId,widget.buId),
                   );
               Future.delayed(const Duration(seconds: 1), () {
                 context.read<DetailInspectionBloc>().add(

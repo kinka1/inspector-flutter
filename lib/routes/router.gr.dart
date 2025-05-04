@@ -27,6 +27,18 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    HomenewRoute.name: (routeData) {
+      final args = routeData.argsAs<HomenewRouteArgs>(
+          orElse: () => const HomenewRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: HomenewPage(
+          key: args.key,
+          code: args.code,
+          date: args.date,
+        ),
+      );
+    },
     LoginRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -44,6 +56,7 @@ abstract class _$AppRouter extends RootStackRouter {
           number: args.number,
           ResultId: args.ResultId,
           statusOther: args.statusOther,
+          buId: args.buId,
         ),
       );
     },
@@ -133,6 +146,49 @@ class HomeRouteArgs {
 }
 
 /// generated route for
+/// [HomenewPage]
+class HomenewRoute extends PageRouteInfo<HomenewRouteArgs> {
+  HomenewRoute({
+    Key? key,
+    int? code,
+    String? date,
+    List<PageRouteInfo>? children,
+  }) : super(
+          HomenewRoute.name,
+          args: HomenewRouteArgs(
+            key: key,
+            code: code,
+            date: date,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'HomenewRoute';
+
+  static const PageInfo<HomenewRouteArgs> page =
+      PageInfo<HomenewRouteArgs>(name);
+}
+
+class HomenewRouteArgs {
+  const HomenewRouteArgs({
+    this.key,
+    this.code,
+    this.date,
+  });
+
+  final Key? key;
+
+  final int? code;
+
+  final String? date;
+
+  @override
+  String toString() {
+    return 'HomenewRouteArgs{key: $key, code: $code, date: $date}';
+  }
+}
+
+/// generated route for
 /// [LoginPage]
 class LoginRoute extends PageRouteInfo<void> {
   const LoginRoute({List<PageRouteInfo>? children})
@@ -156,6 +212,7 @@ class Scan2Route extends PageRouteInfo<Scan2RouteArgs> {
     int? number,
     required int ResultId,
     String? statusOther,
+    required String buId,
     List<PageRouteInfo>? children,
   }) : super(
           Scan2Route.name,
@@ -166,6 +223,7 @@ class Scan2Route extends PageRouteInfo<Scan2RouteArgs> {
             number: number,
             ResultId: ResultId,
             statusOther: statusOther,
+            buId: buId,
           ),
           initialChildren: children,
         );
@@ -183,6 +241,7 @@ class Scan2RouteArgs {
     this.number,
     required this.ResultId,
     this.statusOther,
+    required this.buId,
   });
 
   final Key? key;
@@ -197,9 +256,11 @@ class Scan2RouteArgs {
 
   final String? statusOther;
 
+  final String buId;
+
   @override
   String toString() {
-    return 'Scan2RouteArgs{key: $key, machineId: $machineId, status: $status, number: $number, ResultId: $ResultId, statusOther: $statusOther}';
+    return 'Scan2RouteArgs{key: $key, machineId: $machineId, status: $status, number: $number, ResultId: $ResultId, statusOther: $statusOther, buId: $buId}';
   }
 }
 

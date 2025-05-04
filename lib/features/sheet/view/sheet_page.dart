@@ -83,7 +83,7 @@ class _SheetPageState extends State<SheetPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbarCus(context, "Checksheet", true),
+      // appBar: appbarCus(context, "Checksheet", true),
       body: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
@@ -213,7 +213,7 @@ class _SheetPageState extends State<SheetPage> {
     return GestureDetector(
       onTap: () {
         AutoRouter.of(context).push(Sheet2Route(
-          MachineId: detail.machine.machineId,
+          MachineId: detail.machine.machineId.toString(),
           date: formatDate(date),
         ));
       },

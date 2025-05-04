@@ -41,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
                   // const SizedBox(height: 20),
                   CustomTextField(
                     controller: _usernameController,
-                    hintText: "Yanto gaming",
+                    hintText: "Username",
                     labelText: "Username",
                     textInputType: TextInputType.text,
                     borderRadius: 10,
@@ -73,7 +73,8 @@ class _LoginPageState extends State<LoginPage> {
                   BlocConsumer<AuthBloc, AuthState>(listener: (context, state) {
                     state.maybeWhen(
                         loginSuccess: () {
-                          AutoRouter.of(context).replace(HomeRoute(code: 0));
+                          // AutoRouter.of(context).replace(HomeRoute(code: 0));
+                          AutoRouter.of(context).replace(HomenewRoute());
                         },
                         error: (error) => Flushbar(
                               title: 'Login Gagal',

@@ -28,12 +28,13 @@ class MachineData with _$MachineData {
 @freezed
 class MachineModel with _$MachineModel{
   const factory MachineModel({
-    required String machineId,
+    required int machineId,
     required String sectionName,
     required String line,
     required String machineName,
     required String machineNumber,
     required String dockumentNo,
+    required String buId,
   }) = _MachineModel;
 
   factory MachineModel.fromJson(Map<String, dynamic> json) =>

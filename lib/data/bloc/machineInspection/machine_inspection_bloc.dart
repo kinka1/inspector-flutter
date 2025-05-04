@@ -27,10 +27,10 @@ class MachineInspectionBloc
     // logger.i('masuk try BLOC ITEM GET');
     emit(const MachineInspectionState.loading());
     try {
-      final response = await _repository.getInspectionItem(event.id);
+      final response = await _repository.getInspectionItem(event.id,event.buId);
       // logger.i('berhasil hit, response : $response');
       emit(MachineInspectionState.loaded(response));
-      // logger.i('berhasil emit');
+      logger.i('berhasil emit');
     } catch (e) {
       emit(MachineInspectionState.error(e.toString()));
     }

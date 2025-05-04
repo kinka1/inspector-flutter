@@ -69,7 +69,7 @@ class DetailInspectionBloc
           event.machineId, event.tanggal);
       // logger.i("response GET BY ID AND DATE: $response");
       emit(DetailInspectionState.loadedbyDate(response));
-      // logger.i("berhasil emit");
+      logger.i("berhasil emit");
     } catch (e) {
       emit(DetailInspectionState.error(e.toString()));
     }
@@ -82,6 +82,7 @@ class DetailInspectionBloc
       final response = await _repository.getDetailInspectionItem(
           event.machineId, event.number, event.tanggal);
       emit(DetailInspectionState.getData(response));
+            logger.i("berhasil emit");
     } catch (e) {
       emit(DetailInspectionState.error(e.toString()));
     }
@@ -100,6 +101,7 @@ class DetailInspectionBloc
       // logger.i("response GET BY MACHINE ID AND DATE: $response");
       emit(DetailInspectionState.loadedbyMachineIdAndDate(response));
       // logger.i("berhasil emit MACHINE ID AND DATE");
+            logger.i("berhasil emit");
     } catch (e) {
       logger.e("GAGAL emit DETAIL INSPECTION,error: $e");
       emit(DetailInspectionState.error(e.toString()));
@@ -117,10 +119,8 @@ class DetailInspectionBloc
           "${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}";
       // logger.i("masuk try BY DATE");
       final response = await _repository.getDetailInspectionByDateList(formattedDate);
-      // logger.i("response GET BY ID AND DATE: $response");
-      // int oKCount = response.where((element) => element.status == 'OK').length;
-      // int nGCount = response.where((element) => element.status == 'NG').length;
       emit(DetailInspectionState.loadedByMachine(response));
+      logger.i("berhasil emit");
     } catch (e) {
       logger.e("GAGAL emit DETAIL INSPECTION,error: $e");
       emit(DetailInspectionState.error(e.toString()));
