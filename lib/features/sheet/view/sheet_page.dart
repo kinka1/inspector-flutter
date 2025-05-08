@@ -1,9 +1,12 @@
 import 'package:intl/intl.dart';
+import 'package:logger/logger.dart';
 import 'package:maintenanceApp/core/color_values.dart';
 import 'package:maintenanceApp/data/bloc/DetailInspection/detail_inspection_bloc.dart';
 import 'package:maintenanceApp/data/bloc/result/result_bloc.dart';
 import 'package:maintenanceApp/data/models/DetailInspection/DetailInspection_model.dart';
 import 'package:maintenanceApp/data/models/Result/result_model.dart';
+import 'package:maintenanceApp/data/models/machine/machine_model.dart';
+import 'package:maintenanceApp/data/parse.dart';
 import 'package:maintenanceApp/features/widget/appbarCus.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +17,8 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 @RoutePage()
 class SheetPage extends StatefulWidget {
-  const SheetPage({super.key});
+  const SheetPage({super.key, required this.buId});
+  final String buId;
 
   @override
   State<SheetPage> createState() => _SheetPageState();
@@ -23,6 +27,7 @@ class SheetPage extends StatefulWidget {
 class _SheetPageState extends State<SheetPage> {
   final DateRangePickerController _controllerDateRange =
       DateRangePickerController();
+      final logger = Logger();
 
   DateTime selectedDate = DateTime.now();
 
@@ -128,9 +133,18 @@ class _SheetPageState extends State<SheetPage> {
                       if (selectedDate != null) {
                         // Kirim event ke ResultBloc dengan tanggal yang dipilih
                         String formattedDate = formatDate(selectedDate);
-                        context.read<DetailInspectionBloc>().add(
-                            DetailInspectionEvent.getDetailInspectionByDate(
-                                formattedDate));
+                        
+                        // context.read<DetailInspectionBloc>().add(
+                        //     DetailInspectionEvent.getDetailInspectionByDate(
+                        //         formattedDate));
+                        // var parseDate = parseToStringDate(selectedDate);
+                        // logger.d("tanggal : $parseDate");
+                        context.read<ResultBloc>().add(
+                              ResultEvent.getResultByDatelist(
+                                widget.buId,
+                                parseToStringDate(selectedDate),
+                              ),
+                            );
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text("MOHON PILIH TANGGAL")),
@@ -142,18 +156,29 @@ class _SheetPageState extends State<SheetPage> {
                       height: 60,
                       decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                          color: ColorValues.kuningButton),
+                          color: ColorValues.info500),
                       alignment: Alignment.center,
-                      child: Text(
-                        "Cari",
-                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      ),
+                      child: 
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      //   children: [
+                          // Text(
+                          //   "Cari",
+                          //   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          //       color: Colors.white, fontWeight: FontWeight.bold),
+                          // ),
+                          const Icon(
+                            Icons.search,
+                            color: Colors.white,
+                            size: 35,
+                          ),
+                      //   ],
+                      // ),
                     ),
                   )
                 ],
               ),
-              BlocBuilder<DetailInspectionBloc, DetailInspectionState>(
+              BlocBuilder<ResultBloc, ResultState>(
                 builder: (context, state) {
                   return Skeletonizer(
                     enabled: state.maybeWhen(
@@ -182,7 +207,7 @@ class _SheetPageState extends State<SheetPage> {
                           return Column(
                             children: response
                                 .map((result) =>
-                                    _buildItem(result, selectedDate))
+                                    _buildItem(result.machine,selectedDate,result.resultId))
                                 .toList(),
                           );
                         }
@@ -209,12 +234,11 @@ class _SheetPageState extends State<SheetPage> {
     );
   }
 
-  Widget _buildItem(DetailInspectionGetModel detail,DateTime date) {
+  Widget _buildItem(MachineModel machine, DateTime date,int resultId) {
     return GestureDetector(
       onTap: () {
         AutoRouter.of(context).push(Sheet2Route(
-          MachineId: detail.machine.machineId.toString(),
-          date: formatDate(date),
+          date: parseToStringDate(date), machine: machine, resultId: resultId,
         ));
       },
       child: Container(
@@ -226,7 +250,7 @@ class _SheetPageState extends State<SheetPage> {
         ),
         width: double.infinity,
         child: Text(
-          detail.machine.machineName,
+          "${machine.machineName}",
           style: Theme.of(context)
               .textTheme
               .bodyLarge!

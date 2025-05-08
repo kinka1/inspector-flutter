@@ -17,9 +17,15 @@ class ScanOtherPage extends StatefulWidget {
   const ScanOtherPage(
       {super.key,
       required this.machineId,
-      required this.resultId});
+      required this.resultId,
+      required this.inspectionId,
+      required this.buId,
+      required this.userId});
   final String machineId;
   final int resultId;
+  final int inspectionId;
+  final String buId;
+  final int userId;
 
   @override
   State<ScanOtherPage> createState() => _ScanOtherPageState();
@@ -92,22 +98,25 @@ class _ScanOtherPageState extends State<ScanOtherPage> {
                           final des = _OtherController.text;
 
                           context
-                              .read<OtherBloc>()
-                              .add(OtherEvent.addOther(
-                                OtherAddModel(
-                                  description: des,
+                              .read<DetailInspectionBloc>()
+                              .add(DetailInspectionEvent.postDetailInspection(
+                                DetailInspectionModelAdd(
+                                  remark: des,
                                   status: "NG",
-                                  date: tanggal,
-                                  resultId: widget.resultId,
+                                  InspectionId: widget.inspectionId,
+                                  ResultId: widget.resultId,
                                 ),
                               ));
                           print("BERHASIL POSTING DATA");
 
                           AutoRouter.of(context).push(Scan2Route(
-                              machineId: widget.machineId,
-                              status: "NG",
-                              ResultId: widget.resultId,
-                              statusOther: "NG", buId: 'REF',));
+                            machineId: widget.machineId,
+                            status: "NG",
+                            ResultId: widget.resultId,
+                            statusOther: "NG",
+                            buId: widget.buId,
+                            userId: widget.userId,
+                          ));
                         },
                   child: isLoading
                       ? const CircularProgressIndicator(color: Colors.white)

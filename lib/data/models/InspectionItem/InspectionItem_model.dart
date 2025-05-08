@@ -28,7 +28,7 @@ class InspectionItemData with _$InspectionItemData {
 @freezed
 class InspectionitemModel with _$InspectionitemModel {
   const factory InspectionitemModel(
-      {required String itemId,
+      {required int itemId,
       required String itemName,
       required String specification,
       required String method,
@@ -45,8 +45,8 @@ class InspectionitemModel with _$InspectionitemModel {
 @freezed
 class InspectionitemMachineGetModel with _$InspectionitemMachineGetModel {
   const factory InspectionitemMachineGetModel(
-      {required String machineInspectionId,
-      required String itemId,
+      {required int machineInspectionId,
+      required int itemId,
       required String itemName,
       required String specification,
       required String method,

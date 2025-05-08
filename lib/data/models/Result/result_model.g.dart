@@ -39,38 +39,56 @@ Map<String, dynamic> _$$ResultDataImplToJson(_$ResultDataImpl instance) =>
 
 _$ResultModelImpl _$$ResultModelImplFromJson(Map<String, dynamic> json) =>
     _$ResultModelImpl(
-      id: (json['id'] as num).toInt(),
+      resultId: (json['resultId'] as num).toInt(),
       userId: (json['userId'] as num).toInt(),
       status: json['status'] as String,
       date: DateTime.parse(json['date'] as String),
+      machineId: json['machineId'] as String,
+      buId: json['buId'] as String,
     );
 
 Map<String, dynamic> _$$ResultModelImplToJson(_$ResultModelImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
+      'resultId': instance.resultId,
       'userId': instance.userId,
       'status': instance.status,
       'date': instance.date.toIso8601String(),
+      'machineId': instance.machineId,
+      'buId': instance.buId,
     };
 
 _$ResultGetImpl _$$ResultGetImplFromJson(Map<String, dynamic> json) =>
     _$ResultGetImpl(
-      resultid: (json['resultid'] as num).toInt(),
+      resultId: (json['resultId'] as num).toInt(),
       userId: (json['userId'] as num).toInt(),
       status: json['status'] as String,
-      date: json['date'] as String,
-      machineId: (json['machineId'] as num).toInt(),
+      date: DateTime.parse(json['date'] as String),
+      machineId: json['machineId'] as String,
       machine: MachineModel.fromJson(json['machine'] as Map<String, dynamic>),
       buId: json['buId'] as String,
     );
 
 Map<String, dynamic> _$$ResultGetImplToJson(_$ResultGetImpl instance) =>
     <String, dynamic>{
-      'resultid': instance.resultid,
+      'resultId': instance.resultId,
       'userId': instance.userId,
       'status': instance.status,
-      'date': instance.date,
+      'date': instance.date.toIso8601String(),
       'machineId': instance.machineId,
       'machine': instance.machine,
+      'buId': instance.buId,
+    };
+
+_$ResultAddImpl _$$ResultAddImplFromJson(Map<String, dynamic> json) =>
+    _$ResultAddImpl(
+      status: json['status'] as String,
+      machineId: json['machineId'] as String,
+      buId: json['buId'] as String,
+    );
+
+Map<String, dynamic> _$$ResultAddImplToJson(_$ResultAddImpl instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'machineId': instance.machineId,
       'buId': instance.buId,
     };

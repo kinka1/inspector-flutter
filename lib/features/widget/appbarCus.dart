@@ -26,6 +26,6 @@ PreferredSizeWidget appbarCus(
             color: Colors.white,
           )),
     ),
-    backgroundColor: ColorValues.hijauMain,
+    backgroundColor: ColorValues.primary700,
   );
 }

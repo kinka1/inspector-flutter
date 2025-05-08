@@ -19,25 +19,26 @@ class Scan3Page extends StatefulWidget {
     required this.model,
     required this.machineInspectionId,
     required this.machineId,
+    required this.ResultId,
+    required this.userId,
   });
   final String machineId;
   final InspectionitemMachineGetModel model;
-  final String machineInspectionId;
-
+  final int machineInspectionId;
+  final int ResultId;
+  final int userId;
   @override
   State<Scan3Page> createState() => _Scan3PageState();
 }
 
 class _Scan3PageState extends State<Scan3Page> {
-  int ResultId = 0;
   final logger = Logger();
   double margin = 0;
   @override
   void initState() {
     super.initState();
-    context.read<ResultBloc>().add(const ResultEvent.getResult());
+    // context.read<ResultBloc>().add(const ResultEvent.getResult());
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -49,27 +50,36 @@ class _Scan3PageState extends State<Scan3Page> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                BlocBuilder<ResultBloc, ResultState>(
-                  builder: (context, state) {
-                    return state.maybeWhen(
-                      loaded: (response) {
-                        ResultId = response.id;
-                        widget.model.isNumber == true
-                            ? margin = 50
-                            : margin = 0;
-                        return Buildform(
-                          item: widget.model,
-                          ResultId: ResultId,
-                          machineInspectionId: widget.machineInspectionId,
-                          machineId: widget.machineId, margin: margin,
-                        );
-                      },
-                      orElse: () => Center(
-                        child: Text("TERJADI KESALAHAN"),
-                      ),
-                    );
-                  },
-                ),
+                Buildform(
+                  item: widget.model,
+                  machineInspectionId: widget.machineInspectionId,
+                  ResultId: widget.ResultId,
+                  machineId: widget.machineId,
+                  margin: margin,
+                  userId: widget.userId,
+                )
+                // BlocBuilder<ResultBloc, ResultState>(
+                //   builder: (context, state) {
+                //     return state.maybeWhen(
+                //       loaded: (response) {
+                //         ResultId = response.resultId;
+                //         widget.model.isNumber == true
+                //             ? margin = 50
+                //             : margin = 0;
+                //         return Buildform(
+                //           item: widget.model,
+                //           ResultId: ResultId,
+                //           machineInspectionId: widget.machineInspectionId,
+                //           machineId: widget.machineId,
+                //           margin: margin,
+                //         );
+                //       },
+                //       orElse: () => Center(
+                //         child: Text("TERJADI KESALAHAN"),
+                //       ),
+                //     );
+                //   },
+                // ),
               ],
             ),
           ),

@@ -20,36 +20,39 @@ mixin _$ResultEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getResult,
-    required TResult Function(String status) addResult,
+    required TResult Function(ResultAdd result) addResult,
     required TResult Function() getResultAll,
     required TResult Function(ResultModel model) UpdateStatus,
     required TResult Function(String buId, String tanggal) getResultByDatelist,
-    required TResult Function(String tanggal) getResultByDate,
-    required TResult Function(String tanggal) getResultByDateForHomepage,
+    required TResult Function(String machineId, String tanggal) getResultByDate,
+    required TResult Function(String machineId, String tanggal)
+        getResultByDateForHomepage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getResult,
-    TResult? Function(String status)? addResult,
+    TResult? Function(ResultAdd result)? addResult,
     TResult? Function()? getResultAll,
     TResult? Function(ResultModel model)? UpdateStatus,
     TResult? Function(String buId, String tanggal)? getResultByDatelist,
-    TResult? Function(String tanggal)? getResultByDate,
-    TResult? Function(String tanggal)? getResultByDateForHomepage,
+    TResult? Function(String machineId, String tanggal)? getResultByDate,
+    TResult? Function(String machineId, String tanggal)?
+        getResultByDateForHomepage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getResult,
-    TResult Function(String status)? addResult,
+    TResult Function(ResultAdd result)? addResult,
     TResult Function()? getResultAll,
     TResult Function(ResultModel model)? UpdateStatus,
     TResult Function(String buId, String tanggal)? getResultByDatelist,
-    TResult Function(String tanggal)? getResultByDate,
-    TResult Function(String tanggal)? getResultByDateForHomepage,
+    TResult Function(String machineId, String tanggal)? getResultByDate,
+    TResult Function(String machineId, String tanggal)?
+        getResultByDateForHomepage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -165,12 +168,13 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getResult,
-    required TResult Function(String status) addResult,
+    required TResult Function(ResultAdd result) addResult,
     required TResult Function() getResultAll,
     required TResult Function(ResultModel model) UpdateStatus,
     required TResult Function(String buId, String tanggal) getResultByDatelist,
-    required TResult Function(String tanggal) getResultByDate,
-    required TResult Function(String tanggal) getResultByDateForHomepage,
+    required TResult Function(String machineId, String tanggal) getResultByDate,
+    required TResult Function(String machineId, String tanggal)
+        getResultByDateForHomepage,
   }) {
     return started();
   }
@@ -180,12 +184,13 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getResult,
-    TResult? Function(String status)? addResult,
+    TResult? Function(ResultAdd result)? addResult,
     TResult? Function()? getResultAll,
     TResult? Function(ResultModel model)? UpdateStatus,
     TResult? Function(String buId, String tanggal)? getResultByDatelist,
-    TResult? Function(String tanggal)? getResultByDate,
-    TResult? Function(String tanggal)? getResultByDateForHomepage,
+    TResult? Function(String machineId, String tanggal)? getResultByDate,
+    TResult? Function(String machineId, String tanggal)?
+        getResultByDateForHomepage,
   }) {
     return started?.call();
   }
@@ -195,12 +200,13 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getResult,
-    TResult Function(String status)? addResult,
+    TResult Function(ResultAdd result)? addResult,
     TResult Function()? getResultAll,
     TResult Function(ResultModel model)? UpdateStatus,
     TResult Function(String buId, String tanggal)? getResultByDatelist,
-    TResult Function(String tanggal)? getResultByDate,
-    TResult Function(String tanggal)? getResultByDateForHomepage,
+    TResult Function(String machineId, String tanggal)? getResultByDate,
+    TResult Function(String machineId, String tanggal)?
+        getResultByDateForHomepage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -315,12 +321,13 @@ class _$GetResultImpl with DiagnosticableTreeMixin implements _GetResult {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getResult,
-    required TResult Function(String status) addResult,
+    required TResult Function(ResultAdd result) addResult,
     required TResult Function() getResultAll,
     required TResult Function(ResultModel model) UpdateStatus,
     required TResult Function(String buId, String tanggal) getResultByDatelist,
-    required TResult Function(String tanggal) getResultByDate,
-    required TResult Function(String tanggal) getResultByDateForHomepage,
+    required TResult Function(String machineId, String tanggal) getResultByDate,
+    required TResult Function(String machineId, String tanggal)
+        getResultByDateForHomepage,
   }) {
     return getResult();
   }
@@ -330,12 +337,13 @@ class _$GetResultImpl with DiagnosticableTreeMixin implements _GetResult {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getResult,
-    TResult? Function(String status)? addResult,
+    TResult? Function(ResultAdd result)? addResult,
     TResult? Function()? getResultAll,
     TResult? Function(ResultModel model)? UpdateStatus,
     TResult? Function(String buId, String tanggal)? getResultByDatelist,
-    TResult? Function(String tanggal)? getResultByDate,
-    TResult? Function(String tanggal)? getResultByDateForHomepage,
+    TResult? Function(String machineId, String tanggal)? getResultByDate,
+    TResult? Function(String machineId, String tanggal)?
+        getResultByDateForHomepage,
   }) {
     return getResult?.call();
   }
@@ -345,12 +353,13 @@ class _$GetResultImpl with DiagnosticableTreeMixin implements _GetResult {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getResult,
-    TResult Function(String status)? addResult,
+    TResult Function(ResultAdd result)? addResult,
     TResult Function()? getResultAll,
     TResult Function(ResultModel model)? UpdateStatus,
     TResult Function(String buId, String tanggal)? getResultByDatelist,
-    TResult Function(String tanggal)? getResultByDate,
-    TResult Function(String tanggal)? getResultByDateForHomepage,
+    TResult Function(String machineId, String tanggal)? getResultByDate,
+    TResult Function(String machineId, String tanggal)?
+        getResultByDateForHomepage,
     required TResult orElse(),
   }) {
     if (getResult != null) {
@@ -422,7 +431,9 @@ abstract class _$$AddResultImplCopyWith<$Res> {
           _$AddResultImpl value, $Res Function(_$AddResultImpl) then) =
       __$$AddResultImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String status});
+  $Res call({ResultAdd result});
+
+  $ResultAddCopyWith<$Res> get result;
 }
 
 /// @nodoc
@@ -438,28 +449,38 @@ class __$$AddResultImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
+    Object? result = null,
   }) {
     return _then(_$AddResultImpl(
-      null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
+      null == result
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as ResultAdd,
     ));
+  }
+
+  /// Create a copy of ResultEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ResultAddCopyWith<$Res> get result {
+    return $ResultAddCopyWith<$Res>(_value.result, (value) {
+      return _then(_value.copyWith(result: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
-  const _$AddResultImpl(this.status);
+  const _$AddResultImpl(this.result);
 
   @override
-  final String status;
+  final ResultAdd result;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ResultEvent.addResult(status: $status)';
+    return 'ResultEvent.addResult(result: $result)';
   }
 
   @override
@@ -467,7 +488,7 @@ class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ResultEvent.addResult'))
-      ..add(DiagnosticsProperty('status', status));
+      ..add(DiagnosticsProperty('result', result));
   }
 
   @override
@@ -475,11 +496,11 @@ class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddResultImpl &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.result, result) || other.result == result));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status);
+  int get hashCode => Object.hash(runtimeType, result);
 
   /// Create a copy of ResultEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -494,14 +515,15 @@ class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getResult,
-    required TResult Function(String status) addResult,
+    required TResult Function(ResultAdd result) addResult,
     required TResult Function() getResultAll,
     required TResult Function(ResultModel model) UpdateStatus,
     required TResult Function(String buId, String tanggal) getResultByDatelist,
-    required TResult Function(String tanggal) getResultByDate,
-    required TResult Function(String tanggal) getResultByDateForHomepage,
+    required TResult Function(String machineId, String tanggal) getResultByDate,
+    required TResult Function(String machineId, String tanggal)
+        getResultByDateForHomepage,
   }) {
-    return addResult(status);
+    return addResult(result);
   }
 
   @override
@@ -509,14 +531,15 @@ class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getResult,
-    TResult? Function(String status)? addResult,
+    TResult? Function(ResultAdd result)? addResult,
     TResult? Function()? getResultAll,
     TResult? Function(ResultModel model)? UpdateStatus,
     TResult? Function(String buId, String tanggal)? getResultByDatelist,
-    TResult? Function(String tanggal)? getResultByDate,
-    TResult? Function(String tanggal)? getResultByDateForHomepage,
+    TResult? Function(String machineId, String tanggal)? getResultByDate,
+    TResult? Function(String machineId, String tanggal)?
+        getResultByDateForHomepage,
   }) {
-    return addResult?.call(status);
+    return addResult?.call(result);
   }
 
   @override
@@ -524,16 +547,17 @@ class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getResult,
-    TResult Function(String status)? addResult,
+    TResult Function(ResultAdd result)? addResult,
     TResult Function()? getResultAll,
     TResult Function(ResultModel model)? UpdateStatus,
     TResult Function(String buId, String tanggal)? getResultByDatelist,
-    TResult Function(String tanggal)? getResultByDate,
-    TResult Function(String tanggal)? getResultByDateForHomepage,
+    TResult Function(String machineId, String tanggal)? getResultByDate,
+    TResult Function(String machineId, String tanggal)?
+        getResultByDateForHomepage,
     required TResult orElse(),
   }) {
     if (addResult != null) {
-      return addResult(status);
+      return addResult(result);
     }
     return orElse();
   }
@@ -592,9 +616,9 @@ class _$AddResultImpl with DiagnosticableTreeMixin implements _AddResult {
 }
 
 abstract class _AddResult implements ResultEvent {
-  const factory _AddResult(final String status) = _$AddResultImpl;
+  const factory _AddResult(final ResultAdd result) = _$AddResultImpl;
 
-  String get status;
+  ResultAdd get result;
 
   /// Create a copy of ResultEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -652,12 +676,13 @@ class _$GetResultAllImpl with DiagnosticableTreeMixin implements _GetResultAll {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getResult,
-    required TResult Function(String status) addResult,
+    required TResult Function(ResultAdd result) addResult,
     required TResult Function() getResultAll,
     required TResult Function(ResultModel model) UpdateStatus,
     required TResult Function(String buId, String tanggal) getResultByDatelist,
-    required TResult Function(String tanggal) getResultByDate,
-    required TResult Function(String tanggal) getResultByDateForHomepage,
+    required TResult Function(String machineId, String tanggal) getResultByDate,
+    required TResult Function(String machineId, String tanggal)
+        getResultByDateForHomepage,
   }) {
     return getResultAll();
   }
@@ -667,12 +692,13 @@ class _$GetResultAllImpl with DiagnosticableTreeMixin implements _GetResultAll {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getResult,
-    TResult? Function(String status)? addResult,
+    TResult? Function(ResultAdd result)? addResult,
     TResult? Function()? getResultAll,
     TResult? Function(ResultModel model)? UpdateStatus,
     TResult? Function(String buId, String tanggal)? getResultByDatelist,
-    TResult? Function(String tanggal)? getResultByDate,
-    TResult? Function(String tanggal)? getResultByDateForHomepage,
+    TResult? Function(String machineId, String tanggal)? getResultByDate,
+    TResult? Function(String machineId, String tanggal)?
+        getResultByDateForHomepage,
   }) {
     return getResultAll?.call();
   }
@@ -682,12 +708,13 @@ class _$GetResultAllImpl with DiagnosticableTreeMixin implements _GetResultAll {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getResult,
-    TResult Function(String status)? addResult,
+    TResult Function(ResultAdd result)? addResult,
     TResult Function()? getResultAll,
     TResult Function(ResultModel model)? UpdateStatus,
     TResult Function(String buId, String tanggal)? getResultByDatelist,
-    TResult Function(String tanggal)? getResultByDate,
-    TResult Function(String tanggal)? getResultByDateForHomepage,
+    TResult Function(String machineId, String tanggal)? getResultByDate,
+    TResult Function(String machineId, String tanggal)?
+        getResultByDateForHomepage,
     required TResult orElse(),
   }) {
     if (getResultAll != null) {
@@ -843,12 +870,13 @@ class _$UpdateStatusImpl with DiagnosticableTreeMixin implements _UpdateStatus {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getResult,
-    required TResult Function(String status) addResult,
+    required TResult Function(ResultAdd result) addResult,
     required TResult Function() getResultAll,
     required TResult Function(ResultModel model) UpdateStatus,
     required TResult Function(String buId, String tanggal) getResultByDatelist,
-    required TResult Function(String tanggal) getResultByDate,
-    required TResult Function(String tanggal) getResultByDateForHomepage,
+    required TResult Function(String machineId, String tanggal) getResultByDate,
+    required TResult Function(String machineId, String tanggal)
+        getResultByDateForHomepage,
   }) {
     return UpdateStatus(model);
   }
@@ -858,12 +886,13 @@ class _$UpdateStatusImpl with DiagnosticableTreeMixin implements _UpdateStatus {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getResult,
-    TResult? Function(String status)? addResult,
+    TResult? Function(ResultAdd result)? addResult,
     TResult? Function()? getResultAll,
     TResult? Function(ResultModel model)? UpdateStatus,
     TResult? Function(String buId, String tanggal)? getResultByDatelist,
-    TResult? Function(String tanggal)? getResultByDate,
-    TResult? Function(String tanggal)? getResultByDateForHomepage,
+    TResult? Function(String machineId, String tanggal)? getResultByDate,
+    TResult? Function(String machineId, String tanggal)?
+        getResultByDateForHomepage,
   }) {
     return UpdateStatus?.call(model);
   }
@@ -873,12 +902,13 @@ class _$UpdateStatusImpl with DiagnosticableTreeMixin implements _UpdateStatus {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getResult,
-    TResult Function(String status)? addResult,
+    TResult Function(ResultAdd result)? addResult,
     TResult Function()? getResultAll,
     TResult Function(ResultModel model)? UpdateStatus,
     TResult Function(String buId, String tanggal)? getResultByDatelist,
-    TResult Function(String tanggal)? getResultByDate,
-    TResult Function(String tanggal)? getResultByDateForHomepage,
+    TResult Function(String machineId, String tanggal)? getResultByDate,
+    TResult Function(String machineId, String tanggal)?
+        getResultByDateForHomepage,
     required TResult orElse(),
   }) {
     if (UpdateStatus != null) {
@@ -1042,12 +1072,13 @@ class _$GetResultByDatelistImpl
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getResult,
-    required TResult Function(String status) addResult,
+    required TResult Function(ResultAdd result) addResult,
     required TResult Function() getResultAll,
     required TResult Function(ResultModel model) UpdateStatus,
     required TResult Function(String buId, String tanggal) getResultByDatelist,
-    required TResult Function(String tanggal) getResultByDate,
-    required TResult Function(String tanggal) getResultByDateForHomepage,
+    required TResult Function(String machineId, String tanggal) getResultByDate,
+    required TResult Function(String machineId, String tanggal)
+        getResultByDateForHomepage,
   }) {
     return getResultByDatelist(buId, tanggal);
   }
@@ -1057,12 +1088,13 @@ class _$GetResultByDatelistImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getResult,
-    TResult? Function(String status)? addResult,
+    TResult? Function(ResultAdd result)? addResult,
     TResult? Function()? getResultAll,
     TResult? Function(ResultModel model)? UpdateStatus,
     TResult? Function(String buId, String tanggal)? getResultByDatelist,
-    TResult? Function(String tanggal)? getResultByDate,
-    TResult? Function(String tanggal)? getResultByDateForHomepage,
+    TResult? Function(String machineId, String tanggal)? getResultByDate,
+    TResult? Function(String machineId, String tanggal)?
+        getResultByDateForHomepage,
   }) {
     return getResultByDatelist?.call(buId, tanggal);
   }
@@ -1072,12 +1104,13 @@ class _$GetResultByDatelistImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getResult,
-    TResult Function(String status)? addResult,
+    TResult Function(ResultAdd result)? addResult,
     TResult Function()? getResultAll,
     TResult Function(ResultModel model)? UpdateStatus,
     TResult Function(String buId, String tanggal)? getResultByDatelist,
-    TResult Function(String tanggal)? getResultByDate,
-    TResult Function(String tanggal)? getResultByDateForHomepage,
+    TResult Function(String machineId, String tanggal)? getResultByDate,
+    TResult Function(String machineId, String tanggal)?
+        getResultByDateForHomepage,
     required TResult orElse(),
   }) {
     if (getResultByDatelist != null) {
@@ -1159,7 +1192,7 @@ abstract class _$$GetResultByDateImplCopyWith<$Res> {
           $Res Function(_$GetResultByDateImpl) then) =
       __$$GetResultByDateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String tanggal});
+  $Res call({String machineId, String tanggal});
 }
 
 /// @nodoc
@@ -1175,9 +1208,14 @@ class __$$GetResultByDateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? machineId = null,
     Object? tanggal = null,
   }) {
     return _then(_$GetResultByDateImpl(
+      null == machineId
+          ? _value.machineId
+          : machineId // ignore: cast_nullable_to_non_nullable
+              as String,
       null == tanggal
           ? _value.tanggal
           : tanggal // ignore: cast_nullable_to_non_nullable
@@ -1191,14 +1229,16 @@ class __$$GetResultByDateImplCopyWithImpl<$Res>
 class _$GetResultByDateImpl
     with DiagnosticableTreeMixin
     implements _GetResultByDate {
-  const _$GetResultByDateImpl(this.tanggal);
+  const _$GetResultByDateImpl(this.machineId, this.tanggal);
 
+  @override
+  final String machineId;
   @override
   final String tanggal;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ResultEvent.getResultByDate(tanggal: $tanggal)';
+    return 'ResultEvent.getResultByDate(machineId: $machineId, tanggal: $tanggal)';
   }
 
   @override
@@ -1206,6 +1246,7 @@ class _$GetResultByDateImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ResultEvent.getResultByDate'))
+      ..add(DiagnosticsProperty('machineId', machineId))
       ..add(DiagnosticsProperty('tanggal', tanggal));
   }
 
@@ -1214,11 +1255,13 @@ class _$GetResultByDateImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetResultByDateImpl &&
+            (identical(other.machineId, machineId) ||
+                other.machineId == machineId) &&
             (identical(other.tanggal, tanggal) || other.tanggal == tanggal));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tanggal);
+  int get hashCode => Object.hash(runtimeType, machineId, tanggal);
 
   /// Create a copy of ResultEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1234,14 +1277,15 @@ class _$GetResultByDateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getResult,
-    required TResult Function(String status) addResult,
+    required TResult Function(ResultAdd result) addResult,
     required TResult Function() getResultAll,
     required TResult Function(ResultModel model) UpdateStatus,
     required TResult Function(String buId, String tanggal) getResultByDatelist,
-    required TResult Function(String tanggal) getResultByDate,
-    required TResult Function(String tanggal) getResultByDateForHomepage,
+    required TResult Function(String machineId, String tanggal) getResultByDate,
+    required TResult Function(String machineId, String tanggal)
+        getResultByDateForHomepage,
   }) {
-    return getResultByDate(tanggal);
+    return getResultByDate(machineId, tanggal);
   }
 
   @override
@@ -1249,14 +1293,15 @@ class _$GetResultByDateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getResult,
-    TResult? Function(String status)? addResult,
+    TResult? Function(ResultAdd result)? addResult,
     TResult? Function()? getResultAll,
     TResult? Function(ResultModel model)? UpdateStatus,
     TResult? Function(String buId, String tanggal)? getResultByDatelist,
-    TResult? Function(String tanggal)? getResultByDate,
-    TResult? Function(String tanggal)? getResultByDateForHomepage,
+    TResult? Function(String machineId, String tanggal)? getResultByDate,
+    TResult? Function(String machineId, String tanggal)?
+        getResultByDateForHomepage,
   }) {
-    return getResultByDate?.call(tanggal);
+    return getResultByDate?.call(machineId, tanggal);
   }
 
   @override
@@ -1264,16 +1309,17 @@ class _$GetResultByDateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getResult,
-    TResult Function(String status)? addResult,
+    TResult Function(ResultAdd result)? addResult,
     TResult Function()? getResultAll,
     TResult Function(ResultModel model)? UpdateStatus,
     TResult Function(String buId, String tanggal)? getResultByDatelist,
-    TResult Function(String tanggal)? getResultByDate,
-    TResult Function(String tanggal)? getResultByDateForHomepage,
+    TResult Function(String machineId, String tanggal)? getResultByDate,
+    TResult Function(String machineId, String tanggal)?
+        getResultByDateForHomepage,
     required TResult orElse(),
   }) {
     if (getResultByDate != null) {
-      return getResultByDate(tanggal);
+      return getResultByDate(machineId, tanggal);
     }
     return orElse();
   }
@@ -1332,8 +1378,10 @@ class _$GetResultByDateImpl
 }
 
 abstract class _GetResultByDate implements ResultEvent {
-  const factory _GetResultByDate(final String tanggal) = _$GetResultByDateImpl;
+  const factory _GetResultByDate(final String machineId, final String tanggal) =
+      _$GetResultByDateImpl;
 
+  String get machineId;
   String get tanggal;
 
   /// Create a copy of ResultEvent
@@ -1350,7 +1398,7 @@ abstract class _$$GetResultByDateForHomepageImplCopyWith<$Res> {
           $Res Function(_$GetResultByDateForHomepageImpl) then) =
       __$$GetResultByDateForHomepageImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String tanggal});
+  $Res call({String machineId, String tanggal});
 }
 
 /// @nodoc
@@ -1367,9 +1415,14 @@ class __$$GetResultByDateForHomepageImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? machineId = null,
     Object? tanggal = null,
   }) {
     return _then(_$GetResultByDateForHomepageImpl(
+      null == machineId
+          ? _value.machineId
+          : machineId // ignore: cast_nullable_to_non_nullable
+              as String,
       null == tanggal
           ? _value.tanggal
           : tanggal // ignore: cast_nullable_to_non_nullable
@@ -1383,14 +1436,16 @@ class __$$GetResultByDateForHomepageImplCopyWithImpl<$Res>
 class _$GetResultByDateForHomepageImpl
     with DiagnosticableTreeMixin
     implements _GetResultByDateForHomepage {
-  const _$GetResultByDateForHomepageImpl(this.tanggal);
+  const _$GetResultByDateForHomepageImpl(this.machineId, this.tanggal);
 
+  @override
+  final String machineId;
   @override
   final String tanggal;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ResultEvent.getResultByDateForHomepage(tanggal: $tanggal)';
+    return 'ResultEvent.getResultByDateForHomepage(machineId: $machineId, tanggal: $tanggal)';
   }
 
   @override
@@ -1399,6 +1454,7 @@ class _$GetResultByDateForHomepageImpl
     properties
       ..add(
           DiagnosticsProperty('type', 'ResultEvent.getResultByDateForHomepage'))
+      ..add(DiagnosticsProperty('machineId', machineId))
       ..add(DiagnosticsProperty('tanggal', tanggal));
   }
 
@@ -1407,11 +1463,13 @@ class _$GetResultByDateForHomepageImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetResultByDateForHomepageImpl &&
+            (identical(other.machineId, machineId) ||
+                other.machineId == machineId) &&
             (identical(other.tanggal, tanggal) || other.tanggal == tanggal));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tanggal);
+  int get hashCode => Object.hash(runtimeType, machineId, tanggal);
 
   /// Create a copy of ResultEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1427,14 +1485,15 @@ class _$GetResultByDateForHomepageImpl
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getResult,
-    required TResult Function(String status) addResult,
+    required TResult Function(ResultAdd result) addResult,
     required TResult Function() getResultAll,
     required TResult Function(ResultModel model) UpdateStatus,
     required TResult Function(String buId, String tanggal) getResultByDatelist,
-    required TResult Function(String tanggal) getResultByDate,
-    required TResult Function(String tanggal) getResultByDateForHomepage,
+    required TResult Function(String machineId, String tanggal) getResultByDate,
+    required TResult Function(String machineId, String tanggal)
+        getResultByDateForHomepage,
   }) {
-    return getResultByDateForHomepage(tanggal);
+    return getResultByDateForHomepage(machineId, tanggal);
   }
 
   @override
@@ -1442,14 +1501,15 @@ class _$GetResultByDateForHomepageImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getResult,
-    TResult? Function(String status)? addResult,
+    TResult? Function(ResultAdd result)? addResult,
     TResult? Function()? getResultAll,
     TResult? Function(ResultModel model)? UpdateStatus,
     TResult? Function(String buId, String tanggal)? getResultByDatelist,
-    TResult? Function(String tanggal)? getResultByDate,
-    TResult? Function(String tanggal)? getResultByDateForHomepage,
+    TResult? Function(String machineId, String tanggal)? getResultByDate,
+    TResult? Function(String machineId, String tanggal)?
+        getResultByDateForHomepage,
   }) {
-    return getResultByDateForHomepage?.call(tanggal);
+    return getResultByDateForHomepage?.call(machineId, tanggal);
   }
 
   @override
@@ -1457,16 +1517,17 @@ class _$GetResultByDateForHomepageImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getResult,
-    TResult Function(String status)? addResult,
+    TResult Function(ResultAdd result)? addResult,
     TResult Function()? getResultAll,
     TResult Function(ResultModel model)? UpdateStatus,
     TResult Function(String buId, String tanggal)? getResultByDatelist,
-    TResult Function(String tanggal)? getResultByDate,
-    TResult Function(String tanggal)? getResultByDateForHomepage,
+    TResult Function(String machineId, String tanggal)? getResultByDate,
+    TResult Function(String machineId, String tanggal)?
+        getResultByDateForHomepage,
     required TResult orElse(),
   }) {
     if (getResultByDateForHomepage != null) {
-      return getResultByDateForHomepage(tanggal);
+      return getResultByDateForHomepage(machineId, tanggal);
     }
     return orElse();
   }
@@ -1525,9 +1586,11 @@ class _$GetResultByDateForHomepageImpl
 }
 
 abstract class _GetResultByDateForHomepage implements ResultEvent {
-  const factory _GetResultByDateForHomepage(final String tanggal) =
+  const factory _GetResultByDateForHomepage(
+          final String machineId, final String tanggal) =
       _$GetResultByDateForHomepageImpl;
 
+  String get machineId;
   String get tanggal;
 
   /// Create a copy of ResultEvent

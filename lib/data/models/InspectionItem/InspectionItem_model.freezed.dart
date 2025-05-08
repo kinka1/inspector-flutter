@@ -390,7 +390,7 @@ InspectionitemModel _$InspectionitemModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$InspectionitemModel {
-  String get itemId => throw _privateConstructorUsedError;
+  int get itemId => throw _privateConstructorUsedError;
   String get itemName => throw _privateConstructorUsedError;
   String get specification => throw _privateConstructorUsedError;
   String get method => throw _privateConstructorUsedError;
@@ -417,7 +417,7 @@ abstract class $InspectionitemModelCopyWith<$Res> {
       _$InspectionitemModelCopyWithImpl<$Res, InspectionitemModel>;
   @useResult
   $Res call(
-      {String itemId,
+      {int itemId,
       String itemName,
       String specification,
       String method,
@@ -457,7 +457,7 @@ class _$InspectionitemModelCopyWithImpl<$Res, $Val extends InspectionitemModel>
       itemId: null == itemId
           ? _value.itemId
           : itemId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       itemName: null == itemName
           ? _value.itemName
           : itemName // ignore: cast_nullable_to_non_nullable
@@ -503,7 +503,7 @@ abstract class _$$InspectionitemModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String itemId,
+      {int itemId,
       String itemName,
       String specification,
       String method,
@@ -541,7 +541,7 @@ class __$$InspectionitemModelImplCopyWithImpl<$Res>
       itemId: null == itemId
           ? _value.itemId
           : itemId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       itemName: null == itemName
           ? _value.itemName
           : itemName // ignore: cast_nullable_to_non_nullable
@@ -598,7 +598,7 @@ class _$InspectionitemModelImpl
       _$$InspectionitemModelImplFromJson(json);
 
   @override
-  final String itemId;
+  final int itemId;
   @override
   final String itemName;
   @override
@@ -683,7 +683,7 @@ class _$InspectionitemModelImpl
 
 abstract class _InspectionitemModel implements InspectionitemModel {
   const factory _InspectionitemModel(
-      {required final String itemId,
+      {required final int itemId,
       required final String itemName,
       required final String specification,
       required final String method,
@@ -697,7 +697,7 @@ abstract class _InspectionitemModel implements InspectionitemModel {
       _$InspectionitemModelImpl.fromJson;
 
   @override
-  String get itemId;
+  int get itemId;
   @override
   String get itemName;
   @override
@@ -730,8 +730,8 @@ InspectionitemMachineGetModel _$InspectionitemMachineGetModelFromJson(
 
 /// @nodoc
 mixin _$InspectionitemMachineGetModel {
-  String get machineInspectionId => throw _privateConstructorUsedError;
-  String get itemId => throw _privateConstructorUsedError;
+  int get machineInspectionId => throw _privateConstructorUsedError;
+  int get itemId => throw _privateConstructorUsedError;
   String get itemName => throw _privateConstructorUsedError;
   String get specification => throw _privateConstructorUsedError;
   String get method => throw _privateConstructorUsedError;
@@ -760,8 +760,8 @@ abstract class $InspectionitemMachineGetModelCopyWith<$Res> {
           InspectionitemMachineGetModel>;
   @useResult
   $Res call(
-      {String machineInspectionId,
-      String itemId,
+      {int machineInspectionId,
+      int itemId,
       String itemName,
       String specification,
       String method,
@@ -803,11 +803,11 @@ class _$InspectionitemMachineGetModelCopyWithImpl<$Res,
       machineInspectionId: null == machineInspectionId
           ? _value.machineInspectionId
           : machineInspectionId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       itemId: null == itemId
           ? _value.itemId
           : itemId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       itemName: null == itemName
           ? _value.itemName
           : itemName // ignore: cast_nullable_to_non_nullable
@@ -854,8 +854,8 @@ abstract class _$$InspectionitemMachineGetModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String machineInspectionId,
-      String itemId,
+      {int machineInspectionId,
+      int itemId,
       String itemName,
       String specification,
       String method,
@@ -896,11 +896,11 @@ class __$$InspectionitemMachineGetModelImplCopyWithImpl<$Res>
       machineInspectionId: null == machineInspectionId
           ? _value.machineInspectionId
           : machineInspectionId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       itemId: null == itemId
           ? _value.itemId
           : itemId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       itemName: null == itemName
           ? _value.itemName
           : itemName // ignore: cast_nullable_to_non_nullable
@@ -959,9 +959,9 @@ class _$InspectionitemMachineGetModelImpl
       _$$InspectionitemMachineGetModelImplFromJson(json);
 
   @override
-  final String machineInspectionId;
+  final int machineInspectionId;
   @override
-  final String itemId;
+  final int itemId;
   @override
   final String itemName;
   @override
@@ -1061,8 +1061,8 @@ class _$InspectionitemMachineGetModelImpl
 abstract class _InspectionitemMachineGetModel
     implements InspectionitemMachineGetModel {
   const factory _InspectionitemMachineGetModel(
-      {required final String machineInspectionId,
-      required final String itemId,
+      {required final int machineInspectionId,
+      required final int itemId,
       required final String itemName,
       required final String specification,
       required final String method,
@@ -1076,9 +1076,9 @@ abstract class _InspectionitemMachineGetModel
       _$InspectionitemMachineGetModelImpl.fromJson;
 
   @override
-  String get machineInspectionId;
+  int get machineInspectionId;
   @override
-  String get itemId;
+  int get itemId;
   @override
   String get itemName;
   @override

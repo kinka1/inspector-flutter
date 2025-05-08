@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
             state.maybeWhen(
               added: (response) {
                 // logger.d("RESULT ID : $response");
-                _resultId = response.id;
+                _resultId = response.resultId;
               },
               loading: () => true,
               loadedByDateList: (result) {
@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                     // key: UniqueKey(),
                     machineId: machineId,
                     status: _status ?? '-',
-                    ResultId: _resultId, buId: _BU,
+                    ResultId: _resultId, buId: _BU, userId: 0,
                   ))
                       .then((_) {
                     _machineIdController.clear();
@@ -118,16 +118,6 @@ class _HomePageState extends State<HomePage> {
             // logger.d("STATE DETAIL INSPECTION : $state");
             state.maybeWhen(
               loading: () => true,
-              loadedbyMachineIdAndDate: (result) {
-                // logger.d("RESULT ID PADA HOMEPAGE : ${result.id}");
-                if (result.id == 0) {
-                  context
-                      .read<ResultBloc>()
-                      .add(const ResultEvent.addResult("-"));
-                } else {
-                  _resultId = result.id;
-                }
-              },
               orElse: () {
                 // logger.e("terjadi masalah DI DETAIL PADA HOMEPAGE");
               },
@@ -269,7 +259,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildCheckSheetButton(BuildContext context) {
     return GestureDetector(
-      onTap: () => AutoRouter.of(context).push(const SheetRoute()),
+      onTap: () => AutoRouter.of(context).push( SheetRoute(buId: '-')),
       child: Container(
         width: double.infinity,
         height: MediaQuery.of(context).size.height * 0.065,
@@ -461,6 +451,6 @@ class _HomePageState extends State<HomePage> {
 
     context
         .read<ResultBloc>()
-        .add(ResultEvent.getResultByDateForHomepage(formattedDate));
+        .add(ResultEvent.getResultByDateForHomepage("-",formattedDate));
   }
 }

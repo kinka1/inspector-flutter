@@ -45,9 +45,9 @@ class ResultBloc extends Bloc<ResultEvent, ResultState> {
     emit(const ResultState.loading());
     try {
       // logger.i("MASUK TRY ADD RESULT");
-      var response= await _repository.addResult(event.status);
+      var response= await _repository.addResult(event.result);
       emit(ResultState.added(response));
-      // logger.i("BERHASIL EMIT ADD RESULT");
+      logger.i("BERHASIL EMIT ADD RESULT");
     } catch (e) {
       // logger.e("ERROR ADD RESULT : $e");
       emit(ResultState.error(e.toString()));
@@ -77,7 +77,7 @@ class ResultBloc extends Bloc<ResultEvent, ResultState> {
     try {
       var response = await _repository.getResultByDatelist(event.buId,event.tanggal);
       emit(ResultState.loadedByDateList(response));
-      
+
     } catch (e) {
       
       emit(ResultState.error(e.toString()));
@@ -99,9 +99,9 @@ class ResultBloc extends Bloc<ResultEvent, ResultState> {
       _GetResultByDateForHomepage event, Emitter<ResultState> emit) async {
     emit(const ResultState.loading());
     try {
-      var response = await _repository.getResultByDate(event.tanggal);
+      var response = await _repository.getResultByDate(event.machineId,event.tanggal);
       // logger.i("RESULT BY DATE FOR HOMEPAGE : $response");
-      emit(ResultState.loadedByDateForHomepage(response));
+      emit( ResultState.loadedByDateForHomepage(response));
     } catch (e) {
       emit(ResultState.error(e.toString()));
     }

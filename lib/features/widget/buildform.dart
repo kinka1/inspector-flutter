@@ -22,14 +22,16 @@ class Buildform extends StatefulWidget {
     required this.ResultId,
     required this.machineId,
     required this.margin,
+    required this.userId,
     // required this.machineInspectionId,
   });
 
   final InspectionitemMachineGetModel item;
-  final String machineInspectionId;
+  final int machineInspectionId;
   final int ResultId;
   final String machineId;
   final double margin;
+  final int userId;
 
   @override
   State<Buildform> createState() => _BuildformState();
@@ -192,6 +194,7 @@ class _BuildformState extends State<Buildform> {
                           onTap: isLoading
                               ? () => const CircularProgressIndicator()
                               : () {
+                                  logger.i("ISLOADING : FALSE");
                                   if (_formKey.currentState!.validate()) {
                                     // if(widget.)
                                     if (widget.item.isNumber == true) {
@@ -255,23 +258,28 @@ class _BuildformState extends State<Buildform> {
                                             DetailInspectionEvent
                                                 .postDetailInspection(
                                           DetailInspectionModelAdd(
-                                            description: des,
+                                            remark: des,
                                             status: selectedStatus,
-                                            machineInspectionId:
-                                                widget.machineInspectionId,
-                                            tanggal: tanggal is DateTime
-                                                ? DateFormat('yyyy-MM-dd')
-                                                    .format(DateTime.now())
-                                                : tanggal,
-                                            resultId: widget.ResultId,
+                                            InspectionId: widget.item.itemId,
+                                            ResultId: widget.ResultId,
                                           ),
                                         ));
+
+                                    logger.d(
+                                        "BERHASIL KIRIM DATA!. DATA : ${DetailInspectionModelAdd(
+                                      remark: des,
+                                      status: selectedStatus,
+                                      InspectionId: widget.item.itemId,
+                                      ResultId: widget.ResultId,
+                                    )}");
 
                                     AutoRouter.of(context).push(Scan2Route(
                                         machineId: widget.machineId,
                                         number: widget.item.number,
                                         status: selectedStatus,
-                                        ResultId: widget.ResultId, buId: 'REF'));
+                                        ResultId: widget.ResultId,
+                                        buId: 'REF',
+                                        userId: widget.userId));
                                   }
                                 },
                           child: isLoading

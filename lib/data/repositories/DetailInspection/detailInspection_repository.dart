@@ -3,7 +3,7 @@ import 'package:maintenanceApp/data/models/DetailInspection/DetailInspection_mod
 abstract class DetailinspectionRepository {
   Future<void> addDetailInspection(DetailInspectionModelAdd model);
   Future<DetailInspectionGetModel> getDetailInspectionItem(String machineId, int number, String tanggal);
-  Future<List<DetailInspectionGetModel>> getDetailInspectionList(String machineId, String tanggal);
+  Future<List<DetailInspectionGetModel>> getDetailInspectionList(String resultId);
   Future<DetailInspectionGetModel> getDetailInspectionSingle(String machineId, String tanggal);
   Future<List<DetailInspectionGetModel>> getDetailInspectionByDateList(String formattedDate);
 

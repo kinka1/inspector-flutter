@@ -4,9 +4,10 @@ import 'package:maintenanceApp/data/models/DetailInspection/DetailInspection_mod
 
 class BuildTable extends StatelessWidget {
   const BuildTable(
-      {super.key, this.response, this.boxBorder});
+      {super.key, this.response, this.boxBorder, this.borderRadius});
   final DetailInspectionGetModel? response;
   final BoxBorder? boxBorder;
+  final BorderRadius? borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class BuildTable extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
         color: _getColor(response?.status),
-        borderRadius: BorderRadius.circular(15),
+        borderRadius:borderRadius ?? null,
         border: boxBorder ?? null,
       ),
       child: Row(
@@ -56,7 +57,7 @@ class BuildTable extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Text(
-              response?.description ?? "Remark",
+              response?.remark ?? "Remark",
               style: Theme.of(context)
                   .textTheme
                   .bodyMedium!

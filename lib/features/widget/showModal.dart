@@ -7,25 +7,42 @@ import 'package:maintenanceApp/routes/router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ShowModal extends StatefulWidget {
   const ShowModal(
       {super.key,
       required this.machineId,
       required this.status,
-      required this.resultId});
+      required this.resultId,
+      required this.buId, required this.userId});
   final String machineId;
   final String status;
+  final String buId;
   final int resultId;
+  final int userId;
   @override
   State<ShowModal> createState() => _ShowModalState();
 }
 
 class _ShowModalState extends State<ShowModal> {
   final logger = Logger();
+  String Username = "-";
+  String _BU = "-";
   @override
   void initState() {
+    _getAuth();
     super.initState();
+  }
+
+  Future<void> _getAuth() async {
+    final prefs = await SharedPreferences.getInstance();
+    final rawToken = prefs.getString('username');
+    final rawBU = prefs.getString('buId');
+    setState(() {
+      Username = rawToken!.replaceAll('"', '');
+      _BU = rawBU!.replaceAll('"', '');
+    });
   }
 
   @override
@@ -35,12 +52,20 @@ class _ShowModalState extends State<ShowModal> {
           state.maybeWhen(orElse: () => false, loading: () => true);
       return GestureDetector(
         onTap: () {
-          logger.d("STATUS KIRIM : ${widget.status}");
+          // logger.d("STATUS KIRIM : ${ResultModel(
+          //     date: DateTime.now(),
+          //     status: widget.status,
+          //     resultId: widget.resultId,
+          //     userId: widget.userId,
+          //     machineId: widget.machineId,
+          //     buId: widget.buId)}");
           context.read<ResultBloc>().add(ResultEvent.UpdateStatus(ResultModel(
               date: DateTime.now(),
               status: widget.status,
-              id: widget.resultId,
-              userId: 0)));
+              resultId: widget.resultId,
+              userId: widget.userId,
+              machineId: widget.machineId,
+              buId: widget.buId)));
         },
         child: isLoading
             ? const CircularProgressIndicator()
@@ -51,7 +76,7 @@ class _ShowModalState extends State<ShowModal> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: ColorValues.kuningButton,
+                  color: ColorValues.info500,
                 ),
                 child: Center(
                   child: Text(
@@ -72,12 +97,9 @@ class _ShowModalState extends State<ShowModal> {
             message: 'Data berhasil disimpan',
             duration: const Duration(seconds: 2),
             backgroundColor: ColorValues.primary500,
-          )
-          .show(context).then((_) {
-            AutoRouter.of(context).push(HomeRoute(code:0));
-          }
-          )
-          ;
+          ).show(context).then((_) {
+            AutoRouter.of(context).push(HomenewRoute(code: 0));
+          });
         },
         error: (error) => Flushbar(
           title: 'Terjadi Kesalahan',

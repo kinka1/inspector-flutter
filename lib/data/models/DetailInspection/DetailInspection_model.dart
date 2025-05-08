@@ -45,11 +45,10 @@ class DetailInspectionModel with _$DetailInspectionModel {
 @freezed
 class DetailInspectionModelAdd with _$DetailInspectionModelAdd {
   const factory DetailInspectionModelAdd({
-    required String machineInspectionId,
+    required int InspectionId,
     required String status,
-    required int resultId,
-    required String description,
-    required String tanggal,
+    required String remark,
+    required int ResultId,
   }) = _DetailInspectionModelAdd;
 
   factory DetailInspectionModelAdd.fromJson(Map<String, dynamic> json) =>
@@ -60,11 +59,9 @@ class DetailInspectionModelAdd with _$DetailInspectionModelAdd {
 class DetailInspectionGetModel with _$DetailInspectionGetModel {
   const factory DetailInspectionGetModel(
       {required int id,
-      required String machineInspectionId,
-      required MachineModel machine,
       required InspectionitemModel inspectionItem,
       required String status,
-      required String description,
+      required String remark
 }) = _DetailInspectionGetModel;
 
   factory DetailInspectionGetModel.fromJson(Map<String, dynamic> json) =>

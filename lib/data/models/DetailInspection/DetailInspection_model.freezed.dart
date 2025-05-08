@@ -671,11 +671,10 @@ DetailInspectionModelAdd _$DetailInspectionModelAddFromJson(
 
 /// @nodoc
 mixin _$DetailInspectionModelAdd {
-  String get machineInspectionId => throw _privateConstructorUsedError;
+  int get InspectionId => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
-  int get resultId => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
-  String get tanggal => throw _privateConstructorUsedError;
+  String get remark => throw _privateConstructorUsedError;
+  int get ResultId => throw _privateConstructorUsedError;
 
   /// Serializes this DetailInspectionModelAdd to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -693,12 +692,7 @@ abstract class $DetailInspectionModelAddCopyWith<$Res> {
           $Res Function(DetailInspectionModelAdd) then) =
       _$DetailInspectionModelAddCopyWithImpl<$Res, DetailInspectionModelAdd>;
   @useResult
-  $Res call(
-      {String machineInspectionId,
-      String status,
-      int resultId,
-      String description,
-      String tanggal});
+  $Res call({int InspectionId, String status, String remark, int ResultId});
 }
 
 /// @nodoc
@@ -717,33 +711,28 @@ class _$DetailInspectionModelAddCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? machineInspectionId = null,
+    Object? InspectionId = null,
     Object? status = null,
-    Object? resultId = null,
-    Object? description = null,
-    Object? tanggal = null,
+    Object? remark = null,
+    Object? ResultId = null,
   }) {
     return _then(_value.copyWith(
-      machineInspectionId: null == machineInspectionId
-          ? _value.machineInspectionId
-          : machineInspectionId // ignore: cast_nullable_to_non_nullable
-              as String,
+      InspectionId: null == InspectionId
+          ? _value.InspectionId
+          : InspectionId // ignore: cast_nullable_to_non_nullable
+              as int,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      resultId: null == resultId
-          ? _value.resultId
-          : resultId // ignore: cast_nullable_to_non_nullable
+      remark: null == remark
+          ? _value.remark
+          : remark // ignore: cast_nullable_to_non_nullable
+              as String,
+      ResultId: null == ResultId
+          ? _value.ResultId
+          : ResultId // ignore: cast_nullable_to_non_nullable
               as int,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      tanggal: null == tanggal
-          ? _value.tanggal
-          : tanggal // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -757,12 +746,7 @@ abstract class _$$DetailInspectionModelAddImplCopyWith<$Res>
       __$$DetailInspectionModelAddImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String machineInspectionId,
-      String status,
-      int resultId,
-      String description,
-      String tanggal});
+  $Res call({int InspectionId, String status, String remark, int ResultId});
 }
 
 /// @nodoc
@@ -780,33 +764,28 @@ class __$$DetailInspectionModelAddImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? machineInspectionId = null,
+    Object? InspectionId = null,
     Object? status = null,
-    Object? resultId = null,
-    Object? description = null,
-    Object? tanggal = null,
+    Object? remark = null,
+    Object? ResultId = null,
   }) {
     return _then(_$DetailInspectionModelAddImpl(
-      machineInspectionId: null == machineInspectionId
-          ? _value.machineInspectionId
-          : machineInspectionId // ignore: cast_nullable_to_non_nullable
-              as String,
+      InspectionId: null == InspectionId
+          ? _value.InspectionId
+          : InspectionId // ignore: cast_nullable_to_non_nullable
+              as int,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      resultId: null == resultId
-          ? _value.resultId
-          : resultId // ignore: cast_nullable_to_non_nullable
+      remark: null == remark
+          ? _value.remark
+          : remark // ignore: cast_nullable_to_non_nullable
+              as String,
+      ResultId: null == ResultId
+          ? _value.ResultId
+          : ResultId // ignore: cast_nullable_to_non_nullable
               as int,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      tanggal: null == tanggal
-          ? _value.tanggal
-          : tanggal // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -817,29 +796,26 @@ class _$DetailInspectionModelAddImpl
     with DiagnosticableTreeMixin
     implements _DetailInspectionModelAdd {
   const _$DetailInspectionModelAddImpl(
-      {required this.machineInspectionId,
+      {required this.InspectionId,
       required this.status,
-      required this.resultId,
-      required this.description,
-      required this.tanggal});
+      required this.remark,
+      required this.ResultId});
 
   factory _$DetailInspectionModelAddImpl.fromJson(Map<String, dynamic> json) =>
       _$$DetailInspectionModelAddImplFromJson(json);
 
   @override
-  final String machineInspectionId;
+  final int InspectionId;
   @override
   final String status;
   @override
-  final int resultId;
+  final String remark;
   @override
-  final String description;
-  @override
-  final String tanggal;
+  final int ResultId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DetailInspectionModelAdd(machineInspectionId: $machineInspectionId, status: $status, resultId: $resultId, description: $description, tanggal: $tanggal)';
+    return 'DetailInspectionModelAdd(InspectionId: $InspectionId, status: $status, remark: $remark, ResultId: $ResultId)';
   }
 
   @override
@@ -847,11 +823,10 @@ class _$DetailInspectionModelAddImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'DetailInspectionModelAdd'))
-      ..add(DiagnosticsProperty('machineInspectionId', machineInspectionId))
+      ..add(DiagnosticsProperty('InspectionId', InspectionId))
       ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('resultId', resultId))
-      ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('tanggal', tanggal));
+      ..add(DiagnosticsProperty('remark', remark))
+      ..add(DiagnosticsProperty('ResultId', ResultId));
   }
 
   @override
@@ -859,20 +834,18 @@ class _$DetailInspectionModelAddImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DetailInspectionModelAddImpl &&
-            (identical(other.machineInspectionId, machineInspectionId) ||
-                other.machineInspectionId == machineInspectionId) &&
+            (identical(other.InspectionId, InspectionId) ||
+                other.InspectionId == InspectionId) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.resultId, resultId) ||
-                other.resultId == resultId) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.tanggal, tanggal) || other.tanggal == tanggal));
+            (identical(other.remark, remark) || other.remark == remark) &&
+            (identical(other.ResultId, ResultId) ||
+                other.ResultId == ResultId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, machineInspectionId, status, resultId, description, tanggal);
+  int get hashCode =>
+      Object.hash(runtimeType, InspectionId, status, remark, ResultId);
 
   /// Create a copy of DetailInspectionModelAdd
   /// with the given fields replaced by the non-null parameter values.
@@ -893,25 +866,22 @@ class _$DetailInspectionModelAddImpl
 
 abstract class _DetailInspectionModelAdd implements DetailInspectionModelAdd {
   const factory _DetailInspectionModelAdd(
-      {required final String machineInspectionId,
+      {required final int InspectionId,
       required final String status,
-      required final int resultId,
-      required final String description,
-      required final String tanggal}) = _$DetailInspectionModelAddImpl;
+      required final String remark,
+      required final int ResultId}) = _$DetailInspectionModelAddImpl;
 
   factory _DetailInspectionModelAdd.fromJson(Map<String, dynamic> json) =
       _$DetailInspectionModelAddImpl.fromJson;
 
   @override
-  String get machineInspectionId;
+  int get InspectionId;
   @override
   String get status;
   @override
-  int get resultId;
+  String get remark;
   @override
-  String get description;
-  @override
-  String get tanggal;
+  int get ResultId;
 
   /// Create a copy of DetailInspectionModelAdd
   /// with the given fields replaced by the non-null parameter values.
@@ -929,11 +899,9 @@ DetailInspectionGetModel _$DetailInspectionGetModelFromJson(
 /// @nodoc
 mixin _$DetailInspectionGetModel {
   int get id => throw _privateConstructorUsedError;
-  String get machineInspectionId => throw _privateConstructorUsedError;
-  MachineModel get machine => throw _privateConstructorUsedError;
   InspectionitemModel get inspectionItem => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
+  String get remark => throw _privateConstructorUsedError;
 
   /// Serializes this DetailInspectionGetModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -953,13 +921,10 @@ abstract class $DetailInspectionGetModelCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String machineInspectionId,
-      MachineModel machine,
       InspectionitemModel inspectionItem,
       String status,
-      String description});
+      String remark});
 
-  $MachineModelCopyWith<$Res> get machine;
   $InspectionitemModelCopyWith<$Res> get inspectionItem;
 }
 
@@ -980,25 +945,15 @@ class _$DetailInspectionGetModelCopyWithImpl<$Res,
   @override
   $Res call({
     Object? id = null,
-    Object? machineInspectionId = null,
-    Object? machine = null,
     Object? inspectionItem = null,
     Object? status = null,
-    Object? description = null,
+    Object? remark = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      machineInspectionId: null == machineInspectionId
-          ? _value.machineInspectionId
-          : machineInspectionId // ignore: cast_nullable_to_non_nullable
-              as String,
-      machine: null == machine
-          ? _value.machine
-          : machine // ignore: cast_nullable_to_non_nullable
-              as MachineModel,
       inspectionItem: null == inspectionItem
           ? _value.inspectionItem
           : inspectionItem // ignore: cast_nullable_to_non_nullable
@@ -1007,21 +962,11 @@ class _$DetailInspectionGetModelCopyWithImpl<$Res,
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      remark: null == remark
+          ? _value.remark
+          : remark // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
-  }
-
-  /// Create a copy of DetailInspectionGetModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MachineModelCopyWith<$Res> get machine {
-    return $MachineModelCopyWith<$Res>(_value.machine, (value) {
-      return _then(_value.copyWith(machine: value) as $Val);
-    });
   }
 
   /// Create a copy of DetailInspectionGetModel
@@ -1046,14 +991,10 @@ abstract class _$$DetailInspectionGetModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
-      String machineInspectionId,
-      MachineModel machine,
       InspectionitemModel inspectionItem,
       String status,
-      String description});
+      String remark});
 
-  @override
-  $MachineModelCopyWith<$Res> get machine;
   @override
   $InspectionitemModelCopyWith<$Res> get inspectionItem;
 }
@@ -1074,25 +1015,15 @@ class __$$DetailInspectionGetModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? machineInspectionId = null,
-    Object? machine = null,
     Object? inspectionItem = null,
     Object? status = null,
-    Object? description = null,
+    Object? remark = null,
   }) {
     return _then(_$DetailInspectionGetModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      machineInspectionId: null == machineInspectionId
-          ? _value.machineInspectionId
-          : machineInspectionId // ignore: cast_nullable_to_non_nullable
-              as String,
-      machine: null == machine
-          ? _value.machine
-          : machine // ignore: cast_nullable_to_non_nullable
-              as MachineModel,
       inspectionItem: null == inspectionItem
           ? _value.inspectionItem
           : inspectionItem // ignore: cast_nullable_to_non_nullable
@@ -1101,9 +1032,9 @@ class __$$DetailInspectionGetModelImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      remark: null == remark
+          ? _value.remark
+          : remark // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -1116,11 +1047,9 @@ class _$DetailInspectionGetModelImpl
     implements _DetailInspectionGetModel {
   const _$DetailInspectionGetModelImpl(
       {required this.id,
-      required this.machineInspectionId,
-      required this.machine,
       required this.inspectionItem,
       required this.status,
-      required this.description});
+      required this.remark});
 
   factory _$DetailInspectionGetModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DetailInspectionGetModelImplFromJson(json);
@@ -1128,19 +1057,15 @@ class _$DetailInspectionGetModelImpl
   @override
   final int id;
   @override
-  final String machineInspectionId;
-  @override
-  final MachineModel machine;
-  @override
   final InspectionitemModel inspectionItem;
   @override
   final String status;
   @override
-  final String description;
+  final String remark;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DetailInspectionGetModel(id: $id, machineInspectionId: $machineInspectionId, machine: $machine, inspectionItem: $inspectionItem, status: $status, description: $description)';
+    return 'DetailInspectionGetModel(id: $id, inspectionItem: $inspectionItem, status: $status, remark: $remark)';
   }
 
   @override
@@ -1149,11 +1074,9 @@ class _$DetailInspectionGetModelImpl
     properties
       ..add(DiagnosticsProperty('type', 'DetailInspectionGetModel'))
       ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('machineInspectionId', machineInspectionId))
-      ..add(DiagnosticsProperty('machine', machine))
       ..add(DiagnosticsProperty('inspectionItem', inspectionItem))
       ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('description', description));
+      ..add(DiagnosticsProperty('remark', remark));
   }
 
   @override
@@ -1162,20 +1085,16 @@ class _$DetailInspectionGetModelImpl
         (other.runtimeType == runtimeType &&
             other is _$DetailInspectionGetModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.machineInspectionId, machineInspectionId) ||
-                other.machineInspectionId == machineInspectionId) &&
-            (identical(other.machine, machine) || other.machine == machine) &&
             (identical(other.inspectionItem, inspectionItem) ||
                 other.inspectionItem == inspectionItem) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.description, description) ||
-                other.description == description));
+            (identical(other.remark, remark) || other.remark == remark));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, machineInspectionId, machine,
-      inspectionItem, status, description);
+  int get hashCode =>
+      Object.hash(runtimeType, id, inspectionItem, status, remark);
 
   /// Create a copy of DetailInspectionGetModel
   /// with the given fields replaced by the non-null parameter values.
@@ -1197,11 +1116,9 @@ class _$DetailInspectionGetModelImpl
 abstract class _DetailInspectionGetModel implements DetailInspectionGetModel {
   const factory _DetailInspectionGetModel(
       {required final int id,
-      required final String machineInspectionId,
-      required final MachineModel machine,
       required final InspectionitemModel inspectionItem,
       required final String status,
-      required final String description}) = _$DetailInspectionGetModelImpl;
+      required final String remark}) = _$DetailInspectionGetModelImpl;
 
   factory _DetailInspectionGetModel.fromJson(Map<String, dynamic> json) =
       _$DetailInspectionGetModelImpl.fromJson;
@@ -1209,15 +1126,11 @@ abstract class _DetailInspectionGetModel implements DetailInspectionGetModel {
   @override
   int get id;
   @override
-  String get machineInspectionId;
-  @override
-  MachineModel get machine;
-  @override
   InspectionitemModel get inspectionItem;
   @override
   String get status;
   @override
-  String get description;
+  String get remark;
 
   /// Create a copy of DetailInspectionGetModel
   /// with the given fields replaced by the non-null parameter values.

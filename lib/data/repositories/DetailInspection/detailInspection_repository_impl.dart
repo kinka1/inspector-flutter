@@ -18,28 +18,27 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
         throw Exception('Token not found');
       }
       final token = rawToken.replaceAll('"', '');
-;
+
       final response = await _dio.post(
         '${dotenv.env['API_BASE_URL']}/detail',
         options: Options(headers: {'Authorization': 'Bearer $token'}),
         data: {
-          "machineInspectionId": model.machineInspectionId,
+          "InspectionId": model.InspectionId,
           "status": model.status,
-          "ResultId": model.resultId,
-          "description": model.description,
-          "tanggal": model.tanggal
+          "remark": model.remark,
+          "ResultId": model.ResultId,
         },
       );
-      // logger.i("response : ${response.statusCode}");
+      logger.i("response : ${response.statusCode}");
 
       if (response.statusCode == 201 || response.statusCode == 200) {
-        // logger.i('Detail inspection added successfully');
+        logger.i('Detail inspection added successfully');
       } else if (response.statusCode != 200 || response.statusCode != 201) {
         throw Exception(
             'Failed to add detail inspection: ${response.statusMessage}');
       }
     } on DioException catch (error) {
-      // logger.e("status code : ${error.response?.statusCode},error : $error");
+      logger.e("status code : ${error.response?.statusCode},error : $error");
       if (error.response?.statusCode == 401 ||
           error.response?.statusCode == 404) {
         throw Exception('Unauthorized or resource not found');
@@ -47,7 +46,7 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
         throw Exception('Network error: ${error.message}');
       }
     } catch (error) {
-      // logger.e("error : $error");
+      logger.e("error : $error");
       throw Exception('An unexpected error occurred: $error');
     }
   }
@@ -89,10 +88,9 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
 
   @override
   Future<List<DetailInspectionGetModel>> getDetailInspectionList(
-      String machineId, String tanggal) async {
+      String ResultId) async {
     final prefs = await SharedPreferences.getInstance();
     try {
-
       final rawToken = prefs.getString('token');
       if (rawToken == null) {
         throw Exception('Token not found');
@@ -100,14 +98,15 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
       final token = rawToken.replaceAll('"', '');
 
       final url =
-          '${dotenv.env['API_BASE_URL']}/detail/$machineId/tanggal=$tanggal';
+          '${dotenv.env['API_BASE_URL']}/detail/resultId=$ResultId';
 
       final response = await _dio.get(
         url,
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
+      logger.i("response masuk mulu");
 
-      logger.i("response LIST DETAIL: $response");
+      // logger.i("response LIST DETAIL: $response");
 
       if (response.statusCode != 200) {
         throw Exception(
@@ -115,7 +114,7 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
       }
 
       final responseData = response.data;
-      // logger.i("response data : $responseData");
+      // logger.i("response data : ${responseData['data']}");
 
       if (responseData['status'] == true) {
         final List<dynamic> machineData = responseData['data'];
@@ -147,9 +146,10 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
       throw Exception('An unexpected error occurred: $error');
     }
   }
-  
+
   @override
-  Future<DetailInspectionGetModel> getDetailInspectionSingle(String machineId, String tanggal) async {
+  Future<DetailInspectionGetModel> getDetailInspectionSingle(
+      String machineId, String tanggal) async {
     final prefs = await SharedPreferences.getInstance();
     try {
       // logger.i("MASUK TRY REPO SINGLE DETAIL INSPECTION");
@@ -158,7 +158,8 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
         throw Exception('Token not found');
       }
       final token = rawToken.replaceAll('"', '');
-      logger.d("ENDPOINT SINGLE : ${dotenv.env['API_BASE_URL']}/detail/machineId=$machineId/tanggal=$tanggal");
+      logger.d(
+          "ENDPOINT SINGLE : ${dotenv.env['API_BASE_URL']}/detail/machineId=$machineId/tanggal=$tanggal");
       final response = await _dio.get(
           '${dotenv.env['API_BASE_URL']}/detail/machineId=$machineId/tanggal=$tanggal',
           options: Options(headers: {'Authorization': 'Bearer $token'}));
@@ -187,7 +188,8 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
     }
   }
 
-  Future<List<DetailInspectionGetModel>> getDetailInspectionByDateList(String formattedDate) async {
+  Future<List<DetailInspectionGetModel>> getDetailInspectionByDateList(
+      String formattedDate) async {
     final prefs = await SharedPreferences.getInstance();
     try {
       // DateTime now = DateTime.now();
@@ -199,10 +201,10 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
         throw Exception('Token not found');
       }
       final token = rawToken.replaceAll('"', '');
-      logger.d("ENDPOINT OTHER : ${dotenv.env['API_BASE_URL']}/detail/date=$formattedDate");
+      logger.d(
+          "ENDPOINT OTHER : ${dotenv.env['API_BASE_URL']}/detail/date=$formattedDate");
 
-      final url =
-          '${dotenv.env['API_BASE_URL']}/detail/date=$formattedDate';
+      final url = '${dotenv.env['API_BASE_URL']}/detail/date=$formattedDate';
 
       final response = await _dio.get(
         url,

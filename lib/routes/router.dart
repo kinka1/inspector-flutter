@@ -1,5 +1,6 @@
 import 'package:maintenanceApp/data/models/InspectionItem/InspectionItem_model.dart';
 import 'package:maintenanceApp/data/models/Result/result_model.dart';
+import 'package:maintenanceApp/data/models/machine/machine_model.dart';
 import 'package:maintenanceApp/features/auth/views/login_page.dart';
 import 'package:maintenanceApp/features/home/view/homeNew_page.dart';
 import 'package:maintenanceApp/features/scan/view/scan_2_page.dart';

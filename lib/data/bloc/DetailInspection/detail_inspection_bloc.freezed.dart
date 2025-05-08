@@ -21,11 +21,10 @@ mixin _$DetailInspectionEvent {
     required TResult Function() started,
     required TResult Function(DetailInspectionModelAdd model)
         postDetailInspection,
-    required TResult Function(String machineId, String tanggal)
-        getDetailInspectionList,
+    required TResult Function(String resultId) getDetailInspectionList,
     required TResult Function(String machineId, int number, String tanggal)
         getDetailInspection,
-    required TResult Function(String machineId, String tanggal) getDetailByDate,
+    required TResult Function(String resultId) getDetailByDate,
     required TResult Function() resetState,
     required TResult Function(String machineId, String tanggal)
         getDetailInspectionByMachineIdAndDate,
@@ -37,11 +36,10 @@ mixin _$DetailInspectionEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult? Function(String machineId, String tanggal)?
-        getDetailInspectionList,
+    TResult? Function(String resultId)? getDetailInspectionList,
     TResult? Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult? Function(String machineId, String tanggal)? getDetailByDate,
+    TResult? Function(String resultId)? getDetailByDate,
     TResult? Function()? resetState,
     TResult? Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
@@ -53,10 +51,10 @@ mixin _$DetailInspectionEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailInspectionList,
+    TResult Function(String resultId)? getDetailInspectionList,
     TResult Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailByDate,
+    TResult Function(String resultId)? getDetailByDate,
     TResult Function()? resetState,
     TResult Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
@@ -183,11 +181,10 @@ class _$StartedImpl implements _Started {
     required TResult Function() started,
     required TResult Function(DetailInspectionModelAdd model)
         postDetailInspection,
-    required TResult Function(String machineId, String tanggal)
-        getDetailInspectionList,
+    required TResult Function(String resultId) getDetailInspectionList,
     required TResult Function(String machineId, int number, String tanggal)
         getDetailInspection,
-    required TResult Function(String machineId, String tanggal) getDetailByDate,
+    required TResult Function(String resultId) getDetailByDate,
     required TResult Function() resetState,
     required TResult Function(String machineId, String tanggal)
         getDetailInspectionByMachineIdAndDate,
@@ -202,11 +199,10 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult? Function(String machineId, String tanggal)?
-        getDetailInspectionList,
+    TResult? Function(String resultId)? getDetailInspectionList,
     TResult? Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult? Function(String machineId, String tanggal)? getDetailByDate,
+    TResult? Function(String resultId)? getDetailByDate,
     TResult? Function()? resetState,
     TResult? Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
@@ -221,10 +217,10 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailInspectionList,
+    TResult Function(String resultId)? getDetailInspectionList,
     TResult Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailByDate,
+    TResult Function(String resultId)? getDetailByDate,
     TResult Function()? resetState,
     TResult Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
@@ -391,11 +387,10 @@ class _$PostDetailInspectionImpl implements _PostDetailInspection {
     required TResult Function() started,
     required TResult Function(DetailInspectionModelAdd model)
         postDetailInspection,
-    required TResult Function(String machineId, String tanggal)
-        getDetailInspectionList,
+    required TResult Function(String resultId) getDetailInspectionList,
     required TResult Function(String machineId, int number, String tanggal)
         getDetailInspection,
-    required TResult Function(String machineId, String tanggal) getDetailByDate,
+    required TResult Function(String resultId) getDetailByDate,
     required TResult Function() resetState,
     required TResult Function(String machineId, String tanggal)
         getDetailInspectionByMachineIdAndDate,
@@ -410,11 +405,10 @@ class _$PostDetailInspectionImpl implements _PostDetailInspection {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult? Function(String machineId, String tanggal)?
-        getDetailInspectionList,
+    TResult? Function(String resultId)? getDetailInspectionList,
     TResult? Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult? Function(String machineId, String tanggal)? getDetailByDate,
+    TResult? Function(String resultId)? getDetailByDate,
     TResult? Function()? resetState,
     TResult? Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
@@ -429,10 +423,10 @@ class _$PostDetailInspectionImpl implements _PostDetailInspection {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailInspectionList,
+    TResult Function(String resultId)? getDetailInspectionList,
     TResult Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailByDate,
+    TResult Function(String resultId)? getDetailByDate,
     TResult Function()? resetState,
     TResult Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
@@ -529,7 +523,7 @@ abstract class _$$GetDetailInspectionListImplCopyWith<$Res> {
           $Res Function(_$GetDetailInspectionListImpl) then) =
       __$$GetDetailInspectionListImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String machineId, String tanggal});
+  $Res call({String resultId});
 }
 
 /// @nodoc
@@ -547,17 +541,12 @@ class __$$GetDetailInspectionListImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? machineId = null,
-    Object? tanggal = null,
+    Object? resultId = null,
   }) {
     return _then(_$GetDetailInspectionListImpl(
-      null == machineId
-          ? _value.machineId
-          : machineId // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == tanggal
-          ? _value.tanggal
-          : tanggal // ignore: cast_nullable_to_non_nullable
+      null == resultId
+          ? _value.resultId
+          : resultId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -566,16 +555,14 @@ class __$$GetDetailInspectionListImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetDetailInspectionListImpl implements _GetDetailInspectionList {
-  const _$GetDetailInspectionListImpl(this.machineId, this.tanggal);
+  const _$GetDetailInspectionListImpl(this.resultId);
 
   @override
-  final String machineId;
-  @override
-  final String tanggal;
+  final String resultId;
 
   @override
   String toString() {
-    return 'DetailInspectionEvent.getDetailInspectionList(machineId: $machineId, tanggal: $tanggal)';
+    return 'DetailInspectionEvent.getDetailInspectionList(resultId: $resultId)';
   }
 
   @override
@@ -583,13 +570,12 @@ class _$GetDetailInspectionListImpl implements _GetDetailInspectionList {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetDetailInspectionListImpl &&
-            (identical(other.machineId, machineId) ||
-                other.machineId == machineId) &&
-            (identical(other.tanggal, tanggal) || other.tanggal == tanggal));
+            (identical(other.resultId, resultId) ||
+                other.resultId == resultId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, machineId, tanggal);
+  int get hashCode => Object.hash(runtimeType, resultId);
 
   /// Create a copy of DetailInspectionEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -606,18 +592,17 @@ class _$GetDetailInspectionListImpl implements _GetDetailInspectionList {
     required TResult Function() started,
     required TResult Function(DetailInspectionModelAdd model)
         postDetailInspection,
-    required TResult Function(String machineId, String tanggal)
-        getDetailInspectionList,
+    required TResult Function(String resultId) getDetailInspectionList,
     required TResult Function(String machineId, int number, String tanggal)
         getDetailInspection,
-    required TResult Function(String machineId, String tanggal) getDetailByDate,
+    required TResult Function(String resultId) getDetailByDate,
     required TResult Function() resetState,
     required TResult Function(String machineId, String tanggal)
         getDetailInspectionByMachineIdAndDate,
     required TResult Function() getDetailInspectionByMachine,
     required TResult Function(String tanggal) getDetailInspectionByDate,
   }) {
-    return getDetailInspectionList(machineId, tanggal);
+    return getDetailInspectionList(resultId);
   }
 
   @override
@@ -625,18 +610,17 @@ class _$GetDetailInspectionListImpl implements _GetDetailInspectionList {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult? Function(String machineId, String tanggal)?
-        getDetailInspectionList,
+    TResult? Function(String resultId)? getDetailInspectionList,
     TResult? Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult? Function(String machineId, String tanggal)? getDetailByDate,
+    TResult? Function(String resultId)? getDetailByDate,
     TResult? Function()? resetState,
     TResult? Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
     TResult? Function()? getDetailInspectionByMachine,
     TResult? Function(String tanggal)? getDetailInspectionByDate,
   }) {
-    return getDetailInspectionList?.call(machineId, tanggal);
+    return getDetailInspectionList?.call(resultId);
   }
 
   @override
@@ -644,10 +628,10 @@ class _$GetDetailInspectionListImpl implements _GetDetailInspectionList {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailInspectionList,
+    TResult Function(String resultId)? getDetailInspectionList,
     TResult Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailByDate,
+    TResult Function(String resultId)? getDetailByDate,
     TResult Function()? resetState,
     TResult Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
@@ -656,7 +640,7 @@ class _$GetDetailInspectionListImpl implements _GetDetailInspectionList {
     required TResult orElse(),
   }) {
     if (getDetailInspectionList != null) {
-      return getDetailInspectionList(machineId, tanggal);
+      return getDetailInspectionList(resultId);
     }
     return orElse();
   }
@@ -725,12 +709,10 @@ class _$GetDetailInspectionListImpl implements _GetDetailInspectionList {
 }
 
 abstract class _GetDetailInspectionList implements DetailInspectionEvent {
-  const factory _GetDetailInspectionList(
-          final String machineId, final String tanggal) =
+  const factory _GetDetailInspectionList(final String resultId) =
       _$GetDetailInspectionListImpl;
 
-  String get machineId;
-  String get tanggal;
+  String get resultId;
 
   /// Create a copy of DetailInspectionEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -828,11 +810,10 @@ class _$GetDetailInspectionImpl implements _GetDetailInspection {
     required TResult Function() started,
     required TResult Function(DetailInspectionModelAdd model)
         postDetailInspection,
-    required TResult Function(String machineId, String tanggal)
-        getDetailInspectionList,
+    required TResult Function(String resultId) getDetailInspectionList,
     required TResult Function(String machineId, int number, String tanggal)
         getDetailInspection,
-    required TResult Function(String machineId, String tanggal) getDetailByDate,
+    required TResult Function(String resultId) getDetailByDate,
     required TResult Function() resetState,
     required TResult Function(String machineId, String tanggal)
         getDetailInspectionByMachineIdAndDate,
@@ -847,11 +828,10 @@ class _$GetDetailInspectionImpl implements _GetDetailInspection {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult? Function(String machineId, String tanggal)?
-        getDetailInspectionList,
+    TResult? Function(String resultId)? getDetailInspectionList,
     TResult? Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult? Function(String machineId, String tanggal)? getDetailByDate,
+    TResult? Function(String resultId)? getDetailByDate,
     TResult? Function()? resetState,
     TResult? Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
@@ -866,10 +846,10 @@ class _$GetDetailInspectionImpl implements _GetDetailInspection {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailInspectionList,
+    TResult Function(String resultId)? getDetailInspectionList,
     TResult Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailByDate,
+    TResult Function(String resultId)? getDetailByDate,
     TResult Function()? resetState,
     TResult Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
@@ -968,7 +948,7 @@ abstract class _$$GetDetailByDateImplCopyWith<$Res> {
           $Res Function(_$GetDetailByDateImpl) then) =
       __$$GetDetailByDateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String machineId, String tanggal});
+  $Res call({String resultId});
 }
 
 /// @nodoc
@@ -984,17 +964,12 @@ class __$$GetDetailByDateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? machineId = null,
-    Object? tanggal = null,
+    Object? resultId = null,
   }) {
     return _then(_$GetDetailByDateImpl(
-      null == machineId
-          ? _value.machineId
-          : machineId // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == tanggal
-          ? _value.tanggal
-          : tanggal // ignore: cast_nullable_to_non_nullable
+      null == resultId
+          ? _value.resultId
+          : resultId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -1003,16 +978,14 @@ class __$$GetDetailByDateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetDetailByDateImpl implements _GetDetailByDate {
-  const _$GetDetailByDateImpl(this.machineId, this.tanggal);
+  const _$GetDetailByDateImpl(this.resultId);
 
   @override
-  final String machineId;
-  @override
-  final String tanggal;
+  final String resultId;
 
   @override
   String toString() {
-    return 'DetailInspectionEvent.getDetailByDate(machineId: $machineId, tanggal: $tanggal)';
+    return 'DetailInspectionEvent.getDetailByDate(resultId: $resultId)';
   }
 
   @override
@@ -1020,13 +993,12 @@ class _$GetDetailByDateImpl implements _GetDetailByDate {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetDetailByDateImpl &&
-            (identical(other.machineId, machineId) ||
-                other.machineId == machineId) &&
-            (identical(other.tanggal, tanggal) || other.tanggal == tanggal));
+            (identical(other.resultId, resultId) ||
+                other.resultId == resultId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, machineId, tanggal);
+  int get hashCode => Object.hash(runtimeType, resultId);
 
   /// Create a copy of DetailInspectionEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1043,18 +1015,17 @@ class _$GetDetailByDateImpl implements _GetDetailByDate {
     required TResult Function() started,
     required TResult Function(DetailInspectionModelAdd model)
         postDetailInspection,
-    required TResult Function(String machineId, String tanggal)
-        getDetailInspectionList,
+    required TResult Function(String resultId) getDetailInspectionList,
     required TResult Function(String machineId, int number, String tanggal)
         getDetailInspection,
-    required TResult Function(String machineId, String tanggal) getDetailByDate,
+    required TResult Function(String resultId) getDetailByDate,
     required TResult Function() resetState,
     required TResult Function(String machineId, String tanggal)
         getDetailInspectionByMachineIdAndDate,
     required TResult Function() getDetailInspectionByMachine,
     required TResult Function(String tanggal) getDetailInspectionByDate,
   }) {
-    return getDetailByDate(machineId, tanggal);
+    return getDetailByDate(resultId);
   }
 
   @override
@@ -1062,18 +1033,17 @@ class _$GetDetailByDateImpl implements _GetDetailByDate {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult? Function(String machineId, String tanggal)?
-        getDetailInspectionList,
+    TResult? Function(String resultId)? getDetailInspectionList,
     TResult? Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult? Function(String machineId, String tanggal)? getDetailByDate,
+    TResult? Function(String resultId)? getDetailByDate,
     TResult? Function()? resetState,
     TResult? Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
     TResult? Function()? getDetailInspectionByMachine,
     TResult? Function(String tanggal)? getDetailInspectionByDate,
   }) {
-    return getDetailByDate?.call(machineId, tanggal);
+    return getDetailByDate?.call(resultId);
   }
 
   @override
@@ -1081,10 +1051,10 @@ class _$GetDetailByDateImpl implements _GetDetailByDate {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailInspectionList,
+    TResult Function(String resultId)? getDetailInspectionList,
     TResult Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailByDate,
+    TResult Function(String resultId)? getDetailByDate,
     TResult Function()? resetState,
     TResult Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
@@ -1093,7 +1063,7 @@ class _$GetDetailByDateImpl implements _GetDetailByDate {
     required TResult orElse(),
   }) {
     if (getDetailByDate != null) {
-      return getDetailByDate(machineId, tanggal);
+      return getDetailByDate(resultId);
     }
     return orElse();
   }
@@ -1162,11 +1132,9 @@ class _$GetDetailByDateImpl implements _GetDetailByDate {
 }
 
 abstract class _GetDetailByDate implements DetailInspectionEvent {
-  const factory _GetDetailByDate(final String machineId, final String tanggal) =
-      _$GetDetailByDateImpl;
+  const factory _GetDetailByDate(final String resultId) = _$GetDetailByDateImpl;
 
-  String get machineId;
-  String get tanggal;
+  String get resultId;
 
   /// Create a copy of DetailInspectionEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1219,11 +1187,10 @@ class _$ResetStateImpl implements _ResetState {
     required TResult Function() started,
     required TResult Function(DetailInspectionModelAdd model)
         postDetailInspection,
-    required TResult Function(String machineId, String tanggal)
-        getDetailInspectionList,
+    required TResult Function(String resultId) getDetailInspectionList,
     required TResult Function(String machineId, int number, String tanggal)
         getDetailInspection,
-    required TResult Function(String machineId, String tanggal) getDetailByDate,
+    required TResult Function(String resultId) getDetailByDate,
     required TResult Function() resetState,
     required TResult Function(String machineId, String tanggal)
         getDetailInspectionByMachineIdAndDate,
@@ -1238,11 +1205,10 @@ class _$ResetStateImpl implements _ResetState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult? Function(String machineId, String tanggal)?
-        getDetailInspectionList,
+    TResult? Function(String resultId)? getDetailInspectionList,
     TResult? Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult? Function(String machineId, String tanggal)? getDetailByDate,
+    TResult? Function(String resultId)? getDetailByDate,
     TResult? Function()? resetState,
     TResult? Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
@@ -1257,10 +1223,10 @@ class _$ResetStateImpl implements _ResetState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailInspectionList,
+    TResult Function(String resultId)? getDetailInspectionList,
     TResult Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailByDate,
+    TResult Function(String resultId)? getDetailByDate,
     TResult Function()? resetState,
     TResult Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
@@ -1428,11 +1394,10 @@ class _$GetDetailInspectionByMachineIdAndDateImpl
     required TResult Function() started,
     required TResult Function(DetailInspectionModelAdd model)
         postDetailInspection,
-    required TResult Function(String machineId, String tanggal)
-        getDetailInspectionList,
+    required TResult Function(String resultId) getDetailInspectionList,
     required TResult Function(String machineId, int number, String tanggal)
         getDetailInspection,
-    required TResult Function(String machineId, String tanggal) getDetailByDate,
+    required TResult Function(String resultId) getDetailByDate,
     required TResult Function() resetState,
     required TResult Function(String machineId, String tanggal)
         getDetailInspectionByMachineIdAndDate,
@@ -1447,11 +1412,10 @@ class _$GetDetailInspectionByMachineIdAndDateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult? Function(String machineId, String tanggal)?
-        getDetailInspectionList,
+    TResult? Function(String resultId)? getDetailInspectionList,
     TResult? Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult? Function(String machineId, String tanggal)? getDetailByDate,
+    TResult? Function(String resultId)? getDetailByDate,
     TResult? Function()? resetState,
     TResult? Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
@@ -1466,10 +1430,10 @@ class _$GetDetailInspectionByMachineIdAndDateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailInspectionList,
+    TResult Function(String resultId)? getDetailInspectionList,
     TResult Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailByDate,
+    TResult Function(String resultId)? getDetailByDate,
     TResult Function()? resetState,
     TResult Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
@@ -1612,11 +1576,10 @@ class _$GetDetailInspectionByMachineImpl
     required TResult Function() started,
     required TResult Function(DetailInspectionModelAdd model)
         postDetailInspection,
-    required TResult Function(String machineId, String tanggal)
-        getDetailInspectionList,
+    required TResult Function(String resultId) getDetailInspectionList,
     required TResult Function(String machineId, int number, String tanggal)
         getDetailInspection,
-    required TResult Function(String machineId, String tanggal) getDetailByDate,
+    required TResult Function(String resultId) getDetailByDate,
     required TResult Function() resetState,
     required TResult Function(String machineId, String tanggal)
         getDetailInspectionByMachineIdAndDate,
@@ -1631,11 +1594,10 @@ class _$GetDetailInspectionByMachineImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult? Function(String machineId, String tanggal)?
-        getDetailInspectionList,
+    TResult? Function(String resultId)? getDetailInspectionList,
     TResult? Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult? Function(String machineId, String tanggal)? getDetailByDate,
+    TResult? Function(String resultId)? getDetailByDate,
     TResult? Function()? resetState,
     TResult? Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
@@ -1650,10 +1612,10 @@ class _$GetDetailInspectionByMachineImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailInspectionList,
+    TResult Function(String resultId)? getDetailInspectionList,
     TResult Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailByDate,
+    TResult Function(String resultId)? getDetailByDate,
     TResult Function()? resetState,
     TResult Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
@@ -1810,11 +1772,10 @@ class _$GetDetailInspectionByDateImpl implements _GetDetailInspectionByDate {
     required TResult Function() started,
     required TResult Function(DetailInspectionModelAdd model)
         postDetailInspection,
-    required TResult Function(String machineId, String tanggal)
-        getDetailInspectionList,
+    required TResult Function(String resultId) getDetailInspectionList,
     required TResult Function(String machineId, int number, String tanggal)
         getDetailInspection,
-    required TResult Function(String machineId, String tanggal) getDetailByDate,
+    required TResult Function(String resultId) getDetailByDate,
     required TResult Function() resetState,
     required TResult Function(String machineId, String tanggal)
         getDetailInspectionByMachineIdAndDate,
@@ -1829,11 +1790,10 @@ class _$GetDetailInspectionByDateImpl implements _GetDetailInspectionByDate {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult? Function(String machineId, String tanggal)?
-        getDetailInspectionList,
+    TResult? Function(String resultId)? getDetailInspectionList,
     TResult? Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult? Function(String machineId, String tanggal)? getDetailByDate,
+    TResult? Function(String resultId)? getDetailByDate,
     TResult? Function()? resetState,
     TResult? Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,
@@ -1848,10 +1808,10 @@ class _$GetDetailInspectionByDateImpl implements _GetDetailInspectionByDate {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(DetailInspectionModelAdd model)? postDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailInspectionList,
+    TResult Function(String resultId)? getDetailInspectionList,
     TResult Function(String machineId, int number, String tanggal)?
         getDetailInspection,
-    TResult Function(String machineId, String tanggal)? getDetailByDate,
+    TResult Function(String resultId)? getDetailByDate,
     TResult Function()? resetState,
     TResult Function(String machineId, String tanggal)?
         getDetailInspectionByMachineIdAndDate,

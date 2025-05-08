@@ -28,7 +28,7 @@ class MachineData with _$MachineData {
 @freezed
 class MachineModel with _$MachineModel{
   const factory MachineModel({
-    required int machineId,
+    required String machineId,
     required String sectionName,
     required String line,
     required String machineName,

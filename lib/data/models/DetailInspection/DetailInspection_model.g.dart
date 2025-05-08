@@ -60,42 +60,36 @@ Map<String, dynamic> _$$DetailInspectionModelImplToJson(
 _$DetailInspectionModelAddImpl _$$DetailInspectionModelAddImplFromJson(
         Map<String, dynamic> json) =>
     _$DetailInspectionModelAddImpl(
-      machineInspectionId: json['machineInspectionId'] as String,
+      InspectionId: (json['InspectionId'] as num).toInt(),
       status: json['status'] as String,
-      resultId: (json['resultId'] as num).toInt(),
-      description: json['description'] as String,
-      tanggal: json['tanggal'] as String,
+      remark: json['remark'] as String,
+      ResultId: (json['ResultId'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$DetailInspectionModelAddImplToJson(
         _$DetailInspectionModelAddImpl instance) =>
     <String, dynamic>{
-      'machineInspectionId': instance.machineInspectionId,
+      'InspectionId': instance.InspectionId,
       'status': instance.status,
-      'resultId': instance.resultId,
-      'description': instance.description,
-      'tanggal': instance.tanggal,
+      'remark': instance.remark,
+      'ResultId': instance.ResultId,
     };
 
 _$DetailInspectionGetModelImpl _$$DetailInspectionGetModelImplFromJson(
         Map<String, dynamic> json) =>
     _$DetailInspectionGetModelImpl(
       id: (json['id'] as num).toInt(),
-      machineInspectionId: json['machineInspectionId'] as String,
-      machine: MachineModel.fromJson(json['machine'] as Map<String, dynamic>),
       inspectionItem: InspectionitemModel.fromJson(
           json['inspectionItem'] as Map<String, dynamic>),
       status: json['status'] as String,
-      description: json['description'] as String,
+      remark: json['remark'] as String,
     );
 
 Map<String, dynamic> _$$DetailInspectionGetModelImplToJson(
         _$DetailInspectionGetModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'machineInspectionId': instance.machineInspectionId,
-      'machine': instance.machine,
       'inspectionItem': instance.inspectionItem,
       'status': instance.status,
-      'description': instance.description,
+      'remark': instance.remark,
     };

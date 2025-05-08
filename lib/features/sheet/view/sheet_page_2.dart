@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:maintenanceApp/data/bloc/DetailInspection/detail_inspection_bloc.dart';
 import 'package:maintenanceApp/data/bloc/machine/machine_bloc.dart';
 import 'package:maintenanceApp/data/models/DetailInspection/DetailInspection_model.dart';
+import 'package:maintenanceApp/data/models/InspectionItem/InspectionItem_model.dart';
+import 'package:maintenanceApp/data/models/machine/machine_model.dart';
 import 'package:maintenanceApp/features/widget/appbarCus.dart';
 import 'package:maintenanceApp/features/widget/buildHeader.dart';
 import 'package:maintenanceApp/features/widget/buildTable.dart';
@@ -18,8 +20,13 @@ import '../../../core/color_values.dart';
 
 @RoutePage()
 class Sheet2Page extends StatefulWidget {
-  const Sheet2Page({super.key, required this.MachineId, required this.date});
-  final String MachineId;
+  const Sheet2Page(
+      {super.key,
+      required this.machine,
+      required this.date,
+      required this.resultId});
+  final MachineModel machine;
+  final int resultId;
   final String date;
 
   @override
@@ -33,6 +40,9 @@ class _Sheet2PageState extends State<Sheet2Page> {
   @override
   void initState() {
     super.initState();
+    context.read<DetailInspectionBloc>().add(
+          DetailInspectionEvent.getDetailByDate(widget.resultId.toString()),
+        );
   }
 
   @override
@@ -41,17 +51,29 @@ class _Sheet2PageState extends State<Sheet2Page> {
       appBar: appbarCus(context, "Check Sheet", true),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+          // padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
+              // const SizedBox(height: 20),
               // tambah tanggal + machine
               //
-              _buildTop(),
-              BuildTable(
-                boxBorder: Border.all(color: Colors.black, width: 2),
+              BuildHeader(machine: widget.machine, date: widget.date),
+              // _buildTop(),
+              Container(
+                padding:
+                    EdgeInsets.only(left: 25, right: 25, bottom: 0, top: 40),
+                child: BuildTable(
+                  boxBorder: Border.all(
+                    color: Colors.black,
+                    width: 2,
+                  ),
+                  // borderRadius:  BorderRadius.circular(15),
+                ),
               ),
+              Container(
+                  padding: EdgeInsets.only(left: 25, right: 25, bottom: 10),
+                  child: _buildIsiTable())
             ],
           ),
         ),
@@ -60,9 +82,6 @@ class _Sheet2PageState extends State<Sheet2Page> {
   }
 
   Widget _buildIsiTable() {
-    context.read<DetailInspectionBloc>().add(
-        DetailInspectionEvent.getDetailInspectionList(
-            widget.MachineId, widget.date));
     return BlocBuilder<DetailInspectionBloc, DetailInspectionState>(
       builder: (context, state) {
         return Skeletonizer(
@@ -77,7 +96,7 @@ class _Sheet2PageState extends State<Sheet2Page> {
                 child: const Center(child: CircularProgressIndicator()),
               );
             },
-            loadedList: (response) {
+            loadedbyDate: (response) {
               // print("response : $response");
               return _buildSkeleton(response);
             },
@@ -96,54 +115,40 @@ class _Sheet2PageState extends State<Sheet2Page> {
     );
   }
 
-  Widget _buildTop() {
-    context.read<MachineBloc>().add(
-          MachineEvent.getMachines(widget.MachineId),
-        );
-
-    return BlocBuilder<MachineBloc, MachineState>(builder: (context, state) {
-      return Skeletonizer(
-        enabled: state.maybeWhen(
-          loading: () => true,
-          orElse: () => false,
-        ),
-        child: state.maybeWhen(
-          loaded: (response) => BuildHeader(
-            machine: response,
-            date: widget.date,
-          ),
-          orElse: () => SizedBox(),
-          error: (message) => Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Error: Terjadi Kesalahan',
-                  style: TextStyle(fontSize: 25, color: Colors.red),
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    context.read<MachineBloc>().add(
-                          MachineEvent.getMachines(widget.MachineId),
-                        );
-                  },
-                  child: const Text("Retry"),
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
-    });
-  }
-
   Widget _buildSkeleton(List<DetailInspectionGetModel> response) {
+    bool statusOther =
+        response.any((item) => item.inspectionItem.itemName == "OTHER");
+    print("Status other : $statusOther");
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: response.length,
+      itemCount: statusOther ? response.length : response.length + 1,
       itemBuilder: (context, index) {
+        if (!statusOther && index == response.length) {
+          return Container(
+          margin: const EdgeInsets.only(top: 10),
+            child: BuildTable(
+              response: const DetailInspectionGetModel(
+                id: 0,
+                inspectionItem: InspectionitemModel(
+                  itemName: "OTHER",
+                  method: "-",
+                  itemId: 0,
+                  specification: '-',
+                  frequency: '-',
+                  number: 0,
+                  imagePath: '-',
+                  isNumber: false,
+                  prasyarat: '-',
+                ),
+                status: "OK",
+                remark: "-",
+              ),
+              // boxBorder: Border.all(color: Colors.black, width: 2),
+              borderRadius: BorderRadius.circular(15),
+            ),
+          );
+        }
         final item = response[index];
         return Container(
           margin: const EdgeInsets.only(top: 10),
@@ -151,6 +156,7 @@ class _Sheet2PageState extends State<Sheet2Page> {
             // date: widget.date,
             response: item,
             // boxBorder: Border.all(color: Colors.black, width: 2),
+            borderRadius: BorderRadius.circular(15),
           ),
         );
       },

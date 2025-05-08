@@ -35,7 +35,7 @@ class DetailInspectionBloc
     emit(const DetailInspectionState.loading());
 
     try {
-      // logger.i("event model : ${event.model}");
+      logger.i("event model : ${event.model}");
       await _repository.addDetailInspection(event.model);
 
       emit(const DetailInspectionState.success());
@@ -51,7 +51,7 @@ class DetailInspectionBloc
     try {
       // logger.i("MASUK TRY DETAIL  INSPECTION");
       final response = await _repository.getDetailInspectionList(
-          event.machineId, event.tanggal);
+          event.resultId);
       // logger.i("RESPONSE DETAIL INSPECTION $response");
       emit(DetailInspectionState.loadedList(response));
     } catch (e) {
@@ -66,10 +66,10 @@ class DetailInspectionBloc
     try {
       // logger.i("masuk try BY DATE");
       final response = await _repository.getDetailInspectionList(
-          event.machineId, event.tanggal);
+          event.resultId);
       // logger.i("response GET BY ID AND DATE: $response");
       emit(DetailInspectionState.loadedbyDate(response));
-      logger.i("berhasil emit");
+      // logger.i("berhasil emit");
     } catch (e) {
       emit(DetailInspectionState.error(e.toString()));
     }

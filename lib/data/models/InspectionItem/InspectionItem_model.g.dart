@@ -37,7 +37,7 @@ Map<String, dynamic> _$$InspectionItemDataImplToJson(
 _$InspectionitemModelImpl _$$InspectionitemModelImplFromJson(
         Map<String, dynamic> json) =>
     _$InspectionitemModelImpl(
-      itemId: json['itemId'] as String,
+      itemId: (json['itemId'] as num).toInt(),
       itemName: json['itemName'] as String,
       specification: json['specification'] as String,
       method: json['method'] as String,
@@ -65,8 +65,8 @@ Map<String, dynamic> _$$InspectionitemModelImplToJson(
 _$InspectionitemMachineGetModelImpl
     _$$InspectionitemMachineGetModelImplFromJson(Map<String, dynamic> json) =>
         _$InspectionitemMachineGetModelImpl(
-          machineInspectionId: json['machineInspectionId'] as String,
-          itemId: json['itemId'] as String,
+          machineInspectionId: (json['machineInspectionId'] as num).toInt(),
+          itemId: (json['itemId'] as num).toInt(),
           itemName: json['itemName'] as String,
           specification: json['specification'] as String,
           method: json['method'] as String,

@@ -22,7 +22,7 @@ class BuildHeader extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(left: 35.0, right: 35.0, bottom: 35.0),
       decoration: const BoxDecoration(
-        color: ColorValues.hijauMain,
+        color: ColorValues.primary700,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(20),
           bottomRight: Radius.circular(20),
@@ -37,21 +37,28 @@ class BuildHeader extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
+              if (date != null)
+                Col(
+                  title: "Tanggal",
+                  caption: date!,
+                  warna: warna,
+                  size: size,
+                ),
               Col(
-                  title: "Section Name : ",
+                  title: "Section Name  ",
                   caption: machine.sectionName,
                   warna: warna,size: size,),
-              Col(title: "Line : ", caption: machine.line, warna: warna,size: size,),
+              Col(title: "Line  ", caption: machine.line, warna: warna,size: size,),
               Col(
-                  title: "Machine Name : ",
+                  title: "Machine Name  ",
                   caption: machine.machineName,
                   warna: warna,size: size,),
               Col(
-                  title: "Machine Number : ",
+                  title: "Machine Number  ",
                   caption: machine.machineNumber.toString(),
                   warna: warna,size: size,),
               Col(
-                  title: "Dockument Number : ",
+                  title: "Dockument Number  ",
                   caption: machine.dockumentNo,
                   warna: warna,size: size,),
             ],

@@ -57,6 +57,7 @@ abstract class _$AppRouter extends RootStackRouter {
           ResultId: args.ResultId,
           statusOther: args.statusOther,
           buId: args.buId,
+          userId: args.userId,
         ),
       );
     },
@@ -69,6 +70,8 @@ abstract class _$AppRouter extends RootStackRouter {
           model: args.model,
           machineInspectionId: args.machineInspectionId,
           machineId: args.machineId,
+          ResultId: args.ResultId,
+          userId: args.userId,
         ),
       );
     },
@@ -80,6 +83,9 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           machineId: args.machineId,
           resultId: args.resultId,
+          inspectionId: args.inspectionId,
+          buId: args.buId,
+          userId: args.userId,
         ),
       );
     },
@@ -89,15 +95,20 @@ abstract class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: Sheet2Page(
           key: args.key,
-          MachineId: args.MachineId,
+          machine: args.machine,
           date: args.date,
+          resultId: args.resultId,
         ),
       );
     },
     SheetRoute.name: (routeData) {
+      final args = routeData.argsAs<SheetRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const SheetPage(),
+        child: SheetPage(
+          key: args.key,
+          buId: args.buId,
+        ),
       );
     },
   };
@@ -213,6 +224,7 @@ class Scan2Route extends PageRouteInfo<Scan2RouteArgs> {
     required int ResultId,
     String? statusOther,
     required String buId,
+    required int userId,
     List<PageRouteInfo>? children,
   }) : super(
           Scan2Route.name,
@@ -224,6 +236,7 @@ class Scan2Route extends PageRouteInfo<Scan2RouteArgs> {
             ResultId: ResultId,
             statusOther: statusOther,
             buId: buId,
+            userId: userId,
           ),
           initialChildren: children,
         );
@@ -242,6 +255,7 @@ class Scan2RouteArgs {
     required this.ResultId,
     this.statusOther,
     required this.buId,
+    required this.userId,
   });
 
   final Key? key;
@@ -258,9 +272,11 @@ class Scan2RouteArgs {
 
   final String buId;
 
+  final int userId;
+
   @override
   String toString() {
-    return 'Scan2RouteArgs{key: $key, machineId: $machineId, status: $status, number: $number, ResultId: $ResultId, statusOther: $statusOther, buId: $buId}';
+    return 'Scan2RouteArgs{key: $key, machineId: $machineId, status: $status, number: $number, ResultId: $ResultId, statusOther: $statusOther, buId: $buId, userId: $userId}';
   }
 }
 
@@ -270,8 +286,10 @@ class Scan3Route extends PageRouteInfo<Scan3RouteArgs> {
   Scan3Route({
     Key? key,
     required InspectionitemMachineGetModel model,
-    required String machineInspectionId,
+    required int machineInspectionId,
     required String machineId,
+    required int ResultId,
+    required int userId,
     List<PageRouteInfo>? children,
   }) : super(
           Scan3Route.name,
@@ -280,6 +298,8 @@ class Scan3Route extends PageRouteInfo<Scan3RouteArgs> {
             model: model,
             machineInspectionId: machineInspectionId,
             machineId: machineId,
+            ResultId: ResultId,
+            userId: userId,
           ),
           initialChildren: children,
         );
@@ -295,19 +315,25 @@ class Scan3RouteArgs {
     required this.model,
     required this.machineInspectionId,
     required this.machineId,
+    required this.ResultId,
+    required this.userId,
   });
 
   final Key? key;
 
   final InspectionitemMachineGetModel model;
 
-  final String machineInspectionId;
+  final int machineInspectionId;
 
   final String machineId;
 
+  final int ResultId;
+
+  final int userId;
+
   @override
   String toString() {
-    return 'Scan3RouteArgs{key: $key, model: $model, machineInspectionId: $machineInspectionId, machineId: $machineId}';
+    return 'Scan3RouteArgs{key: $key, model: $model, machineInspectionId: $machineInspectionId, machineId: $machineId, ResultId: $ResultId, userId: $userId}';
   }
 }
 
@@ -318,6 +344,9 @@ class ScanOtherRoute extends PageRouteInfo<ScanOtherRouteArgs> {
     Key? key,
     required String machineId,
     required int resultId,
+    required int inspectionId,
+    required String buId,
+    required int userId,
     List<PageRouteInfo>? children,
   }) : super(
           ScanOtherRoute.name,
@@ -325,6 +354,9 @@ class ScanOtherRoute extends PageRouteInfo<ScanOtherRouteArgs> {
             key: key,
             machineId: machineId,
             resultId: resultId,
+            inspectionId: inspectionId,
+            buId: buId,
+            userId: userId,
           ),
           initialChildren: children,
         );
@@ -340,6 +372,9 @@ class ScanOtherRouteArgs {
     this.key,
     required this.machineId,
     required this.resultId,
+    required this.inspectionId,
+    required this.buId,
+    required this.userId,
   });
 
   final Key? key;
@@ -348,9 +383,15 @@ class ScanOtherRouteArgs {
 
   final int resultId;
 
+  final int inspectionId;
+
+  final String buId;
+
+  final int userId;
+
   @override
   String toString() {
-    return 'ScanOtherRouteArgs{key: $key, machineId: $machineId, resultId: $resultId}';
+    return 'ScanOtherRouteArgs{key: $key, machineId: $machineId, resultId: $resultId, inspectionId: $inspectionId, buId: $buId, userId: $userId}';
   }
 }
 
@@ -359,15 +400,17 @@ class ScanOtherRouteArgs {
 class Sheet2Route extends PageRouteInfo<Sheet2RouteArgs> {
   Sheet2Route({
     Key? key,
-    required String MachineId,
+    required MachineModel machine,
     required String date,
+    required int resultId,
     List<PageRouteInfo>? children,
   }) : super(
           Sheet2Route.name,
           args: Sheet2RouteArgs(
             key: key,
-            MachineId: MachineId,
+            machine: machine,
             date: date,
+            resultId: resultId,
           ),
           initialChildren: children,
         );
@@ -380,32 +423,58 @@ class Sheet2Route extends PageRouteInfo<Sheet2RouteArgs> {
 class Sheet2RouteArgs {
   const Sheet2RouteArgs({
     this.key,
-    required this.MachineId,
+    required this.machine,
     required this.date,
+    required this.resultId,
   });
 
   final Key? key;
 
-  final String MachineId;
+  final MachineModel machine;
 
   final String date;
 
+  final int resultId;
+
   @override
   String toString() {
-    return 'Sheet2RouteArgs{key: $key, MachineId: $MachineId, date: $date}';
+    return 'Sheet2RouteArgs{key: $key, machine: $machine, date: $date, resultId: $resultId}';
   }
 }
 
 /// generated route for
 /// [SheetPage]
-class SheetRoute extends PageRouteInfo<void> {
-  const SheetRoute({List<PageRouteInfo>? children})
-      : super(
+class SheetRoute extends PageRouteInfo<SheetRouteArgs> {
+  SheetRoute({
+    Key? key,
+    required String buId,
+    List<PageRouteInfo>? children,
+  }) : super(
           SheetRoute.name,
+          args: SheetRouteArgs(
+            key: key,
+            buId: buId,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'SheetRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<SheetRouteArgs> page = PageInfo<SheetRouteArgs>(name);
+}
+
+class SheetRouteArgs {
+  const SheetRouteArgs({
+    this.key,
+    required this.buId,
+  });
+
+  final Key? key;
+
+  final String buId;
+
+  @override
+  String toString() {
+    return 'SheetRouteArgs{key: $key, buId: $buId}';
+  }
 }
