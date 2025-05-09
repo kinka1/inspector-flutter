@@ -273,7 +273,7 @@ class _BuildformState extends State<Buildform> {
                                       ResultId: widget.ResultId,
                                     )}");
 
-                                    AutoRouter.of(context).push(Scan2Route(
+                                    AutoRouter.of(context).replace(Scan2Route(
                                         machineId: widget.machineId,
                                         number: widget.item.number,
                                         status: selectedStatus,

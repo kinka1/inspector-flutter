@@ -55,6 +55,32 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
+  Future<bool> checkTokenValidity() async {
+    final prefs = await SharedPreferences.getInstance();
+    final rawToken = prefs.getString('token');
+
+    if (rawToken == null) {
+      return false; // Tidak ada token, harus login ulang
+    }
+
+    try {
+      final token = rawToken.replaceAll('"', '');
+      final response = await _dio.get(
+        '${dotenv.env['API_BASE_URL']}/me',
+        options: Options(headers: {'Authorization': 'Bearer $token'}),
+      );
+
+      if (response.statusCode == 200) {
+        return true; // Token valid
+      } else {
+        return false; // Token tidak valid
+      }
+    } on DioException catch (_) {
+      return false; // Token tidak valid atau terjadi error
+    }
+  }
+
+  @override
   Future<UserModel> me() async {
     final prefs = await SharedPreferences.getInstance();
 

@@ -14,5 +14,8 @@ class ResultState with _$ResultState {
   const factory ResultState.loadedByDateList(List<ResultGet> result) =
       _LoadedByDateList;
   const factory ResultState.loadedByDate(ResultModel result) = _LoadedByDate;
-  const factory ResultState.loadedByDateForHomepage(ResultModel result) = _LoadedByDateForHomepage;
+  const factory ResultState.loadedByDateForHomepage(ResultModel result) =
+      _LoadedByDateForHomepage;
+  const factory ResultState.loadedByDateListHome(List<ResultGet> result) =
+      _LoadedByDateListHome;
 }

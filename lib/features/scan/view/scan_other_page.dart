@@ -109,7 +109,7 @@ class _ScanOtherPageState extends State<ScanOtherPage> {
                               ));
                           print("BERHASIL POSTING DATA");
 
-                          AutoRouter.of(context).push(Scan2Route(
+                          AutoRouter.of(context).replace(Scan2Route(
                             machineId: widget.machineId,
                             status: "NG",
                             ResultId: widget.resultId,

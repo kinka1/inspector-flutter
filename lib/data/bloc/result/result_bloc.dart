@@ -23,6 +23,7 @@ class ResultBloc extends Bloc<ResultEvent, ResultState> {
     // on<_GetResultByDate>(_onGetResultByDate);
     on<_UpdateStatus>(_onUpdateResult);
     on<_GetResultByDateForHomepage>(_onGetResultByDateForHomepage);
+    on<_GetResultByDatelistHome>(_onGetResultByDatelistHome);
   }
 
   late final ResultRepository _repository;
@@ -77,6 +78,19 @@ class ResultBloc extends Bloc<ResultEvent, ResultState> {
     try {
       var response = await _repository.getResultByDatelist(event.buId,event.tanggal);
       emit(ResultState.loadedByDateList(response));
+
+    } catch (e) {
+      
+      emit(ResultState.error(e.toString()));
+    }
+  }
+
+  Future<void> _onGetResultByDatelistHome(
+      _GetResultByDatelistHome event, Emitter<ResultState> emit) async {
+    emit(const ResultState.loading());
+    try {
+      var response = await _repository.getResultByDatelist(event.buId,event.tanggal);
+      emit(ResultState.loadedByDateListHome(response));
 
     } catch (e) {
       

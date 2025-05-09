@@ -4,6 +4,7 @@ import 'package:http/http.dart';
 import 'package:logger/logger.dart';
 import 'package:maintenanceApp/core/color_values.dart';
 import 'package:maintenanceApp/data/bloc/DetailInspection/detail_inspection_bloc.dart';
+import 'package:maintenanceApp/data/bloc/auth/auth_bloc.dart';
 import 'package:maintenanceApp/data/bloc/other/other_bloc.dart';
 import 'package:maintenanceApp/data/bloc/result/result_bloc.dart';
 import 'package:maintenanceApp/data/models/DetailInspection/DetailInspection_model.dart';
@@ -42,7 +43,6 @@ class _HomenewPageState extends State<HomenewPage> {
 
   List<ResultGet> _resultGet = [];
 
-
   @override
   void initState() {
     super.initState();
@@ -52,11 +52,11 @@ class _HomenewPageState extends State<HomenewPage> {
 
     Future.delayed(Duration.zero, () {
       context.read<ResultBloc>().add(
-        ResultEvent.getResultByDatelist(
-          _BU,
-          parseToStringDate(DateTime.now()),
-        ),
-      );
+            ResultEvent.getResultByDatelistHome(
+              _BU,
+              parseToStringDate(DateTime.now()),
+            ),
+          );
     });
   }
 
@@ -110,7 +110,12 @@ class _HomenewPageState extends State<HomenewPage> {
   @override
   Widget build(BuildContext context) {
     _tabPages.clear();
-    _tabPages.addAll([_buildHome(context), SheetPage(buId: _BU,)]);
+    _tabPages.addAll([
+      _buildHome(context),
+      SheetPage(
+        buId: _BU,
+      )
+    ]);
 
     return BlocListener<ResultBloc, ResultState>(
       listener: (context, state) {
@@ -122,10 +127,11 @@ class _HomenewPageState extends State<HomenewPage> {
             _userId = response.userId;
             next();
           },
-          loadedByDateList: (response) => setState(() => _resultGet = response),
+          loadedByDateListHome: (response) => setState(() => _resultGet = response),
           loadedByDateForHomepage: (response) {
             _status = response.status;
-            if (response.resultId == 0 && _idMachineController.text.isNotEmpty) {
+            if (response.resultId == 0 &&
+                _idMachineController.text.isNotEmpty) {
               context.read<ResultBloc>().add(
                     ResultEvent.addResult(
                       ResultAdd(
@@ -143,7 +149,8 @@ class _HomenewPageState extends State<HomenewPage> {
             }
           },
           error: (message) => ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(message), backgroundColor: ColorValues.danger500),
+            SnackBar(
+                content: Text(message), backgroundColor: ColorValues.danger500),
           ),
           orElse: () => logger.e("Unhandled state"),
         );
@@ -159,7 +166,8 @@ class _HomenewPageState extends State<HomenewPage> {
           onTap: _onItemTapped,
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Beranda"),
-            BottomNavigationBarItem(icon: Icon(Icons.history), label: "Riwayat"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.history), label: "Riwayat"),
           ],
         ),
       ),
@@ -180,24 +188,55 @@ class _HomenewPageState extends State<HomenewPage> {
         actions: [
           IconButton(
             icon: const Icon(Icons.exit_to_app_rounded, color: Colors.white),
-            onPressed: () => Scaffold.of(context).openDrawer(),
+            onPressed: () => _handleLogout(context),
           )
         ],
       );
 
+  void _handleLogout(BuildContext context) async {
+    try {
+      // Hapus data autentikasi dari SharedPreferences
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove('token');
+      await prefs.remove('username');
+      await prefs.remove('buId');
+
+      context.read<AuthBloc>().add(const AuthEvent.logout());
+
+      // Navigasi ke halaman login
+      AutoRouter.of(context).replace(const LoginRoute());
+
+      // Tampilkan pesan logout berhasil
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Logout berhasil"),
+          backgroundColor: ColorValues.primary500,
+        ),
+      );
+    } catch (e) {
+      // Tangani kesalahan jika terjadi
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Terjadi kesalahan: $e"),
+          backgroundColor: ColorValues.danger500,
+        ),
+      );
+    }
+  }
+
   Widget _buildHome(BuildContext context) {
     final ok = _resultGet.where((r) => r.status == "OK").length;
     final ng = _resultGet.where((r) => r.status == "NG").length;
-logger.i("BUILD BERAPA KALI");
+    logger.i("BUILD BERAPA KALI");
     return SingleChildScrollView(
-      
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _buildHeader(context),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 40),
-            child: Text("RIWAYAT HARI INI", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+            child: Text("RIWAYAT HARI INI",
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -259,7 +298,8 @@ logger.i("BUILD BERAPA KALI");
 
   Widget _buildWelcomeMessage(BuildContext context) => Row(
         children: [
-          const Icon(Icons.account_circle, size: 70, color: ColorValues.primary800),
+          const Icon(Icons.account_circle,
+              size: 70, color: ColorValues.primary800),
           const SizedBox(width: 30),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -273,7 +313,10 @@ logger.i("BUILD BERAPA KALI");
                     ),
               ),
               Text("BU : $_BU",
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorValues.grayscale600)),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(color: ColorValues.grayscale600)),
             ],
           )
         ],
@@ -341,44 +384,47 @@ logger.i("BUILD BERAPA KALI");
         ),
       );
 
-  Widget _buildHistoryItem(ResultGet result) => Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(
+  Widget _buildHistoryItem(ResultGet result) {
+   logger.d("ResultGet: $result");
+   return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(
+            color: result.status == "OK"
+                ? ColorValues.hijauBorder
+                : ColorValues.merahBorder),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(result.machine.line),
+              Text(result.machine.machineName),
+            ],
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
               color: result.status == "OK"
                   ? ColorValues.hijauBorder
-                  : ColorValues.merahBorder),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(result.machine.line),
-                Text(result.machine.machineName),
-              ],
+                  : ColorValues.danger500,
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: result.status == "OK"
-                    ? ColorValues.hijauBorder
-                    : ColorValues.danger500,
+            child: Text(
+              result.status,
+              style: TextStyle(
+                fontSize: 20,
+                fontFamily: GoogleFonts.plusJakartaSans().fontFamily,
+                fontWeight: FontWeight.bold,
               ),
-              child: Text(
-                result.status,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: GoogleFonts.plusJakartaSans().fontFamily,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            )
-          ],
-        ),
-      );
+            ),
+          )
+        ],
+      ),
+    );
+  }
 }

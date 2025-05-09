@@ -111,6 +111,12 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    SpalshRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SpalshScreen(),
+      );
+    },
   };
 }
 
@@ -477,4 +483,18 @@ class SheetRouteArgs {
   String toString() {
     return 'SheetRouteArgs{key: $key, buId: $buId}';
   }
+}
+
+/// generated route for
+/// [SpalshScreen]
+class SpalshRoute extends PageRouteInfo<void> {
+  const SpalshRoute({List<PageRouteInfo>? children})
+      : super(
+          SpalshRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SpalshRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }

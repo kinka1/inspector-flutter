@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:maintenanceApp/core/app_theme_data.dart';
 import 'package:maintenanceApp/core/color_values.dart';
 import 'package:maintenanceApp/data/bloc/DetailInspection/detail_inspection_bloc.dart';
@@ -14,6 +15,8 @@ import 'package:maintenanceApp/data/bloc/InspectionItem/inspection_item_bloc.dar
 import 'package:maintenanceApp/data/bloc/auth/auth_bloc.dart';
 import 'package:maintenanceApp/data/bloc/machine/machine_bloc.dart';
 import 'package:maintenanceApp/data/repositories/other/other_repository_impl.dart';
+import 'package:maintenanceApp/features/auth/views/login_page.dart';
+import 'package:maintenanceApp/features/home/view/homeNew_page.dart';
 import 'package:maintenanceApp/routes/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -27,7 +30,12 @@ Future main() async {
   await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const MainApp());
+  final authRepository = AuthRepositoryImpl();
+  final isLoggedIn = await authRepository.checkTokenValidity();
+
+  runApp(MainApp(
+    isLoggedIn: isLoggedIn,
+  ));
 }
 
 final appRouter = AppRouter();
@@ -36,7 +44,8 @@ const lunch = "lunch";
 const dinnner = "dinner";
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  final bool isLoggedIn;
+  const MainApp({super.key, required this.isLoggedIn});
 
   @override
   Widget build(BuildContext context) {
@@ -58,14 +67,20 @@ class MainApp extends StatelessWidget {
         },
         child: MultiBlocProvider(
           providers: [
-            BlocProvider(create: (__) => AuthBloc(repository: AuthRepositoryImpl())),
+            BlocProvider(
+                create: (__) => AuthBloc(repository: AuthRepositoryImpl())),
             BlocProvider(
                 create: (_) =>
                     InspectionItemBloc(InspectionitemRepositoryImpl())),
             BlocProvider(create: (_) => MachineBloc(MachineRepositoryImpl())),
-            BlocProvider(create: (_) => DetailInspectionBloc(repository: DetailinspectionRepositoryImpl())),
-            BlocProvider(create: (_) => ResultBloc(repository: ResultRepositoryImpl())),
-            BlocProvider(create: (_) => MachineInspectionBloc(MachineInspectionRepositoryImpl())),
+            BlocProvider(
+                create: (_) => DetailInspectionBloc(
+                    repository: DetailinspectionRepositoryImpl())),
+            BlocProvider(
+                create: (_) => ResultBloc(repository: ResultRepositoryImpl())),
+            BlocProvider(
+                create: (_) =>
+                    MachineInspectionBloc(MachineInspectionRepositoryImpl())),
             BlocProvider(create: (_) => OtherBloc(OtherRepositoryImpl())),
           ],
           child: NotificationListener<OverscrollIndicatorNotification>(
@@ -75,8 +90,11 @@ class MainApp extends StatelessWidget {
             },
             child: MaterialApp.router(
               theme: AppThemeData.getTheme(context),
-              routerDelegate: appRouter.delegate(),
-              routeInformationParser: appRouter.defaultRouteParser(),
+              routerDelegate: AutoRouterDelegate(
+                appRouter,
+                navigatorObservers: () => [HeroController()],
+              ),
+              routeInformationParser: AppRouter().defaultRouteParser(),
               debugShowCheckedModeBanner: false,
             ),
           ),

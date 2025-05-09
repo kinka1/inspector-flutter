@@ -1,6 +1,7 @@
 import 'package:maintenanceApp/data/models/InspectionItem/InspectionItem_model.dart';
 import 'package:maintenanceApp/data/models/Result/result_model.dart';
 import 'package:maintenanceApp/data/models/machine/machine_model.dart';
+import 'package:maintenanceApp/features/SpalshScreen.dart';
 import 'package:maintenanceApp/features/auth/views/login_page.dart';
 import 'package:maintenanceApp/features/home/view/homeNew_page.dart';
 import 'package:maintenanceApp/features/scan/view/scan_2_page.dart';
@@ -16,6 +17,12 @@ part 'router.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
+            CustomRoute(
+          page: SpalshRoute.page,
+          path: '/splash',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+          initial: true,
+        ),
         CustomRoute(
           page: HomeRoute.page,
           path: '/home',
@@ -32,7 +39,7 @@ class AppRouter extends _$AppRouter {
           page: LoginRoute.page,
           path: '/login',
           transitionsBuilder: TransitionsBuilders.fadeIn,
-          initial: true,
+          // initial: true,
         ),
         CustomRoute(
           page: Scan2Route.page,

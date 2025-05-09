@@ -16,7 +16,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>{
     on<_Logout>(_onLogout);
     on<_Me>(_onGetMe);
 
-    add(const AuthEvent.me());
+    // add(const AuthEvent.me());
 
   }
   late final AuthRepository _repository;
@@ -32,13 +32,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>{
   }
 
   Future<void> _onLogout(_Logout event, Emitter<AuthState> emit) async {
-    emit(const AuthState.loading());
-    try {
-      await _repository.logout();
-      emit(const AuthState.logoutSuccess());
-    } catch (e) {
-      emit(AuthState.error(e.toString()));
-    }
+    emit(AuthState.logoutSuccess());
   }
 
   Future<void> _onGetMe(_Me event, Emitter<AuthState> emit) async {
