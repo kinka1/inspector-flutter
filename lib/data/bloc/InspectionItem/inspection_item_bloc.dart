@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:logger/logger.dart';
-import 'package:maintenanceApp/data/models/DetailInspection/DetailInspection_model.dart';
+// import 'package:logger/logger.dart';
+// import 'package:maintenanceApp/data/models/DetailInspection/DetailInspection_model.dart';
 import 'package:maintenanceApp/data/models/InspectionItem/InspectionItem_model.dart';
 import 'package:maintenanceApp/data/repositories/InspectionItem/InspectionItem_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

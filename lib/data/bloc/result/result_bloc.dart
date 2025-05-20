@@ -1,11 +1,11 @@
-import 'dart:math';
+// import 'dart:math';
 
 import 'package:maintenanceApp/data/models/Result/result_model.dart';
 import 'package:maintenanceApp/data/repositories/Result/result_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:logger/logger.dart';
+// import 'package:logger/logger.dart';
 
 part 'result_event.dart';
 part 'result_state.dart';
@@ -14,7 +14,7 @@ part 'result_bloc.freezed.dart';
 class ResultBloc extends Bloc<ResultEvent, ResultState> {
   // final logger = Logger();
 
-  ResultBloc({required ResultRepository repository}) : super(_Initial()) {
+  ResultBloc({required ResultRepository repository}) : super(const _Initial()) {
     _repository = repository;
     on<_GetResult>(_onGetResult);
     on<_AddResult>(_onAddResult);
@@ -28,7 +28,6 @@ class ResultBloc extends Bloc<ResultEvent, ResultState> {
 
   late final ResultRepository _repository;
 
-  @override
   Future<void> _onGetResult(_GetResult event, Emitter<ResultState> emit) async {
     emit(const ResultState.loading());
     // logger.i("MASUK GET RESULT");
@@ -59,7 +58,9 @@ class ResultBloc extends Bloc<ResultEvent, ResultState> {
     try {
       // logger.i("MASUK GET RESULT ALL");
       var response = await _repository.getResultAll();
+      // ignore: non_constant_identifier_names
       int OKCount = response.where((element) => element.status == 'OK').length;
+      // ignore: non_constant_identifier_names
       int NGCount = response.where((element) => element.status == 'NG').length;
       emit(ResultState.getAll(response, OKCount, NGCount));
       // logger.i("RESULT ALL : $response");

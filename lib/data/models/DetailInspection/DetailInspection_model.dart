@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:maintenanceApp/data/models/InspectionItem/InspectionItem_model.dart';
-import 'package:maintenanceApp/data/models/machine/machine_model.dart';
+// import 'package:maintenanceApp/data/models/machine/machine_model.dart';
 
 part 'DetailInspection_model.freezed.dart';
 part 'DetailInspection_model.g.dart';

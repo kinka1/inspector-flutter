@@ -1,4 +1,4 @@
-import 'package:logger/logger.dart';
+// import 'package:logger/logger.dart';
 import 'package:maintenanceApp/data/models/DetailInspection/DetailInspection_model.dart';
 import 'package:maintenanceApp/data/repositories/DetailInspection/detailInspection_repository.dart';
 import 'package:bloc/bloc.dart';
@@ -11,7 +11,7 @@ part 'detail_inspection_bloc.freezed.dart';
 class DetailInspectionBloc
     extends Bloc<DetailInspectionEvent, DetailInspectionState> {
   DetailInspectionBloc({required DetailinspectionRepository repository})
-      : super(_Initial()) {
+      : super(const _Initial()) {
     _repository = repository;
     on<_PostDetailInspection>(_onAddDetailInspection);
     on<_GetDetailInspectionList>(_onGetInspectionItemsList);

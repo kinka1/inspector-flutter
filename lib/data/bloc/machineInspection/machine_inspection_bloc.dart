@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:logger/logger.dart';
+// import 'package:logger/logger.dart';
 import 'package:maintenanceApp/data/models/MachineInspection/machine_inspection_model.dart';
 import 'package:maintenanceApp/data/repositories/MachineInspection/machine_inspection_repository.dart';
 
