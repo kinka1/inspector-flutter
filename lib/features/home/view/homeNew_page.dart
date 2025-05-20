@@ -1,14 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart';
-import 'package:logger/logger.dart';
+// import 'package:logger/logger.dart';
 import 'package:maintenanceApp/core/color_values.dart';
-import 'package:maintenanceApp/data/bloc/DetailInspection/detail_inspection_bloc.dart';
 import 'package:maintenanceApp/data/bloc/auth/auth_bloc.dart';
-import 'package:maintenanceApp/data/bloc/other/other_bloc.dart';
 import 'package:maintenanceApp/data/bloc/result/result_bloc.dart';
-import 'package:maintenanceApp/data/models/DetailInspection/DetailInspection_model.dart';
-import 'package:maintenanceApp/data/models/Other/other_model.dart';
+import 'package:maintenanceApp/data/models/DTO/modelscan2.dart';
 import 'package:maintenanceApp/data/models/Result/result_model.dart';
 import 'package:maintenanceApp/data/parse.dart';
 import 'package:maintenanceApp/features/pages.dart';
@@ -31,7 +27,7 @@ class HomenewPage extends StatefulWidget {
 
 class _HomenewPageState extends State<HomenewPage> {
   final TextEditingController _idMachineController = TextEditingController();
-  final logger = Logger();
+  // final logger = Logger();
   final List<Widget> _tabPages = [];
 
   String _BU = "-";
@@ -40,13 +36,14 @@ class _HomenewPageState extends State<HomenewPage> {
   int _resultId = 0;
   int _userId = 0;
   String _status = "-";
+  bool _isAddingResult = false;
 
   List<ResultGet> _resultGet = [];
 
   @override
   void initState() {
     super.initState();
-    logger.i("Init HomenewPage");
+    // logger.i("Init HomenewPage");
     _getAuth();
     _idMachineController.clear();
 
@@ -74,6 +71,7 @@ class _HomenewPageState extends State<HomenewPage> {
 
   void _handleSearch(BuildContext context) {
     final id = _idMachineController.text.trim();
+    // logger.d("ID MACHINE: $id");
     if (id.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -82,28 +80,34 @@ class _HomenewPageState extends State<HomenewPage> {
         ),
       );
       return;
+    } else if (id == _idMachineController.text.trim()) {
+      // logger.d("ID MACHINE: $id");
+      context.read<ResultBloc>().add(
+            ResultEvent.getResultByDateForHomepage(
+              id,
+              parseToStringDate(DateTime.now()),
+            ),
+          );
     }
-    context.read<ResultBloc>().add(
-          ResultEvent.getResultByDateForHomepage(
-            id,
-            parseToStringDate(DateTime.now()),
-          ),
-        );
   }
 
-  Future<void> next() async {
+  Future<void> next(ModelScan2 model) async {
     if (_resultId != 0) {
       final idmachine = _idMachineController.text;
-      logger.d("Navigasi ke Scan2Route");
       await AutoRouter.of(context)
           .push(Scan2Route(
-            machineId: idmachine,
-            status: _status,
-            ResultId: _resultId,
-            buId: _BU,
-            userId: _userId,
-          ))
-          .then((_) => _idMachineController.clear());
+        machineId: model.machineId,
+        status: model.status,
+        ResultId: model.resultId,
+        buId: model.buId,
+        userId: model.userId,
+      ))
+          .then((_) {
+        _idMachineController.clear();
+        _resultId = 0; // Reset agar tidak trigger lagi
+        _userId = 0;
+        _status = "-";
+      });
     }
   }
 
@@ -119,40 +123,85 @@ class _HomenewPageState extends State<HomenewPage> {
 
     return BlocListener<ResultBloc, ResultState>(
       listener: (context, state) {
-        logger.d("state result: $state");
+        // logger.d("state result: $state");
         state.maybeWhen(
           added: (response) {
-            _resultId = response.resultId;
-            _status = response.status;
+            final idmachine = _idMachineController.text;
+            _resultId = response!.resultId;
+            _status = response!.status;
             _userId = response.userId;
-            next();
+            // _isAddingResult = false;
+            var _id = response.machineId.toString();
+            // logger.d("ADD RESULT ID. MACHINE iD: $idmachine, ");
+            next(new ModelScan2(
+              machineId: _id,
+              resultId: _resultId,
+              status: _status,
+              userId: _userId,
+              buId: _BU,
+            ));
           },
-          loadedByDateListHome: (response) => setState(() => _resultGet = response),
+          loadedByDateListHome: (response) =>
+              setState(() => _resultGet = response),
           loadedByDateForHomepage: (response) {
+            String _idmachine = response.machineId;
             _status = response.status;
+
             if (response.resultId == 0 &&
-                _idMachineController.text.isNotEmpty) {
+                _idMachineController.text.isNotEmpty 
+                // && !_isAddingResult
+                ) {
+              // _isAddingResult = true; // mencegah pemanggilan ulang
+              String idmachine = _idMachineController.text;
               context.read<ResultBloc>().add(
                     ResultEvent.addResult(
                       ResultAdd(
                         status: '-',
-                        machineId: _idMachineController.text,
-                        buId: _BU,
+                        machineId: _idmachine,
+                        buId: _BU, date: parseToStringDate(DateTime.now()),
                       ),
                     ),
                   );
             } else {
+              final idmachine = _idMachineController.text;
               _resultId = response.resultId;
               _status = response.status;
               _userId = response.userId;
-              next();
+              next(new ModelScan2(
+                machineId: _idmachine,
+                resultId: _resultId,
+                status: _status,
+                userId: _userId,
+                buId: _BU,
+              ));
             }
           },
+
+          // loadedByDateForHomepage: (response) {
+          //   _status = response.status;
+          //   if (response.resultId == 0 &&
+          //       _idMachineController.text.isNotEmpty) {
+          //     context.read<ResultBloc>().add(
+          //           ResultEvent.addResult(
+          //             ResultAdd(
+          //               status: '-',
+          //               machineId: _idMachineController.text,
+          //               buId: _BU,
+          //             ),
+          //           ),
+          //         );
+          //   } else {
+          //     _resultId = response.resultId;
+          //     _status = response.status;
+          //     _userId = response.userId;
+          //     next();
+          //   }
+          // },
           error: (message) => ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
                 content: Text(message), backgroundColor: ColorValues.danger500),
           ),
-          orElse: () => logger.e("Unhandled state"),
+           orElse: () {},
         );
       },
       child: Scaffold(
@@ -227,7 +276,7 @@ class _HomenewPageState extends State<HomenewPage> {
   Widget _buildHome(BuildContext context) {
     final ok = _resultGet.where((r) => r.status == "OK").length;
     final ng = _resultGet.where((r) => r.status == "NG").length;
-    logger.i("BUILD BERAPA KALI");
+    // logger.i("BUILD BERAPA KALI");
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -322,7 +371,9 @@ class _HomenewPageState extends State<HomenewPage> {
         ],
       );
 
-  Widget _buildSearchRow(BuildContext context) => Row(
+  Widget _buildSearchRow(BuildContext context) {
+
+  return Row(
         children: [
           Expanded(
             flex: 3,
@@ -361,6 +412,7 @@ class _HomenewPageState extends State<HomenewPage> {
           )
         ],
       );
+  } 
 
   Widget _buildCard(String title, String value, Color color) => Container(
         alignment: Alignment.center,
@@ -385,8 +437,8 @@ class _HomenewPageState extends State<HomenewPage> {
       );
 
   Widget _buildHistoryItem(ResultGet result) {
-   logger.d("ResultGet: $result");
-   return Container(
+    // logger.d("ResultGet: $result");
+    return Container(
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(

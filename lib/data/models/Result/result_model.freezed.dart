@@ -1037,6 +1037,7 @@ mixin _$ResultAdd {
   String get status => throw _privateConstructorUsedError;
   String get machineId => throw _privateConstructorUsedError;
   String get buId => throw _privateConstructorUsedError;
+  String get date => throw _privateConstructorUsedError;
 
   /// Serializes this ResultAdd to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1053,7 +1054,7 @@ abstract class $ResultAddCopyWith<$Res> {
   factory $ResultAddCopyWith(ResultAdd value, $Res Function(ResultAdd) then) =
       _$ResultAddCopyWithImpl<$Res, ResultAdd>;
   @useResult
-  $Res call({String status, String machineId, String buId});
+  $Res call({String status, String machineId, String buId, String date});
 }
 
 /// @nodoc
@@ -1074,6 +1075,7 @@ class _$ResultAddCopyWithImpl<$Res, $Val extends ResultAdd>
     Object? status = null,
     Object? machineId = null,
     Object? buId = null,
+    Object? date = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -1088,6 +1090,10 @@ class _$ResultAddCopyWithImpl<$Res, $Val extends ResultAdd>
           ? _value.buId
           : buId // ignore: cast_nullable_to_non_nullable
               as String,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -1100,7 +1106,7 @@ abstract class _$$ResultAddImplCopyWith<$Res>
       __$$ResultAddImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String status, String machineId, String buId});
+  $Res call({String status, String machineId, String buId, String date});
 }
 
 /// @nodoc
@@ -1119,6 +1125,7 @@ class __$$ResultAddImplCopyWithImpl<$Res>
     Object? status = null,
     Object? machineId = null,
     Object? buId = null,
+    Object? date = null,
   }) {
     return _then(_$ResultAddImpl(
       status: null == status
@@ -1133,6 +1140,10 @@ class __$$ResultAddImplCopyWithImpl<$Res>
           ? _value.buId
           : buId // ignore: cast_nullable_to_non_nullable
               as String,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1141,7 +1152,10 @@ class __$$ResultAddImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ResultAddImpl with DiagnosticableTreeMixin implements _ResultAdd {
   const _$ResultAddImpl(
-      {required this.status, required this.machineId, required this.buId});
+      {required this.status,
+      required this.machineId,
+      required this.buId,
+      required this.date});
 
   factory _$ResultAddImpl.fromJson(Map<String, dynamic> json) =>
       _$$ResultAddImplFromJson(json);
@@ -1152,10 +1166,12 @@ class _$ResultAddImpl with DiagnosticableTreeMixin implements _ResultAdd {
   final String machineId;
   @override
   final String buId;
+  @override
+  final String date;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ResultAdd(status: $status, machineId: $machineId, buId: $buId)';
+    return 'ResultAdd(status: $status, machineId: $machineId, buId: $buId, date: $date)';
   }
 
   @override
@@ -1165,7 +1181,8 @@ class _$ResultAddImpl with DiagnosticableTreeMixin implements _ResultAdd {
       ..add(DiagnosticsProperty('type', 'ResultAdd'))
       ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('machineId', machineId))
-      ..add(DiagnosticsProperty('buId', buId));
+      ..add(DiagnosticsProperty('buId', buId))
+      ..add(DiagnosticsProperty('date', date));
   }
 
   @override
@@ -1176,12 +1193,13 @@ class _$ResultAddImpl with DiagnosticableTreeMixin implements _ResultAdd {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.machineId, machineId) ||
                 other.machineId == machineId) &&
-            (identical(other.buId, buId) || other.buId == buId));
+            (identical(other.buId, buId) || other.buId == buId) &&
+            (identical(other.date, date) || other.date == date));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, status, machineId, buId);
+  int get hashCode => Object.hash(runtimeType, status, machineId, buId, date);
 
   /// Create a copy of ResultAdd
   /// with the given fields replaced by the non-null parameter values.
@@ -1203,7 +1221,8 @@ abstract class _ResultAdd implements ResultAdd {
   const factory _ResultAdd(
       {required final String status,
       required final String machineId,
-      required final String buId}) = _$ResultAddImpl;
+      required final String buId,
+      required final String date}) = _$ResultAddImpl;
 
   factory _ResultAdd.fromJson(Map<String, dynamic> json) =
       _$ResultAddImpl.fromJson;
@@ -1214,6 +1233,8 @@ abstract class _ResultAdd implements ResultAdd {
   String get machineId;
   @override
   String get buId;
+  @override
+  String get date;
 
   /// Create a copy of ResultAdd
   /// with the given fields replaced by the non-null parameter values.

@@ -44,7 +44,7 @@ class _BuildformState extends State<Buildform> {
 
   late TextEditingController _descriptionController;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final logger = Logger();
+  // final logger = Logger();
   String status = "-";
   double height = 0;
 
@@ -194,7 +194,7 @@ class _BuildformState extends State<Buildform> {
                           onTap: isLoading
                               ? () => const CircularProgressIndicator()
                               : () {
-                                  logger.i("ISLOADING : FALSE");
+                                  // logger.i("ISLOADING : FALSE");
                                   if (_formKey.currentState!.validate()) {
                                     // if(widget.)
                                     if (widget.item.isNumber == true) {
@@ -213,15 +213,15 @@ class _BuildformState extends State<Buildform> {
                                             _descriptionController.text)) {
                                           double actual = double.parse(
                                               _descriptionController.text);
-                                          logger.d("actual : $actual");
+                                          // logger.d("actual : $actual");
                                           if (isValidInput(
                                               _descriptionController.text,
                                               prasyarat)) {
                                             selectedStatus = "OK";
-                                            logger.i("VALIDASI BERHASIL");
+                                            // logger.i("VALIDASI BERHASIL");
                                           } else {
                                             selectedStatus = "NG";
-                                            logger.i("VALIDASI GAGAL");
+                                            // logger.i("VALIDASI GAGAL");
                                           }
                                         } else {
                                           Flushbar(
@@ -236,8 +236,8 @@ class _BuildformState extends State<Buildform> {
                                         }
                                       }
                                     }
-                                    logger
-                                        .d("selectedStatus : $selectedStatus");
+                                    // logger
+                                    //     .d("selectedStatus : $selectedStatus");
                                     if (selectedStatus == " ") {
                                       Flushbar(
                                         title: 'Terjadi Kesalahan',
@@ -265,17 +265,16 @@ class _BuildformState extends State<Buildform> {
                                           ),
                                         ));
 
-                                    logger.d(
-                                        "BERHASIL KIRIM DATA!. DATA : ${DetailInspectionModelAdd(
-                                      remark: des,
-                                      status: selectedStatus,
-                                      InspectionId: widget.item.itemId,
-                                      ResultId: widget.ResultId,
-                                    )}");
+                                    // logger.d(
+                                    //     "BERHASIL KIRIM DATA!. DATA : ${DetailInspectionModelAdd(
+                                    //   remark: des,
+                                    //   status: selectedStatus,
+                                    //   InspectionId: widget.item.itemId,
+                                    //   ResultId: widget.ResultId,
+                                    // )}");
 
                                     AutoRouter.of(context).replace(Scan2Route(
                                         machineId: widget.machineId,
-                                        number: widget.item.number,
                                         status: selectedStatus,
                                         ResultId: widget.ResultId,
                                         buId: 'REF',
@@ -327,11 +326,11 @@ class _BuildformState extends State<Buildform> {
 
   bool isValidInput(String input, String requirement) {
     final numInput = double.tryParse(input);
-    logger.d("input: $input, requirement: $requirement, numInput: $numInput");
+    // logger.d("input: $input, requirement: $requirement, numInput: $numInput");
     if (numInput == null) return false;
 
     if (requirement.startsWith('range:')) {
-      logger.i("masuk range");
+      // logger.i("masuk range");
       final parts = requirement.replaceFirst('range:', '').split('~');
       final min = double.parse(parts[0]);
       final max = double.parse(parts[1]);

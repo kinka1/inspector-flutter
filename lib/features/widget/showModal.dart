@@ -26,7 +26,7 @@ class ShowModal extends StatefulWidget {
 }
 
 class _ShowModalState extends State<ShowModal> {
-  final logger = Logger();
+  // final logger = Logger();
   String Username = "-";
   String _BU = "-";
   @override

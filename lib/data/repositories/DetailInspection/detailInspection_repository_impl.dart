@@ -6,7 +6,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
-  final logger = Logger();
+  // final logger = Logger();
   final _dio = Dio();
 
   @override
@@ -29,16 +29,16 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
           "ResultId": model.ResultId,
         },
       );
-      logger.i("response : ${response.statusCode}");
+      // logger.i("response : ${response.statusCode}");
 
       if (response.statusCode == 201 || response.statusCode == 200) {
-        logger.i('Detail inspection added successfully');
+        // logger.i('Detail inspection added successfully');
       } else if (response.statusCode != 200 || response.statusCode != 201) {
         throw Exception(
             'Failed to add detail inspection: ${response.statusMessage}');
       }
     } on DioException catch (error) {
-      logger.e("status code : ${error.response?.statusCode},error : $error");
+      // logger.e("status code : ${error.response?.statusCode},error : $error");
       if (error.response?.statusCode == 401 ||
           error.response?.statusCode == 404) {
         throw Exception('Unauthorized or resource not found');
@@ -46,7 +46,7 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
         throw Exception('Network error: ${error.message}');
       }
     } catch (error) {
-      logger.e("error : $error");
+      // logger.e("error : $error");
       throw Exception('An unexpected error occurred: $error');
     }
   }
@@ -91,6 +91,7 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
       String ResultId) async {
     final prefs = await SharedPreferences.getInstance();
     try {
+      // logger.d("masuk try get detail inspection list, resultId: $ResultId");
       final rawToken = prefs.getString('token');
       if (rawToken == null) {
         throw Exception('Token not found');
@@ -104,7 +105,7 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
         url,
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
-      logger.i("response masuk mulu");
+      // logger.i("response masuk mulu");
 
       // logger.i("response LIST DETAIL: $response");
 
@@ -158,8 +159,8 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
         throw Exception('Token not found');
       }
       final token = rawToken.replaceAll('"', '');
-      logger.d(
-          "ENDPOINT SINGLE : ${dotenv.env['API_BASE_URL']}/detail/machineId=$machineId/tanggal=$tanggal");
+      // logger.d(
+      //     "ENDPOINT SINGLE : ${dotenv.env['API_BASE_URL']}/detail/machineId=$machineId/tanggal=$tanggal");
       final response = await _dio.get(
           '${dotenv.env['API_BASE_URL']}/detail/machineId=$machineId/tanggal=$tanggal',
           options: Options(headers: {'Authorization': 'Bearer $token'}));
@@ -174,16 +175,16 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
           responseData['status'] == true) {
         final machineData = responseData['data'];
         final item = DetailInspectionGetModel.fromJson(machineData);
-        logger.d("item single: $item");
+        // logger.d("item single: $item");
         return item;
       } else {
         throw Exception('Invalid response structure');
       }
     } on DioException catch (error) {
-      logger.e("status code : ${error.response?.statusCode},error : $error");
+      // logger.e("status code : ${error.response?.statusCode},error : $error");
       throw Exception('Network error: ${error.message}');
     } catch (error) {
-      logger.e("TERJADI MASALAH DI REPO DETAIL INSPECTION SINGLE : $error");
+      // logger.e("TERJADI MASALAH DI REPO DETAIL INSPECTION SINGLE : $error");
       throw Exception('An unexpected error occurred: $error');
     }
   }
@@ -201,8 +202,8 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
         throw Exception('Token not found');
       }
       final token = rawToken.replaceAll('"', '');
-      logger.d(
-          "ENDPOINT OTHER : ${dotenv.env['API_BASE_URL']}/detail/date=$formattedDate");
+      // logger.d(
+      //     "ENDPOINT OTHER : ${dotenv.env['API_BASE_URL']}/detail/date=$formattedDate");
 
       final url = '${dotenv.env['API_BASE_URL']}/detail/date=$formattedDate';
 
@@ -211,7 +212,7 @@ class DetailinspectionRepositoryImpl extends DetailinspectionRepository {
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
 
-      logger.i("response list: $response");
+      // logger.i("response list: $response");
 
       if (response.statusCode != 200) {
         throw Exception(

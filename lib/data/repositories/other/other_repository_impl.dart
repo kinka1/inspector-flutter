@@ -7,7 +7,7 @@ import 'package:maintenanceApp/data/repositories/other/other_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OtherRepositoryImpl extends OtherRepository {
-  final logger = Logger();
+  // final logger = Logger();
   final _dio = Dio();
 
   @override
@@ -15,7 +15,7 @@ class OtherRepositoryImpl extends OtherRepository {
     final prefs = await SharedPreferences.getInstance();
 
     try {
-      logger.i('Adding result with model: $model');
+      // logger.i('Adding result with model: $model');
       final rawToken = prefs.getString('token');
       final token = rawToken?.replaceAll('"', '');
       final response = await _dio.post(
@@ -51,7 +51,7 @@ class OtherRepositoryImpl extends OtherRepository {
     try {
       final rawToken = prefs.getString('token');
       final token = rawToken?.replaceAll('"', '');
-      logger.d("ENDPOINT : ${dotenv.env['API_BASE_URL']}/other/$otherId/date=$tanggal");
+      // logger.d("ENDPOINT : ${dotenv.env['API_BASE_URL']}/other/$otherId/date=$tanggal");
       final response = await _dio.get(
           '${dotenv.env['API_BASE_URL']}/other/$otherId/date=$tanggal',
           options: Options(headers: {'Authorization': 'Bearer $token'}));
@@ -59,7 +59,7 @@ class OtherRepositoryImpl extends OtherRepository {
       // logger.i('Response status code: ${response.statusCode}');
       if (response.statusCode == 200) {
         final dataUser = response.data['data'];
-        logger.i('Data user other: $dataUser');
+        // logger.i('Data user other: $dataUser');
         OtherModel other = OtherModel.fromJson(dataUser);
         // logger.i('Other data: ${other}');
         return other;

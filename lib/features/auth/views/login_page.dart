@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isPasswordHidden = true;
-  final logger = Logger();
+  // final logger = Logger();
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                 // Login Button
                 BlocConsumer<AuthBloc, AuthState>(
                   listener: (context, state) {
-                    logger.d("State AUTH: $state");
+                    // logger.d("State AUTH: $state");
                     state.maybeWhen(
                       loginSuccess: () {
                         AutoRouter.of(context).replace(HomenewRoute());
@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                       loading: () => true,
                       orElse: () => false,
                     );
-                    logger.d("isLoading: $isLoading");
+                    // logger.d("isLoading: $isLoading");
                     return _buildLoginButton(isLoading);
                   },
                 ),

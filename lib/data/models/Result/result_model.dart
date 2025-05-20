@@ -66,7 +66,8 @@ class ResultAdd with _$ResultAdd {
   const factory ResultAdd({
     required String status,
     required String machineId,
-    required String buId
+    required String buId,
+    required String date,
   }) = _ResultAdd;
 
   factory ResultAdd.fromJson(Map<String, dynamic> json) =>

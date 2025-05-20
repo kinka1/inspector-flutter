@@ -395,8 +395,6 @@ mixin _$InspectionitemModel {
   String get specification => throw _privateConstructorUsedError;
   String get method => throw _privateConstructorUsedError;
   String get frequency => throw _privateConstructorUsedError;
-  int get number => throw _privateConstructorUsedError;
-  String get imagePath => throw _privateConstructorUsedError;
   bool get isNumber => throw _privateConstructorUsedError;
   String get prasyarat => throw _privateConstructorUsedError;
 
@@ -422,8 +420,6 @@ abstract class $InspectionitemModelCopyWith<$Res> {
       String specification,
       String method,
       String frequency,
-      int number,
-      String imagePath,
       bool isNumber,
       String prasyarat});
 }
@@ -448,8 +444,6 @@ class _$InspectionitemModelCopyWithImpl<$Res, $Val extends InspectionitemModel>
     Object? specification = null,
     Object? method = null,
     Object? frequency = null,
-    Object? number = null,
-    Object? imagePath = null,
     Object? isNumber = null,
     Object? prasyarat = null,
   }) {
@@ -473,14 +467,6 @@ class _$InspectionitemModelCopyWithImpl<$Res, $Val extends InspectionitemModel>
       frequency: null == frequency
           ? _value.frequency
           : frequency // ignore: cast_nullable_to_non_nullable
-              as String,
-      number: null == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as int,
-      imagePath: null == imagePath
-          ? _value.imagePath
-          : imagePath // ignore: cast_nullable_to_non_nullable
               as String,
       isNumber: null == isNumber
           ? _value.isNumber
@@ -508,8 +494,6 @@ abstract class _$$InspectionitemModelImplCopyWith<$Res>
       String specification,
       String method,
       String frequency,
-      int number,
-      String imagePath,
       bool isNumber,
       String prasyarat});
 }
@@ -532,8 +516,6 @@ class __$$InspectionitemModelImplCopyWithImpl<$Res>
     Object? specification = null,
     Object? method = null,
     Object? frequency = null,
-    Object? number = null,
-    Object? imagePath = null,
     Object? isNumber = null,
     Object? prasyarat = null,
   }) {
@@ -558,14 +540,6 @@ class __$$InspectionitemModelImplCopyWithImpl<$Res>
           ? _value.frequency
           : frequency // ignore: cast_nullable_to_non_nullable
               as String,
-      number: null == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as int,
-      imagePath: null == imagePath
-          ? _value.imagePath
-          : imagePath // ignore: cast_nullable_to_non_nullable
-              as String,
       isNumber: null == isNumber
           ? _value.isNumber
           : isNumber // ignore: cast_nullable_to_non_nullable
@@ -589,8 +563,6 @@ class _$InspectionitemModelImpl
       required this.specification,
       required this.method,
       required this.frequency,
-      required this.number,
-      required this.imagePath,
       required this.isNumber,
       required this.prasyarat});
 
@@ -608,17 +580,13 @@ class _$InspectionitemModelImpl
   @override
   final String frequency;
   @override
-  final int number;
-  @override
-  final String imagePath;
-  @override
   final bool isNumber;
   @override
   final String prasyarat;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InspectionitemModel(itemId: $itemId, itemName: $itemName, specification: $specification, method: $method, frequency: $frequency, number: $number, imagePath: $imagePath, isNumber: $isNumber, prasyarat: $prasyarat)';
+    return 'InspectionitemModel(itemId: $itemId, itemName: $itemName, specification: $specification, method: $method, frequency: $frequency, isNumber: $isNumber, prasyarat: $prasyarat)';
   }
 
   @override
@@ -631,8 +599,6 @@ class _$InspectionitemModelImpl
       ..add(DiagnosticsProperty('specification', specification))
       ..add(DiagnosticsProperty('method', method))
       ..add(DiagnosticsProperty('frequency', frequency))
-      ..add(DiagnosticsProperty('number', number))
-      ..add(DiagnosticsProperty('imagePath', imagePath))
       ..add(DiagnosticsProperty('isNumber', isNumber))
       ..add(DiagnosticsProperty('prasyarat', prasyarat));
   }
@@ -650,9 +616,6 @@ class _$InspectionitemModelImpl
             (identical(other.method, method) || other.method == method) &&
             (identical(other.frequency, frequency) ||
                 other.frequency == frequency) &&
-            (identical(other.number, number) || other.number == number) &&
-            (identical(other.imagePath, imagePath) ||
-                other.imagePath == imagePath) &&
             (identical(other.isNumber, isNumber) ||
                 other.isNumber == isNumber) &&
             (identical(other.prasyarat, prasyarat) ||
@@ -662,7 +625,7 @@ class _$InspectionitemModelImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, itemId, itemName, specification,
-      method, frequency, number, imagePath, isNumber, prasyarat);
+      method, frequency, isNumber, prasyarat);
 
   /// Create a copy of InspectionitemModel
   /// with the given fields replaced by the non-null parameter values.
@@ -688,8 +651,6 @@ abstract class _InspectionitemModel implements InspectionitemModel {
       required final String specification,
       required final String method,
       required final String frequency,
-      required final int number,
-      required final String imagePath,
       required final bool isNumber,
       required final String prasyarat}) = _$InspectionitemModelImpl;
 
@@ -706,10 +667,6 @@ abstract class _InspectionitemModel implements InspectionitemModel {
   String get method;
   @override
   String get frequency;
-  @override
-  int get number;
-  @override
-  String get imagePath;
   @override
   bool get isNumber;
   @override
@@ -736,7 +693,6 @@ mixin _$InspectionitemMachineGetModel {
   String get specification => throw _privateConstructorUsedError;
   String get method => throw _privateConstructorUsedError;
   String get frequency => throw _privateConstructorUsedError;
-  int get number => throw _privateConstructorUsedError;
   String get imagePath => throw _privateConstructorUsedError;
   bool get isNumber => throw _privateConstructorUsedError;
   String get prasyarat => throw _privateConstructorUsedError;
@@ -766,7 +722,6 @@ abstract class $InspectionitemMachineGetModelCopyWith<$Res> {
       String specification,
       String method,
       String frequency,
-      int number,
       String imagePath,
       bool isNumber,
       String prasyarat});
@@ -794,7 +749,6 @@ class _$InspectionitemMachineGetModelCopyWithImpl<$Res,
     Object? specification = null,
     Object? method = null,
     Object? frequency = null,
-    Object? number = null,
     Object? imagePath = null,
     Object? isNumber = null,
     Object? prasyarat = null,
@@ -824,10 +778,6 @@ class _$InspectionitemMachineGetModelCopyWithImpl<$Res,
           ? _value.frequency
           : frequency // ignore: cast_nullable_to_non_nullable
               as String,
-      number: null == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as int,
       imagePath: null == imagePath
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
@@ -860,7 +810,6 @@ abstract class _$$InspectionitemMachineGetModelImplCopyWith<$Res>
       String specification,
       String method,
       String frequency,
-      int number,
       String imagePath,
       bool isNumber,
       String prasyarat});
@@ -887,7 +836,6 @@ class __$$InspectionitemMachineGetModelImplCopyWithImpl<$Res>
     Object? specification = null,
     Object? method = null,
     Object? frequency = null,
-    Object? number = null,
     Object? imagePath = null,
     Object? isNumber = null,
     Object? prasyarat = null,
@@ -917,10 +865,6 @@ class __$$InspectionitemMachineGetModelImplCopyWithImpl<$Res>
           ? _value.frequency
           : frequency // ignore: cast_nullable_to_non_nullable
               as String,
-      number: null == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
-              as int,
       imagePath: null == imagePath
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
@@ -949,7 +893,6 @@ class _$InspectionitemMachineGetModelImpl
       required this.specification,
       required this.method,
       required this.frequency,
-      required this.number,
       required this.imagePath,
       required this.isNumber,
       required this.prasyarat});
@@ -971,8 +914,6 @@ class _$InspectionitemMachineGetModelImpl
   @override
   final String frequency;
   @override
-  final int number;
-  @override
   final String imagePath;
   @override
   final bool isNumber;
@@ -981,7 +922,7 @@ class _$InspectionitemMachineGetModelImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InspectionitemMachineGetModel(machineInspectionId: $machineInspectionId, itemId: $itemId, itemName: $itemName, specification: $specification, method: $method, frequency: $frequency, number: $number, imagePath: $imagePath, isNumber: $isNumber, prasyarat: $prasyarat)';
+    return 'InspectionitemMachineGetModel(machineInspectionId: $machineInspectionId, itemId: $itemId, itemName: $itemName, specification: $specification, method: $method, frequency: $frequency, imagePath: $imagePath, isNumber: $isNumber, prasyarat: $prasyarat)';
   }
 
   @override
@@ -995,7 +936,6 @@ class _$InspectionitemMachineGetModelImpl
       ..add(DiagnosticsProperty('specification', specification))
       ..add(DiagnosticsProperty('method', method))
       ..add(DiagnosticsProperty('frequency', frequency))
-      ..add(DiagnosticsProperty('number', number))
       ..add(DiagnosticsProperty('imagePath', imagePath))
       ..add(DiagnosticsProperty('isNumber', isNumber))
       ..add(DiagnosticsProperty('prasyarat', prasyarat));
@@ -1016,7 +956,6 @@ class _$InspectionitemMachineGetModelImpl
             (identical(other.method, method) || other.method == method) &&
             (identical(other.frequency, frequency) ||
                 other.frequency == frequency) &&
-            (identical(other.number, number) || other.number == number) &&
             (identical(other.imagePath, imagePath) ||
                 other.imagePath == imagePath) &&
             (identical(other.isNumber, isNumber) ||
@@ -1035,7 +974,6 @@ class _$InspectionitemMachineGetModelImpl
       specification,
       method,
       frequency,
-      number,
       imagePath,
       isNumber,
       prasyarat);
@@ -1067,7 +1005,6 @@ abstract class _InspectionitemMachineGetModel
       required final String specification,
       required final String method,
       required final String frequency,
-      required final int number,
       required final String imagePath,
       required final bool isNumber,
       required final String prasyarat}) = _$InspectionitemMachineGetModelImpl;
@@ -1087,8 +1024,6 @@ abstract class _InspectionitemMachineGetModel
   String get method;
   @override
   String get frequency;
-  @override
-  int get number;
   @override
   String get imagePath;
   @override

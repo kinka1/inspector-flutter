@@ -11,7 +11,7 @@ part 'machine_inspection_bloc.freezed.dart';
 class MachineInspectionBloc
     extends Bloc<MachineInspectionEvent, MachineInspectionState> {
 
-  final logger = Logger();
+  // final logger = Logger();
   
   MachineInspectionBloc(MachineInspectionRepository repository)
       : super(const MachineInspectionState.initial()) {
@@ -30,7 +30,6 @@ class MachineInspectionBloc
       final response = await _repository.getInspectionItem(event.id,event.buId);
       // logger.i('berhasil hit, response : $response');
       emit(MachineInspectionState.loaded(response));
-      logger.i('berhasil emit');
     } catch (e) {
       emit(MachineInspectionState.error(e.toString()));
     }

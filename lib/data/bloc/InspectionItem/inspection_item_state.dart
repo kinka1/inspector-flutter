@@ -10,3 +10,4 @@ class InspectionItemState with _$InspectionItemState {
   const factory InspectionItemState.loadedbyNumber(
       InspectionitemModel itemsdata) = _LoadedbyNumber;
 }
+

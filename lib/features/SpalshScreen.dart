@@ -21,7 +21,7 @@ class _SpalshScreenState extends State<SpalshScreen> {
   Future<void> _checkLoginStatus() async {
     final authRepository = AuthRepositoryImpl();
     final isLoggedIn = await authRepository.checkTokenValidity();
-    print("isLoggedIn: $isLoggedIn");
+    // print("isLoggedIn: $isLoggedIn");
 
     if (isLoggedIn) {
       // Pengguna sudah login, arahkan ke halaman home

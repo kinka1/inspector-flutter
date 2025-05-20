@@ -45,7 +45,7 @@ class Scan2Page extends StatefulWidget {
 
 class _Scan2PageState extends State<Scan2Page> {
   String statusOther = "-";
-  final logger = Logger();
+  // final logger = Logger();
   final String tanggal = DateFormat('yyyy-MM-dd').format(DateTime.now());
   String machineId = "-";
   bool hasFetched = false;
@@ -53,8 +53,8 @@ class _Scan2PageState extends State<Scan2Page> {
   @override
   void initState() {
     super.initState();
-    logger.i("Init Scan2Page");
-    logger.d("machine ID DI PAGE 2: ${widget.machineId}");
+    // logger.i("Init Scan2Page");
+    // logger.d("machine ID DI PAGE 2: ${widget.machineId}");
 
     // Fetch data awal
     context.read<MachineInspectionBloc>().add(
@@ -62,15 +62,22 @@ class _Scan2PageState extends State<Scan2Page> {
               widget.machineId, widget.buId),
         );
 
-    context.read<DetailInspectionBloc>().add(
-          DetailInspectionEvent.getDetailByDate(widget.ResultId.toString()),
-        );
+    Future.delayed(Duration(seconds: 1), () {
+      context.read<DetailInspectionBloc>().add(
+            DetailInspectionEvent.getDetailByDate(widget.ResultId.toString()),
+          );
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbarCus(context, "Daily Maintenance", false),
+      appBar: appbarCus(context, "Daily Maintenance", false,onBackPressed: () {
+    AutoRouter.of(context).replace(
+       HomenewRoute(),
+    );
+    // Lakukan sesuatu
+  },),
       body: Container(
         color: Colors.white,
         child: Form(
@@ -85,7 +92,7 @@ class _Scan2PageState extends State<Scan2Page> {
   Widget _buildAll() {
     return BlocBuilder<MachineInspectionBloc, MachineInspectionState>(
       builder: (context, state) {
-        logger.d("state machine inspection: $state");
+        // logger.d("state machine inspection: $state");
         return state.maybeWhen(
           loading: () => const Center(child: CircularProgressIndicator()),
           loaded: (response) {
@@ -108,14 +115,13 @@ class _Scan2PageState extends State<Scan2Page> {
   Widget _buildDetailAndButtons(MachineInspectionModel machine) {
     return BlocBuilder<DetailInspectionBloc, DetailInspectionState>(
       builder: (context, state) {
-        logger.d("state detail inspection: $state");
+        // logger.d("state detail inspection: $state");
         return state.maybeWhen(
           loading: () => const Center(child: CircularProgressIndicator()),
           loadedbyDate: (items) {
             final itemCount = items.length;
-            String statuskirim = statusOther == "NG"
-                ? statusOther
-                : _getSelectedStatus(items);
+            String statuskirim =
+                statusOther == "NG" ? statusOther : _getSelectedStatus(items);
 
             return Column(
               children: [
@@ -145,6 +151,7 @@ class _Scan2PageState extends State<Scan2Page> {
   Widget _buildGridButtons(
       MachineInspectionModel machine, List<DetailInspectionGetModel> details) {
     final itemCount = machine.item.length;
+    int number = 1;
 
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.56,
@@ -159,14 +166,14 @@ class _Scan2PageState extends State<Scan2Page> {
         itemCount: itemCount,
         itemBuilder: (context, index) {
           final item = machine.item[index];
-          final status = _getStatusByNumber(details, item.number);
+          final status = _getStatusByNumber(details, item.itemId);
 
           return Kartu(
             status: status,
             caption: item.itemName,
             onPressed: () {
-              logger.d("item number: ${item.number}");
-              if (item.number == 0) {
+              // logger.d("item number: ${item.number}");
+              if (item.itemId == 0) {
                 AutoRouter.of(context).push(
                   ScanOtherRoute(
                     resultId: widget.ResultId,
@@ -213,7 +220,7 @@ class _Scan2PageState extends State<Scan2Page> {
 
               context.read<DetailInspectionBloc>().add(
                     DetailInspectionEvent.getDetailByDate(
-                        widget.ResultId.toString() ),
+                        widget.ResultId.toString()),
                   );
             },
             child: const Text("Retry"),
@@ -226,7 +233,7 @@ class _Scan2PageState extends State<Scan2Page> {
   String _getStatusByNumber(
       List<DetailInspectionGetModel> details, int number) {
     final item = details.firstWhereOrNull(
-      (detail) => detail.inspectionItem.number == number,
+      (detail) => detail.inspectionItem.itemId == number,
     );
     return item?.status ?? "-";
   }

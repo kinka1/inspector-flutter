@@ -28,8 +28,9 @@ class UserData with _$UserData {
 @freezed
 class UserModel with _$UserModel{
   const factory UserModel({
-    required String userId,
+    required int userId,
     required String userName,
+    required String buId,
     // required String password,
   }) = _UserModel;
 

@@ -26,7 +26,7 @@ class DetailInspectionBloc
       emit(const DetailInspectionState.initial());
     });
   }
-  final logger = Logger();
+  // final logger = Logger();
 
   late final DetailinspectionRepository _repository;
 
@@ -35,7 +35,6 @@ class DetailInspectionBloc
     emit(const DetailInspectionState.loading());
 
     try {
-      logger.i("event model : ${event.model}");
       await _repository.addDetailInspection(event.model);
 
       emit(const DetailInspectionState.success());
@@ -82,7 +81,6 @@ class DetailInspectionBloc
       final response = await _repository.getDetailInspectionItem(
           event.machineId, event.number, event.tanggal);
       emit(DetailInspectionState.getData(response));
-            logger.i("berhasil emit");
     } catch (e) {
       emit(DetailInspectionState.error(e.toString()));
     }
@@ -94,16 +92,13 @@ class DetailInspectionBloc
     emit(const DetailInspectionState.loading());
     // logger.i("state BY DATE : ${state}");
     try {
-      logger.i("masuk try BY MACHINE ID AND DATE");
       //MASALAH
       final response = await _repository.getDetailInspectionSingle(
           event.machineId, event.tanggal);
       // logger.i("response GET BY MACHINE ID AND DATE: $response");
       emit(DetailInspectionState.loadedbyMachineIdAndDate(response));
       // logger.i("berhasil emit MACHINE ID AND DATE");
-            logger.i("berhasil emit");
     } catch (e) {
-      logger.e("GAGAL emit DETAIL INSPECTION,error: $e");
       emit(DetailInspectionState.error(e.toString()));
     }
   }
@@ -120,9 +115,7 @@ class DetailInspectionBloc
       // logger.i("masuk try BY DATE");
       final response = await _repository.getDetailInspectionByDateList(formattedDate);
       emit(DetailInspectionState.loadedByMachine(response));
-      logger.i("berhasil emit");
     } catch (e) {
-      logger.e("GAGAL emit DETAIL INSPECTION,error: $e");
       emit(DetailInspectionState.error(e.toString()));
     }
   }
@@ -138,7 +131,6 @@ class DetailInspectionBloc
       // logger.i("response GET BY ID AND DATE: $response");
       emit(DetailInspectionState.loadedByDateList(response));
     } catch (e) {
-      logger.e("GAGAL emit DETAIL INSPECTION,error: $e");
       emit(DetailInspectionState.error(e.toString()));
     }
   }

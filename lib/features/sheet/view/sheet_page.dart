@@ -152,7 +152,7 @@ class _SheetPageState extends State<SheetPage> {
                       }
                     },
                     child: Container(
-                      width: MediaQuery.of(context).size.width * 0.28,
+                      width: MediaQuery.of(context).size.width * 0.25,
                       height: 60,
                       decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),

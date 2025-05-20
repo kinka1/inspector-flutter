@@ -42,8 +42,6 @@ _$InspectionitemModelImpl _$$InspectionitemModelImplFromJson(
       specification: json['specification'] as String,
       method: json['method'] as String,
       frequency: json['frequency'] as String,
-      number: (json['number'] as num).toInt(),
-      imagePath: json['imagePath'] as String,
       isNumber: json['isNumber'] as bool,
       prasyarat: json['prasyarat'] as String,
     );
@@ -56,8 +54,6 @@ Map<String, dynamic> _$$InspectionitemModelImplToJson(
       'specification': instance.specification,
       'method': instance.method,
       'frequency': instance.frequency,
-      'number': instance.number,
-      'imagePath': instance.imagePath,
       'isNumber': instance.isNumber,
       'prasyarat': instance.prasyarat,
     };
@@ -71,7 +67,6 @@ _$InspectionitemMachineGetModelImpl
           specification: json['specification'] as String,
           method: json['method'] as String,
           frequency: json['frequency'] as String,
-          number: (json['number'] as num).toInt(),
           imagePath: json['imagePath'] as String,
           isNumber: json['isNumber'] as bool,
           prasyarat: json['prasyarat'] as String,
@@ -86,7 +81,6 @@ Map<String, dynamic> _$$InspectionitemMachineGetModelImplToJson(
       'specification': instance.specification,
       'method': instance.method,
       'frequency': instance.frequency,
-      'number': instance.number,
       'imagePath': instance.imagePath,
       'isNumber': instance.isNumber,
       'prasyarat': instance.prasyarat,

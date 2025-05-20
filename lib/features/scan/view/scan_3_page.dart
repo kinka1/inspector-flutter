@@ -1,5 +1,5 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:logger/logger.dart';
+// import 'package:logger/logger.dart';
 import 'package:maintenanceApp/data/bloc/result/result.dart';
 import 'package:maintenanceApp/data/models/DetailInspection/DetailInspection_model.dart';
 import 'package:maintenanceApp/data/models/InspectionItem/InspectionItem_model.dart';
@@ -32,7 +32,7 @@ class Scan3Page extends StatefulWidget {
 }
 
 class _Scan3PageState extends State<Scan3Page> {
-  final logger = Logger();
+  // final logger = Logger();
   double margin = 0;
   @override
   void initState() {
@@ -42,7 +42,7 @@ class _Scan3PageState extends State<Scan3Page> {
 
   @override
   Widget build(BuildContext context) {
-    logger.d("isnumber : ${widget.model.isNumber}");
+    // logger.d("isnumber : ${widget.model.isNumber}");
     return Scaffold(
         appBar: appbarCus(context, "Daily Maintenance", false),
         body: SingleChildScrollView(

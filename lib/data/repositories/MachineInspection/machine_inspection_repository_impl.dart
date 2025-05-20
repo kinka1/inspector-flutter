@@ -5,12 +5,12 @@ import 'package:maintenanceApp/data/models/MachineInspection/machine_inspection_
 import 'package:maintenanceApp/data/repositories/MachineInspection/machine_inspection_repository.dart';
 
 class MachineInspectionRepositoryImpl extends MachineInspectionRepository {
-  final logger = Logger();
+  // final logger = Logger();
   final _dio = Dio();
   @override
   Future<MachineInspectionModel> getInspectionItem(String id,String buId) async {
   try {
-    logger.i("MASUK TRY REPO MACHINE INSPECTION, machine id : $id");
+    // logger.i("MASUK TRY REPO MACHINE INSPECTION, machine id : $id");
     final response =
         await _dio.get('${dotenv.env['API_BASE_URL']}/machineInspection/BU=$buId/$id');
     // logger.i("RESPONSE MACHINE INSPECTION : ${response}");
@@ -23,18 +23,18 @@ class MachineInspectionRepositoryImpl extends MachineInspectionRepository {
           // logger.i("RESPONSE MACHINE INSPECTION: $item");
           return item;
         } else {
-          logger.e("ERROR MACHINE INSPECTION: Invalid 'data' structure");
+          // logger.e("ERROR MACHINE INSPECTION: Invalid 'data' structure");
           throw Exception("Invalid 'data' structure in the response");
         }
       } else {
-        logger.e("ERROR MACHINE INSPECTION: Invalid response structure");
+        // logger.e("ERROR MACHINE INSPECTION: Invalid response structure");
         throw Exception("Invalid response structure");
       }
     } else {
       throw Exception('Failed to get Inspection Items');
     }
   } on DioException catch (error) {
-    logger.e("ERROR MACHINE INSPECTION : ${error.message}");
+    // logger.e("ERROR MACHINE INSPECTION : ${error.message}");
     throw Exception(error.message);
   }
 }

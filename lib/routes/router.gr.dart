@@ -15,18 +15,6 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    HomeRoute.name: (routeData) {
-      final args =
-          routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: HomePage(
-          key: args.key,
-          code: args.code,
-          date: args.date,
-        ),
-      );
-    },
     HomenewRoute.name: (routeData) {
       final args = routeData.argsAs<HomenewRouteArgs>(
           orElse: () => const HomenewRouteArgs());
@@ -118,48 +106,6 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
-}
-
-/// generated route for
-/// [HomePage]
-class HomeRoute extends PageRouteInfo<HomeRouteArgs> {
-  HomeRoute({
-    Key? key,
-    int? code,
-    String? date,
-    List<PageRouteInfo>? children,
-  }) : super(
-          HomeRoute.name,
-          args: HomeRouteArgs(
-            key: key,
-            code: code,
-            date: date,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'HomeRoute';
-
-  static const PageInfo<HomeRouteArgs> page = PageInfo<HomeRouteArgs>(name);
-}
-
-class HomeRouteArgs {
-  const HomeRouteArgs({
-    this.key,
-    this.code,
-    this.date,
-  });
-
-  final Key? key;
-
-  final int? code;
-
-  final String? date;
-
-  @override
-  String toString() {
-    return 'HomeRouteArgs{key: $key, code: $code, date: $date}';
-  }
 }
 
 /// generated route for

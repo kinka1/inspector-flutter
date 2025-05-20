@@ -12,7 +12,7 @@ part 'result_state.dart';
 part 'result_bloc.freezed.dart';
 
 class ResultBloc extends Bloc<ResultEvent, ResultState> {
-  final logger = Logger();
+  // final logger = Logger();
 
   ResultBloc({required ResultRepository repository}) : super(_Initial()) {
     _repository = repository;
@@ -34,7 +34,6 @@ class ResultBloc extends Bloc<ResultEvent, ResultState> {
     // logger.i("MASUK GET RESULT");
     try {
       var response = await _repository.getResult();
-      logger.i("RESULT : $response");
       emit(ResultState.loaded(response));
     } catch (e) {
       // logger.e("ERROR GET RESULT : $e");
@@ -48,7 +47,6 @@ class ResultBloc extends Bloc<ResultEvent, ResultState> {
       // logger.i("MASUK TRY ADD RESULT");
       var response= await _repository.addResult(event.result);
       emit(ResultState.added(response));
-      logger.i("BERHASIL EMIT ADD RESULT");
     } catch (e) {
       // logger.e("ERROR ADD RESULT : $e");
       emit(ResultState.error(e.toString()));

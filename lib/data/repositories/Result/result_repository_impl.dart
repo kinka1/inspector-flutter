@@ -8,45 +8,60 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ResultRepositoryImpl extends ResultRepository {
   final logger = Logger();
   final _dio = Dio();
+  final String formattedDate =
+      '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}';
+  bool isDuplicate = false;
+  String machineId = '';
+  String _rawtoken = '';
 
   @override
-  Future<ResultModel> addResult(ResultAdd result) async {
+  Future<ResultModel?> addResult(ResultAdd result) async {
     final prefs = await SharedPreferences.getInstance();
+    String? rawToken = prefs.getString('token');
+    rawToken = rawToken!.replaceAll('"', '');
+    if(machineId == result.machineId && result.date == formattedDate && rawToken == _rawtoken){
+      isDuplicate = true;
+    } else {
+      _rawtoken = rawToken;
+      isDuplicate = false;
+    }
     try {
-      logger.i("masuk try repository ADD RESULT");
-      final rawToken = prefs.getString('token');
-      if (rawToken == null) {
-        throw Exception('Token not found in SharedPreferences');
-      }
-
-      final token = rawToken.replaceAll('"', '');
-      var response = await _dio.post(
-        '${dotenv.env['API_BASE_URL']}/result',
-        options: Options(headers: {'Authorization': 'Bearer $token'}),
-        data: {
-          'status': result.status,
-          'machineId': result.machineId,
-          'buId': result.buId,
-        },
-      );
-
-      if (response.statusCode == 200) {
-        final responseData = response.data;
-        logger.i("response data : $responseData");
-
-        // ✅ Periksa apakah responseData adalah Map
-        if (responseData is Map<String, dynamic> &&
-            responseData['status'] == true) {
-          var data = responseData['data'];
-          ResultModel item = ResultModel.fromJson(data);
-
-          return item; // Mengembalikan hasil jika sukses
-        } else {
-          throw Exception('Invalid response structure');
+      if (isDuplicate == false) {
+        isDuplicate = true;
+        machineId = result.machineId;
+        final rawToken = prefs.getString('token');
+        if (rawToken == null) {
+          throw Exception('Token not found in SharedPreferences');
         }
-      } else {
-        throw Exception('Unexpected status code: ${response.statusCode}');
-      }
+
+        final token = rawToken.replaceAll('"', '');
+        var response = await _dio.post(
+          '${dotenv.env['API_BASE_URL']}/result',
+          options: Options(headers: {'Authorization': 'Bearer $token'}),
+          data: {
+            'status': result.status,
+            'machineId': result.machineId,
+            'buId': result.buId,
+          },
+        );
+
+        if (response.statusCode == 200) {
+          final responseData = response.data;
+
+          // ✅ Periksa apakah responseData adalah Map
+          if (responseData is Map<String, dynamic> &&
+              responseData['status'] == true) {
+            var data = responseData['data'];
+            ResultModel item = ResultModel.fromJson(data);
+
+            return item; // Mengembalikan hasil jika sukses
+          } else {
+            throw Exception('Invalid response structure');
+          }
+        } else {
+          throw Exception('Unexpected status code: ${response.statusCode}');
+        }
+      } 
     } on DioException catch (error) {
       if (error.response != null &&
           (error.response!.statusCode == 401 ||
@@ -57,16 +72,15 @@ class ResultRepositoryImpl extends ResultRepository {
       }
     } catch (error) {
       // Menangani error lainnya yang mungkin terjadi
-      throw Exception('An unexpected error occurred: $error');
+     throw Exception('An unexpected error occurred: $error');
+      // throw Exception('');
     }
   }
 
   Future<void> updateResultStatus(ResultModel model) async {
     final prefs = await SharedPreferences.getInstance();
     try {
-      // logger.i("masuk try repository");
-      // logger.i("model : $model");
-      // logger.i("")
+
       final rawToken = prefs.getString('token');
       final token = rawToken?.replaceAll('"', '');
       final response = await _dio.put(
@@ -94,9 +108,8 @@ class ResultRepositoryImpl extends ResultRepository {
     }
   }
 
-  Future<ResultModel> getResultByDate(String machineId,String tanggal) async {
+  Future<ResultModel> getResultByDate(String machineId, String tanggal) async {
     final prefs = await SharedPreferences.getInstance();
-    logger.i("masuk try repository, TANGGAL : $tanggal");
     // String date = '2025-04-11';
     try {
       final rawToken = prefs.getString('token');
@@ -111,7 +124,6 @@ class ResultRepositoryImpl extends ResultRepository {
 
       if (response.statusCode == 200) {
         final responseData = response.data;
-        logger.i("response data : $responseData");
 
         // ✅ Periksa apakah responseData adalah Map
         if (responseData is Map<String, dynamic> &&
@@ -127,17 +139,16 @@ class ResultRepositoryImpl extends ResultRepository {
         throw Exception('Failed to get Inspection Items');
       }
     } on DioException catch (error) {
-      logger.e("ERROR MACHINE INSPECTION : ${error.message}");
       throw Exception(error.message);
     }
   }
 
-  Future<List<ResultGet>> getResultByDatelist(String buId,String tanggal) async {
+  Future<List<ResultGet>> getResultByDatelist(
+      String buId, String tanggal) async {
     final prefs = await SharedPreferences.getInstance();
     try {
       final rawToken = prefs.getString('token');
       final token = rawToken?.replaceAll('"', '');
-      // logger.i("masuk try repository, TANGGAL : $tanggal, buId : $buId");
       final response = await _dio.get(
         '${dotenv.env['API_BASE_URL']}/result/$buId/$tanggal',
         options: Options(headers: {'Authorization': 'Bearer $token'}),

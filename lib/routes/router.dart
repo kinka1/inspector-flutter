@@ -24,12 +24,6 @@ class AppRouter extends _$AppRouter {
           initial: true,
         ),
         CustomRoute(
-          page: HomeRoute.page,
-          path: '/home',
-          transitionsBuilder: TransitionsBuilders.fadeIn,
-          // initial: true,
-        ),
-        CustomRoute(
           page: HomenewRoute.page,
           path: '/homenew',
           transitionsBuilder: TransitionsBuilders.fadeIn,

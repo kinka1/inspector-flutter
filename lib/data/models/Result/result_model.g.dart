@@ -84,6 +84,7 @@ _$ResultAddImpl _$$ResultAddImplFromJson(Map<String, dynamic> json) =>
       status: json['status'] as String,
       machineId: json['machineId'] as String,
       buId: json['buId'] as String,
+      date: json['date'] as String,
     );
 
 Map<String, dynamic> _$$ResultAddImplToJson(_$ResultAddImpl instance) =>
@@ -91,4 +92,5 @@ Map<String, dynamic> _$$ResultAddImplToJson(_$ResultAddImpl instance) =>
       'status': instance.status,
       'machineId': instance.machineId,
       'buId': instance.buId,
+      'date': instance.date,
     };

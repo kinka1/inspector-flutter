@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-// import 'package:logger/logger.dart';
+import 'package:logger/logger.dart';
 import 'package:maintenanceApp/data/models/user/user_model.dart';
 import 'package:maintenanceApp/data/repositories/auth/auth_repository.dart';
 import 'package:dio/dio.dart';
@@ -8,7 +8,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
-  // // final logger = Logger();
+  // final logger = Logger();
   final _dio = Dio();
 
   @override
@@ -58,6 +58,7 @@ class AuthRepositoryImpl extends AuthRepository {
   Future<bool> checkTokenValidity() async {
     final prefs = await SharedPreferences.getInstance();
     final rawToken = prefs.getString('token');
+    // logger.d("raw token : $rawToken");
 
     if (rawToken == null) {
       return false; // Tidak ada token, harus login ulang

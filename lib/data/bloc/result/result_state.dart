@@ -10,7 +10,7 @@ class ResultState with _$ResultState {
       List<ResultModel> result, int OKCount, int NGCount) = _GetAll;
   const factory ResultState.error(String error) = _Error;
   const factory ResultState.update(ResultModel model) = _Update;
-  const factory ResultState.added(ResultModel model) = _Added;
+  const factory ResultState.added(ResultModel? model) = _Added;
   const factory ResultState.loadedByDateList(List<ResultGet> result) =
       _LoadedByDateList;
   const factory ResultState.loadedByDate(ResultModel result) = _LoadedByDate;

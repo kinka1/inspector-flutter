@@ -33,8 +33,6 @@ class InspectionitemModel with _$InspectionitemModel {
       required String specification,
       required String method,
       required String frequency,
-      required int number,
-      required String imagePath,
       required bool isNumber,
       required String prasyarat}) = _InspectionitemModel;
 
@@ -51,7 +49,6 @@ class InspectionitemMachineGetModel with _$InspectionitemMachineGetModel {
       required String specification,
       required String method,
       required String frequency,
-      required int number,
       required String imagePath,
       required bool isNumber,
       required String prasyarat}) = _InspectionitemMachineGetModel;

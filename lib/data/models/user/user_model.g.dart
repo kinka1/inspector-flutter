@@ -30,12 +30,14 @@ Map<String, dynamic> _$$UserDataImplToJson(_$UserDataImpl instance) =>
 
 _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
     _$UserModelImpl(
-      userId: json['userId'] as String,
+      userId: (json['userId'] as num).toInt(),
       userName: json['userName'] as String,
+      buId: json['buId'] as String,
     );
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
     <String, dynamic>{
       'userId': instance.userId,
       'userName': instance.userName,
+      'buId': instance.buId,
     };

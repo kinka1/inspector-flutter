@@ -66,7 +66,7 @@ class _Sheet2PageState extends State<Sheet2Page> {
                 child: BuildTable(
                   boxBorder: Border.all(
                     color: Colors.black,
-                    width: 2,
+                    width: 1,
                   ),
                   // borderRadius:  BorderRadius.circular(15),
                 ),
@@ -126,9 +126,9 @@ class _Sheet2PageState extends State<Sheet2Page> {
       itemBuilder: (context, index) {
         if (!statusOther && index == response.length) {
           return Container(
-          margin: const EdgeInsets.only(top: 10),
-            child: BuildTable(
-              response: const DetailInspectionGetModel(
+            margin: const EdgeInsets.only(top: 0),
+            child: const BuildTable(
+              response: DetailInspectionGetModel(
                 id: 0,
                 inspectionItem: InspectionitemModel(
                   itemName: "OTHER",
@@ -136,8 +136,6 @@ class _Sheet2PageState extends State<Sheet2Page> {
                   itemId: 0,
                   specification: '-',
                   frequency: '-',
-                  number: 0,
-                  imagePath: '-',
                   isNumber: false,
                   prasyarat: '-',
                 ),
@@ -145,18 +143,28 @@ class _Sheet2PageState extends State<Sheet2Page> {
                 remark: "-",
               ),
               // boxBorder: Border.all(color: Colors.black, width: 2),
-              borderRadius: BorderRadius.circular(15),
+              // borderRadius: BorderRadius.circular(15),
+              boxBorder: Border(
+                left: BorderSide(color: Colors.black, width: 1.0),
+                right: BorderSide(color: Colors.black, width: 1.0),
+                bottom: BorderSide(color: Colors.black, width: 1.0),
+              ),
             ),
           );
         }
         final item = response[index];
         return Container(
-          margin: const EdgeInsets.only(top: 10),
+          margin: const EdgeInsets.only(top: 0),
           child: BuildTable(
             // date: widget.date,
             response: item,
-            // boxBorder: Border.all(color: Colors.black, width: 2),
-            borderRadius: BorderRadius.circular(15),
+            boxBorder: const Border(
+              left: BorderSide(color: Colors.black, width: 1.0),
+              right: BorderSide(color: Colors.black, width: 1.0),
+              bottom: BorderSide(color: Colors.black, width: 1.0),
+            ),
+
+            // borderRadius: BorderRadius.circular(15),
           ),
         );
       },
