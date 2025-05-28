@@ -8,7 +8,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
-  // final logger = Logger();
+  final logger = Logger();
   final _dio = Dio();
 
   @override
@@ -26,18 +26,25 @@ class AuthRepositoryImpl extends AuthRepository {
 
       if (response.statusCode == 200) {
         final data = response.data['data'];
-        // logger.i("data : $data");
+        logger.i("data : $data");
         final user = data['user'];
         final token = data['token'];
         final Username = user['userName'];
         final BU = user['buId'];
+        final fullname = user['fullname'];
+        final buName = user['buName'];
+        final UID = user['id'];
+
+        // logger.d("User ID : $UID");
         await prefs.setString('user', jsonEncode(user));
         await prefs.setString('token', jsonEncode(token));
         await prefs.setString('username', jsonEncode(Username));
         await prefs.setString('buId', jsonEncode(BU));
+        await prefs.setString('fullname', jsonEncode(fullname));
+        await prefs.setString('buName', jsonEncode(buName));
+        await prefs.setInt('userId', UID); // ✅ Gantilah ini
+
         // await prefs.setString('created_at', formattedDate);
-        print("data : $data");
-        print("BU : $BU");
       }
     } on DioException catch (error) {
       if (error.response!.statusCode == 401 ||

@@ -5,6 +5,7 @@ import 'package:maintenanceApp/core/color_values.dart';
 import 'package:maintenanceApp/data/bloc/DetailInspection/detail_inspection_bloc.dart';
 import 'package:maintenanceApp/data/models/DetailInspection/DetailInspection_model.dart';
 import 'package:maintenanceApp/data/models/InspectionItem/InspectionItem_model.dart';
+import 'package:maintenanceApp/data/parse.dart';
 import 'package:maintenanceApp/features/widget/col.dart';
 import 'package:maintenanceApp/features/widget/custom_text_field.dart';
 import 'package:maintenanceApp/features/widget/textCaption.dart';
@@ -23,6 +24,8 @@ class Buildform extends StatefulWidget {
     required this.machineId,
     required this.margin,
     required this.userId,
+    this.status,
+    this.remark,
     // required this.machineInspectionId,
   });
 
@@ -32,6 +35,8 @@ class Buildform extends StatefulWidget {
   final String machineId;
   final double margin;
   final int userId;
+  final String? status;
+  final String? remark;
 
   @override
   State<Buildform> createState() => _BuildformState();
@@ -44,7 +49,7 @@ class _BuildformState extends State<Buildform> {
 
   late TextEditingController _descriptionController;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  // final logger = Logger();
+  final logger = Logger();
   String status = "-";
   double height = 0;
 
@@ -52,6 +57,16 @@ class _BuildformState extends State<Buildform> {
   void initState() {
     super.initState();
     _descriptionController = TextEditingController();
+    logger.d("item remark : ${widget.remark}");
+
+    if (widget.status != "-") {
+      selectedStatus = widget.status!;
+    }
+    if (widget.remark != null || widget.remark == "-") {
+      _descriptionController.text = widget.remark!;
+    }
+
+    logger.d("selectedStatus : $selectedStatus");
   }
 
   @override
@@ -64,9 +79,9 @@ class _BuildformState extends State<Buildform> {
   @override
   Widget build(BuildContext context) {
     if (widget.item.isNumber == true) {
-      height = 0.45;
+      height = 0.5;
     } else {
-      height = 0.51;
+      height = 0.60;
     }
     return Container(
       // padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -74,95 +89,161 @@ class _BuildformState extends State<Buildform> {
         key: _formKey,
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 30, bottom: 30),
-              child: Image.network(
-                widget.item.imagePath,
-                height: 300,
-                fit: BoxFit.cover,
-                loadingBuilder: (context, child, progress) {
-                  return progress == null
-                      ? child
-                      : const CircularProgressIndicator();
-                },
-                errorBuilder: (context, error, stackTrace) =>
-                    const Icon(Icons.error),
-              ),
+            Stack(
+              children: [
+                Container(
+                  height: 500, // Tinggi gambar
+                  width: double.infinity, // Lebar penuh
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      // Menggunakan placeholder image dari placehold.co
+                      image: NetworkImage(widget.item.imagePath),
+                      fit: BoxFit.cover, // Gambar memenuhi area container
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 480,
+                  height: 20,
+                  left: 0,
+                  right: 0 ,
+                  child: Container(
+                    margin: EdgeInsets.only(top: widget.margin),
+                    height: 10,
+                    // width: double.infinity,
+                    padding: const EdgeInsets.only(right: 30, left: 30, top: 30),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.3),
+                          spreadRadius: 2,
+                          blurRadius: 10,
+                          offset: const Offset(0, 5), // Posisi bayangan
+                        ),
+                      ],
+                      // border: Border.all(color: Colors.grey, width: 1),
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30)),
+                    ),
+                    // child: Text("data"),
+                  ),
+                ),
+                
+              ],
             ),
             Container(
-              margin: EdgeInsets.only(top: widget.margin),
               height: MediaQuery.of(context).size.height * height,
-              padding: const EdgeInsets.only(right: 30, left: 30, top: 40),
+              padding: const EdgeInsets.only(right: 30, left: 30),
               decoration: BoxDecoration(
-                color: ColorValues.hijauMain,
-                border: Border.all(color: ColorValues.hijauMain),
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30)),
+                color: Colors.white,
+                // border: Border.all(color: Colors.grey, width: 1),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Col(
-                      title: "Inspection Item  ",
-                      flexSize: 2,
-                      caption: widget.item.itemName,
-                      warna: Colors.white),
-                  Col(
-                      title: "Specification ",
-                      flexSize: 2,
-                      caption: widget.item.specification,
-                      warna: Colors.white),
-                  Col(
-                      title: "Method ",
-                      flexSize: 2,
-                      caption: widget.item.method,
-                      warna: Colors.white),
-                  Col(
-                      title: "Period ",
-                      flexSize: 2,
-                      caption: widget.item.frequency,
-                      warna: Colors.white),
+                  Container(
+                    padding: const EdgeInsets.only(top: 5, bottom: 5),
+                    child: Col(
+                        title: "Inspection Item  ",
+                        flexSize: 2,
+                        caption: toTitleCase( widget.item.itemName),
+                        warna: Colors.black),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(bottom: 5),
+                    child: Col(
+                        title: "Specification ",
+                        flexSize: 2,
+                        caption:toTitleCase( widget.item.specification),
+                        warna: Colors.black),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(bottom: 5),
+                    child: Col(
+                        title: "Method ",
+                        flexSize: 2,
+                        caption:toTitleCase( widget.item.method),
+                        warna: Colors.black),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: Col(
+                        title: "Period ",
+                        flexSize: 2,
+                        caption: toTitleCase( widget.item.frequency),
+                        warna: Colors.black),
+                  ),
                   widget.item.isNumber == false
-                      ? Row(
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: Text("Status",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 25,
-                                          color: Colors.white)),
-                            ),
-                            Expanded(
-                              flex: 3,
-                              child: Row(
-                                children: [
-                                  _buildCard("OK"),
-                                  const SizedBox(width: 10),
-                                  _buildCard("NG"),
-                                ],
+                      ? Container(
+                    padding: const EdgeInsets.only(bottom: 5),
+
+                        child: Row(
+                            children: [
+                              Expanded(
+                                flex: 2,
+                                child: Text("Status",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 25,
+                                            color: Colors.black)),
                               ),
-                            ),
-                          ],
-                        )
+                              Expanded(
+                                flex: 3,
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      ":",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 25,
+                                              color: Colors.black),
+                                    ),
+                                    const SizedBox(width: 5),
+                                    _buildCard("OK"),
+                                    const SizedBox(width: 10),
+                                    _buildCard("NG"),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                      )
                       : const SizedBox(),
                   CustomTextField(
+                    maxLines: 4,
                     controller: _descriptionController,
                     hintText:
                         "Wajib diisi jika Specification Berupa angka (Contoh: 1, 2, 3)",
                     labelText: "Remark",
-                    textInputType: TextInputType.text,
+                    textInputType: widget.item.isNumber
+                        ? TextInputType.number
+                        : TextInputType.text,
                     LabelTextStyle: Theme.of(context)
                         .textTheme
                         .bodyLarge!
                         .copyWith(
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 25),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Text(
+                      'Note : If the specification is in the form of numbers, it is mandatory to fill in',
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          fontWeight: FontWeight.bold,
+                          // fontSize: 18,
+                          color: ColorValues.grayscale600),
+                    ),
                   ),
                   BlocConsumer<DetailInspectionBloc, DetailInspectionState>(
                     listener: (context, state) {
@@ -202,8 +283,8 @@ class _BuildformState extends State<Buildform> {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           const SnackBar(
-                                              content: Text(
-                                                  "DESKRIPSI WAJIB DIISI")),
+                                              content:
+                                                  Text("Remarks are required")),
                                         );
                                         return;
                                       }
@@ -226,7 +307,7 @@ class _BuildformState extends State<Buildform> {
                                         } else {
                                           Flushbar(
                                             title: 'Terjadi Kesalahan',
-                                            message: "MASUKKAN ANGKA",
+                                            message: "Input Number",
                                             duration:
                                                 const Duration(seconds: 3),
                                             backgroundColor:
@@ -303,18 +384,16 @@ class _BuildformState extends State<Buildform> {
       padding: const EdgeInsets.symmetric(vertical: 20),
       width: double.infinity,
       decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.black,
-            width: 1.2,
-          ),
-          color: ColorValues.kuningButton,
+          // border: Border.all(
+          //   // color: Colors.black,
+          //   width: 1.2,
+          // ),
+          color: ColorValues.hijauMuda,
           borderRadius: BorderRadius.circular(10)),
       child: Text(
-        "Simpan",
-        style: Theme.of(context)
-            .textTheme
-            .bodyMedium!
-            .copyWith(fontWeight: FontWeight.bold, fontSize: 25),
+        "Save",
+        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+            fontWeight: FontWeight.bold, fontSize: 25, color: Colors.white),
       ),
     );
   }
@@ -351,7 +430,7 @@ class _BuildformState extends State<Buildform> {
     return true; // Jika requirement kosong
   }
 
-  Widget _buildCard(String value) {
+  Widget _buildCard(String value, {String? status}) {
     return GestureDetector(
       onTap: () {
         if (!mounted) return;
@@ -359,15 +438,27 @@ class _BuildformState extends State<Buildform> {
           selectedStatus = value; // Update the selected status
         });
       },
-      child: Card(
-        shape: RoundedRectangleBorder(
+      child: Container(
+        decoration: BoxDecoration(
+          color: selectedStatus == value
+              ? (value == "OK"
+                  ? ColorValues.hijauMuda
+                  : ColorValues.redNG) // Hijau untuk OK, Merah untuk NG
+              : Colors.white,
+          border: Border.all(
+            color: selectedStatus == value
+                ? (value == "OK"
+                    ? ColorValues.hijauMuda
+                    : ColorValues.redNG) // Hijau untuk OK, Merah untuk NG
+                : Colors.grey, // Warna default jika belum dipilih
+            width: 2,
+          ),
           borderRadius: BorderRadius.circular(20),
         ),
-        color: selectedStatus == value
-            ? (value == "OK"
-                ? ColorValues.hijauBUtton
-                : ColorValues.merahButton) // Hijau untuk OK, Merah untuk NG
-            : ColorValues.grayscale300, // Warna default jika belum dipilih
+        // shape: RoundedRectangleBorder(
+        //   borderRadius: BorderRadius.circular(20),
+        // ),
+
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Center(

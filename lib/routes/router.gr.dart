@@ -60,6 +60,8 @@ abstract class _$AppRouter extends RootStackRouter {
           machineId: args.machineId,
           ResultId: args.ResultId,
           userId: args.userId,
+          status: args.status,
+          remark: args.remark,
         ),
       );
     },
@@ -74,6 +76,7 @@ abstract class _$AppRouter extends RootStackRouter {
           inspectionId: args.inspectionId,
           buId: args.buId,
           userId: args.userId,
+          remark: args.remark,
         ),
       );
     },
@@ -242,6 +245,8 @@ class Scan3Route extends PageRouteInfo<Scan3RouteArgs> {
     required String machineId,
     required int ResultId,
     required int userId,
+    String? status,
+    String? remark,
     List<PageRouteInfo>? children,
   }) : super(
           Scan3Route.name,
@@ -252,6 +257,8 @@ class Scan3Route extends PageRouteInfo<Scan3RouteArgs> {
             machineId: machineId,
             ResultId: ResultId,
             userId: userId,
+            status: status,
+            remark: remark,
           ),
           initialChildren: children,
         );
@@ -269,6 +276,8 @@ class Scan3RouteArgs {
     required this.machineId,
     required this.ResultId,
     required this.userId,
+    this.status,
+    this.remark,
   });
 
   final Key? key;
@@ -283,9 +292,13 @@ class Scan3RouteArgs {
 
   final int userId;
 
+  final String? status;
+
+  final String? remark;
+
   @override
   String toString() {
-    return 'Scan3RouteArgs{key: $key, model: $model, machineInspectionId: $machineInspectionId, machineId: $machineId, ResultId: $ResultId, userId: $userId}';
+    return 'Scan3RouteArgs{key: $key, model: $model, machineInspectionId: $machineInspectionId, machineId: $machineId, ResultId: $ResultId, userId: $userId, status: $status, remark: $remark}';
   }
 }
 
@@ -299,6 +312,7 @@ class ScanOtherRoute extends PageRouteInfo<ScanOtherRouteArgs> {
     required int inspectionId,
     required String buId,
     required int userId,
+    String? remark,
     List<PageRouteInfo>? children,
   }) : super(
           ScanOtherRoute.name,
@@ -309,6 +323,7 @@ class ScanOtherRoute extends PageRouteInfo<ScanOtherRouteArgs> {
             inspectionId: inspectionId,
             buId: buId,
             userId: userId,
+            remark: remark,
           ),
           initialChildren: children,
         );
@@ -327,6 +342,7 @@ class ScanOtherRouteArgs {
     required this.inspectionId,
     required this.buId,
     required this.userId,
+    this.remark,
   });
 
   final Key? key;
@@ -341,9 +357,11 @@ class ScanOtherRouteArgs {
 
   final int userId;
 
+  final String? remark;
+
   @override
   String toString() {
-    return 'ScanOtherRouteArgs{key: $key, machineId: $machineId, resultId: $resultId, inspectionId: $inspectionId, buId: $buId, userId: $userId}';
+    return 'ScanOtherRouteArgs{key: $key, machineId: $machineId, resultId: $resultId, inspectionId: $inspectionId, buId: $buId, userId: $userId, remark: $remark}';
   }
 }
 

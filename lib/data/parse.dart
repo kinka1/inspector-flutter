@@ -9,3 +9,10 @@ String parseToStringDate(DateTime input) {
   final parsedate = "${input.year}-${input.month}-${input.day}";
   return parsedate;
 }
+
+String toTitleCase(String input) {
+  return input.toLowerCase().split(' ').map((word) {
+    if (word.isEmpty) return '';
+    return word[0].toUpperCase() + word.substring(1);
+  }).join(' ');
+}

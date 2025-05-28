@@ -20,12 +20,14 @@ class ScanOtherPage extends StatefulWidget {
       required this.resultId,
       required this.inspectionId,
       required this.buId,
-      required this.userId});
+      required this.userId,
+      this.remark});
   final String machineId;
   final int resultId;
   final int inspectionId;
   final String buId;
   final int userId;
+  final String? remark;
 
   @override
   State<ScanOtherPage> createState() => _ScanOtherPageState();
@@ -38,13 +40,14 @@ class _ScanOtherPageState extends State<ScanOtherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbarCus(context, "Daily Maintenance", false),
+      appBar: appbarCus(context, "Daily Maintenance", isLeading: false),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 25),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomTextField(
+              maxLines: 4,
               controller: _OtherController,
               hintText: "Masukan Keluhan",
               labelText: "Other",

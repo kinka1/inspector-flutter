@@ -29,7 +29,7 @@ class Col extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: size ?? 24,
-                color: Colors.white),
+                color: warna ?? Colors.white),
           ),
         ),
         Expanded(
@@ -38,8 +38,8 @@ class Col extends StatelessWidget {
             ": $caption",
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                 fontWeight: FontWeight.bold,
-                fontSize: size ?? null,
-                color: Colors.white),
+                fontSize: size ?? 24,
+                color: warna ?? Colors.white),
           ),
         ),
       ],

@@ -62,6 +62,17 @@ class ResultGet with _$ResultGet {
 }
 
 @freezed
+class ResultGetHome with _$ResultGetHome {
+  const factory ResultGetHome({
+    required List<ResultGet> resultModel,
+    required List<MachineModel> machine,
+  }) = _ResultGetHome;
+
+  factory ResultGetHome.fromJson(Map<String, dynamic> json) =>
+      _$ResultGetHomeFromJson(json);
+}
+
+@freezed
 class ResultAdd with _$ResultAdd {
   const factory ResultAdd({
     required String status,

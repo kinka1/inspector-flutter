@@ -76,7 +76,7 @@ class ResultBloc extends Bloc<ResultEvent, ResultState> {
     emit(const ResultState.loading());
     try {
       var response = await _repository.getResultByDatelist(event.buId,event.tanggal);
-      emit(ResultState.loadedByDateList(response));
+      emit(ResultState.loadedByDateList(response.resultModel));
 
     } catch (e) {
       

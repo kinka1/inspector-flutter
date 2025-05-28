@@ -4,8 +4,8 @@ abstract class ResultRepository {
   Future<ResultModel?> addResult(ResultAdd status);
   Future<ResultModel> getResult();
   Future<List<ResultModel>> getResultAll();
-  Future<List<ResultGet>> getResultByDatelist(String buId,String tanggal);
-  Future<ResultModel> getResultByDate(String machineId,String tanggal);
+  Future<ResultGetHome> getResultByDatelist(String buId,String tanggal);
+  Future<List<ResultModel>> getResultByDate(String machineId,String tanggal);
   Future<void> updateResultStatus(ResultModel model);
 
 

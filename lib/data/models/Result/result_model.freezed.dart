@@ -1028,6 +1028,203 @@ abstract class _ResultGet implements ResultGet {
       throw _privateConstructorUsedError;
 }
 
+ResultGetHome _$ResultGetHomeFromJson(Map<String, dynamic> json) {
+  return _ResultGetHome.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ResultGetHome {
+  List<ResultGet> get resultModel => throw _privateConstructorUsedError;
+  List<MachineModel> get machine => throw _privateConstructorUsedError;
+
+  /// Serializes this ResultGetHome to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of ResultGetHome
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ResultGetHomeCopyWith<ResultGetHome> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ResultGetHomeCopyWith<$Res> {
+  factory $ResultGetHomeCopyWith(
+          ResultGetHome value, $Res Function(ResultGetHome) then) =
+      _$ResultGetHomeCopyWithImpl<$Res, ResultGetHome>;
+  @useResult
+  $Res call({List<ResultGet> resultModel, List<MachineModel> machine});
+}
+
+/// @nodoc
+class _$ResultGetHomeCopyWithImpl<$Res, $Val extends ResultGetHome>
+    implements $ResultGetHomeCopyWith<$Res> {
+  _$ResultGetHomeCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ResultGetHome
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? resultModel = null,
+    Object? machine = null,
+  }) {
+    return _then(_value.copyWith(
+      resultModel: null == resultModel
+          ? _value.resultModel
+          : resultModel // ignore: cast_nullable_to_non_nullable
+              as List<ResultGet>,
+      machine: null == machine
+          ? _value.machine
+          : machine // ignore: cast_nullable_to_non_nullable
+              as List<MachineModel>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ResultGetHomeImplCopyWith<$Res>
+    implements $ResultGetHomeCopyWith<$Res> {
+  factory _$$ResultGetHomeImplCopyWith(
+          _$ResultGetHomeImpl value, $Res Function(_$ResultGetHomeImpl) then) =
+      __$$ResultGetHomeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<ResultGet> resultModel, List<MachineModel> machine});
+}
+
+/// @nodoc
+class __$$ResultGetHomeImplCopyWithImpl<$Res>
+    extends _$ResultGetHomeCopyWithImpl<$Res, _$ResultGetHomeImpl>
+    implements _$$ResultGetHomeImplCopyWith<$Res> {
+  __$$ResultGetHomeImplCopyWithImpl(
+      _$ResultGetHomeImpl _value, $Res Function(_$ResultGetHomeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ResultGetHome
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? resultModel = null,
+    Object? machine = null,
+  }) {
+    return _then(_$ResultGetHomeImpl(
+      resultModel: null == resultModel
+          ? _value._resultModel
+          : resultModel // ignore: cast_nullable_to_non_nullable
+              as List<ResultGet>,
+      machine: null == machine
+          ? _value._machine
+          : machine // ignore: cast_nullable_to_non_nullable
+              as List<MachineModel>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ResultGetHomeImpl
+    with DiagnosticableTreeMixin
+    implements _ResultGetHome {
+  const _$ResultGetHomeImpl(
+      {required final List<ResultGet> resultModel,
+      required final List<MachineModel> machine})
+      : _resultModel = resultModel,
+        _machine = machine;
+
+  factory _$ResultGetHomeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ResultGetHomeImplFromJson(json);
+
+  final List<ResultGet> _resultModel;
+  @override
+  List<ResultGet> get resultModel {
+    if (_resultModel is EqualUnmodifiableListView) return _resultModel;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_resultModel);
+  }
+
+  final List<MachineModel> _machine;
+  @override
+  List<MachineModel> get machine {
+    if (_machine is EqualUnmodifiableListView) return _machine;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_machine);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ResultGetHome(resultModel: $resultModel, machine: $machine)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ResultGetHome'))
+      ..add(DiagnosticsProperty('resultModel', resultModel))
+      ..add(DiagnosticsProperty('machine', machine));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ResultGetHomeImpl &&
+            const DeepCollectionEquality()
+                .equals(other._resultModel, _resultModel) &&
+            const DeepCollectionEquality().equals(other._machine, _machine));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_resultModel),
+      const DeepCollectionEquality().hash(_machine));
+
+  /// Create a copy of ResultGetHome
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ResultGetHomeImplCopyWith<_$ResultGetHomeImpl> get copyWith =>
+      __$$ResultGetHomeImplCopyWithImpl<_$ResultGetHomeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ResultGetHomeImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ResultGetHome implements ResultGetHome {
+  const factory _ResultGetHome(
+      {required final List<ResultGet> resultModel,
+      required final List<MachineModel> machine}) = _$ResultGetHomeImpl;
+
+  factory _ResultGetHome.fromJson(Map<String, dynamic> json) =
+      _$ResultGetHomeImpl.fromJson;
+
+  @override
+  List<ResultGet> get resultModel;
+  @override
+  List<MachineModel> get machine;
+
+  /// Create a copy of ResultGetHome
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ResultGetHomeImplCopyWith<_$ResultGetHomeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 ResultAdd _$ResultAddFromJson(Map<String, dynamic> json) {
   return _ResultAdd.fromJson(json);
 }

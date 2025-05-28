@@ -4,10 +4,15 @@ import 'package:maintenanceApp/data/models/DetailInspection/DetailInspection_mod
 
 class BuildTable extends StatelessWidget {
   const BuildTable(
-      {super.key, this.response, this.boxBorder, this.borderRadius});
+      {super.key,
+      this.response,
+      this.boxBorder,
+      this.borderRadius,
+      this.textStyle});
   final DetailInspectionGetModel? response;
   final BoxBorder? boxBorder;
   final BorderRadius? borderRadius;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +20,8 @@ class BuildTable extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
-        color: _getColor(response?.status),
-        borderRadius:borderRadius ?? null,
+        // color: _getColor(response?.status),
+        borderRadius: borderRadius ?? null,
         border: boxBorder ?? null,
       ),
       child: Row(
@@ -25,10 +30,11 @@ class BuildTable extends StatelessWidget {
             flex: 3,
             child: Text(
               response?.inspectionItem.itemName ?? "Inspection Item",
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium!
-                  .copyWith(fontWeight: FontWeight.bold, fontSize: size),
+              style: textStyle ??
+                  Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(fontWeight: FontWeight.bold, fontSize: size),
               textAlign: TextAlign.center,
             ),
           ),
@@ -36,10 +42,11 @@ class BuildTable extends StatelessWidget {
             flex: 3,
             child: Text(
               response?.inspectionItem.method ?? "Method",
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium!
-                  .copyWith(fontWeight: FontWeight.bold, fontSize: size),
+              style: textStyle ??
+                  Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(fontWeight: FontWeight.bold, fontSize: size),
               textAlign: TextAlign.center,
             ),
           ),
@@ -47,10 +54,10 @@ class BuildTable extends StatelessWidget {
             flex: 1,
             child: Text(
               response?.status ?? "Status",
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium!
-                  .copyWith(fontWeight: FontWeight.bold, fontSize: size),
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  fontWeight: FontWeight.bold,
+                  fontSize: size,
+                  color: _getColor(response?.status)),
               textAlign: TextAlign.center,
             ),
           ),
@@ -58,10 +65,11 @@ class BuildTable extends StatelessWidget {
             flex: 3,
             child: Text(
               response?.remark ?? "Remark",
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium!
-                  .copyWith(fontWeight: FontWeight.bold, fontSize: size),
+              style: textStyle ??
+                  Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(fontWeight: FontWeight.bold, fontSize: size),
               textAlign: TextAlign.center,
             ),
           ),
@@ -78,6 +86,6 @@ class BuildTable extends StatelessWidget {
         return ColorValues.merahCheckSheet;
       }
     }
-    return Colors.white;
+    return Colors.black;
   }
 }

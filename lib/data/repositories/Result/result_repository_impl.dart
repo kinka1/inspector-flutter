@@ -19,7 +19,9 @@ class ResultRepositoryImpl extends ResultRepository {
     final prefs = await SharedPreferences.getInstance();
     String? rawToken = prefs.getString('token');
     rawToken = rawToken!.replaceAll('"', '');
-    if(machineId == result.machineId && result.date == formattedDate && rawToken == _rawtoken){
+    if (machineId == result.machineId &&
+        result.date == formattedDate &&
+        rawToken == _rawtoken) {
       isDuplicate = true;
     } else {
       _rawtoken = rawToken;
@@ -61,7 +63,7 @@ class ResultRepositoryImpl extends ResultRepository {
         } else {
           throw Exception('Unexpected status code: ${response.statusCode}');
         }
-      } 
+      }
     } on DioException catch (error) {
       if (error.response != null &&
           (error.response!.statusCode == 401 ||
@@ -72,7 +74,7 @@ class ResultRepositoryImpl extends ResultRepository {
       }
     } catch (error) {
       // Menangani error lainnya yang mungkin terjadi
-     throw Exception('An unexpected error occurred: $error');
+      throw Exception('An unexpected error occurred: $error');
       // throw Exception('');
     }
   }
@@ -80,7 +82,6 @@ class ResultRepositoryImpl extends ResultRepository {
   Future<void> updateResultStatus(ResultModel model) async {
     final prefs = await SharedPreferences.getInstance();
     try {
-
       final rawToken = prefs.getString('token');
       final token = rawToken?.replaceAll('"', '');
       final response = await _dio.put(
@@ -108,30 +109,34 @@ class ResultRepositoryImpl extends ResultRepository {
     }
   }
 
-  Future<ResultModel> getResultByDate(String machineId, String tanggal) async {
+  Future<List<ResultModel>> getResultByDate(
+      String machineId, String tanggal) async {
     final prefs = await SharedPreferences.getInstance();
-    // String date = '2025-04-11';
+
     try {
       final rawToken = prefs.getString('token');
       final token = rawToken?.replaceAll('"', '');
-      // logger.i('${dotenv.env['API_BASE_URL']}/result/machineId=$machineId/date=$tanggal');
+
       final response = await _dio.get(
-          '${dotenv.env['API_BASE_URL']}/result/machineId=$machineId/date=$tanggal',
-          options: Options(headers: {'Authorization': 'Bearer $token'}));
-      // logger.i("RESPONSE MACHINE INSPECTION : ${response}");
+        '${dotenv.env['API_BASE_URL']}/result/machineId=$machineId/date=$tanggal',
+        options: Options(headers: {'Authorization': 'Bearer $token'}),
+      );
 
       await Future.delayed(Duration(seconds: 2));
 
       if (response.statusCode == 200) {
         final responseData = response.data;
 
-        // ✅ Periksa apakah responseData adalah Map
+        // ✅ Pastikan data adalah list dan status true
         if (responseData is Map<String, dynamic> &&
             responseData['status'] == true) {
-          var data = responseData['data'];
-          var item = ResultModel.fromJson(data);
-          // logger.i("RESPONSE MACHINE INSPECTION: $item");
-          return item;
+          final dataList = responseData['data'] as List;
+
+          // Mapping list ke List<ResultModel>
+          final results =
+              dataList.map((item) => ResultModel.fromJson(item)).toList();
+
+          return results;
         } else {
           throw Exception('Invalid response structure');
         }
@@ -143,7 +148,7 @@ class ResultRepositoryImpl extends ResultRepository {
     }
   }
 
-  Future<List<ResultGet>> getResultByDatelist(
+  Future<ResultGetHome> getResultByDatelist(
       String buId, String tanggal) async {
     final prefs = await SharedPreferences.getInstance();
     try {
@@ -154,7 +159,7 @@ class ResultRepositoryImpl extends ResultRepository {
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
 
-      // logger.i("response api : ${response.data}");
+      logger.i("response api : ${response.data}");
 
       await Future.delayed(Duration(seconds: 2));
       if (response.statusCode == 200) {
@@ -162,18 +167,11 @@ class ResultRepositoryImpl extends ResultRepository {
 
         // ✅ Periksa apakah responseData adalah Map
         // logger.i("HIT BERHASIL , response data = $responseData");
-        if (responseData is Map<String, dynamic> &&
-            responseData['status'] == true) {
-          final List<dynamic> ResponseGet = responseData['data'];
+        if (responseData['status'] == true) {
+          final ResponseGet = responseData['data'];
           // logger.d("response data : $ResponseGet");
-          if (ResponseGet is List) {
-            List<ResultGet> items =
-                ResponseGet.map((item) => ResultGet.fromJson(item)).toList();
-            // logger.d("item :$items");
-            return items;
-          } else {
-            throw Exception('Invalid data format: Expected a List');
-          }
+          ResultGetHome items = ResultGetHome.fromJson(ResponseGet);
+          return items;
         } else {
           throw Exception('Invalid response structure');
         }
@@ -181,6 +179,7 @@ class ResultRepositoryImpl extends ResultRepository {
         throw Exception('Failed to get Inspection Items');
       }
     } on DioException catch (error) {
+      logger.e("ERROR MACHINE INSPECTION : ${error.message}");
       throw Exception(error.message);
     }
   }

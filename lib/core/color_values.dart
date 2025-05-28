@@ -47,4 +47,10 @@ class ColorValues {
   static const merahCheckSheet = Color(0xFFF77E7E);
   static const kuningKOSING = Color(0xFFFFF600);
   static const kuningButton = Color(0xFFFFCC00);
+  static const hijauTua = Color(0xFF009D5C);
+  static const hijauSedang = Color(0xFF02C465);
+  static const hijauSedang2 = Color(0xFF00EC79);
+  static const hijauMuda = Color(0xFF00E676);
+  static const redNG = Color(0xFFEF5350);
+  static const greyPending = Color(0xFF90A4AE);
 }

@@ -15,7 +15,8 @@ class ShowModal extends StatefulWidget {
       required this.machineId,
       required this.status,
       required this.resultId,
-      required this.buId, required this.userId});
+      required this.buId,
+      required this.userId});
   final String machineId;
   final String status;
   final String buId;
@@ -75,17 +76,25 @@ class _ShowModalState extends State<ShowModal> {
                 height: 60,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(15),
                   color: ColorValues.info500,
                 ),
-                child: Center(
-                  child: Text(
-                    "Kirim",
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+
+                  children: [
+                    Text(
+                      "Send",
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            fontSize: 25,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(left: 10),
+                      child: Icon(Icons.send, color: Colors.white, size: 30)),
+                  ],
                 ),
               ),
       );

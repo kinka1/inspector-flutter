@@ -9,6 +9,7 @@ import 'package:maintenanceApp/data/bloc/other/other_bloc.dart';
 import 'package:maintenanceApp/data/models/DetailInspection/DetailInspection_model.dart';
 import 'package:maintenanceApp/data/models/MachineInspection/machine_inspection_model.dart';
 import 'package:maintenanceApp/data/models/Other/other_model.dart';
+import 'package:maintenanceApp/data/parse.dart';
 import 'package:maintenanceApp/features/widget/appbarCus.dart';
 import 'package:maintenanceApp/features/widget/buildHeader.dart';
 import 'package:maintenanceApp/features/widget/kartu.dart';
@@ -45,18 +46,18 @@ class Scan2Page extends StatefulWidget {
 
 class _Scan2PageState extends State<Scan2Page> {
   String statusOther = "-";
-  // final logger = Logger();
+  final logger = Logger();
   final String tanggal = DateFormat('yyyy-MM-dd').format(DateTime.now());
   String machineId = "-";
+  int itemCount = 0;
   bool hasFetched = false;
 
   @override
   void initState() {
     super.initState();
-    // logger.i("Init Scan2Page");
-    // logger.d("machine ID DI PAGE 2: ${widget.machineId}");
-
-    // Fetch data awal
+    logger.d("machineId : ${widget.machineId}");
+    logger.d("buId : ${widget.buId}");
+    logger.d("resultId : ${widget.ResultId}");
     context.read<MachineInspectionBloc>().add(
           MachineInspectionEvent.GetMachineInspection(
               widget.machineId, widget.buId),
@@ -72,12 +73,14 @@ class _Scan2PageState extends State<Scan2Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbarCus(context, "Daily Maintenance", false,onBackPressed: () {
-    AutoRouter.of(context).replace(
-       HomenewRoute(),
-    );
-    // Lakukan sesuatu
-  },),
+      appBar: appbarCus(
+        context,
+        "Machine Details",
+        isLeading: false,
+        onBackPressed: () {
+          AutoRouter.of(context).replace(HomenewRoute());
+        },
+      ),
       body: Container(
         color: Colors.white,
         child: Form(
@@ -96,6 +99,7 @@ class _Scan2PageState extends State<Scan2Page> {
         return state.maybeWhen(
           loading: () => const Center(child: CircularProgressIndicator()),
           loaded: (response) {
+            itemCount = response.item.length - 1;
             machineId = response.machineId;
             return Column(
               children: [
@@ -119,10 +123,10 @@ class _Scan2PageState extends State<Scan2Page> {
         return state.maybeWhen(
           loading: () => const Center(child: CircularProgressIndicator()),
           loadedbyDate: (items) {
-            final itemCount = items.length;
+            final detailItemCount = items.length;
             String statuskirim =
                 statusOther == "NG" ? statusOther : _getSelectedStatus(items);
-
+            // logger.d("jum detail: $detailItemCount, item count: $itemCount");
             return Column(
               children: [
                 Padding(
@@ -130,7 +134,7 @@ class _Scan2PageState extends State<Scan2Page> {
                       const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
                   child: _buildGridButtons(machine, items),
                 ),
-                if (statusOther == "-")
+                if (detailItemCount >= itemCount)
                   ShowModal(
                     machineId: widget.machineId,
                     status: statuskirim,
@@ -151,7 +155,7 @@ class _Scan2PageState extends State<Scan2Page> {
   Widget _buildGridButtons(
       MachineInspectionModel machine, List<DetailInspectionGetModel> details) {
     final itemCount = machine.item.length;
-    int number = 1;
+    // int number = 1;
 
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.56,
@@ -166,11 +170,15 @@ class _Scan2PageState extends State<Scan2Page> {
         itemCount: itemCount,
         itemBuilder: (context, index) {
           final item = machine.item[index];
+          final remark = details
+              .firstWhereOrNull(
+                  (detail) => detail.inspectionItem.itemId == item.itemId)
+              ?.remark;
           final status = _getStatusByNumber(details, item.itemId);
 
           return Kartu(
             status: status,
-            caption: item.itemName,
+            caption: toTitleCase(item.itemName),
             onPressed: () {
               // logger.d("item number: ${item.number}");
               if (item.itemId == 0) {
@@ -192,6 +200,8 @@ class _Scan2PageState extends State<Scan2Page> {
                     machineId: machine.machineId,
                     ResultId: widget.ResultId,
                     userId: widget.userId,
+                    remark: remark ?? "-",
+                    status: status,
                   ),
                 );
               }

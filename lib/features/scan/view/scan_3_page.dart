@@ -21,12 +21,15 @@ class Scan3Page extends StatefulWidget {
     required this.machineId,
     required this.ResultId,
     required this.userId,
+    this.status, this.remark,
   });
   final String machineId;
   final InspectionitemMachineGetModel model;
   final int machineInspectionId;
   final int ResultId;
   final int userId;
+  final String? status;
+  final String? remark;
   @override
   State<Scan3Page> createState() => _Scan3PageState();
 }
@@ -44,13 +47,22 @@ class _Scan3PageState extends State<Scan3Page> {
   Widget build(BuildContext context) {
     // logger.d("isnumber : ${widget.model.isNumber}");
     return Scaffold(
-        appBar: appbarCus(context, "Daily Maintenance", false),
+        appBar: appbarCus(
+          context,
+          "Inspection",
+          isLeading: true,
+          onBackPressed: () {
+            context.router.pop();
+          },
+        ),
         body: SingleChildScrollView(
           child: Container(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Buildform(
+                  status: widget.status,
+                  remark: widget.remark,
                   item: widget.model,
                   machineInspectionId: widget.machineInspectionId,
                   ResultId: widget.ResultId,
@@ -58,28 +70,6 @@ class _Scan3PageState extends State<Scan3Page> {
                   margin: margin,
                   userId: widget.userId,
                 )
-                // BlocBuilder<ResultBloc, ResultState>(
-                //   builder: (context, state) {
-                //     return state.maybeWhen(
-                //       loaded: (response) {
-                //         ResultId = response.resultId;
-                //         widget.model.isNumber == true
-                //             ? margin = 50
-                //             : margin = 0;
-                //         return Buildform(
-                //           item: widget.model,
-                //           ResultId: ResultId,
-                //           machineInspectionId: widget.machineInspectionId,
-                //           machineId: widget.machineId,
-                //           margin: margin,
-                //         );
-                //       },
-                //       orElse: () => Center(
-                //         child: Text("TERJADI KESALAHAN"),
-                //       ),
-                //     );
-                //   },
-                // ),
               ],
             ),
           ),

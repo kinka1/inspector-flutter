@@ -5,12 +5,12 @@ import 'package:maintenanceApp/data/models/MachineInspection/machine_inspection_
 import 'package:maintenanceApp/data/repositories/MachineInspection/machine_inspection_repository.dart';
 
 class MachineInspectionRepositoryImpl extends MachineInspectionRepository {
-  // final logger = Logger();
+  final logger = Logger();
   final _dio = Dio();
   @override
   Future<MachineInspectionModel> getInspectionItem(String id,String buId) async {
   try {
-    // logger.i("MASUK TRY REPO MACHINE INSPECTION, machine id : $id");
+    logger.d("MASUK TRY REPO MACHINE INSPECTION, machine id : $id, buId : $buId");
     final response =
         await _dio.get('${dotenv.env['API_BASE_URL']}/machineInspection/BU=$buId/$id');
     // logger.i("RESPONSE MACHINE INSPECTION : ${response}");

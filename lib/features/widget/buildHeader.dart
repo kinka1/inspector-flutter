@@ -1,5 +1,6 @@
 import 'package:maintenanceApp/core/color_values.dart';
 import 'package:maintenanceApp/data/models/machine/machine_model.dart';
+import 'package:maintenanceApp/data/parse.dart';
 import 'package:maintenanceApp/features/widget/col.dart';
 import 'package:maintenanceApp/features/widget/textTitle.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,7 +23,14 @@ class BuildHeader extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(left: 35.0, right: 35.0, bottom: 35.0),
       decoration: const BoxDecoration(
-        color: ColorValues.primary700,
+        gradient: LinearGradient(
+          colors: [
+            ColorValues.hijauTua,
+            ColorValues.hijauSedang
+          ], // warna gradasi
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(20),
           bottomRight: Radius.circular(20),
@@ -39,28 +47,41 @@ class BuildHeader extends StatelessWidget {
               ),
               if (date != null)
                 Col(
-                  title: "Tanggal",
+                  title: "Date",
                   caption: date!,
                   warna: warna,
                   size: size,
                 ),
               Col(
-                  title: "Section Name  ",
-                  caption: machine.sectionName,
-                  warna: warna,size: size,),
-              Col(title: "Line  ", caption: machine.line, warna: warna,size: size,),
+                title: "Section Name  ",
+                caption: toTitleCase(machine.sectionName) ,
+                warna: warna,
+                size: size,
+              ),
               Col(
-                  title: "Machine Name  ",
-                  caption: machine.machineName,
-                  warna: warna,size: size,),
+                title: "Line  ",
+                caption: toTitleCase( machine.line),
+                warna: warna,
+                size: size,
+              ),
               Col(
-                  title: "Machine Number  ",
-                  caption: machine.machineNumber.toString(),
-                  warna: warna,size: size,),
+                title: "Machine Name  ",
+                caption: toTitleCase( machine.machineName),
+                warna: warna,
+                size: size,
+              ),
               Col(
-                  title: "Dockument Number  ",
-                  caption: machine.dockumentNo,
-                  warna: warna,size: size,),
+                title: "Machine Number  ",
+                caption: toTitleCase( machine.machineNumber),
+                warna: warna,
+                size: size,
+              ),
+              Col(
+                title: "Document Number  ",
+                caption:machine.dockumentNo,
+                warna: warna,
+                size: size,
+              ),
             ],
           ),
         ],

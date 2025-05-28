@@ -1902,8 +1902,8 @@ mixin _$ResultState {
     required TResult Function(ResultModel? model) added,
     required TResult Function(List<ResultGet> result) loadedByDateList,
     required TResult Function(ResultModel result) loadedByDate,
-    required TResult Function(ResultModel result) loadedByDateForHomepage,
-    required TResult Function(List<ResultGet> result) loadedByDateListHome,
+    required TResult Function(List<ResultModel> result) loadedByDateForHomepage,
+    required TResult Function(ResultGetHome result) loadedByDateListHome,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1919,8 +1919,8 @@ mixin _$ResultState {
     TResult? Function(ResultModel? model)? added,
     TResult? Function(List<ResultGet> result)? loadedByDateList,
     TResult? Function(ResultModel result)? loadedByDate,
-    TResult? Function(ResultModel result)? loadedByDateForHomepage,
-    TResult? Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult? Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult? Function(ResultGetHome result)? loadedByDateListHome,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1936,8 +1936,8 @@ mixin _$ResultState {
     TResult Function(ResultModel? model)? added,
     TResult Function(List<ResultGet> result)? loadedByDateList,
     TResult Function(ResultModel result)? loadedByDate,
-    TResult Function(ResultModel result)? loadedByDateForHomepage,
-    TResult Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult Function(ResultGetHome result)? loadedByDateListHome,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -2073,8 +2073,8 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(ResultModel? model) added,
     required TResult Function(List<ResultGet> result) loadedByDateList,
     required TResult Function(ResultModel result) loadedByDate,
-    required TResult Function(ResultModel result) loadedByDateForHomepage,
-    required TResult Function(List<ResultGet> result) loadedByDateListHome,
+    required TResult Function(List<ResultModel> result) loadedByDateForHomepage,
+    required TResult Function(ResultGetHome result) loadedByDateListHome,
   }) {
     return initial();
   }
@@ -2093,8 +2093,8 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult? Function(ResultModel? model)? added,
     TResult? Function(List<ResultGet> result)? loadedByDateList,
     TResult? Function(ResultModel result)? loadedByDate,
-    TResult? Function(ResultModel result)? loadedByDateForHomepage,
-    TResult? Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult? Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult? Function(ResultGetHome result)? loadedByDateListHome,
   }) {
     return initial?.call();
   }
@@ -2113,8 +2113,8 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult Function(ResultModel? model)? added,
     TResult Function(List<ResultGet> result)? loadedByDateList,
     TResult Function(ResultModel result)? loadedByDate,
-    TResult Function(ResultModel result)? loadedByDateForHomepage,
-    TResult Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult Function(ResultGetHome result)? loadedByDateListHome,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -2249,8 +2249,8 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     required TResult Function(ResultModel? model) added,
     required TResult Function(List<ResultGet> result) loadedByDateList,
     required TResult Function(ResultModel result) loadedByDate,
-    required TResult Function(ResultModel result) loadedByDateForHomepage,
-    required TResult Function(List<ResultGet> result) loadedByDateListHome,
+    required TResult Function(List<ResultModel> result) loadedByDateForHomepage,
+    required TResult Function(ResultGetHome result) loadedByDateListHome,
   }) {
     return loading();
   }
@@ -2269,8 +2269,8 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     TResult? Function(ResultModel? model)? added,
     TResult? Function(List<ResultGet> result)? loadedByDateList,
     TResult? Function(ResultModel result)? loadedByDate,
-    TResult? Function(ResultModel result)? loadedByDateForHomepage,
-    TResult? Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult? Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult? Function(ResultGetHome result)? loadedByDateListHome,
   }) {
     return loading?.call();
   }
@@ -2289,8 +2289,8 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
     TResult Function(ResultModel? model)? added,
     TResult Function(List<ResultGet> result)? loadedByDateList,
     TResult Function(ResultModel result)? loadedByDate,
-    TResult Function(ResultModel result)? loadedByDateForHomepage,
-    TResult Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult Function(ResultGetHome result)? loadedByDateListHome,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -2425,8 +2425,8 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     required TResult Function(ResultModel? model) added,
     required TResult Function(List<ResultGet> result) loadedByDateList,
     required TResult Function(ResultModel result) loadedByDate,
-    required TResult Function(ResultModel result) loadedByDateForHomepage,
-    required TResult Function(List<ResultGet> result) loadedByDateListHome,
+    required TResult Function(List<ResultModel> result) loadedByDateForHomepage,
+    required TResult Function(ResultGetHome result) loadedByDateListHome,
   }) {
     return success();
   }
@@ -2445,8 +2445,8 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     TResult? Function(ResultModel? model)? added,
     TResult? Function(List<ResultGet> result)? loadedByDateList,
     TResult? Function(ResultModel result)? loadedByDate,
-    TResult? Function(ResultModel result)? loadedByDateForHomepage,
-    TResult? Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult? Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult? Function(ResultGetHome result)? loadedByDateListHome,
   }) {
     return success?.call();
   }
@@ -2465,8 +2465,8 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
     TResult Function(ResultModel? model)? added,
     TResult Function(List<ResultGet> result)? loadedByDateList,
     TResult Function(ResultModel result)? loadedByDate,
-    TResult Function(ResultModel result)? loadedByDateForHomepage,
-    TResult Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult Function(ResultGetHome result)? loadedByDateListHome,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -2642,8 +2642,8 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     required TResult Function(ResultModel? model) added,
     required TResult Function(List<ResultGet> result) loadedByDateList,
     required TResult Function(ResultModel result) loadedByDate,
-    required TResult Function(ResultModel result) loadedByDateForHomepage,
-    required TResult Function(List<ResultGet> result) loadedByDateListHome,
+    required TResult Function(List<ResultModel> result) loadedByDateForHomepage,
+    required TResult Function(ResultGetHome result) loadedByDateListHome,
   }) {
     return loaded(result);
   }
@@ -2662,8 +2662,8 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     TResult? Function(ResultModel? model)? added,
     TResult? Function(List<ResultGet> result)? loadedByDateList,
     TResult? Function(ResultModel result)? loadedByDate,
-    TResult? Function(ResultModel result)? loadedByDateForHomepage,
-    TResult? Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult? Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult? Function(ResultGetHome result)? loadedByDateListHome,
   }) {
     return loaded?.call(result);
   }
@@ -2682,8 +2682,8 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     TResult Function(ResultModel? model)? added,
     TResult Function(List<ResultGet> result)? loadedByDateList,
     TResult Function(ResultModel result)? loadedByDate,
-    TResult Function(ResultModel result)? loadedByDateForHomepage,
-    TResult Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult Function(ResultGetHome result)? loadedByDateListHome,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -2881,8 +2881,8 @@ class _$GetAllImpl with DiagnosticableTreeMixin implements _GetAll {
     required TResult Function(ResultModel? model) added,
     required TResult Function(List<ResultGet> result) loadedByDateList,
     required TResult Function(ResultModel result) loadedByDate,
-    required TResult Function(ResultModel result) loadedByDateForHomepage,
-    required TResult Function(List<ResultGet> result) loadedByDateListHome,
+    required TResult Function(List<ResultModel> result) loadedByDateForHomepage,
+    required TResult Function(ResultGetHome result) loadedByDateListHome,
   }) {
     return getAll(result, OKCount, NGCount);
   }
@@ -2901,8 +2901,8 @@ class _$GetAllImpl with DiagnosticableTreeMixin implements _GetAll {
     TResult? Function(ResultModel? model)? added,
     TResult? Function(List<ResultGet> result)? loadedByDateList,
     TResult? Function(ResultModel result)? loadedByDate,
-    TResult? Function(ResultModel result)? loadedByDateForHomepage,
-    TResult? Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult? Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult? Function(ResultGetHome result)? loadedByDateListHome,
   }) {
     return getAll?.call(result, OKCount, NGCount);
   }
@@ -2921,8 +2921,8 @@ class _$GetAllImpl with DiagnosticableTreeMixin implements _GetAll {
     TResult Function(ResultModel? model)? added,
     TResult Function(List<ResultGet> result)? loadedByDateList,
     TResult Function(ResultModel result)? loadedByDate,
-    TResult Function(ResultModel result)? loadedByDateForHomepage,
-    TResult Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult Function(ResultGetHome result)? loadedByDateListHome,
     required TResult orElse(),
   }) {
     if (getAll != null) {
@@ -3097,8 +3097,8 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     required TResult Function(ResultModel? model) added,
     required TResult Function(List<ResultGet> result) loadedByDateList,
     required TResult Function(ResultModel result) loadedByDate,
-    required TResult Function(ResultModel result) loadedByDateForHomepage,
-    required TResult Function(List<ResultGet> result) loadedByDateListHome,
+    required TResult Function(List<ResultModel> result) loadedByDateForHomepage,
+    required TResult Function(ResultGetHome result) loadedByDateListHome,
   }) {
     return error(this.error);
   }
@@ -3117,8 +3117,8 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     TResult? Function(ResultModel? model)? added,
     TResult? Function(List<ResultGet> result)? loadedByDateList,
     TResult? Function(ResultModel result)? loadedByDate,
-    TResult? Function(ResultModel result)? loadedByDateForHomepage,
-    TResult? Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult? Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult? Function(ResultGetHome result)? loadedByDateListHome,
   }) {
     return error?.call(this.error);
   }
@@ -3137,8 +3137,8 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
     TResult Function(ResultModel? model)? added,
     TResult Function(List<ResultGet> result)? loadedByDateList,
     TResult Function(ResultModel result)? loadedByDate,
-    TResult Function(ResultModel result)? loadedByDateForHomepage,
-    TResult Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult Function(ResultGetHome result)? loadedByDateListHome,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -3322,8 +3322,8 @@ class _$UpdateImpl with DiagnosticableTreeMixin implements _Update {
     required TResult Function(ResultModel? model) added,
     required TResult Function(List<ResultGet> result) loadedByDateList,
     required TResult Function(ResultModel result) loadedByDate,
-    required TResult Function(ResultModel result) loadedByDateForHomepage,
-    required TResult Function(List<ResultGet> result) loadedByDateListHome,
+    required TResult Function(List<ResultModel> result) loadedByDateForHomepage,
+    required TResult Function(ResultGetHome result) loadedByDateListHome,
   }) {
     return update(model);
   }
@@ -3342,8 +3342,8 @@ class _$UpdateImpl with DiagnosticableTreeMixin implements _Update {
     TResult? Function(ResultModel? model)? added,
     TResult? Function(List<ResultGet> result)? loadedByDateList,
     TResult? Function(ResultModel result)? loadedByDate,
-    TResult? Function(ResultModel result)? loadedByDateForHomepage,
-    TResult? Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult? Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult? Function(ResultGetHome result)? loadedByDateListHome,
   }) {
     return update?.call(model);
   }
@@ -3362,8 +3362,8 @@ class _$UpdateImpl with DiagnosticableTreeMixin implements _Update {
     TResult Function(ResultModel? model)? added,
     TResult Function(List<ResultGet> result)? loadedByDateList,
     TResult Function(ResultModel result)? loadedByDate,
-    TResult Function(ResultModel result)? loadedByDateForHomepage,
-    TResult Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult Function(ResultGetHome result)? loadedByDateListHome,
     required TResult orElse(),
   }) {
     if (update != null) {
@@ -3551,8 +3551,8 @@ class _$AddedImpl with DiagnosticableTreeMixin implements _Added {
     required TResult Function(ResultModel? model) added,
     required TResult Function(List<ResultGet> result) loadedByDateList,
     required TResult Function(ResultModel result) loadedByDate,
-    required TResult Function(ResultModel result) loadedByDateForHomepage,
-    required TResult Function(List<ResultGet> result) loadedByDateListHome,
+    required TResult Function(List<ResultModel> result) loadedByDateForHomepage,
+    required TResult Function(ResultGetHome result) loadedByDateListHome,
   }) {
     return added(model);
   }
@@ -3571,8 +3571,8 @@ class _$AddedImpl with DiagnosticableTreeMixin implements _Added {
     TResult? Function(ResultModel? model)? added,
     TResult? Function(List<ResultGet> result)? loadedByDateList,
     TResult? Function(ResultModel result)? loadedByDate,
-    TResult? Function(ResultModel result)? loadedByDateForHomepage,
-    TResult? Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult? Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult? Function(ResultGetHome result)? loadedByDateListHome,
   }) {
     return added?.call(model);
   }
@@ -3591,8 +3591,8 @@ class _$AddedImpl with DiagnosticableTreeMixin implements _Added {
     TResult Function(ResultModel? model)? added,
     TResult Function(List<ResultGet> result)? loadedByDateList,
     TResult Function(ResultModel result)? loadedByDate,
-    TResult Function(ResultModel result)? loadedByDateForHomepage,
-    TResult Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult Function(ResultGetHome result)? loadedByDateListHome,
     required TResult orElse(),
   }) {
     if (added != null) {
@@ -3773,8 +3773,8 @@ class _$LoadedByDateListImpl
     required TResult Function(ResultModel? model) added,
     required TResult Function(List<ResultGet> result) loadedByDateList,
     required TResult Function(ResultModel result) loadedByDate,
-    required TResult Function(ResultModel result) loadedByDateForHomepage,
-    required TResult Function(List<ResultGet> result) loadedByDateListHome,
+    required TResult Function(List<ResultModel> result) loadedByDateForHomepage,
+    required TResult Function(ResultGetHome result) loadedByDateListHome,
   }) {
     return loadedByDateList(result);
   }
@@ -3793,8 +3793,8 @@ class _$LoadedByDateListImpl
     TResult? Function(ResultModel? model)? added,
     TResult? Function(List<ResultGet> result)? loadedByDateList,
     TResult? Function(ResultModel result)? loadedByDate,
-    TResult? Function(ResultModel result)? loadedByDateForHomepage,
-    TResult? Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult? Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult? Function(ResultGetHome result)? loadedByDateListHome,
   }) {
     return loadedByDateList?.call(result);
   }
@@ -3813,8 +3813,8 @@ class _$LoadedByDateListImpl
     TResult Function(ResultModel? model)? added,
     TResult Function(List<ResultGet> result)? loadedByDateList,
     TResult Function(ResultModel result)? loadedByDate,
-    TResult Function(ResultModel result)? loadedByDateForHomepage,
-    TResult Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult Function(ResultGetHome result)? loadedByDateListHome,
     required TResult orElse(),
   }) {
     if (loadedByDateList != null) {
@@ -3999,8 +3999,8 @@ class _$LoadedByDateImpl with DiagnosticableTreeMixin implements _LoadedByDate {
     required TResult Function(ResultModel? model) added,
     required TResult Function(List<ResultGet> result) loadedByDateList,
     required TResult Function(ResultModel result) loadedByDate,
-    required TResult Function(ResultModel result) loadedByDateForHomepage,
-    required TResult Function(List<ResultGet> result) loadedByDateListHome,
+    required TResult Function(List<ResultModel> result) loadedByDateForHomepage,
+    required TResult Function(ResultGetHome result) loadedByDateListHome,
   }) {
     return loadedByDate(result);
   }
@@ -4019,8 +4019,8 @@ class _$LoadedByDateImpl with DiagnosticableTreeMixin implements _LoadedByDate {
     TResult? Function(ResultModel? model)? added,
     TResult? Function(List<ResultGet> result)? loadedByDateList,
     TResult? Function(ResultModel result)? loadedByDate,
-    TResult? Function(ResultModel result)? loadedByDateForHomepage,
-    TResult? Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult? Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult? Function(ResultGetHome result)? loadedByDateListHome,
   }) {
     return loadedByDate?.call(result);
   }
@@ -4039,8 +4039,8 @@ class _$LoadedByDateImpl with DiagnosticableTreeMixin implements _LoadedByDate {
     TResult Function(ResultModel? model)? added,
     TResult Function(List<ResultGet> result)? loadedByDateList,
     TResult Function(ResultModel result)? loadedByDate,
-    TResult Function(ResultModel result)? loadedByDateForHomepage,
-    TResult Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult Function(ResultGetHome result)? loadedByDateListHome,
     required TResult orElse(),
   }) {
     if (loadedByDate != null) {
@@ -4131,9 +4131,7 @@ abstract class _$$LoadedByDateForHomepageImplCopyWith<$Res> {
           $Res Function(_$LoadedByDateForHomepageImpl) then) =
       __$$LoadedByDateForHomepageImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ResultModel result});
-
-  $ResultModelCopyWith<$Res> get result;
+  $Res call({List<ResultModel> result});
 }
 
 /// @nodoc
@@ -4154,20 +4152,10 @@ class __$$LoadedByDateForHomepageImplCopyWithImpl<$Res>
   }) {
     return _then(_$LoadedByDateForHomepageImpl(
       null == result
-          ? _value.result
+          ? _value._result
           : result // ignore: cast_nullable_to_non_nullable
-              as ResultModel,
+              as List<ResultModel>,
     ));
-  }
-
-  /// Create a copy of ResultState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ResultModelCopyWith<$Res> get result {
-    return $ResultModelCopyWith<$Res>(_value.result, (value) {
-      return _then(_value.copyWith(result: value));
-    });
   }
 }
 
@@ -4176,10 +4164,16 @@ class __$$LoadedByDateForHomepageImplCopyWithImpl<$Res>
 class _$LoadedByDateForHomepageImpl
     with DiagnosticableTreeMixin
     implements _LoadedByDateForHomepage {
-  const _$LoadedByDateForHomepageImpl(this.result);
+  const _$LoadedByDateForHomepageImpl(final List<ResultModel> result)
+      : _result = result;
 
+  final List<ResultModel> _result;
   @override
-  final ResultModel result;
+  List<ResultModel> get result {
+    if (_result is EqualUnmodifiableListView) return _result;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_result);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -4199,11 +4193,12 @@ class _$LoadedByDateForHomepageImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedByDateForHomepageImpl &&
-            (identical(other.result, result) || other.result == result));
+            const DeepCollectionEquality().equals(other._result, _result));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, result);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_result));
 
   /// Create a copy of ResultState
   /// with the given fields replaced by the non-null parameter values.
@@ -4229,8 +4224,8 @@ class _$LoadedByDateForHomepageImpl
     required TResult Function(ResultModel? model) added,
     required TResult Function(List<ResultGet> result) loadedByDateList,
     required TResult Function(ResultModel result) loadedByDate,
-    required TResult Function(ResultModel result) loadedByDateForHomepage,
-    required TResult Function(List<ResultGet> result) loadedByDateListHome,
+    required TResult Function(List<ResultModel> result) loadedByDateForHomepage,
+    required TResult Function(ResultGetHome result) loadedByDateListHome,
   }) {
     return loadedByDateForHomepage(result);
   }
@@ -4249,8 +4244,8 @@ class _$LoadedByDateForHomepageImpl
     TResult? Function(ResultModel? model)? added,
     TResult? Function(List<ResultGet> result)? loadedByDateList,
     TResult? Function(ResultModel result)? loadedByDate,
-    TResult? Function(ResultModel result)? loadedByDateForHomepage,
-    TResult? Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult? Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult? Function(ResultGetHome result)? loadedByDateListHome,
   }) {
     return loadedByDateForHomepage?.call(result);
   }
@@ -4269,8 +4264,8 @@ class _$LoadedByDateForHomepageImpl
     TResult Function(ResultModel? model)? added,
     TResult Function(List<ResultGet> result)? loadedByDateList,
     TResult Function(ResultModel result)? loadedByDate,
-    TResult Function(ResultModel result)? loadedByDateForHomepage,
-    TResult Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult Function(ResultGetHome result)? loadedByDateListHome,
     required TResult orElse(),
   }) {
     if (loadedByDateForHomepage != null) {
@@ -4343,10 +4338,10 @@ class _$LoadedByDateForHomepageImpl
 }
 
 abstract class _LoadedByDateForHomepage implements ResultState {
-  const factory _LoadedByDateForHomepage(final ResultModel result) =
+  const factory _LoadedByDateForHomepage(final List<ResultModel> result) =
       _$LoadedByDateForHomepageImpl;
 
-  ResultModel get result;
+  List<ResultModel> get result;
 
   /// Create a copy of ResultState
   /// with the given fields replaced by the non-null parameter values.
@@ -4361,7 +4356,9 @@ abstract class _$$LoadedByDateListHomeImplCopyWith<$Res> {
           $Res Function(_$LoadedByDateListHomeImpl) then) =
       __$$LoadedByDateListHomeImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<ResultGet> result});
+  $Res call({ResultGetHome result});
+
+  $ResultGetHomeCopyWith<$Res> get result;
 }
 
 /// @nodoc
@@ -4381,10 +4378,20 @@ class __$$LoadedByDateListHomeImplCopyWithImpl<$Res>
   }) {
     return _then(_$LoadedByDateListHomeImpl(
       null == result
-          ? _value._result
+          ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as List<ResultGet>,
+              as ResultGetHome,
     ));
+  }
+
+  /// Create a copy of ResultState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ResultGetHomeCopyWith<$Res> get result {
+    return $ResultGetHomeCopyWith<$Res>(_value.result, (value) {
+      return _then(_value.copyWith(result: value));
+    });
   }
 }
 
@@ -4393,16 +4400,10 @@ class __$$LoadedByDateListHomeImplCopyWithImpl<$Res>
 class _$LoadedByDateListHomeImpl
     with DiagnosticableTreeMixin
     implements _LoadedByDateListHome {
-  const _$LoadedByDateListHomeImpl(final List<ResultGet> result)
-      : _result = result;
+  const _$LoadedByDateListHomeImpl(this.result);
 
-  final List<ResultGet> _result;
   @override
-  List<ResultGet> get result {
-    if (_result is EqualUnmodifiableListView) return _result;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_result);
-  }
+  final ResultGetHome result;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -4422,12 +4423,11 @@ class _$LoadedByDateListHomeImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedByDateListHomeImpl &&
-            const DeepCollectionEquality().equals(other._result, _result));
+            (identical(other.result, result) || other.result == result));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_result));
+  int get hashCode => Object.hash(runtimeType, result);
 
   /// Create a copy of ResultState
   /// with the given fields replaced by the non-null parameter values.
@@ -4454,8 +4454,8 @@ class _$LoadedByDateListHomeImpl
     required TResult Function(ResultModel? model) added,
     required TResult Function(List<ResultGet> result) loadedByDateList,
     required TResult Function(ResultModel result) loadedByDate,
-    required TResult Function(ResultModel result) loadedByDateForHomepage,
-    required TResult Function(List<ResultGet> result) loadedByDateListHome,
+    required TResult Function(List<ResultModel> result) loadedByDateForHomepage,
+    required TResult Function(ResultGetHome result) loadedByDateListHome,
   }) {
     return loadedByDateListHome(result);
   }
@@ -4474,8 +4474,8 @@ class _$LoadedByDateListHomeImpl
     TResult? Function(ResultModel? model)? added,
     TResult? Function(List<ResultGet> result)? loadedByDateList,
     TResult? Function(ResultModel result)? loadedByDate,
-    TResult? Function(ResultModel result)? loadedByDateForHomepage,
-    TResult? Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult? Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult? Function(ResultGetHome result)? loadedByDateListHome,
   }) {
     return loadedByDateListHome?.call(result);
   }
@@ -4494,8 +4494,8 @@ class _$LoadedByDateListHomeImpl
     TResult Function(ResultModel? model)? added,
     TResult Function(List<ResultGet> result)? loadedByDateList,
     TResult Function(ResultModel result)? loadedByDate,
-    TResult Function(ResultModel result)? loadedByDateForHomepage,
-    TResult Function(List<ResultGet> result)? loadedByDateListHome,
+    TResult Function(List<ResultModel> result)? loadedByDateForHomepage,
+    TResult Function(ResultGetHome result)? loadedByDateListHome,
     required TResult orElse(),
   }) {
     if (loadedByDateListHome != null) {
@@ -4568,10 +4568,10 @@ class _$LoadedByDateListHomeImpl
 }
 
 abstract class _LoadedByDateListHome implements ResultState {
-  const factory _LoadedByDateListHome(final List<ResultGet> result) =
+  const factory _LoadedByDateListHome(final ResultGetHome result) =
       _$LoadedByDateListHomeImpl;
 
-  List<ResultGet> get result;
+  ResultGetHome get result;
 
   /// Create a copy of ResultState
   /// with the given fields replaced by the non-null parameter values.

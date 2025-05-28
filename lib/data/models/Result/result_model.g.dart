@@ -79,6 +79,22 @@ Map<String, dynamic> _$$ResultGetImplToJson(_$ResultGetImpl instance) =>
       'buId': instance.buId,
     };
 
+_$ResultGetHomeImpl _$$ResultGetHomeImplFromJson(Map<String, dynamic> json) =>
+    _$ResultGetHomeImpl(
+      resultModel: (json['resultModel'] as List<dynamic>)
+          .map((e) => ResultGet.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      machine: (json['machine'] as List<dynamic>)
+          .map((e) => MachineModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$ResultGetHomeImplToJson(_$ResultGetHomeImpl instance) =>
+    <String, dynamic>{
+      'resultModel': instance.resultModel,
+      'machine': instance.machine,
+    };
+
 _$ResultAddImpl _$$ResultAddImplFromJson(Map<String, dynamic> json) =>
     _$ResultAddImpl(
       status: json['status'] as String,

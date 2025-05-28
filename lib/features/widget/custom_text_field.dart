@@ -18,6 +18,9 @@ class CustomTextField extends StatefulWidget {
   final FormFieldValidator? validator;
   final IconButton? suffixIcon;
   final bool? filled;
+  final double? borderWidth;
+  final Color? borderColor;
+  final int? maxLines;
 
   const CustomTextField({
     super.key,
@@ -35,6 +38,9 @@ class CustomTextField extends StatefulWidget {
     this.validator,
     this.suffixIcon,
     this.filled,
+    this.borderWidth,
+    this.borderColor,
+    this.maxLines,
   });
 
   @override
@@ -65,6 +71,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ],
         TextFormField(
           controller: widget.controller,
+          maxLines: widget.maxLines ?? 4,
           validator: widget.validator,
           onChanged: widget.onChanged,
           enabled: widget.enabled, // Terapkan properti enabled
@@ -114,6 +121,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 .bodyMedium
                 ?.copyWith(color: ColorValues.grayscale400),
             border: OutlineInputBorder(
+                borderSide: BorderSide(
+                  width: widget.borderWidth ?? 1,
+                  color: widget.borderColor ?? Colors.grey,
+                ),
                 borderRadius: BorderRadius.circular(widget.borderRadius ?? 4)),
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(widget.borderRadius ?? 4),

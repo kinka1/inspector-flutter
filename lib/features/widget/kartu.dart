@@ -28,24 +28,42 @@ class Kartu extends StatelessWidget {
           decoration: BoxDecoration(
             color: selectedColor(),
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.black),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.6), // Lebih gelap
+                spreadRadius: 3, // Lebih besar dari 2
+                blurRadius: 15, // Lebih blur
+                offset: const Offset(0, 8), // Lebih jauh ke bawah
+              ),
+            ],
           ),
           alignment: Alignment.center,
-          child: Text(caption,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyLarge!
-                  .copyWith(color: Colors.black),textAlign: TextAlign.center,),
+          child: Text(
+            caption,
+            style: Theme.of(context)
+                .textTheme
+                .bodyLarge!
+                .copyWith(color: setTextColor(), fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
         ));
   }
 
   Color selectedColor() {
     if (status == "OK") {
-      return ColorValues.hijauOK;
+      return ColorValues.hijauMuda;
     } else if (status == "NG") {
-      return ColorValues.merahNG;
+      return ColorValues.redNG;
     } else {
       return ColorValues.kuningKOSING; // Default jika belum diisi
+    }
+  }
+
+  Color setTextColor() {
+    if (status != "-") {
+      return Colors.white;
+    } else {
+      return Colors.black;
     }
   }
 }
