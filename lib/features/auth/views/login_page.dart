@@ -50,25 +50,32 @@ class _LoginPageState extends State<LoginPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Image.asset(
-                          "assets/images/Icons_mesin.png",
-                          color: Colors.white,
-                          width: 150,
+                          "assets/images/MachPeek.png",
+                          width: 200,
                         ),
-                        Text("Digital Check Sheet",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineLarge!
-                                .copyWith(
-                                  color: ColorValues.grayscale50,
-                                  fontWeight: FontWeight.bold,
-                                )),
+                        Center(
+                          child: Text("Machine Inspection Digital ",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .copyWith(
+                                    color: ColorValues.grayscale50,
+                                    fontWeight: FontWeight.bold,
+                                    
+                                  )),
+                        ),
                         const SizedBox(height: 10),
-                        Text("Maintenance",
-                            style:
-                                Theme.of(context).textTheme.headlineLarge!.copyWith(
-                                      color: ColorValues.grayscale50,
-                                      fontWeight: FontWeight.bold,
-                                    )),
+                        Center(
+                          child: Text("CheckSheet",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .copyWith(
+                                    color: ColorValues.grayscale50,
+                                    fontWeight: FontWeight.bold,
+                                    
+                                  )),
+                        ),
                       ],
                     ),
                   ),
@@ -92,24 +99,25 @@ class _LoginPageState extends State<LoginPage> {
                         children: [
                           // Logo atau gambar login
                           const SizedBox(height: 20),
-                    
+
                           // Username Field
                           _buildUsernameField(),
-                    
+
                           const SizedBox(height: 20),
-                    
+
                           // Password Field
                           _buildPasswordField(),
-                    
+
                           const SizedBox(height: 30),
-                    
+
                           // Login Button
                           BlocConsumer<AuthBloc, AuthState>(
                             listener: (context, state) {
                               // logger.d("State AUTH: $state");
                               state.maybeWhen(
                                 loginSuccess: () {
-                                  AutoRouter.of(context).replace(HomenewRoute());
+                                  AutoRouter.of(context)
+                                      .replace(HomenewRoute());
                                 },
                                 logoutSuccess: () {
                                   Flushbar(
@@ -260,7 +268,10 @@ class _LoginPageState extends State<LoginPage> {
                     .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
               ),
               const SizedBox(width: 8),
-              Icon(Icons.login, color: Colors.white,),
+              Icon(
+                Icons.login,
+                color: Colors.white,
+              ),
             ],
           ),
         ],

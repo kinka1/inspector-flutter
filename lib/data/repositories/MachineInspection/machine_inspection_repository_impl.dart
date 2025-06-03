@@ -13,7 +13,8 @@ class MachineInspectionRepositoryImpl extends MachineInspectionRepository {
     logger.d("MASUK TRY REPO MACHINE INSPECTION, machine id : $id, buId : $buId");
     final response =
         await _dio.get('${dotenv.env['API_BASE_URL']}/machineInspection/BU=$buId/$id');
-    // logger.i("RESPONSE MACHINE INSPECTION : ${response}");
+    logger.i("${dotenv.env['API_BASE_URL']}/machineInspection/BU=$buId/$id");
+     logger.i("RESPONSE MACHINE INSPECTION : ${response}");
 
     if (response.statusCode == 200) {
       final responseData = response.data;

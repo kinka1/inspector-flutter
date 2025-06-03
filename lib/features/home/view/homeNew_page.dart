@@ -481,7 +481,6 @@ class _HomenewPageState extends State<HomenewPage> {
                     children: [
                       Text(
                         "Digital Check Sheet",
-                        overflow: TextOverflow.ellipsis,
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
@@ -732,7 +731,8 @@ class _HomenewPageState extends State<HomenewPage> {
     // logger.d("_resultget: $_resultGet");
     return SingleChildScrollView(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           _buildHeader(context, ok, ng, _resultGet.machine.length),
           BuildChecksheetResult(
@@ -763,7 +763,7 @@ class _HomenewPageState extends State<HomenewPage> {
           children: [
             Container(
               margin: const EdgeInsets.only(top: 30, bottom: 20),
-              padding: const EdgeInsets.all(25),
+              padding: const EdgeInsets.only(right: 25,left: 25, top: 20,bottom: 23),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),

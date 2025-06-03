@@ -14,6 +14,7 @@ import 'package:maintenanceApp/routes/router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Buildform extends StatefulWidget {
   const Buildform({
@@ -52,12 +53,14 @@ class _BuildformState extends State<Buildform> {
   final logger = Logger();
   String status = "-";
   double height = 0;
+  String _BU = "-";
 
   @override
   void initState() {
     super.initState();
     _descriptionController = TextEditingController();
     logger.d("item remark : ${widget.remark}");
+    _getAuth();
 
     if (widget.status != "-") {
       selectedStatus = widget.status!;
@@ -67,6 +70,13 @@ class _BuildformState extends State<Buildform> {
     }
 
     logger.d("selectedStatus : $selectedStatus");
+  }
+
+  Future<void> _getAuth() async {
+    final prefs = await SharedPreferences.getInstance();
+    final rawBU = prefs.getString('buId') ?? '';
+
+    _BU = rawBU.replaceAll('"', '');
   }
 
   @override
@@ -103,15 +113,16 @@ class _BuildformState extends State<Buildform> {
                   ),
                 ),
                 Positioned(
-                  top: 480,
+                  top: 481,
                   height: 20,
                   left: 0,
-                  right: 0 ,
+                  right: 0,
                   child: Container(
                     margin: EdgeInsets.only(top: widget.margin),
                     height: 10,
                     // width: double.infinity,
-                    padding: const EdgeInsets.only(right: 30, left: 30, top: 30),
+                    padding:
+                        const EdgeInsets.only(right: 30, left: 30, top: 30),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       boxShadow: [
@@ -130,7 +141,6 @@ class _BuildformState extends State<Buildform> {
                     // child: Text("data"),
                   ),
                 ),
-                
               ],
             ),
             Container(
@@ -148,7 +158,7 @@ class _BuildformState extends State<Buildform> {
                     child: Col(
                         title: "Inspection Item  ",
                         flexSize: 2,
-                        caption: toTitleCase( widget.item.itemName),
+                        caption: toTitleCase(widget.item.itemName),
                         warna: Colors.black),
                   ),
                   Container(
@@ -156,7 +166,7 @@ class _BuildformState extends State<Buildform> {
                     child: Col(
                         title: "Specification ",
                         flexSize: 2,
-                        caption:toTitleCase( widget.item.specification),
+                        caption: toTitleCase(widget.item.specification),
                         warna: Colors.black),
                   ),
                   Container(
@@ -164,7 +174,7 @@ class _BuildformState extends State<Buildform> {
                     child: Col(
                         title: "Method ",
                         flexSize: 2,
-                        caption:toTitleCase( widget.item.method),
+                        caption: toTitleCase(widget.item.method),
                         warna: Colors.black),
                   ),
                   Container(
@@ -172,14 +182,13 @@ class _BuildformState extends State<Buildform> {
                     child: Col(
                         title: "Period ",
                         flexSize: 2,
-                        caption: toTitleCase( widget.item.frequency),
+                        caption: toTitleCase(widget.item.frequency),
                         warna: Colors.black),
                   ),
                   widget.item.isNumber == false
                       ? Container(
-                    padding: const EdgeInsets.only(bottom: 5),
-
-                        child: Row(
+                          padding: const EdgeInsets.only(bottom: 5),
+                          child: Row(
                             children: [
                               Expanded(
                                 flex: 2,
@@ -215,7 +224,7 @@ class _BuildformState extends State<Buildform> {
                               ),
                             ],
                           ),
-                      )
+                        )
                       : const SizedBox(),
                   CustomTextField(
                     maxLines: 4,
@@ -358,7 +367,7 @@ class _BuildformState extends State<Buildform> {
                                         machineId: widget.machineId,
                                         status: selectedStatus,
                                         ResultId: widget.ResultId,
-                                        buId: 'REF',
+                                        buId: _BU,
                                         userId: widget.userId));
                                   }
                                 },

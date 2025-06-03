@@ -65,7 +65,7 @@ class _ScanOtherPageState extends State<ScanOtherPage> {
                 state.maybeWhen(
                   success: () {
                     Flushbar(
-                      title: 'Berhasil',
+                      title: 'Save',
                       message: 'Data berhasil disimpan',
                       duration: const Duration(seconds: 2),
                       backgroundColor: ColorValues.primary500,
@@ -136,7 +136,7 @@ class _ScanOtherPageState extends State<ScanOtherPage> {
                               color: ColorValues.kuningButton,
                               borderRadius: BorderRadius.circular(10)),
                           child: Text(
-                            "SIMPAN",
+                            "Save",
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium!

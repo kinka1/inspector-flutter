@@ -75,15 +75,13 @@ class BuildChecksheetResult extends StatelessWidget {
                               SizedBox(
                                 // ⬅️ Kosongkan bagian result jika resultId == 0
                                 height: 50,
-                                child: Center(
-                                  child: Text("have not done the inspection",
+                                child: Text("have not done the inspection",
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyMedium!
                                           .copyWith(
                                               fontWeight: FontWeight.bold,
                                               color: ColorValues.danger500)),
-                                ),
                               )
                             ] // ⬅️ Kosongkan bagian result jika resultId == 0
                       : [const SizedBox()],

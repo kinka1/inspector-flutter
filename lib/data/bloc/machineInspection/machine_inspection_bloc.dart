@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-// import 'package:logger/logger.dart';
+import 'package:logger/logger.dart';
 import 'package:maintenanceApp/data/models/MachineInspection/machine_inspection_model.dart';
 import 'package:maintenanceApp/data/repositories/MachineInspection/machine_inspection_repository.dart';
 
@@ -11,7 +11,7 @@ part 'machine_inspection_bloc.freezed.dart';
 class MachineInspectionBloc
     extends Bloc<MachineInspectionEvent, MachineInspectionState> {
 
-  // final logger = Logger();
+  final logger = Logger();
   
   MachineInspectionBloc(MachineInspectionRepository repository)
       : super(const MachineInspectionState.initial()) {
@@ -30,6 +30,7 @@ class MachineInspectionBloc
       final response = await _repository.getInspectionItem(event.id,event.buId);
       // logger.i('berhasil hit, response : $response');
       emit(MachineInspectionState.loaded(response));
+      logger.i('Berhasil mendapatkan data inspeksi mesin: ${response.item.length} item(s)');
     } catch (e) {
       emit(MachineInspectionState.error(e.toString()));
     }

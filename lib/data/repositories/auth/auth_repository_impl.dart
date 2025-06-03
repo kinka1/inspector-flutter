@@ -34,6 +34,7 @@ class AuthRepositoryImpl extends AuthRepository {
         final fullname = user['fullname'];
         final buName = user['buName'];
         final UID = user['id'];
+        logger.d("User : $user");
 
         // logger.d("User ID : $UID");
         await prefs.setString('user', jsonEncode(user));
